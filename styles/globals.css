@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+
+
+/* login and signin page */
+@media(max-width:800px){
+     .container{
+        padding :0;
+     }
+     .contentCover{
+       padding:0;
+     }
+     .formContainer{
+       width: 450%;
+     }
+}
