@@ -5,6 +5,7 @@ import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import {useState , useEffect} from 'react'
 import useRouter from 'next/router'
+import { handleBreakpoints } from '@mui/system';
 
 
 
@@ -24,7 +25,8 @@ const loginStyles ={
        background:"rgba(0,0,0,0.5)",
        display:'flex',
        justifyContent:'center',
-       alignItems:'center'
+       alignItems:'center',
+       
    },
    formContainer:{
         border:'1px solid red',
@@ -49,7 +51,7 @@ const LoginComp = () => {
     <Box className={classNames[0]} sx={{...loginStyles.container}}>
           <Box sx={{...loginStyles.contentCover}}>
                  <Box className={classNames[2]} sx={{...loginStyles.formContainer}}>
-                             
+
                  </Box>
           </Box>
     </Box>
