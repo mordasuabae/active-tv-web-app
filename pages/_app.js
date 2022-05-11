@@ -1,13 +1,19 @@
-import '../styles/globals.css'
-import Navbar from "../components/navbar"
+import "../styles/globals.css";
+import Navbar from "../components/navbar";
+import { USER_CONTEXT } from "../context/MainContext";
+import { useContext } from "react";
 
 function MyApp({ Component, pageProps }) {
-  return(
-    <>
-    <Navbar />
-    <Component {...pageProps} />
-    </>
-    )
+
+  const UserContext = useContext(USER_CONTEXT);
+  
+  
+  return (
+    <USER_CONTEXT.Provider value={UserContext}>
+      <Navbar />
+      <Component {...pageProps} />
+    </USER_CONTEXT.Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
