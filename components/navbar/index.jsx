@@ -12,10 +12,14 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
+import { USER_CONTEXT } from "../../context/MainContext";
+
 
 const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
+
+  const UserContext = React.useContext(USER_CONTEXT)
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -216,8 +220,10 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {logged ? (
-              <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+          <Avatar alt={UserContext.name + UserContext.surname}  src="/static/images/avatar/2.jpg" />
+
+            {/* {logged ? (
+              <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
             ) : (
               <Box
                 sx={{
@@ -271,7 +277,7 @@ const Navbar = () => {
                   </IconButton>
                 </Tooltip>
               </Box>
-            )}
+            )} */}
 
             <Menu
               sx={{ mt: "45px" }}
