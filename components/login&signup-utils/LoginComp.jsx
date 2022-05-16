@@ -18,26 +18,49 @@ const loginStyles ={
          display:'flex',
          justifyContent:'center',
          alignItems:'center',    
+         padding:{
+           md:0,
+           sm:0,
+           xs:0
+           
+         }
    },
    contentCover:{
-       height:'894px',
+       height:{
+         lg:'894px',
+         md:'894px',
+         sm:'900px',
+         xs:'900px'
+       },
        width:'1140px',
        background:"rgba(0,0,0,0.5)",
        display:'flex',
        justifyContent:'center',
        alignItems:'center',
+       padding:{
+        lg:0,
+        md:0,
+        sm:0,
+        xs:0
+       }
        
    },
    formContainer:{
         border:'1px solid red',
         height:'100%',
-        width:'50%'
+        width:{
+          md:'50%',
+          sm:'100%',
+          xs:'100%'
+        },
+        padding:{
+          md:0,
+          sm:0,
+          xs:0
+        }
    }
 
 }
-// extended responsive design
-let classNames = ['container', 'contentCover', 'formContainer']
-
 
 
 
@@ -48,10 +71,10 @@ const LoginComp = () => {
 
 
   return (
-    <Box className={classNames[0]} sx={{...loginStyles.container}}>
+    <Box sx={{...loginStyles.container}}>
           <Box sx={{...loginStyles.contentCover}}>
-                 <Box className={classNames[2]} sx={{...loginStyles.formContainer}}>
-
+                 <Box  sx={{...loginStyles.formContainer}}>
+                               
                  </Box>
           </Box>
     </Box>

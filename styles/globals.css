@@ -16,16 +16,3 @@ a {
   /* border: 0.2px solid blue; */
 }
 
-
-/* login and signin page */
-@media(max-width:800px){
-     .container{
-        padding :0;
-     }
-     .contentCover{
-       padding:0;
-     }
-     .formContainer{
-       width: 450%;
-     }
-}

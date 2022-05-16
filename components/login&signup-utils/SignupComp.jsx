@@ -17,32 +17,55 @@ import useRouter from 'next/router'
 
 const signStyles ={
   container:{
-        minHeight:'125vh',
-        width:'100%',
-        background:"url('login-bg.jpg')",
-        display:'flex',
-        justifyContent:'center',
-        alignItems:'center',    
+    minHeight:'125vh',
+    width:'100%',
+    background:"url('login-bg.jpg')",
+    display:'flex',
+    justifyContent:'center',
+    alignItems:'center',    
+    padding:{
+      md:0,
+      sm:0,
+      xs:0
+      
+    }
+},
+contentCover:{
+  height:{
+    lg:'894px',
+    md:'894px',
+    sm:'900px',
+    xs:'900px'
   },
-  contentCover:{
-      height:'894px',
-      width:'1140px',
-      background:"rgba(0,0,0,0.5)",
-      display:'flex',
-      justifyContent:'center',
-      alignItems:'center'
-  },
-  formContainer:{
-       border:'1px solid red',
-       height:'100%',
-       width:'50%'
+  width:'1140px',
+  background:"rgba(0,0,0,0.5)",
+  display:'flex',
+  justifyContent:'center',
+  alignItems:'center',
+  padding:{
+   lg:0,
+   md:0,
+   sm:0,
+   xs:0
   }
-
+  
+},
+formContainer:{
+   border:'1px solid red',
+   height:'100%',
+   width:{
+     md:'50%',
+     sm:'100%',
+     xs:'100%'
+   },
+   padding:{
+     md:0,
+     sm:0,
+     xs:0
+   }
 }
 
-
-// extended responsive design
-let classNames = ['container', 'contentCover', 'formContainer']
+}
 
 
 
@@ -53,9 +76,9 @@ const SignupComp = () => {
 
 
 
-    <Box className={classNames[0]} sx={{...signStyles.container}}>
+    <Box sx={{...signStyles.container}}>
           <Box sx={{...signStyles.contentCover}}>
-                 <Box className={classNames[2]} sx={{...signStyles.formContainer}}>
+                 <Box  sx={{...signStyles.formContainer}}>
                              
                  </Box>
           </Box>
