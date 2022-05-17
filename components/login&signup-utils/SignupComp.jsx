@@ -8,13 +8,6 @@ import useRouter from 'next/router'
 
 
 
-
-
-
-
-
-
-
 const signStyles ={
   container:{
     minHeight:'125vh',
