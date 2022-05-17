@@ -104,13 +104,13 @@ const loginStyles = {
     flexDirection: "column",
     // border:'1px solid red',
     padding: {
-      md: "1px 0",
+      md: "5px 0",
       sm: " 5px 10px",
       xs: "10px 25px",
     },
   },
   icon: {
-    color: "#999",
+    color: "#666",
   },
   inputElement: {
     width: "90%",
