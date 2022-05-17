@@ -222,6 +222,7 @@ const LoginComp = () => {
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
+                  className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={"text"}
                     placeholder="Enter email address"
@@ -235,6 +236,7 @@ const LoginComp = () => {
                 <label style={{ ...loginStyles.inputLabel }}>Password</label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
+                   className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={show ? "text" : "password"}
                     placeholder="Enter your password"
