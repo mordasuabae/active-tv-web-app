@@ -72,7 +72,7 @@ const SignupComp = () => {
     <Box sx={{...signStyles.container}}>
           <Box sx={{...signStyles.contentCover}}>
                  <Box  sx={{...signStyles.formContainer}}>
-                             
+                            
                  </Box>
           </Box>
     </Box>
