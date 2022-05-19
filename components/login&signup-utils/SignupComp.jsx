@@ -43,7 +43,7 @@ const loginStyles = {
     padding: {
       lg: 0,
       md: 0,
-      sm: '0 30px',
+      sm: "0 30px",
       xs: 0,
     },
   },
@@ -170,25 +170,40 @@ const loginStyles = {
       color: "#000",
     },
   },
-  checkboxContainer:{
-    display:'flex',
-    flexDirection:'column',
-    height:"50px",
-    justifyContent:'space-between',
-    marginTop:'15px',
-    padding:{
-      md:'0',
-      sm:'0 10px',
-      xs:'0 20px'
-    }
-
-  }
+  checkboxContainer: {
+    display: "flex",
+    flexDirection: "column",
+    height: "50px",
+    justifyContent: "space-between",
+    marginTop: "15px",
+    padding: {
+      md: "0",
+      sm: "0 10px",
+      xs: "0 20px",
+    },
+  },
 };
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
 
-// password display
+  // form state
+  const [formDetails, setFormDetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+    check: "",
+  });
+
+  const handleFieldChange = (event) => {
+    const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
+
+    setFormDetails({
+      ...formDetails,
+      [field]: event.currentTarget.value,
+    });
+  };
+  // password display
   const tooglePassword = () => {
     setShow(!show);
   };
@@ -196,8 +211,7 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("submit");
+    alert(formDetails.email + " signed up");
   };
 
   return (
@@ -222,21 +236,25 @@ const LoginComp = () => {
                 },
               }}
             >
-            Create your account
+              Create your account
             </Typography>
             <Typography variant="p" align="center">
-            Getting started is easy, just a few steps and you can immerse yourself with   the latest Corridor content!
+              Getting started is easy, just a few steps and you can immerse
+              yourself with the latest Corridor content!
             </Typography>
           </Box>
           <Box sx={loginStyles.formBox}>
             <form onSubmit={handleSubmit}>
-            <Box sx={{ ...loginStyles.inputBlocks }}>
+              <Box sx={{ ...loginStyles.inputBlocks }}>
                 <label style={{ ...loginStyles.inputLabel }}>
-                 Display Name
+                  Display Name
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                  className="focusInput"
+                    name="name"
+                    value={formDetails.name}
+                    onChange={handleFieldChange}
+                    className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={"text"}
                     placeholder="Enter display name"
@@ -252,7 +270,10 @@ const LoginComp = () => {
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                  className="focusInput"
+                    name="email"
+                    value={formDetails.email}
+                    onChange={handleFieldChange}
+                    className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={"text"}
                     placeholder="Enter email address"
@@ -266,7 +287,10 @@ const LoginComp = () => {
                 <label style={{ ...loginStyles.inputLabel }}>Password</label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                   className="focusInput"
+                    name="password"
+                    value={formDetails.password}
+                    onChange={handleFieldChange}
+                    className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={show ? "text" : "password"}
                     placeholder="Enter your password"
@@ -280,18 +304,33 @@ const LoginComp = () => {
                   </Button>
                 </Box>
               </Box>
-       {/* checkboxes */}
-              <Box sx={{...loginStyles.checkboxContainer}}>
-                <Box sx={{display:'flex'}}>
-                 <input style={{padding:'5px'}} type="checkbox"  name="kjeje" />
-                 <Typography variant="" sx={{ml:2}}>I have read and accept the Privacy Policy</Typography>
+              {/* checkboxes */}
+              <Box sx={{ ...loginStyles.checkboxContainer }}>
+                <Box sx={{ display: "flex" }}>
+                  <input
+                    style={{ padding: "5px" }}
+                    type="checkbox"
+                    name="check"
+                    value={formDetails.check}
+                    onChange={handleFieldChange}
+                  />
+                  <Typography variant="" sx={{ ml: 2 }}>
+                    I have read and accept the Privacy Policy
+                  </Typography>
                 </Box>
-                <Box sx={{display:'flex'}}>
-                 <input style={{padding:'5px'}} type="checkbox"  name="kjeje" />
-                 <Typography variant="" sx={{ml:2}}>I have read and accept the Terms and Conditions</Typography>
+                <Box sx={{ display: "flex" }}>
+                  <input
+                    style={{ padding: "5px" }}
+                    type="checkbox"
+                    name="check"
+                    value={formDetails.check}
+                    onChange={handleFieldChange}
+                  />
+                  <Typography variant="" sx={{ ml: 2 }}>
+                    I have read and accept the Terms and Conditions
+                  </Typography>
                 </Box>
               </Box>
-              
 
               <Box sx={{ ...loginStyles.buttonContainer }}>
                 <Button
@@ -362,7 +401,7 @@ const LoginComp = () => {
               color="#fff"
               align="center"
             >
-             Already have an account? 
+              Already have an account?
               <Box
                 sx={{
                   display: "inline-block",

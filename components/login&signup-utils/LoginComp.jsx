@@ -43,7 +43,7 @@ const loginStyles = {
     padding: {
       lg: 0,
       md: 0,
-      sm: '0 45px',
+      sm: "0 45px",
       xs: 0,
     },
   },
@@ -175,6 +175,27 @@ const loginStyles = {
 const LoginComp = () => {
   const [show, setShow] = useState(false);
 
+  // form state
+  const [formDetails, setFormDetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+    check: "",
+  });
+
+  const handleFieldChange = (event) => {
+    const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
+
+    setFormDetails({
+      ...formDetails,
+      [field]: event.currentTarget.value,
+    });
+  };
+  // const [name, setName] = useState('');
+  // const [email, setEmail] = useState('');
+  // const [password, setPassword] = useState('');
+  // const [check, setCheck ] = useState('');
+
   const tooglePassword = () => {
     setShow(!show);
   };
@@ -182,8 +203,8 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
+      alert( formDetails.email + ' logged in')
 
-    console.log("submit");
   };
 
   return (
@@ -222,7 +243,10 @@ const LoginComp = () => {
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                  className="focusInput"
+                    name="email"
+                    value={formDetails.email}
+                    onChange={handleFieldChange}
+                    className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={"text"}
                     placeholder="Enter email address"
@@ -236,7 +260,10 @@ const LoginComp = () => {
                 <label style={{ ...loginStyles.inputLabel }}>Password</label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                   className="focusInput"
+                     name="password"
+                     value={formDetails.password}
+                     onChange={handleFieldChange}
+                    className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={show ? "text" : "password"}
                     placeholder="Enter your password"
