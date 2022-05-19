@@ -14,7 +14,6 @@ import LatestShowItem from "./latest-show-item";
 import { Grid, Box, Button, Card } from "@mui/material";
 
 const LatestShows = () => {
-  // const lastestShows = "latest Shows bang for life homes and you know it";
 
   const lastestShows = [
     {
@@ -35,17 +34,22 @@ const LatestShows = () => {
   ];
 
   return (
-    <Box id="latest-shows-swiper">
+    <Box
+      id="latest-shows-swiper"
+      sx={{
+        transform: "translateY(-10px)",
+      }}
+    >
       <SectionHeader text={"Latest Shows"} textColor={"#eee"} />
       <Box
         sx={{
           display: "flex",
           justifyContent: {
-            lg:"center",
-          xs:'flex-start'
+            lg: "space-between",
+            xs: "flex-start",
           },
           overflowX: "auto",
-          // background: "pink",
+          margin: "21px 0",
           width: "100%",
         }}
       >
@@ -54,10 +58,10 @@ const LatestShows = () => {
             <Card
               sx={{
                 minWidth: "320px",
-                maxWidth: "350px",
+                maxWidth: "380px",
                 minHeight: "200px",
-                maxHeight: "300px",
-                background:'transparent',
+                maxHeight: "320px",
+                background: "transparent",
                 // padding: "8px",
                 margin: "8px",
               }}

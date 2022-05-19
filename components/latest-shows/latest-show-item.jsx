@@ -7,10 +7,10 @@ const LatestShowItem = ({ title, thumbnail }) => {
 
   return (
     <Button className="show-item" sx={{
-      // background:'pink',
           height: "100%",
-          minHeight:'200px',
+          padding:'0px',
           width: "100%",
+          margin:'0 8px',
     }}>
       <Box
         className="scale-up-center scale-down-center"
@@ -23,7 +23,6 @@ const LatestShowItem = ({ title, thumbnail }) => {
           setOpen(!open);
         }}
         sx={{
-          // background:'yellow',
           height: "100%",
           minHeight:'200px',
           width: "100%",
