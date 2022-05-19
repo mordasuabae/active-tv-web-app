@@ -136,7 +136,7 @@ a {
   }
 }
 /*  Login and sign up pages*/
-.focusInput{
-  background: red;
-    border:'none'
+input:focus{
+ outline: none!important;
 }
+/* done */

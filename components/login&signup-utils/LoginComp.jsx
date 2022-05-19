@@ -43,7 +43,7 @@ const loginStyles = {
     padding: {
       lg: 0,
       md: 0,
-      sm: 0,
+      sm: '0 45px',
       xs: 0,
     },
   },
@@ -377,7 +377,7 @@ const LoginComp = () => {
                 }}
               >
                 <Link href="/signup">
-                  <a target="_blank">Signup here</a>
+                  <a>Signup here</a>
                 </Link>
               </Box>
             </Typography>
