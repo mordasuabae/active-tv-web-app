@@ -13,7 +13,6 @@ import { Box } from "@mui/material";
 import BannerItem from "./banner-item";
 import { USER_CONTEXT } from "../../context/MainContext";
 import LatestShows from "../latest-shows";
-import Gradient from "./gradient";
 import { Palette } from "@universemc/react-palette";
 
 const HomeBanner = () => {
@@ -30,6 +29,7 @@ const HomeBanner = () => {
           <Box
             sx={{ 
               minHeight: "100vh",
+              maxHeight:'120vh',
               // background: "green",
               // accentColor: "rgb(255, 255, 128)",
               background:data.darkVibrant
@@ -82,12 +82,13 @@ const HomeBanner = () => {
 
             <Box
               sx={{
-                background:
-                  "linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,.5) 90%,rgba(0,0,0,0) 100%)",
+                background:"linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.5) 90% , rgba(0,0,0,0) 100%)",
+                // "linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,0.1) 100%,rgba(0,0,0,0.1) 100%)",
+                  // "linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,.5) 90%,rgba(0,0,0,0) 100%)",
                 width: "100%",
-                minHeight: "60vh",
+                transform:'translateY(-150px)',
+                // minHeight: "50vh",
                 // opacity:'0.5',
-                transform: "translateY(-100px)",
                 zIndex: "2",
                 position: "relative",
                 padding: {
