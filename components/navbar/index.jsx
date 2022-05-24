@@ -61,7 +61,7 @@ const Navbar = () => {
             /> */}
             <Box sx={{
               height:'75px',
-              width:'100%',
+              width:'100px',
               backgroundImage:'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
               backgroundSize:'cover',
               backgroundPosition:'center'
