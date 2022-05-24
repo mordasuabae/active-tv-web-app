@@ -54,11 +54,18 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            <img
+            {/* <img
               src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
               alt=""
               height="75px"
-            />
+            /> */}
+            <Box sx={{
+              height:'75px',
+              width:'100%',
+              backgroundImage:'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+              backgroundSize:'cover',
+              backgroundPosition:'center'
+            }} />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
