@@ -53,7 +53,7 @@ export default function LatestShows() {
         {lastestShows.map((show, index) => {
           return (
             <SwiperSlide
-            key={index}
+              key={index}
               className={"show-item"}
               style={{
                 maxHeight: "250px",
