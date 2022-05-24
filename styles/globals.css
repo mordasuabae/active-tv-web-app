@@ -1,19 +1,22 @@
-/* @font-face {
+@font-face {
   font-family: 'retrogradebold';
-  src: url('./../public/font/DMRetrograde-Bold.ttf') format('tff'),
-       url('./fonts/fonts/retrograde-bold-webfont.woff') format('woff');
+  src: url('../font/DMRetrograde-Bold.ttf') format('tff'),
+       url('../font/DMRetrograde-Regular.ttf') format('woff');
   font-weight: normal;
   font-style: normal;
- } */
+ }
 html,
 body {
   padding: 0;
   margin: 0;
-  /* font-family: Retrograde; */
+  background: #020703;
+  font-family:"retrogradebold",cursive!important;
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
-
+.active-tv-font{
+  font-family:"retrogradebold",cursive!important;
+}
 a {
   color: inherit;
   text-decoration: none;
@@ -43,15 +46,10 @@ a {
   background: #555;
 }
 .show-item {
-  /* transform: scale(.8); */
   width:100%;
-  /* max-width: 450px;
-  min-width: 245px;
-  max-height: 250px;
-  min-height: 160px; */
 }
 .show-item:hover {
-  transform: scale(.9);
+  transform: scale(1.1);
 }
 .swiper {
   width: 100%;
@@ -91,9 +89,9 @@ a {
   min-height: 250px;
   max-height: 350px;
 }
-/* #latest-shows-swiper > .latest-shows-swiper .swiper-slide > * {
-  background:green;
-}   */
+.freetowatchwiper{
+  padding:0px 32px;
+}
 .swiper-slide img {
   display: block;
   width: 100%;

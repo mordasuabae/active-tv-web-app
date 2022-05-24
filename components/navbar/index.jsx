@@ -14,12 +14,11 @@ import MenuItem from "@mui/material/MenuItem";
 import Link from "next/link";
 import { USER_CONTEXT } from "../../context/MainContext";
 
-
 const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-  const UserContext = React.useContext(USER_CONTEXT)
+  const UserContext = React.useContext(USER_CONTEXT);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -93,7 +92,9 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
+                  <Typography className={"active-tv-font"} textAlign="center">
+                    {page}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -106,22 +107,28 @@ const Navbar = () => {
           >
             LOGO
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              // justifyContent: "space-beterrn",
+              alignItems: "center",
+            }}
+          >
             <Link href="/">
               <a>
                 <Button
-                  className={anchorElNav ? "active" : "active"}
+                  // className={anchorElNav ? "active" : "active"}
+                  className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    m: 2,
-                    color: "white",
-                    display: "block",
+                    color: "#eee",
+                    margin: "0 8px",
+                    display: "flex",
                     fontSize: "18px",
-                    borderBottom: "5px solid transparent",
                     "&:hover": {
-                      background: "transparent",
                       color: "pink",
-                      borderBottom: "5px solid pink",
+                      borderBottom: "3px solid pink",
                     },
                   }}
                 >
@@ -133,17 +140,16 @@ const Navbar = () => {
             <Link href="/">
               <a>
                 <Button
+                  className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    m: 2,
-                    color: "white",
-                    display: "block",
+                    color: "#eee",
+                    margin: "0 8px",
+                    display: "flex",
                     fontSize: "18px",
-                    borderBottom: "5px solid transparent",
                     "&:hover": {
-                      background: "transparent",
                       color: "pink",
-                      borderBottom: "5px solid pink",
+                      borderBottom: "3px solid pink",
                     },
                   }}
                 >
@@ -155,17 +161,16 @@ const Navbar = () => {
             <Link href="/">
               <a>
                 <Button
+                  className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    m: 2,
-                    color: "white",
-                    display: "block",
+                    color: "#eee",
+                    margin: "0 8px",
+                    display: "flex",
                     fontSize: "18px",
-                    borderBottom: "5px solid transparent",
                     "&:hover": {
-                      background: "transparent",
                       color: "pink",
-                      borderBottom: "5px solid pink",
+                      borderBottom: "3px solid pink",
                     },
                   }}
                 >
@@ -178,16 +183,15 @@ const Navbar = () => {
               <a>
                 <Button
                   onClick={handleCloseNavMenu}
+                  className={"active-tv-font"}
                   sx={{
-                    m: 2,
-                    color: "white",
-                    display: "block",
+                    color: "#eee",
+                    margin: "0 8px",
+                    display: "flex",
                     fontSize: "18px",
-                    borderBottom: "5px solid transparent",
                     "&:hover": {
-                      background: "transparent",
                       color: "pink",
-                      borderBottom: "5px solid pink",
+                      borderBottom: "3px solid pink",
                     },
                   }}
                 >
@@ -199,17 +203,16 @@ const Navbar = () => {
             <Link href="/">
               <a>
                 <Button
+                  className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    m: 2,
-                    color: "white",
-                    display: "block",
+                    color: "#eee",
+                    margin: "0 8px",
+                    display: "flex",
                     fontSize: "18px",
-                    borderBottom: "5px solid transparent",
                     "&:hover": {
-                      background: "transparent",
                       color: "pink",
-                      borderBottom: "5px solid pink",
+                      borderBottom: "3px solid pink",
                     },
                   }}
                 >
@@ -220,10 +223,18 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <Avatar alt={UserContext.name + UserContext.surname}  src="/static/images/avatar/2.jpg" />
+            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
+              <Avatar
+                alt={UserContext.name + UserContext.surname}
+                src="/static/images/avatar/2.jpg"
+              />
+            </IconButton>
 
             {/* {logged ? (
-              <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
+              <Avatar
+                alt={UserContext.name}
+                src="/static/images/avatar/2.jpg"
+              />
             ) : (
               <Box
                 sx={{
@@ -238,9 +249,9 @@ const Navbar = () => {
                         color: "white",
                         display: "block",
                         fontSize: "16px",
-                        width:{
+                        width: {
                           lg: "130px",
-                          xs:'100%'
+                          xs: "100%",
                         },
                         "&:hover": {
                           background: "#eee",
@@ -262,8 +273,8 @@ const Navbar = () => {
                         display: "block",
                         fontSize: "16px",
                         width: {
-                          lg:"130px",
-                          xs:'100%'
+                          lg: "130px",
+                          xs: "100%",
                         },
                         border: "1px solid white",
                         "&:hover": {

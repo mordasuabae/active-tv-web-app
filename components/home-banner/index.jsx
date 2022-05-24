@@ -14,9 +14,9 @@ import BannerItem from "./banner-item";
 import { USER_CONTEXT } from "../../context/MainContext";
 import LatestShows from "../latest-shows";
 import { Palette } from "@universemc/react-palette";
+import FreeToWatch from "../free-to-watch";
 
 const HomeBanner = () => {
-  
   return (
     <Palette
       src={
@@ -27,12 +27,10 @@ const HomeBanner = () => {
         console.log(data, loading, error);
         return (
           <Box
-            sx={{ 
+            sx={{
               minHeight: "100vh",
-              maxHeight:'120vh',
-              // background: "green",
-              // accentColor: "rgb(255, 255, 128)",
-              background:data.darkVibrant
+              maxHeight: "107vh",
+              // background:data.darkVibrant
             }}
           >
             <Swiper
@@ -82,20 +80,12 @@ const HomeBanner = () => {
 
             <Box
               sx={{
-                background:"linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.5) 90% , rgba(0,0,0,0) 100%)",
-                // "linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,0.1) 100%,rgba(0,0,0,0.1) 100%)",
-                  // "linear-gradient(to top,rgba(0,0,0,1) 0,rgba(0,0,0,.5) 90%,rgba(0,0,0,0) 100%)",
+                background:
+                  "linear-gradient(to bottom,rgba(0,0,0,0.2) 0,rgba(0,0,0,0.5) 20%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.5) 90% , rgba(0,0,0,0) 100%)",
                 width: "100%",
-                transform:'translateY(-150px)',
-                // minHeight: "50vh",
-                // opacity:'0.5',
+                transform: "translateY(-150px)",
                 zIndex: "2",
                 position: "relative",
-                padding: {
-                  lg: "32px 72px",
-                  md: "32px 72px",
-                  xs: "16px 36px",
-                },
               }}
             >
               <LatestShows />
