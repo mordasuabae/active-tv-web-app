@@ -1,17 +1,13 @@
+import FreeToWatch from "../components/free-to-watch";
 import HomeBanner from "../components/home-banner";
-import FreeToWatch from "../components/FreeToWatch/FreeToWatch";
-import PopularNow from "../components/PopularNow/popularNow";
-
-
+import PopularNow from "../components/popular-now";
 
 export default function Home() {
   return (
-  <>
-
-  <HomeBanner/>
- <FreeToWatch/>
- <PopularNow/> 
-
-  </>
-  )
+    <>
+      <HomeBanner />
+      <FreeToWatch />
+      <PopularNow />
+    </>
+  );
 }

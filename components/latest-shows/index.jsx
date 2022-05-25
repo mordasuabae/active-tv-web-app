@@ -1,25 +1,23 @@
 import React, { useRef, useState } from "react";
+import { Box } from "@mui/material";
+import { LatestShowItem } from "./latest-show-item";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
-
+import SectionHeader from "../utils/SectionHeader";
 // Import Swiper styles
 import "swiper/css";
-import "swiper/css/scrollbar";
+import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 // import required modules
-import { Pagination, Navigation, Scrollbar } from "swiper";
-import SectionHeader from "../utils/SectionHeader";
-import LatestShowItem from "./latest-show-item";
-import { Grid, Box, Button, Card } from "@mui/material";
+import { Pagination, Navigation } from "swiper";
 
-const LatestShows = () => {
-
+export default function LatestShows() {
   const lastestShows = [
     {
       thumbnail:
         "https://active-tv-app-public-content.s3.us-east-2.amazonaws.com/video-thumbnails/AmNESIACS%2520%257C%2520Part%2520ONE-fd95f404-39e2-4da4-8113-af4eb92fa843.jpg",
-      title: "AmNesiacs",
+      title: "AmNesiacs Pt 1",
     },
     {
       thumbnail:
@@ -32,83 +30,42 @@ const LatestShows = () => {
       title: "AmNesiacs Pt 3",
     },
   ];
-
+  const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 11, 1, 1];
   return (
-    <Box
-      id="latest-shows-swiper"
-      sx={{
-        transform: "translateY(-10px)",
-      }}
-    >
-      <SectionHeader text={"Latest Shows"} textColor={"#eee"} />
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: {
-            lg: "space-between",
-            xs: "flex-start",
-          },
-          overflowX: "auto",
-          margin: "21px 0",
-          width: "100%",
+    <Box>
+      <Box sx={{ padding: "2px 48px" }}>
+        <SectionHeader text={"Latest Shows"} textColor={"#eee"} />
+      </Box>
+      <Swiper
+        slidesPerView={4}
+        spaceBetween={30}
+        slidesPerGroup={4}
+        loop={false}
+        loopFillGroupWithBlank={true}
+        pagination={{
+          clickable: true,
         }}
+        navigation={true}
+        modules={[Navigation]}
+        className="freetowatchwiper"
+        style={{ minHeight: "150px", maxHeight: "250px", padding: "0px 48px" }}
       >
         {lastestShows.map((show, index) => {
           return (
-            <Card
-              sx={{
-                minWidth: "320px",
-                maxWidth: "380px",
-                minHeight: "200px",
-                maxHeight: "320px",
-                background: "transparent",
-                // padding: "8px",
-                margin: "8px",
+            <SwiperSlide
+              key={index}
+              className={"show-item"}
+              style={{
+                maxHeight: "250px",
+                width: "100%",
+                borderRadius: "20px",
               }}
             >
-              <LatestShowItem
-                key={index}
-                title={show.title}
-                thumbnail={show.thumbnail}
-              />
-            </Card>
-          );
-        })}
-      </Box>
-
-      {/* <Box sx={{
-        display:'flex',
-        justifyContent:'space-evenly',
-        overflowX:'auto',
-      }}>
-      {lastestShows.map((show, index) => {
-          return (
-                <LatestShowItem key={index} title={show.title} thumbnail={show.thumbnail} />
-          );
-        })}
-      </Box> */}
-      {/* <Swiper
-        slidesPerView={3}
-        spaceBetween={0}
-        loop={false}
-        navigation={true}
-        pagination={true}
-        scrollbar={{
-          hide:false,
-        }}
-        modules={[Navigation , Scrollbar]}
-        className="latest-shows-swiper"
-      >
-        {lastestShows.map((show, index) => {
-          return (
-            <SwiperSlide>
-                <LatestShowItem key={index} title={show.title} thumbnail={show.thumbnail} />
+              <LatestShowItem image={show.thumbnail} title={show.title} />
             </SwiperSlide>
           );
         })}
-      </Swiper> */}
+      </Swiper>
     </Box>
   );
-};
-
-export default LatestShows;
+}
