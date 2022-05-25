@@ -222,6 +222,7 @@ const LoginComp = () => {
               style={{marginBottom:"5"}}
             />
             <Typography
+            className={"active-tv-font"}
               variant="h4"
               align="center"
               sx={{
@@ -235,7 +236,7 @@ const LoginComp = () => {
             >
               Welcome Back To Active TV
             </Typography>
-            <Typography variant="p">
+            <Typography className={"active-tv-font"} variant="p">
               Jump back in with the latest Active TV content!
             </Typography>
           </Box>
@@ -285,6 +286,7 @@ const LoginComp = () => {
                 <Button
                   sx={{ ...loginStyles.loginBtn }}
                   variant="contained"
+                  className={"active-tv-font"}
                   color="warning"
                   type="Submit"
                 >
@@ -312,6 +314,7 @@ const LoginComp = () => {
                 <Button
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
+                  className={"active-tv-font"}
                   type="Submit"
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
@@ -319,6 +322,7 @@ const LoginComp = () => {
                 <Button
                   sx={{ ...loginStyles.socialBtn, '&:hover':{background:'blue', border:'none'} }}
                   variant="contained"
+                  className={"active-tv-font"}
                   type="Submit"
                 >
                   <FacebookIcon sx={{ margin: "0 10px" }} /> Continue with
@@ -338,6 +342,7 @@ const LoginComp = () => {
           >
             <Typography
               variant="h6"
+              className={"active-tv-font"}
               sx={{
                 fontWeight: "600",
                 marginTop: 2,
@@ -358,6 +363,7 @@ const LoginComp = () => {
               variant="600"
               sx={{
                 fontWeight: "bolder",
+                className={"active-tv-font"}
                 marginTop: 2,
                 fontSize: {
                   md: "14px",
@@ -396,6 +402,7 @@ const LoginComp = () => {
               }}
               color="#fff"
               align="center"
+              className={"active-tv-font"}
             >
               Don`t have an account?
               <Box
