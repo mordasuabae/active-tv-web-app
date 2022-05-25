@@ -18,7 +18,7 @@ const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-  const UserContext = React.useContext(USER_CONTEXT);
+  const UserContext = React.useContext(USER_CONTEXT)
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -54,18 +54,21 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            {/* <img
+            <img
               src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
               alt=""
               height="75px"
-            /> */}
-            <Box sx={{
-              height:'75px',
-              width:'100px',
-              backgroundImage:'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
-              backgroundSize:'cover',
-              backgroundPosition:'center'
-            }} />
+            />
+            <Box
+              sx={{
+                height: "75px",
+                width: "100px",
+                backgroundImage:
+                  'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -99,9 +102,7 @@ const Navbar = () => {
             >
               {pages.map((page) => (
                 <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography className={"active-tv-font"} textAlign="center">
-                    {page}
-                  </Typography>
+                  <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
             </Menu>
@@ -114,28 +115,20 @@ const Navbar = () => {
           >
             LOGO
           </Typography>
-          <Box
-            sx={{
-              flexGrow: 1,
-              display: { xs: "none", md: "flex" },
-              // justifyContent: "space-beterrn",
-              alignItems: "center",
-            }}
-          >
+          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
             <Link href="/">
               <a>
                 <Button
-                  // className={anchorElNav ? "active" : "active"}
-                  className={"active-tv-font"}
+                  className={anchorElNav ? "active" : "active"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: "#eee",
-                    margin: "0 8px",
-                    display: "flex",
+                    m: 2,
+                    color: "white",
+                    display: "block",
                     fontSize: "18px",
                     "&:hover": {
                       color: "pink",
-                      borderBottom: "3px solid pink",
+                      borderBottom: "5px solid pink",
                     },
                   }}
                 >
@@ -150,13 +143,13 @@ const Navbar = () => {
                   className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: "#eee",
-                    margin: "0 8px",
-                    display: "flex",
+                    m: 2,
+                    color: "white",
+                    display: "block",
                     fontSize: "18px",
                     "&:hover": {
                       color: "pink",
-                      borderBottom: "3px solid pink",
+                      borderBottom: "5px solid pink",
                     },
                   }}
                 >
@@ -171,13 +164,13 @@ const Navbar = () => {
                   className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: "#eee",
-                    margin: "0 8px",
-                    display: "flex",
+                    m: 2,
+                    color: "white",
+                    display: "block",
                     fontSize: "18px",
                     "&:hover": {
                       color: "pink",
-                      borderBottom: "3px solid pink",
+                      borderBottom: "5px solid pink",
                     },
                   }}
                 >
@@ -192,13 +185,13 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   className={"active-tv-font"}
                   sx={{
-                    color: "#eee",
-                    margin: "0 8px",
-                    display: "flex",
+                    m: 2,
+                    color: "white",
+                    display: "block",
                     fontSize: "18px",
                     "&:hover": {
                       color: "pink",
-                      borderBottom: "3px solid pink",
+                      borderBottom: "5px solid pink",
                     },
                   }}
                 >
@@ -213,13 +206,13 @@ const Navbar = () => {
                   className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
-                    color: "#eee",
-                    margin: "0 8px",
-                    display: "flex",
+                    m: 2,
+                    color: "white",
+                    display: "block",
                     fontSize: "18px",
                     "&:hover": {
                       color: "pink",
-                      borderBottom: "3px solid pink",
+                      borderBottom: "5px solid pink",
                     },
                   }}
                 >
@@ -230,18 +223,10 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-              <Avatar
-                alt={UserContext.name + UserContext.surname}
-                src="/static/images/avatar/2.jpg"
-              />
-            </IconButton>
+          <Avatar alt={UserContext.name + UserContext.surname}  src="/static/images/avatar/2.jpg" />
 
             {/* {logged ? (
-              <Avatar
-                alt={UserContext.name}
-                src="/static/images/avatar/2.jpg"
-              />
+              <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
             ) : (
               <Box
                 sx={{
@@ -256,9 +241,9 @@ const Navbar = () => {
                         color: "white",
                         display: "block",
                         fontSize: "16px",
-                        width: {
+                        width:{
                           lg: "130px",
-                          xs: "100%",
+                          xs:'100%'
                         },
                         "&:hover": {
                           background: "#eee",
@@ -280,8 +265,8 @@ const Navbar = () => {
                         display: "block",
                         fontSize: "16px",
                         width: {
-                          lg: "130px",
-                          xs: "100%",
+                          lg:"130px",
+                          xs:'100%'
                         },
                         border: "1px solid white",
                         "&:hover": {
@@ -298,7 +283,12 @@ const Navbar = () => {
             )} */}
 
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{
+                mt: "45px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -314,8 +304,14 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                  sx={{ background: "rgba(1,1,1,0.8)", color: "#eee" }}
+                >
+                  <Typography textAlign="center" className={"active-tv-font"}>
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>

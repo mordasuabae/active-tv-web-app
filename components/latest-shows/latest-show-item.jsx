@@ -1,23 +1,18 @@
-import { Avatar, Stack, Typography, Box } from "@mui/material";
-import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
+import React from "react";
+import { Box, Avatar, Typography, Button } from "@mui/material";
+import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
-export const LatestShowItem = ({ image, title }) => {
+const LatestShowItem = ({ title, thumbnail }) => {
+  const [open, setOpen] = React.useState(true);
+
   return (
-    <Box
-      sx={{
-        backgroundImage: `url('${image}')`,
-        backgroundSize: "cover",
-        width: "100%",
-        height: "200px",
-        borderRadius: "25px",
-        display: "flex",
-        flexDirection: "column",
-        justifyContent: "flex-end",
-        // marginBottom: "16px",
-        position: "relative",
-        alignItems: "flex-end",
-        "&:hover": {
-          backgroundImage: "url('./avater.gif')",
+    <Button className="show-item" sx={{
+          height: "100%",
+          padding:'0px',
+          width: "100%",
+          margin:'0 8px',
+    }}>
+          backgroundImage: "url('https://media1.giphy.com/media/zyBNeRvApZxpRL2U4G/giphy.gif?cid=ecf05e4791tbue6d3irp84gjed3efvhg3krtjlz2xbeecn5a&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPostion: "center",
@@ -28,49 +23,84 @@ export const LatestShowItem = ({ image, title }) => {
     >
       <Box
         sx={{
-          background: "rgba(1,1,1,.7)",
-          padding: "6px 8px",
-          color: "#eee",
-          minWidth: "50px",
-          position: "absolute",
-          top: "12px",
-          right: "12px",
-          fontSize: "14px",
-          textAlign: "center",
-        }}
-      >
-        09:05
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          alignItems: "center",
-          height: "50px",
+          height: "100%",
+          minHeight:'200px',
           width: "100%",
-          background: "rgba(1,1,1,.9)",
-          borderRadius: "0px 0px 23px 23px",
-          padding: "8px",
+          position: "relative",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "flex-end",
         }}
       >
-        <Stack direction="row"></Stack>
-        <Avatar alt="" src="yellocc.jpg" />
-        <Typography
-          className={"active-tv-font"}
+        <Box
           sx={{
-            color: "white",
-            fontSize: "13px",
-            fontWeight: "bolder",
+            // backgroundImage:
+            //   'url("https://active-tv-app-public-content.s3.us-east-2.amazonaws.com/video-thumbnails/Jack%2520Leaper-fd95f404-39e2-4da4-8113-af4eb92fa843.jpg")',
+            backgroundImage:`url("${thumbnail}")`,
+            backgroundSize: "cover",
+            backgroundPostion: "center",
             width: "100%",
+            height: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            lineClamp: "3",
+            boxOrient: "vertical",
             display: {
               lg: "block",
               md: "none",
             },
           }}
         >
-          {title}
-        </Typography>
-        <PlayCircleOutlineIcon sx={{ fill: "#eee" }} />
+
+          <Box sx={{
+            background:'grey',
+            color:'#111',
+            width:'50px',
+            float:'right'
+          }}>09:05</Box>
+
+        </Box>
+        <Box
+          padding={"0 8px"}
+          sx={{
+            display: "flex",
+            width: "100%",
+            alignItems: "center",
+            height: "40%",
+            p:'8px',
+            // minHeight: "25%",
+            background: "rgba(1,1,1,0.5)",
+          }}
+        >
+          <Box
+            sx={{
+              flex: "1",
+              height: "100%",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            <Avatar src="" alt="Brandon Man" />
+          </Box>
+          <Typography
+            variant="p"
+            noWrap={open}
+            sx={{
+              flex: "5",
+              height: "100%",
+              fontSize: "12px",
+              fontWeight: "900",
+              color: "#eee",
+              display: "flex",
+              alignItems: "center",
+            }}
+          >
+            {title}
+          </Typography>
+          <PlayCircleOutlineIcon sx={{ fill:"#eee" }} />
+        </Box>
       </Box>
-    </Box>
+    </Button>
   );
 };
