@@ -397,7 +397,7 @@ const LoginComp = () => {
               color="#fff"
               align="center"
             >
-              Don't have an account?
+              Don`t have an account?
               <Box
                 sx={{
                   display: "inline-block",
