@@ -166,8 +166,9 @@ const loginStyles = {
     color: "#fff",
     fontWeight: "bolder",
     "&:hover": {
-      background: "#fff",
-      color: "#000",
+      border:"none",
+      background: "#ff0000",
+      color: "#fff",
     },
   },
 };
@@ -183,7 +184,9 @@ const LoginComp = () => {
     check: "",
   });
 
+
   const handleFieldChange = (event) => {
+
     const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
 
     setFormDetails({
@@ -213,9 +216,10 @@ const LoginComp = () => {
         <Box sx={{ ...loginStyles.formContainer }}>
           <Box sx={{ ...loginStyles.header }}>
             <img
-              src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
+              src="glitch-tv.gif"
               alt="logo"
-              height="175px"
+              height="105px"
+              style={{marginBottom:"5"}}
             />
             <Typography
               variant="h4"
@@ -248,7 +252,7 @@ const LoginComp = () => {
                     onChange={handleFieldChange}
                     className="focusInput"
                     style={{ ...loginStyles.inputElement }}
-                    type={"text"}
+                    type={"email"}
                     placeholder="Enter email address"
                   />
                   <Button>
@@ -313,7 +317,7 @@ const LoginComp = () => {
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>
                 <Button
-                  sx={{ ...loginStyles.socialBtn }}
+                  sx={{ ...loginStyles.socialBtn, '&:hover':{background:'blue', border:'none'} }}
                   variant="contained"
                   type="Submit"
                 >

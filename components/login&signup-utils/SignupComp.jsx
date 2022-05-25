@@ -12,6 +12,7 @@ import AlternateEmailIcon from "@mui/icons-material/AlternateEmail";
 import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
+import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
 
 const loginStyles = {
@@ -41,8 +42,8 @@ const loginStyles = {
     justifyContent: "center",
     alignItems: "center",
     padding: {
-      lg: 0,
-      md: 0,
+      lg: "20px 0 0 0",
+      md: "20px 0 0 0",
       sm: "0 30px",
       xs: 0,
     },
@@ -69,7 +70,11 @@ const loginStyles = {
     justifyContent: "center",
     color: "#fff",
     flexDirection: "column",
-    padding: "20px 0",
+    padding: {
+      md: "20px 10px",
+      sm: "20px 30px",
+      xs: "20px 30px",
+    },
   },
   formBox: {
     minHeight: "400px",
@@ -166,8 +171,9 @@ const loginStyles = {
     color: "#fff",
     fontWeight: "bolder",
     "&:hover": {
-      background: "#fff",
-      color: "#000",
+      border: "none",
+      background: "#ff0000",
+      color: "#fff",
     },
   },
   checkboxContainer: {
@@ -220,9 +226,10 @@ const LoginComp = () => {
         <Box sx={{ ...loginStyles.formContainer }}>
           <Box sx={{ ...loginStyles.header }}>
             <img
-              src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
+              src="glitch-tv.gif"
               alt="logo"
-              height="175px"
+              height="105px"
+              style={{ marginBottom: "5" }}
             />
             <Typography
               variant="h4"
@@ -238,9 +245,9 @@ const LoginComp = () => {
             >
               Create your account
             </Typography>
-            <Typography variant="p" align="center">
+            <Typography sx={{ lineHeight: "25px" }} variant="p" align="center">
               Getting started is easy, just a few steps and you can immerse
-              yourself with the latest Corridor content!
+              yourself with the latest Active TV content!
             </Typography>
           </Box>
           <Box sx={loginStyles.formBox}>
@@ -260,7 +267,7 @@ const LoginComp = () => {
                     placeholder="Enter display name"
                   />
                   <Button>
-                    <EmailIcon sx={loginStyles.icon} />
+                    <PersonIcon sx={loginStyles.icon} />
                   </Button>
                 </Box>
               </Box>
@@ -275,7 +282,7 @@ const LoginComp = () => {
                     onChange={handleFieldChange}
                     className="focusInput"
                     style={{ ...loginStyles.inputElement }}
-                    type={"text"}
+                    type={"email"}
                     placeholder="Enter email address"
                   />
                   <Button>
@@ -368,7 +375,10 @@ const LoginComp = () => {
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>
                 <Button
-                  sx={{ ...loginStyles.socialBtn }}
+                  sx={{
+                    ...loginStyles.socialBtn,
+                    "&:hover": { background: "blue", border: "none" },
+                  }}
                   variant="contained"
                   type="Submit"
                 >
@@ -380,7 +390,7 @@ const LoginComp = () => {
           </Box>
           <Box
             sx={{
-              padding: "20px",
+              padding: "10px",
               minHeight: "100px",
               display: "flex",
               flexDirection: "column",
