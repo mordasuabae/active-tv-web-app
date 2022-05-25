@@ -59,13 +59,16 @@ const Navbar = () => {
               alt=""
               height="75px"
             /> */}
-            <Box sx={{
-              height:'75px',
-              width:'100px',
-              backgroundImage:'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
-              backgroundSize:'cover',
-              backgroundPosition:'center'
-            }} />
+            <Box
+              sx={{
+                height: "75px",
+                width: "100px",
+                backgroundImage:
+                  'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                backgroundSize: "cover",
+                backgroundPosition: "center",
+              }}
+            />
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
@@ -298,7 +301,12 @@ const Navbar = () => {
             )} */}
 
             <Menu
-              sx={{ mt: "45px" }}
+              sx={{
+                mt: "45px",
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
               id="menu-appbar"
               anchorEl={anchorElUser}
               anchorOrigin={{
@@ -314,8 +322,14 @@ const Navbar = () => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
+                <MenuItem
+                  key={setting}
+                  onClick={handleCloseUserMenu}
+                  sx={{ background: "rgba(1,1,1,0.8)", color: "#eee" }}
+                >
+                  <Typography textAlign="center" className={"active-tv-font"}>
+                    {setting}
+                  </Typography>
                 </MenuItem>
               ))}
             </Menu>
