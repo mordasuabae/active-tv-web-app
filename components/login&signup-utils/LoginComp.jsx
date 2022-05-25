@@ -361,9 +361,10 @@ const LoginComp = () => {
 
             <Typography
               variant="600"
+               className={"active-tv-font"}
               sx={{
                 fontWeight: "bolder",
-                className={"active-tv-font"}
+               
                 marginTop: 2,
                 fontSize: {
                   md: "14px",
