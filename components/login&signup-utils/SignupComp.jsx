@@ -245,7 +245,7 @@ const LoginComp = () => {
             >
               Create your account
             </Typography>
-            <Typography sx={{ lineHeight: "25px" }} variant="p" align="center">
+            <Typography className={"active-tv-font"} sx={{ lineHeight: "25px" }} variant="p" align="center">
               Getting started is easy, just a few steps and you can immerse
               yourself with the latest Active TV content!
             </Typography>
@@ -321,7 +321,7 @@ const LoginComp = () => {
                     value={formDetails.check}
                     onChange={handleFieldChange}
                   />
-                  <Typography variant="" sx={{ ml: 2 }}>
+                  <Typography className={"active-tv-font"} variant="" sx={{ ml: 2 }}>
                     I have read and accept the Privacy Policy
                   </Typography>
                 </Box>
@@ -340,7 +340,7 @@ const LoginComp = () => {
               </Box>
 
               <Box sx={{ ...loginStyles.buttonContainer }}>
-                <Button
+                <Button className={"active-tv-font"}
                   sx={{ ...loginStyles.loginBtn }}
                   variant="contained"
                   color="warning"
@@ -367,7 +367,7 @@ const LoginComp = () => {
                   },
                 }}
               >
-                <Button
+                <Button className={"active-tv-font"}
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   type="Submit"
@@ -399,6 +399,7 @@ const LoginComp = () => {
           >
             <Typography
               variant="h6"
+              className={"active-tv-font"}
               sx={{
                 fontWeight: "600",
                 marginTop: 2,
