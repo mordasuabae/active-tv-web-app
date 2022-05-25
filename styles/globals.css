@@ -14,7 +14,11 @@ body {
   /* font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif; */
 }
+.swiper-pagination-progressbar .swiper-pagination-progressbar-fill{
+  background-color: yellow !important;
+}
 .active-tv-font{
+  margin-top:8px;
   font-family:"retrogradebold",cursive!important;
 }
 a {

@@ -17,7 +17,7 @@ export const LatestShowItem = ({ image, title }) => {
         position: "relative",
         alignItems: "flex-end",
         "&:hover": {
-          backgroundImage: "url('./avater.gif')",
+          backgroundImage: "url('https://media1.giphy.com/media/zyBNeRvApZxpRL2U4G/giphy.gif?cid=ecf05e4791tbue6d3irp84gjed3efvhg3krtjlz2xbeecn5a&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPostion: "center",
@@ -61,6 +61,12 @@ export const LatestShowItem = ({ image, title }) => {
             fontSize: "13px",
             fontWeight: "bolder",
             width: "100%",
+            height: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            lineClamp: "3",
+            boxOrient: "vertical",
             display: {
               lg: "block",
               md: "none",

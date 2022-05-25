@@ -1,7 +1,7 @@
 import { Avatar, Stack, Typography, Box } from "@mui/material";
 import PlayCircleOutlineIcon from "@mui/icons-material/PlayCircleOutline";
 
-export const FreeToWatchItem = ({image , showTitle }) => {
+export const FreeToWatchItem = ({ image, showTitle }) => {
   return (
     <Box
       sx={{
@@ -17,7 +17,7 @@ export const FreeToWatchItem = ({image , showTitle }) => {
         position: "relative",
         alignItems: "flex-end",
         "&:hover": {
-          backgroundImage: "url('./avater.gif')",
+          backgroundImage: "url('https://media1.giphy.com/media/rMGzvqcF2Seq28J1FL/giphy.gif?cid=ecf05e4772yypkchdidj9e8rnp4je84j95244mf5dwgskwyw&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPostion: "center",
@@ -52,25 +52,30 @@ export const FreeToWatchItem = ({image , showTitle }) => {
           padding: "8px",
         }}
       >
-        <Stack direction="row">
-        </Stack>
-          <Avatar alt="" src="yellocc.jpg" />
+        <Stack direction="row"></Stack>
+        <Avatar alt="" src="yellocc.jpg" />
         <Typography
           className={"active-tv-font"}
           sx={{
             color: "white",
             fontSize: "13px",
             fontWeight: "bolder",
-            width:'100%',
-            display:{
-              lg:'block',
-              md:'none',
-            }
+            width: "100%",
+            height: "100%",
+            overflow: "hidden",
+            textOverflow: "ellipsis",
+            display: "-webkit-box",
+            lineClamp: "3",
+            boxOrient: "vertical",
+            display: {
+              lg: "block",
+              md: "none",
+            },
           }}
         >
           {showTitle}
         </Typography>
-        <PlayCircleOutlineIcon sx={{fill:"#eee"}}/>
+        <PlayCircleOutlineIcon sx={{ fill: "#eee" }} />
       </Box>
     </Box>
   );
