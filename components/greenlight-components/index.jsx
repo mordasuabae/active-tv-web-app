@@ -20,7 +20,7 @@ const GreenlightBanner = () => {
   const playVideo = () => {
     setShowPlayer(true);
     setShowImage(false);
-    setPlayer(true);
+    setPlayer(true); 
   };
 
   return (
@@ -148,6 +148,7 @@ const GreenlightBanner = () => {
           // url="blob:https://www.corridordigital.com/0de238d9-3089-49fa-b585-bb1d89ddb337"
         />
       </Box>
+
     </Box>
   );
 };

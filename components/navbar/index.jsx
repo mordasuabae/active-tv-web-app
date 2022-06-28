@@ -43,8 +43,9 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: "#111",
-        maxHeight: "75px",
+        // background: "#111",
+        background:'linear-gradient(to bottom, #131313, #111, #181818)',
+        maxHeight: "70px",
         // padding:'10px 0'
       }}
     >
@@ -237,6 +238,14 @@ const Navbar = () => {
               </a>
             </Link>
           </Box>
+          
+        {/* coin system below */}
+          <Box sx={{ ...coinContainer }}>
+            <Typography variant="h6" fontWeight={"bold"} fontSize={16}>
+              {"0"}
+            </Typography>
+            <img src="coin.gif" alt="coin" width={18} height={18} />
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
             <Avatar
@@ -326,10 +335,10 @@ const Navbar = () => {
                 <MenuItem
                   key={setting}
                   onClick={handleCloseUserMenu}
-                  sx={{ background: "rgba(1,1,1,0.8)", color: "#eee" }}
+                  sx={{ background: "rgba(1,1,1,0.8)", color: "#bd3535" }}
                 >
                   <Typography textAlign="center" className={"active-tv-font"}>
-                    {setting}
+                    {setting} 
                   </Typography>
                 </MenuItem>
               ))}
@@ -342,3 +351,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const coinContainer = {
+  // border: "1px solid red",
+  width: "100px",
+  minHeight: "50px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 1,
+};
