@@ -18,7 +18,7 @@ const Whatlive = () => {
           textTransform={"uppercase"}
           letterSpacing={"2px"}
         >
-          whats' live
+          what{"'"}s live
         </Typography>
       </Box>
 

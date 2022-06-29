@@ -3,6 +3,7 @@ import { Box, Avatar, Typography, Button } from "@mui/material";
 import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 
 const LatestShowItem = ({ title, thumbnail }) => {
+
   const [open, setOpen] = React.useState(true);
 
   return (
@@ -12,15 +13,15 @@ const LatestShowItem = ({ title, thumbnail }) => {
           width: "100%",
           margin:'0 8px',
     }}>
-          backgroundImage: "url('https://media1.giphy.com/media/zyBNeRvApZxpRL2U4G/giphy.gif?cid=ecf05e4791tbue6d3irp84gjed3efvhg3krtjlz2xbeecn5a&rid=giphy.gif&ct=g')",
+          {/* backgroundImage: "url('https://media1.giphy.com/media/zyBNeRvApZxpRL2U4G/giphy.gif?cid=ecf05e4791tbue6d3irp84gjed3efvhg3krtjlz2xbeecn5a&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPostion: "center",
           transitionDuration: "0.1ms",
-          cursor: "pointer",
-        },
-      }}
-    >
+          cursor: "pointer", */}
+        {/* },
+      }} */}
+    {/* > */}
       <Box
         sx={{
           height: "100%",
@@ -58,7 +59,7 @@ const LatestShowItem = ({ title, thumbnail }) => {
             color:'#111',
             width:'50px',
             float:'right'
-          }}>09:05</Box>
+          }}>09{":"}05</Box>
 
         </Box>
         <Box
@@ -104,3 +105,6 @@ const LatestShowItem = ({ title, thumbnail }) => {
     </Button>
   );
 };
+
+
+export default LatestShowItem
