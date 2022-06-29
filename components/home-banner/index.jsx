@@ -20,7 +20,8 @@ const HomeBanner = () => {
   return (
     <Palette
       src={
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmf6hqoRXi9B8uEKDix0ijTCZYcoRu46ARJ-ckdaC5EQ&s"
+        // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmf6hqoRXi9B8uEKDix0ijTCZYcoRu46ARJ-ckdaC5EQ&s"
+        "top_banner_full.jpg"
       }
     >
       {({ data, loading, error }) => {
