@@ -14,6 +14,11 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import PersonIcon from "@mui/icons-material/Person";
 import Link from "next/link";
+ import signUp from '../../amplify/methods/amplifySdk' // imported the fnction here
+
+
+
+
 
 const loginStyles = {
   container: {
