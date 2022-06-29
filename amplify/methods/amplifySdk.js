@@ -1,5 +1,7 @@
 import { Auth } from 'aws-amplify';
 
+
+
 //register user
 export async function signUp() {
     try {

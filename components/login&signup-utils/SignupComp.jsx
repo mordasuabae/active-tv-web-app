@@ -19,7 +19,6 @@ import Link from "next/link";
 
 
 
-
 const loginStyles = {
   container: {
     minHeight: "145vh",
@@ -218,6 +217,13 @@ const LoginComp = () => {
   const tooglePassword = () => {
     setShow(!show);
   };
+
+useEffect(()=>{
+
+   console.log(signUp)
+},[])
+
+
 
   // submit form
   const handleSubmit = (e) => {
