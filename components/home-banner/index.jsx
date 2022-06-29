@@ -12,7 +12,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 import { Box } from "@mui/material";
 import BannerItem from "./banner-item";
 import { USER_CONTEXT } from "../../context/MainContext";
-import LatestShows from "../latest-shows";
+// import LatestShows from "../latest-shows";
 import { Palette } from "@universemc/react-palette";
 import FreeToWatch from "../free-to-watch";
 
