@@ -1,6 +1,5 @@
 import { Auth } from 'aws-amplify';
 
-
 //register user
 export async function signUp() {
     try {
@@ -34,7 +33,6 @@ export async function signIn() {
         console.log('error signing in', error);
     }
 }
-
 //resend confimation code
 export async function resendConfirmationCode() {
     try {
@@ -44,9 +42,8 @@ export async function resendConfirmationCode() {
         console.log('error resending code: ', err);
     }
 }
-
 //global signout
-export async function signOutGlobal() {
+export async function signOutGlobal(){
     try {
         await Auth.signOut({ global: true });
     } catch (error) {
