@@ -18,7 +18,6 @@ export async function signUp() {
         console.log('error signing up:', error);
     }
 }
-
 //signout
 export async function signOut() {
     try {
@@ -27,7 +26,6 @@ export async function signOut() {
         console.log('error signing out: ', error);
     }
 }
-
 //signin
 export async function signIn() {
     try {

@@ -14,6 +14,7 @@ import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
 
+//amplify methods
 import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
 import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
 
