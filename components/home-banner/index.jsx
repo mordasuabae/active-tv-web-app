@@ -88,7 +88,7 @@ const HomeBanner = () => {
                 position: "relative",
               }}
             >
-              <LatestShows />
+              {/* <LatestShows /> */}
             </Box>
           </Box>
         );

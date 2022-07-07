@@ -18,7 +18,7 @@ const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
-  const UserContext = React.useContext(USER_CONTEXT)
+  const UserContext = React.useContext(USER_CONTEXT);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -43,7 +43,10 @@ const Navbar = () => {
     <AppBar
       position="sticky"
       sx={{
-        background: "#111",
+        // background: "#111",
+        background:'linear-gradient(to bottom, #131313, #111, #181818)',
+        maxHeight: "70px",
+        // padding:'10px 0'
       }}
     >
       <Container maxWidth="xl">
@@ -54,15 +57,15 @@ const Navbar = () => {
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
-            <img
+            {/* <img
               src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
               alt=""
-              height="75px"
-            />
+              height="70px"
+            /> */}
             <Box
               sx={{
-                height: "75px",
-                width: "100px",
+                height: "60px",
+                width: "70px",
                 backgroundImage:
                   'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
                 backgroundSize: "cover",
@@ -113,13 +116,26 @@ const Navbar = () => {
             component="div"
             sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}
           >
-            LOGO
+            <img
+              src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
+              alt="active-logo"
+              height="50px"
+            />
           </Typography>
-          <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              display: { xs: "none", md: "flex" },
+              paddingTop: "10px",
+              height: "70px",
+              // border: "0.3px solid #32a453",
+              alignItems: "center",
+            }}
+          >
             <Link href="/">
               <a>
                 <Button
-                  className={anchorElNav ? "active" : "active"}
+                  className={"active-tv-font"}
                   onClick={handleCloseNavMenu}
                   sx={{
                     m: 2,
@@ -127,8 +143,8 @@ const Navbar = () => {
                     display: "block",
                     fontSize: "18px",
                     "&:hover": {
-                      color: "pink",
-                      borderBottom: "5px solid pink",
+                      color: "green",
+                      borderBottom: "3px solid #32a453",
                     },
                   }}
                 >
@@ -148,8 +164,8 @@ const Navbar = () => {
                     display: "block",
                     fontSize: "18px",
                     "&:hover": {
-                      color: "pink",
-                      borderBottom: "5px solid pink",
+                      color: "green",
+                      borderBottom: "3px solid #32a453",
                     },
                   }}
                 >
@@ -158,7 +174,7 @@ const Navbar = () => {
               </a>
             </Link>
 
-            <Link href="/">
+            <Link href="/produceThat">
               <a>
                 <Button
                   className={"active-tv-font"}
@@ -169,12 +185,13 @@ const Navbar = () => {
                     display: "block",
                     fontSize: "18px",
                     "&:hover": {
-                      color: "pink",
-                      borderBottom: "5px solid pink",
+                      color: "green",
+                      borderBottom: "3px solid #32a453",
                     },
                   }}
                 >
-                  Greenlight
+                  {/* Greenlight */}
+                  Produce THAT!
                 </Button>
               </a>
             </Link>
@@ -190,8 +207,8 @@ const Navbar = () => {
                     display: "block",
                     fontSize: "18px",
                     "&:hover": {
-                      color: "pink",
-                      borderBottom: "5px solid pink",
+                      color: "green",
+                      borderBottom: "3px solid #32a453",
                     },
                   }}
                 >
@@ -211,8 +228,8 @@ const Navbar = () => {
                     display: "block",
                     fontSize: "18px",
                     "&:hover": {
-                      color: "pink",
-                      borderBottom: "5px solid pink",
+                      color: "green",
+                      borderBottom: "3px solid #32a453",
                     },
                   }}
                 >
@@ -221,9 +238,20 @@ const Navbar = () => {
               </a>
             </Link>
           </Box>
+          
+        {/* coin system below */}
+          <Box sx={{ ...coinContainer }}>
+            <Typography variant="h6" fontWeight={"bold"} fontSize={16}>
+              {"0"}
+            </Typography>
+            <img src="coin.gif" alt="coin" width={18} height={18} />
+          </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-          <Avatar alt={UserContext.name + UserContext.surname}  src="/static/images/avatar/2.jpg" />
+            <Avatar
+              alt={UserContext.name + UserContext.surname}
+              src="/static/images/avatar/2.jpg"
+            />
 
             {/* {logged ? (
               <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
@@ -307,10 +335,10 @@ const Navbar = () => {
                 <MenuItem
                   key={setting}
                   onClick={handleCloseUserMenu}
-                  sx={{ background: "rgba(1,1,1,0.8)", color: "#eee" }}
+                  sx={{ background: "rgba(1,1,1,0.8)", color: "#bd3535" }}
                 >
                   <Typography textAlign="center" className={"active-tv-font"}>
-                    {setting}
+                    {setting} 
                   </Typography>
                 </MenuItem>
               ))}
@@ -323,3 +351,13 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+const coinContainer = {
+  // border: "1px solid red",
+  width: "100px",
+  minHeight: "50px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  gap: 1,
+};
