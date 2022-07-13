@@ -3,14 +3,14 @@ import { Auth } from 'aws-amplify';
 
 
 //register user
-export async function signUp() {
+export async function signUp(username , password , email ) {
     try {
         const { user } = await Auth.signUp({
-            username,
-            password,
+            username:username,
+            password: password,
             attributes: {
-                email,          // optional
-                phone_number,   // optional - E.164 number convention
+                email:email,          // optional
+                phone_number:null,   // optional - E.164 number convention
                 // other custom attributes 
             }
         });

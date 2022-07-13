@@ -7,8 +7,8 @@ import { Palette } from "@universemc/react-palette";
 function MyApp({ Component, pageProps }) {
 
   const UserContext = useContext(USER_CONTEXT);
-  
-  
+
+
   return (
     <USER_CONTEXT.Provider value={UserContext}>
       <Navbar />

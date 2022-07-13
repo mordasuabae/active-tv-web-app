@@ -13,6 +13,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import PersonIcon from "@mui/icons-material/Person";
+import { Auth } from 'aws-amplify';
 import Link from "next/link";
  import signUp from '../../amplify/methods/amplifySdk' // imported the fnction here
 
@@ -223,12 +224,30 @@ useEffect(()=>{
    console.log(signUp)
 },[])
 
+//register user
+ async function signUp(username , password , email ) {
+  try {
+      const { user } = await Auth.signUp({
+          username:username,
+          password: password,
+          attributes: {
+              email:email,          // optional
+              phone_number:null,   // optional - E.164 number convention
+              // other custom attributes 
+          }
+      });
+      console.log(user);
+  } catch (error) {
+      console.log('error signing up:', error);
+  }
+}
 
 
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(formDetails.email + " signed up");
+    signUp(formDetails.name, formDetails.password ,formDetails.email )
   };
 
   return (

@@ -14,6 +14,7 @@ import "swiper/css/navigation";
 import { Pagination, Navigation } from "swiper";
 
 export default function FreeToWatch() {
+
   const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 11, 11, 1, 1];
   const [shows,setShows] = useState(null)
 
@@ -56,7 +57,7 @@ export default function FreeToWatch() {
                     width: "100%",
                     borderRadius: "20px",
                   }}
-                >
+                >  
                   <FreeToWatchItem image={show.thumbnail_url} showTitle={showName} />
                 </SwiperSlide>
               );

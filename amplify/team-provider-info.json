@@ -10,6 +10,11 @@
       "StackName": "amplify-activetvwebapp-dev-42513",
       "StackId": "arn:aws:cloudformation:us-east-2:738340055040:stack/amplify-activetvwebapp-dev-42513/b8958b70-f752-11ec-ac75-0a1ff08179e4",
       "AmplifyAppId": "d31py8geo1vr7t"
+    },
+    "categories": {
+      "auth": {
+        "activetvwebapp16baf347": {}
+      }
     }
   }
-} 
+}
