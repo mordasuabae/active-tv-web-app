@@ -44,12 +44,13 @@ const Navbar = () => {
       position="sticky"
       sx={{
         // background: "#111",
-        background:'linear-gradient(to bottom, #131313, #111, #181818)',
-        maxHeight: "70px",
+        // background:'linear-gradient(to bottom, #131313, #111, #181818)',
+        background:'black',
+        height: "70px",
         // padding:'10px 0'
       }}
     >
-      <Container maxWidth="xl">
+      <Container maxWidth="xl" sx={{ paddingTop:'0px' }}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -74,7 +75,7 @@ const Navbar = () => {
             />
           </Typography>
 
-          <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
+          <Box sx={{ flexGrow: 1,paddingTop:0, display: { xs: "flex", md: "none" } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -126,9 +127,9 @@ const Navbar = () => {
             sx={{
               flexGrow: 1,
               display: { xs: "none", md: "flex" },
-              paddingTop: "10px",
+              paddingTop: "0px",
               height: "70px",
-              // border: "0.3px solid #32a453",
+              // border: "0.1px solid #32a453",
               alignItems: "center",
             }}
           >
@@ -139,12 +140,12 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   sx={{
                     m: 2,
-                    color: "white",
+                    color: "#eee",
                     display: "block",
-                    fontSize: "18px",
+                    fontSize: "12px",
                     "&:hover": {
-                      color: "green",
-                      borderBottom: "3px solid #32a453",
+                      color: "#12171f",
+                      borderBottom: "1px solid #12171F",
                     },
                   }}
                 >
@@ -160,12 +161,12 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   sx={{
                     m: 2,
-                    color: "white",
+                    color: "#eee",
                     display: "block",
-                    fontSize: "18px",
+                    fontSize: "12px",
                     "&:hover": {
-                      color: "green",
-                      borderBottom: "3px solid #32a453",
+                      color: "#32a453",
+                      borderBottom: "1px solid #32a453",
                     },
                   }}
                 >
@@ -181,12 +182,12 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   sx={{
                     m: 2,
-                    color: "white",
+                    color: "#eee",
                     display: "block",
-                    fontSize: "18px",
+                    fontSize: "12px",
                     "&:hover": {
-                      color: "green",
-                      borderBottom: "3px solid #32a453",
+                      color: "#7AB273",
+                      borderBottom: "1px solid #7AB273",
                     },
                   }}
                 >
@@ -196,19 +197,19 @@ const Navbar = () => {
               </a>
             </Link>
 
-            <Link href="/">
+            <Link href="/merch">
               <a>
                 <Button
                   onClick={handleCloseNavMenu}
                   className={"active-tv-font"}
                   sx={{
                     m: 2,
-                    color: "white",
+                    color: "#eee",
                     display: "block",
-                    fontSize: "18px",
+                    fontSize: "12px",
                     "&:hover": {
-                      color: "green",
-                      borderBottom: "3px solid #32a453",
+                      color: "#CCC0BF",
+                      borderBottom: "1px solid #CCC0BF",
                     },
                   }}
                 >
@@ -224,12 +225,12 @@ const Navbar = () => {
                   onClick={handleCloseNavMenu}
                   sx={{
                     m: 2,
-                    color: "white",
+                    color: "#eee",
                     display: "block",
-                    fontSize: "18px",
+                    fontSize: "12px",
                     "&:hover": {
-                      color: "green",
-                      borderBottom: "3px solid #32a453",
+                      color: "#7A9EA3",
+                      borderBottom: "1px solid #7A9EA3",
                     },
                   }}
                 >
@@ -249,8 +250,8 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Avatar
-              alt={UserContext.name + UserContext.surname}
-              src="/static/images/avatar/2.jpg"
+              src={UserContext.name + UserContext.surname}
+              alt="/static/images/avatar/2.jpg"
             />
 
             {/* {logged ? (
@@ -266,7 +267,7 @@ const Navbar = () => {
                     <Button
                       sx={{
                         mr: 2,
-                        color: "white",
+                        color: "#eee",
                         display: "block",
                         fontSize: "16px",
                         width:{
@@ -289,14 +290,14 @@ const Navbar = () => {
                       variant="outline"
                       sx={{
                         mr: 2,
-                        color: "white",
+                        color: "#eee",
                         display: "block",
                         fontSize: "16px",
                         width: {
                           lg:"130px",
                           xs:'100%'
                         },
-                        border: "1px solid white",
+                        border: "1px solid #eee",
                         "&:hover": {
                           background: "#eee",
                           color: "#111",
