@@ -197,7 +197,7 @@ const confirm = () => {
 
   // form state
   const [formDetails, setFormDetails] = useState({
-    code: 44444,
+    code: "",
   });
 
   const handleFieldChange = (event) => {
@@ -213,11 +213,14 @@ const confirm = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(formDetails.code.length === 6){
-    alert(formDetails.code + " code sent");
+    if (formDetails.code.length !== 6) {
+      alert(" code sent must be six character long");
+
+    } else {
+      alert(formDetails.code + " code sent");
 
     }
- 
+
   };
 
   return (
@@ -233,22 +236,26 @@ const confirm = () => {
             />
             <Typography
               variant="h4"
+              className={"active-tv-font"}
               align="center"
               sx={{
-                margin: "10px 0",
+                margin: "20px 0 0  0",
                 fontWeight: "900",
                 fontSize: {
-                  md: "20px",
+                  md: "15px",
                   xs: "20px",
                 },
               }}
             >
               Verify Your Account
             </Typography>
-            <Typography className={"active-tv-font"} sx={{ lineHeight: "25px" }} variant="p" align="center">
-                  We send you the six digits code to example@gmail.com <br/>
-                  Enter the code below to confirm your email address
+            <Box sx={{padding:'20px 60px'}}>
+            <Typography className={"active-tv-font"} fontSize={12} sx={{ lineHeight: "25px", textAlign: 'center', margin: 0, padding: 0 }} variant="p" align="center">
+              We send you the six digits code to example@gmail.com
+              Enter the code below to confirm your email address
             </Typography>
+
+            </Box>
           </Box>
           <Box sx={confirmStyles.formBox}>
             <form onSubmit={handleSubmit}>
@@ -272,9 +279,7 @@ const confirm = () => {
                   </Button>
                 </Box>
               </Box>
-
-
-
+              
               <Box sx={{ ...confirmStyles.buttonContainer }}>
                 <Button className={"active-tv-font"}
                   sx={{ ...confirmStyles.loginBtn }}
@@ -282,13 +287,15 @@ const confirm = () => {
                   color="warning"
                   type="Submit"
                 >
-                  Confirm code
+                  <Typography className={"active-tv-font"} fontSize={12}>
+                  Confirm code 
+                  </Typography>
                 </Button>
               </Box>
               <Box sx={{ padding: "0 50px" }}>
                 <fieldset style={{ ...confirmStyles.fieldset }}>
                   <legend style={{ ...confirmStyles.legend }}>
-                  <ConfirmationNumberIcon sx={confirmStyles.icon} />
+                    <ConfirmationNumberIcon sx={confirmStyles.icon} />
                   </legend>
                 </fieldset>
               </Box>

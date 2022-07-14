@@ -11,8 +11,6 @@ import Whatlive from '../components/greenlight-components/greenlight-shows/Whatl
 import Production from '../components/greenlight-components/greenlight-shows/Production';
 
 
-
-
 const produceThat = () => {
   
   return (
@@ -26,7 +24,7 @@ const produceThat = () => {
         return (
           <Box
             sx={{
-              background:'#111', 
+              background:'#000', 
             }}
           >  
             <GreenlightBanner/>
