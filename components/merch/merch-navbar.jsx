@@ -21,9 +21,11 @@ const Categories = [
   "Mystery Items",
 ];
 
-const MerchNavbar = () => {
+const MerchNavbar = ({ card }) => {
   const { selectedCategory, setSelectedCategory } =
-    React.useContext(USER_CONTEXT);
+    React.useContext(USER_CONTEXT)
+
+
   const [openSearchField, setSearchField] = React.useState(false);
   const [searchField, setSeachField] = React.useState(null);
 
