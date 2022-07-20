@@ -60,7 +60,6 @@ export const Episode = ({ img, thumb, duration, title, year }) => {
             width: "80%",
             display: "flex",
             alignItems: "flex-start",
-
             flexDirection: "column",
             justifyContent: "space-between",
           }}
@@ -219,7 +218,7 @@ const styles = {
     gap: 5,
     minHeight: "250px",
     overflowX: "auto",
-    padding: "10px 0px",
+    padding: "10px 10px",
   },
   episode: {
     // border: "1px solid red",
@@ -263,7 +262,7 @@ const styles = {
     backgroundColor: "rgba(0,0,0,0.7)",
     display: "flex",
     alignItems: "center",
-    padding: "0 5px",
+    padding: "0 8px",
   },
   duration: {
     //  position:'absolute',
