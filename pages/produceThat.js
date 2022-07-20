@@ -26,7 +26,7 @@ const produceThat = () => {
         return (
           <Box
             sx={{
-              background: data.darkVibrant, 
+              background:'#141414;', 
             }}
           >  
             <GreenlightBanner/>

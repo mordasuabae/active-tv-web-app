@@ -41,7 +41,7 @@ const Whatlive = () => {
         <Grid sx={{ ...styles.item }} item sm={8} xs={12} md={10}>
           <Box sx={styles.title}>
             {/* <Typography variant="h3" fontSize={20} color="#FFF203"> */}
-            <Typography variant="h3" fontSize={20} color="#32a453">
+            <Typography variant="h3" fontSize={20} color="#32a453" padding="0px 10px">
               WATCH SECOND SEASON {">"}
             </Typography>
           </Box>
@@ -51,6 +51,7 @@ const Whatlive = () => {
               color="#fff"
               fontWeight={"bold"}
               fontSize={14}
+              padding="0px 10px"
             >
               Your exclusive studio vlog with over 100 Episodes in Season One!
             </Typography>
@@ -78,7 +79,7 @@ const Whatlive = () => {
         <Grid sx={{ ...styles.item }} item sm={8} xs={12} md={10}>
           <Box sx={styles.title}>
             {/* <Typography variant="h3" fontSize={20} color="#FFF203"> */}
-            <Typography variant="h3" fontSize={20} color="#32a453">
+            <Typography variant="h3" fontSize={20} color="#32a453" padding="0px 10px">
               WATCH SECOND SEASON {">"}
             </Typography>
           </Box>
@@ -88,6 +89,7 @@ const Whatlive = () => {
               color="#fff"
               fontWeight={"bold"}
               fontSize={14}
+              padding="0px 10px"
             >
               Your exclusive studio vlog with over 100 Episodes in Season One!
             </Typography>
@@ -115,7 +117,7 @@ const Whatlive = () => {
         <Grid sx={{ ...styles.item }} item sm={8} xs={12} md={10}>
           <Box sx={styles.title}>
             {/* <Typography variant="h3" fontSize={20} color="#FFF203"> */}
-            <Typography variant="h3" fontSize={20} color="#32a453">
+            <Typography variant="h3" fontSize={20} color="#32a453" padding="0px 10px">
               WATCH SECOND SEASON {">"}
             </Typography>
           </Box>
@@ -125,6 +127,7 @@ const Whatlive = () => {
               color="#fff"
               fontWeight={"bold"}
               fontSize={14}
+              padding="0px 10px"
             >
               Your exclusive studio vlog with over 100 Episodes in Season One!
             </Typography>
@@ -152,7 +155,7 @@ const Whatlive = () => {
         <Grid sx={{ ...styles.item }} item sm={8} xs={12} md={10}>
           <Box sx={styles.title}>
             {/* <Typography variant="h3" fontSize={20} color="#FFF203"> */}
-            <Typography variant="h3" fontSize={20} color="#32a453">
+            <Typography variant="h3" fontSize={20} color="#32a453" padding="0px 10px">
               WATCH SECOND SEASON {">"}
             </Typography>
           </Box>
@@ -162,6 +165,7 @@ const Whatlive = () => {
               color="#fff"
               fontWeight={"bold"}
               fontSize={14}
+              padding="0px 10px"
             >
               Your exclusive studio vlog with over 100 Episodes in Season One!
             </Typography>

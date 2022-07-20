@@ -3,6 +3,10 @@ import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
+import Aos from "aos"
+import "aos/dist/aos.css"
+import { useEffect } from 'react'
+
 
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === '' ? '' : '',
@@ -47,23 +51,28 @@ const box2 = {
 
 
 export default function ViewOnDevice() {
+  useEffect(() => {
+    Aos.init({duration: 2000});
+},[])
+
+
   return (
     <Box sx={{ flexGrow: 1 }} style={maindiv}>
       <Grid container spacing={2}>
         <Grid item xs={8}>
           <Box style={{height:"500px", background:"transparent"}}>
-            <img src="devices.png" style={{width:"100%"}}  />
+            <img src="devices.png" style={{width:"100%"}} data-aos="fade-right"/>
           </Box>
         </Grid>
 
         <Grid item xs={4} style={{background:"transparent",border:"none"}}>
-          <Item style={{ background:"transparent", color:"white"}} sx={{ display: { xs: 'none', sm: 'none', md:'block' }, mr: 1 }}>
-            <h1>VIEW ON ANY DEVICE</h1>
-            <p>Every episode ad-free, including new exclusive shows.</p>
-            <p>Higher quality than YouTube, and just as fast.</p>
+          <Item style={{ background:"transparent", color:"white", fontFamily:"Arcade Normal"}} sx={{ display: { xs: 'none', sm: 'none', md:'block' }, mr: 1 }}>
+            <h1 data-aos="fade-left">VIEW ON ANY DEVICE</h1>
+            <p data-aos="fade-left">Every episode ad-free, including new exclusive shows.</p>
+            <p data-aos="fade-left">Higher quality than YouTube, and just as fast.</p>
 
             <Box style={box1}>
-                <button style={Appbutton}>
+                <button style={Appbutton} data-aos="fade-left">
                     <Box>
                         <img src="playstore.png" alt="playstore" style={{width:"45px"}}/>
                     </Box>
@@ -73,7 +82,7 @@ export default function ViewOnDevice() {
                     </Box>
                 </button>
 
-                <button style={Appbutton}>
+                <button style={Appbutton} data-aos="fade-left">
                     <Box>
                             <img src="apple.png" alt="Apple store" style={{width:"45px"}}/>
                         </Box>
@@ -85,26 +94,54 @@ export default function ViewOnDevice() {
             </Box>
           </Item>
         </Grid>
-5
 
-        <Grid item xs={4}>
-          <Box style={{backgroundImage: "url('mobile.jpg')",
-          width:"90", 
-          height:"100vh", 
+
+        <Grid style={{display:"flex", alignItems:"center", justifyContent:"center", width:"100%"}}>
+        <Grid item xs={4} sx={{ display: { xs: 'block', sm: 'block', md:'block' }, mr: 30 , pr: 29.3}}>
+          <Box style={{
+          // backgroundImage: "url('mobile.jpg')",
+          width:"400px", 
+          height:"400px", 
           backgroundSize:"cover",
           display:"flex",
           alignItems:"center",
           justfifyContent:"center",
-          flexDirection:"column"
+          flexDirection:"column",
+          // backgroundRepeat:"no-repeat",
+          // border:"1px solid red",
+          color:"white",
+          paddingTop:"50px",
+          lineHeight:"40px",
+          fontFamily:"sans-serif",
+
           }}>
-            {/* <p>wassup</p>
-            <p>hello</p> */}
+            <Box sx={{marginTop:"30px", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column"}}>
+            <h1 data-aos="fade-up">BE A PRODUCER</h1>
+            <p data-aos="fade-up">Directly control what your subscription dollars are</p>
+            <p style={{marginTop:"-20px"}} data-aos="fade-up">pent on by using your Producer Points</p>
+            <button style={{
+              border:"none",
+              width:"250px",
+              height:"50px",
+              color:"#000",
+              background:"#FFF203",
+              fontWeight:"bold",
+              cursor:"pointer",
+              borderRadius:"25px",
+            }}
+            data-aos="fade-up"
+            ><h3>SEE IT IN ACTION</h3></button>
+            </Box>
           </Box>
         </Grid>
 
-        {/* <Grid item xs={8}>
-          <Item>xs=8</Item>
-        </Grid> */}
+        <Grid item xs={8} sx={{ display: { xs: 'none', sm: 'none', md:'block' }, mr: 1 }}>
+          <Box  sx={{ display: { xs: 'none', sm: 'none', md:'block' }, mr: 1 }} style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+            <img src="accountPic1.png" style={{width:"100%"}}/>
+
+          </Box>
+        </Grid>
+        </Grid>
 
       </Grid>
     </Box>
