@@ -4,7 +4,14 @@ import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState } from "react";
 import { Palette } from "@universemc/react-palette";
 
+
+import { Amplify, Auth } from 'aws-amplify';
+import awsconfig from "./../components/utils/CognitoConfig";
+Amplify.configure(awsconfig);
+
+
 function MyApp({ Component, pageProps }) {
+
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
 

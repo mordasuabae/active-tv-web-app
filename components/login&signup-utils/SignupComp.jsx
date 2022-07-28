@@ -225,7 +225,7 @@ useEffect(()=>{
 },[])
 
 //register user
- async function signUp(username , password , email ) {
+ async function signUp(username, password , email ) {
   try {
       const { user } = await Auth.signUp({
           username:username,
@@ -247,7 +247,7 @@ useEffect(()=>{
   const handleSubmit = (e) => {
     e.preventDefault();
     alert(formDetails.email + " signed up");
-    signUp(formDetails.name, formDetails.password ,formDetails.email )
+    signUp(formDetails.email,formDetails.password ,formDetails.email )
   };
 
   return (

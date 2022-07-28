@@ -154,7 +154,7 @@ const Navbar = () => {
               </a>
             </Link>
 
-            <Link href="/">
+            <Link href="/shows">
               <a>
                 <Button
                   className={"active-tv-font"}

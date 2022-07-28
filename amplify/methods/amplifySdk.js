@@ -8,6 +8,7 @@ export async function signUp(username , password , email ) {
         const { user } = await Auth.signUp({
             username:username,
             password: password,
+            // email:email,   
             attributes: {
                 email:email,          // optional
                 phone_number:null,   // optional - E.164 number convention
@@ -28,7 +29,7 @@ export async function signOut() {
     }
 }
 //signin
-export async function signIn() {
+export async function signIn(username , password) {
     try {
         const user = await Auth.signIn(username, password);
     } catch (error) {

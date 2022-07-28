@@ -126,7 +126,7 @@ const confirmStyles = {
     border: "none",
     padding: "0 15px",
     fontSize: "15px",
-    fontWeight: "",
+    fontWeight: "bold",
   },
   buttonContainer: {
     display: "flex",
@@ -259,7 +259,6 @@ const confirm = () => {
           </Box>
           <Box sx={confirmStyles.formBox}>
             <form onSubmit={handleSubmit}>
-
               <Box sx={{ ...confirmStyles.inputBlocks }}>
                 <label style={{ ...confirmStyles.inputLabel }}>
                   {/* Email address */}
@@ -267,9 +266,10 @@ const confirm = () => {
                 <Box sx={{ ...confirmStyles.input }}>
                   <input
                     name="code"
+                    className={'confirmInput'}
                     value={formDetails.code}
                     onChange={handleFieldChange}
-                    className="focusInput"
+                    // className="focusInput"
                     style={{ ...confirmStyles.inputElement }}
                     type={"number"}
                     placeholder="Enter Confirmation code"
@@ -279,7 +279,7 @@ const confirm = () => {
                   </Button>
                 </Box>
               </Box>
-              
+
               <Box sx={{ ...confirmStyles.buttonContainer }}>
                 <Button className={"active-tv-font"}
                   sx={{ ...confirmStyles.loginBtn }}

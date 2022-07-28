@@ -173,7 +173,7 @@
  input:focus {
    outline: none !important;
  }
-input::placeholder{
+.confirmInput::placeholder{
   font-family: "ArcadeFont", cursive !important;
   font-size: 10px;
   text-align: center;

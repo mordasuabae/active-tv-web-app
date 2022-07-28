@@ -13,6 +13,7 @@ import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
+import { Auth } from 'aws-amplify';
 
 //amplify methods
 import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
@@ -50,12 +51,24 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
     setShow(!show);
   };
 
+
+  async function signIn(username , password) {
+    try {
+        const user = await Auth.signIn(username, password);
+    } catch (error) {
+        console.log('error signing in', error);
+    }
+}
+
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-      alert( formDetails.email + ' logged in')
-
+    signIn(formDetails.name , formDetails.password)
+    
+    alert( formDetails.email + ' logged in')
   };
+
+
 
   return (
     <Box sx={{ ...loginStyles.container }}>
@@ -436,3 +449,4 @@ const loginStyles = {
     },
   },
 };
+
