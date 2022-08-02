@@ -6,6 +6,8 @@ import Grid from '@mui/material/Grid';
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
+import Link from 'next/link';
+
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -119,6 +121,7 @@ export default function ViewOnDevice() {
             <h1 data-aos="fade-up">BE A PRODUCER</h1>
             <p data-aos="fade-up">Directly control what your subscription dollars are</p>
             <p style={{marginTop:"-20px"}} data-aos="fade-up">pent on by using your Producer Points</p>
+            <Link href="/produceThat">
             <button style={{
               border:"none",
               width:"250px",
@@ -131,6 +134,7 @@ export default function ViewOnDevice() {
             }}
             data-aos="fade-up"
             ><h3>SEE IT IN ACTION</h3></button>
+            </Link>
             </Box>
           </Box>
         </Grid>

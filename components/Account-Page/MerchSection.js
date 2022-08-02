@@ -2,6 +2,8 @@ import React from 'react'
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
+import Link from 'next/link';
+
 
 const main = {
     backgroundImage: "url('merch-web.jpg')",
@@ -29,6 +31,7 @@ function MerchSection() {
         <h1 sx={{ display: { md:'block' }, mr:50 }} data-aos="fade-up">ALL MERCH 15% OFF & FIRST DIBS</h1>
         <p data-aos="fade-up">Site members get 15% off all product and the first</p>
         <p data-aos="fade-up">opportunity to buy new product before the general public.</p>
+        <Link href="/signup">
         <button style={{
               border:"none",
               width:"250px",
@@ -41,6 +44,7 @@ function MerchSection() {
             }}
             data-aos="fade-up"
             ><h3>SEE IT IN ACTION</h3></button>
+            </Link>
     </div>
   )
 }

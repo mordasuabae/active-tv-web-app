@@ -42,7 +42,7 @@ const Banner = () => {
               <p style={{ color: 'white' }}>Watch on ANY device</p>
             </li>
           </ul>
-          <a href="/Form">
+          <a href="/signup">
           <button className='card'
             style={{
               backgroundColor: '#fff203',

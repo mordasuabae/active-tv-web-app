@@ -16,7 +16,7 @@ const Subscriptions = () => {
           <p>
             <strong>$3.99 / month</strong>
           </p>
-          <a href="/Form">
+          <a href="/signup">
           <button className='card'
             style={{
               border: '1px black solid',
@@ -47,7 +47,7 @@ const Subscriptions = () => {
           <p>
             <strong>$39.99 / year</strong>
           </p>
-          <a href="/Form">
+          <a href="/signup">
           <button className='card'
             style={{
               backgroundColor: '#fff203',
