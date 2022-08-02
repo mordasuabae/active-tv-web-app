@@ -50,7 +50,7 @@ const Popup = () => {
         onClose={handleClose}
         TransitionComponent={Transition}
       >
-        <AppBar sx={{ position: 'relative' }}>
+        <AppBar sx={{ position: 'relative',background:'red'}} >
           <Toolbar>
             <IconButton
               edge="start"

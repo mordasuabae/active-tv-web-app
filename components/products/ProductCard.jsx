@@ -6,6 +6,12 @@ import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
 import Slide from "@mui/material/Slide";
 import { productData } from "./Data";
+import Sizes from "./Sizes";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import { Navigation, Pagination, Scrollbar, A11y } from "swiper";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -155,18 +161,44 @@ const ProductCard = ({
               flexDirection: "column",
             }}
           >
-
-            <img
-              src={productImg}
-              alt={productName}
-              style={{
-                objectFit: "contain",
-                width: "600px",
-                height: "600px",
-                maxHeight: "80vh",
-                marginBottom: "15px",
-              }}
-            />
+            <Swiper
+              modules={[Navigation, Pagination, Scrollbar, A11y]}
+              spaceBetween={50}
+              slidesPerView={1}
+              onSlideChange={() => console.log("slide change")}
+              onSwiper={(swiper) => console.log(swiper)}
+              navigation
+              // pagination={{ clickable: true }}
+            >
+              <SwiperSlide>
+                {" "}
+                <img
+                  src={productImg}
+                  alt={productName}
+                  style={{
+                    objectFit: "contain",
+                    width: "600px",
+                    height: "600px",
+                    maxHeight: "80vh",
+                    marginBottom: "15px",
+                  }}
+                />
+              </SwiperSlide>
+              <SwiperSlide>
+                {" "}
+                <img
+                  src={productImg}
+                  alt={productName}
+                  style={{
+                    objectFit: "contain",
+                    width: "600px",
+                    height: "600px",
+                    maxHeight: "80vh",
+                    marginBottom: "15px",
+                  }}
+                />
+              </SwiperSlide>
+            </Swiper>
 
             {/* <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', justifyContent:'center',width:'100%',pl:5,pr:5}}>
               <Typography className="active-tv-font" noWrap={true} width={"100%"} fontSize="13px"align="center" sx={{mb:2}}>{productName}
@@ -193,37 +225,48 @@ const ProductCard = ({
           >
             <Box
               sx={{
-                height: "100%",
+                // height: "100%",
                 width: "80%",
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
-                justifyContent: "center",
+                // justifyContent: "center",
                 color: "#656565",
+                // pt: 20,
               }}
             >
-              <Typography className="active-tv-font" fontSize="13px">
+              <Typography className="active-tv-font" fontSize="10px">
                 {productPrice}
               </Typography>
 
-              <Box sx={{display:'flex',alignItems:'center'}}>
-
-              <img src="" alt="..."/>
-
-              <Typography
-                className="active-tv-font"
-                fontSize="10px"
-                sx={{ mb: 3, fontWeight: "100" }}
+              <Box
+                sx={{
+                  height: "70px",
+                  width: "100%",
+                  display: "flex",
+                  alignItems: "center",
+                }}
               >
-                AVAILABLE FOR ORDERS OVER $35 Ⓘ
-              </Typography>
+                <img
+                  src="https://static.afterpay.com/integration/product-page/logo-afterpay-colour@3x.png"
+                  alt="..."
+                  height="16px"
+                  width="80px"
+                />
 
+                <Typography
+                  className="active-tv-font"
+                  fontSize="9px"
+                  sx={{ fontWeight: "100", pl: "5px" }}
+                >
+                  AVAILABLE FOR ORDERS OVER $35
+                </Typography>
               </Box>
               <Typography
                 align="center"
                 className="active-tv-font"
                 width={"100%"}
-                fontSize="13px"
+                fontSize="12px"
                 sx={{ mb: 3 }}
               >
                 {productName}
@@ -316,7 +359,7 @@ const ProductCard = ({
               </Box>
 
               <Button
-              className="active-tv-font"
+                className="active-tv-font"
                 sx={{
                   display: "flex",
                   alignItems: "center",
@@ -327,14 +370,72 @@ const ProductCard = ({
                   justifyContent: "center",
                   background: "#FAD676",
                   color: "black",
-                  fontSize:'8px',
-                  backgroundColor:'#cc588a !important',
-                  color:'white'
+                  fontSize: "8px",
+                  backgroundColor: "#FAD676 !important",
+                  color: "black",
                 }}
                 variant="contained"
               >
                 BUY IT NOW
               </Button>
+
+              <Box sx={{ width: "100%", mt: 6 }}>
+                <Typography
+                  className="active-tv-font"
+                  fontSize="10px"
+                  align="center"
+                >
+                  More payment options
+                </Typography>
+                <ul
+                  className="active-tv-font"
+                  style={{ fontSize: "8px", textAlign: "center" }}
+                >
+                  <li style={{ marginBottom: 7 }}>100% cotton t-shirt</li>
+                  {/* <li>Light Blue t-shirt with ink print </li> */}
+                  <li>Featuring the 'Active' design </li>
+                </ul>
+              </Box>
+
+              {/* <Box sx={{ width: "100%", mt: 6 }}>
+                <Box
+                  sx={{
+                    width: "100%",
+                    display: "flex",
+                    justifyContent: "space-around",
+                  }}
+                >
+                  <Typography
+                    className="active-tv-font"
+                    fontSize="10px"
+                    align="center"
+                  ></Typography>
+                  <Typography
+                    className="active-tv-font"
+                    fontSize="10px"
+                    align="center"
+                  >
+                    FULL LENGTH
+                  </Typography>
+                  <Typography
+                    className="active-tv-font"
+                    fontSize="10px"
+                    align="center"
+                  >
+                    CHEST
+                  </Typography>
+                </Box>
+
+                <Box sx={{ width: "100%", mt: 5 }}>
+                  <Sizes size="SMALL" num1='28"' num2='18"' />
+                  <Sizes size="MEDIUM" num1='29"' num2='20"' />
+                  <Sizes size="LARGE" num1='30"' num2='22"' />
+                  <Sizes size="X-LARGE" num1='31"' num2='24"' />
+                  <Sizes size="2X-LARGE" num1='32"' num2='26"' />
+                  <Sizes size="3X-LARGE" num1='33"' num2='28"' />
+                  <Sizes size="4X-LARGE" num1='34"' num2='30"' />
+                </Box>
+              </Box> */}
             </Box>
           </Grid>
         </Grid>
