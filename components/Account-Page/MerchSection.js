@@ -6,7 +6,7 @@ import { useEffect } from 'react'
 const main = {
     backgroundImage: "url('merch-web.jpg')",
     backgroundSize:"cover",
-    width:"1353px",
+    width:"1359px",
     height:"600px",
     display:"flex",
     alignItems:"center",
