@@ -67,12 +67,12 @@ export default function ViewOnDevice() {
 
         <Grid item xs={4} style={{background:"transparent",border:"none"}}>
           <Item style={{ background:"transparent", color:"white", fontFamily:"Arcade Normal"}} sx={{ display: { xs: 'none', sm: 'none', md:'block' }, mr: 1 }}>
-            <h1 data-aos="fade-left">VIEW ON ANY DEVICE</h1>
-            <p data-aos="fade-left">Every episode ad-free, including new exclusive shows.</p>
-            <p data-aos="fade-left">Higher quality than YouTube, and just as fast.</p>
+            <h1 data-aos="fade-up">VIEW ON ANY DEVICE</h1>
+            <p data-aos="fade-up">Every episode ad-free, including new exclusive shows.</p>
+            <p data-aos="fade-up">Higher quality than YouTube, and just as fast.</p>
 
             <Box style={box1}>
-                <button style={Appbutton} data-aos="fade-left">
+                <button style={Appbutton} data-aos="fade-up">
                     <Box>
                         <img src="playstore.png" alt="playstore" style={{width:"45px"}}/>
                     </Box>
@@ -82,7 +82,7 @@ export default function ViewOnDevice() {
                     </Box>
                 </button>
 
-                <button style={Appbutton} data-aos="fade-left">
+                <button style={Appbutton} data-aos="fade-up">
                     <Box>
                             <img src="apple.png" alt="Apple store" style={{width:"45px"}}/>
                         </Box>
