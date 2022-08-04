@@ -10,7 +10,9 @@ const background = {
   alignItems:"center",
   justifyContent:"center",
   flexDirection:"column",
-  fontFamily:"AnjaliOldLipi",
+  // fontFamily:"AnjaliOldLipi",
+  fontFamily:"Arcade Normal",
+  fontSize:"12px",
   lineHeight:"0px"
 }
 function AccountFooter() {

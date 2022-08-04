@@ -48,7 +48,7 @@ const Production = () => {
                 WATCH SECOND SEASON {">"}
               </Typography>
             </Box>
-            <Box sx={{ ...styles.itemText }}>padding="0px 10px"
+            <Box sx={{ ...styles.itemText }}>
               <Typography
                 variant="h3"
                 color="#fff"

@@ -5,7 +5,8 @@ import AccountFooter from '../components/Account-Page/AccountFooter'
 import MerchSection from '../components/Account-Page/MerchSection'
 import Subscriptions from '../components/Account-Page/subscriptions'
 import ViewOnDevice from '../components/Account-Page/ViewOnDevice'
-import Banner from './banner'
+import Banner from '../components/Account-Page/Banner'
+
 
 
 const account = () => {

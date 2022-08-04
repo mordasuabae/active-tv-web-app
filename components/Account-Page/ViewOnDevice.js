@@ -117,10 +117,11 @@ export default function ViewOnDevice() {
           fontFamily:"sans-serif",
 
           }}>
-            <Box sx={{marginTop:"30px", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column"}}>
+            <Box sx={{marginTop:"30px", display:"flex", alignItems:"center", justifyContent:"center", flexDirection:"column" ,fontFamily:"Arcade Normal",
+            fontSize:"7px"}}>
             <h1 data-aos="fade-up">BE A PRODUCER</h1>
             <p data-aos="fade-up">Directly control what your subscription dollars are</p>
-            <p style={{marginTop:"-20px"}} data-aos="fade-up">pent on by using your Producer Points</p>
+            <p style={{marginTop:"-20px"}} data-aos="fade-up">spent on by using your Producer Points</p>
             <Link href="/produceThat">
             <button style={{
               border:"none",
@@ -131,9 +132,11 @@ export default function ViewOnDevice() {
               fontWeight:"bold",
               cursor:"pointer",
               borderRadius:"25px",
+              fontFamily:"Arcade Normal",
+              fontSize:"10px"
             }}
             data-aos="fade-up"
-            ><h3>SEE IT IN ACTION</h3></button>
+            >SEE IT IN ACTION</button>
             </Link>
             </Box>
           </Box>
