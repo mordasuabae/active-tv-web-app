@@ -54,11 +54,12 @@ const Production = () => {
                 color="#fff"
                 fontWeight={"bold"}
                 fontSize={14}
+                padding="0px 10px"
               >
                 Your exclusive studio vlog with over 100 Episodes in Season One!
               </Typography>
             </Box>
-            <GreenlightSwiper />  
+            {/* <GreenlightSwiper />   */}
           </Grid>
         </Grid>
   
@@ -91,11 +92,12 @@ const Production = () => {
                 color="#fff"
                 fontWeight={"bold"}
                 fontSize={14}
-              >
+                padding="0px 10px"
+                >
                 Your exclusive studio vlog with over 100 Episodes in Season One!
               </Typography>
             </Box>
-            <GreenlightSwiper />
+            {/* <GreenlightSwiper /> */}
           </Grid>
         </Grid>
   
@@ -128,11 +130,12 @@ const Production = () => {
                 color="#fff"
                 fontWeight={"bold"}
                 fontSize={14}
+                padding="0px 10px"
               >
                 Your exclusive studio vlog with over 100 Episodes in Season One!
               </Typography>
             </Box>
-            <GreenlightSwiper />
+            {/* <GreenlightSwiper /> */}
           </Grid>
         </Grid>
       </Box>
@@ -198,6 +201,7 @@ const Production = () => {
       display: "flex",
       alignItems: "center",
       justifyContent: "flex-start",
+      padding:"0px 10px",
     },
     itemText: {
       //  border:'1px solid red',
