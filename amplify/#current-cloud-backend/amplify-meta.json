@@ -1,0 +1,60 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-activetvwebapp-dev-42513-authRole",
+      "UnauthRoleArn": "arn:aws:iam::738340055040:role/amplify-activetvwebapp-dev-42513-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::738340055040:role/amplify-activetvwebapp-dev-42513-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-activetvwebapp-dev-42513-deployment",
+      "UnauthRoleName": "amplify-activetvwebapp-dev-42513-unauthRole",
+      "StackName": "amplify-activetvwebapp-dev-42513",
+      "StackId": "arn:aws:cloudformation:us-east-2:738340055040:stack/amplify-activetvwebapp-dev-42513/b8958b70-f752-11ec-ac75-0a1ff08179e4",
+      "AmplifyAppId": "d31py8geo1vr7t"
+    }
+  },
+  "auth": {
+    "activetvwebapp16baf347": {
+      "service": "Cognito",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [],
+      "customAuth": false,
+      "frontendAuthConfig": {
+        "socialProviders": [],
+        "usernameAttributes": [
+          "EMAIL"
+        ],
+        "signupAttributes": [
+          "EMAIL"
+        ],
+        "passwordProtectionSettings": {
+          "passwordPolicyMinLength": 8,
+          "passwordPolicyCharacters": []
+        },
+        "mfaConfiguration": "OFF",
+        "mfaTypes": [
+          "SMS"
+        ],
+        "verificationMechanisms": [
+          "EMAIL"
+        ]
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-activetvwebapp-dev-42513-deployment/amplify-cfn-templates/auth/activetvwebapp16baf347-cloudformation-template.json",
+        "logicalId": "authactivetvwebapp16baf347"
+      },
+      "lastPushTimeStamp": "2022-07-12T14:34:11.073Z",
+      "output": {
+        "UserPoolId": "us-east-2_jGv4x7t1b",
+        "AppClientIDWeb": "4g2oc7praeobt637599bqdm6hh",
+        "AppClientID": "5srg77q19ue9ails59lnkkert7",
+        "HostedUIDomain": "activetvwebapp16baf347-16baf347-dev",
+        "IdentityPoolId": "us-east-2:8d0c89ea-1ab0-43b5-aaa8-0882c055a031",
+        "UserPoolArn": "arn:aws:cognito-idp:us-east-2:738340055040:userpool/us-east-2_jGv4x7t1b",
+        "IdentityPoolName": "activetvwebapp16baf347_identitypool_16baf347__dev",
+        "OAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.activetvonline.co.za/\"],\"LogoutURLs\":[\"https://www.activetvonline.co.za/signout/\"]}",
+        "UserPoolName": "activetvwebapp16baf347_userpool_16baf347"
+      },
+      "lastPushDirHash": "f176mTOSd7tRkWbqdMuVOQ1Fui0="
+    }
+  }
+}
