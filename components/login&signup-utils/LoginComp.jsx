@@ -13,11 +13,12 @@ import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
+import Router from 'next/router'
 import { Auth } from 'aws-amplify';
 
 //amplify methods
-import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
-import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
+// import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
+// import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
 
 
 
@@ -32,7 +33,6 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
     check: "",
   });
 
-
   const handleFieldChange = (event) => {
 
     const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
@@ -42,33 +42,38 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
       [field]: event.currentTarget.value,
     });
   };
-  // const [name, setName] = useState('');
-  // const [email, setEmail] = useState('');
-  // const [password, setPassword] = useState('');
-  // const [check, setCheck ] = useState('');
 
   const tooglePassword = () => {
     setShow(!show);
   };
 
 
-  async function signIn(username , password) {
+  async function signIn(username,password) {
+console.log("username", username)
+console.log("password", password)
+
+    // return
+    // console.log(`user email is ${username} and password is ${password}`)
+
     try {
-        const user = await Auth.signIn(username, password);
+     const user = await Auth.signIn(username, password);
+      Router.push('/')
+
     } catch (error) {
         console.log('error signing in', error);
+        console.log('something went wrong while signing in')
     }
 }
 
   // submit form
   const handleSubmit = (e) => {
+
     e.preventDefault();
-    signIn(formDetails.name , formDetails.password)
+
+    signIn(formDetails.email , formDetails.password)
     
-    alert( formDetails.email + ' logged in')
+    // alert( formDetails.email + ' logged in')
   };
-
-
 
   return (
     <Box sx={{ ...loginStyles.container }}>
@@ -86,17 +91,17 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
               variant="h4"
               align="center"
               sx={{
-                margin: "10px 0",
+                margin: "15px 0",
                 fontWeight: "900",
                 fontSize: {
-                  md: "30px",
+                  md: "22px",
                   xs: "20px",
                 },
               }}
             >
               Welcome Back To Active TV
             </Typography>
-            <Typography className={"active-tv-font"} variant="p">
+            <Typography fontSize={12} className={"active-tv-font"} variant="p">
               Jump back in with the latest Active TV content!
             </Typography>
           </Box>
@@ -208,7 +213,7 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
                 fontWeight: "600",
                 marginTop: 2,
                 fontSize: {
-                  md: "14px",
+                  md: "12px",
                   sm: "11px",
                   xs: "12px",
                 },
@@ -228,7 +233,7 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
                
                 marginTop: 2,
                 fontSize: {
-                  md: "14px",
+                  md: "10px",
                   sm: "11px",
                   xs: "12px",
                 },
@@ -257,7 +262,7 @@ import signOut from '../../amplify/methods/amplifySdk' //login method from ampli
                 fontWeight: "600",
                 marginTop: 2,
                 fontSize: {
-                  md: "14px",
+                  md: "10px",
                   sm: "10px",
                   xs: "12px",
                 },

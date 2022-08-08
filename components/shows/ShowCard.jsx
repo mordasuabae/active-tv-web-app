@@ -1,21 +1,32 @@
-import { Typography } from "@mui/material";
-import React from "react";
+import { Typography , Box } from "@mui/material";
+import React, { useContext } from "react";
+import { USER_CONTEXT } from "../../context/MainContext";
+
 
 const ShowCard = ({ img, text, openModal, color }) => {
+
+  const { setShowsDetails  } = useContext(USER_CONTEXT)
+
   return (
     <>
-      <div
-        onClick={() => openModal()}
+      <Box
+        onClick={() =>{
+          openModal()
+          setShowsDetails({
+            title:text,
+            img:img
+          })
+        } }
         style={{
           ...styles.container,
-          background: `url(${img})`,
+          // background: `url(${img})`,
           borderRadius: "10px 10px 0 0",
           backgroundSize: "cover",
-          backgroundPosition: "top",
+          backgroundPosition: "",
         }}
       >
-        {/* <img src={img} style={{objectFit:'cover', objectPosition:'bottom'}} alt="" width={"100%"} height={"80%"} /> */}
-      </div>
+        <img src={img} style={{objectFit:'cover', objectPosition:'top', borderRadius:'10px 10px 0 0'}} alt="" width={"100%"} height={"100%"} />
+      </Box>
     </>
   );
 };

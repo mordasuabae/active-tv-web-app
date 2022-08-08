@@ -5,7 +5,7 @@ import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { Palette } from "@universemc/react-palette";
 import { useState, useEffect } from 'react';
-import ShowModal from '../components/shows/ShowModal';
+import ShowsDisplay from '../components/shows/ShowsDisplay';
 
 const shows = () => {
   
@@ -21,11 +21,12 @@ const shows = () => {
           <Box
             sx={{
               minHeight:'100vh',
-              background:data.darkVibrant,
-              p:2
+              // background:data.darkVibrant,
+              background:'#111',
+               padding:'40px 40px'
             }}
           >  
-         <ShowModal/>
+         <ShowsDisplay/>
           </Box>
         ); 
       }} 
