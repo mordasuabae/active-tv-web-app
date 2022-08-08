@@ -7,7 +7,7 @@ const Subscriptions = () => {
     Aos.init({duration: 2000});
 },[])
     return (
-      <div className="active-tv-font" style={{ width: '100%', display: 'flex', justifyContent: 'center',height: '650px', }}>
+      <div className="active-tv-font" style={{ width: '100%', display: 'flex', justifyContent: 'center',minHeight: '100vh', alignItems:'center'}}>
         <div
           style={{
             border: '4px solid black',

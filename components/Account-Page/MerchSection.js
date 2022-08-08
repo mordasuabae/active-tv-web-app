@@ -8,7 +8,7 @@ import Link from 'next/link';
 const main = {
     backgroundImage: "url('merch-web.jpg')",
     backgroundSize:"cover",
-    width:"1359px",
+    width:"100%",
     height:"600px",
     display:"flex",
     alignItems:"center",

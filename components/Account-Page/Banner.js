@@ -1,6 +1,8 @@
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
+import { Box } from "@mui/system";
+import { Typography } from "@mui/material";
 
 const Banner = () => {
   useEffect(() => {
@@ -9,9 +11,8 @@ const Banner = () => {
 
     return (
       
-       
-      <div className="active-tv-font" style={{  width: '100%', height: '900px',backgroundImage:`url('hero-bg.jpg')`,backgroundRepeat:'no-repeat'}}>
-        <div
+      <Box className="active-tv-font" sx={{  width: '100%', minHeight: '100vh',backgroundImage:`url('hero-bg.jpg')`,backgroundSize:'cover', }}>
+        <Box
           style={{
             // border: '1px solid white',
             color: 'white',
@@ -25,21 +26,21 @@ const Banner = () => {
           data-aos-easing="linear"
           data-aos-duration="1500"
         >
-          <h1 style={{ letterSpacing: '3px', fontSize: '45px' }}>
+          <Typography variant="h3" className="active-tv-font" fontSize={35}>
             JOIN THE CREW
-          </h1>
+          </Typography>
           <ul>
             <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-              <p style={{ color: 'white' }}>Watch exclusive content ad-free</p>
+              <Typography style={{ color: 'white' }}>Watch exclusive content ad-free</Typography>
             </li>
             <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-              <p style={{ color: 'white' }}>YOU decide what shows get made</p>
+              <Typography style={{ color: 'white' }}>YOU decide what shows get made</Typography>
             </li>
             <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-              <p style={{ color: 'white' }}>15% off on ALL merch</p>
+              <Typography style={{ color: 'white' }}>15% off on ALL merch</Typography>
             </li>
             <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-              <p style={{ color: 'white' }}>Watch on ANY device</p>
+              <Typography style={{ color: 'white' }}>Watch on ANY device</Typography>
             </li>
           </ul>
           <a href="/signup">
@@ -58,12 +59,12 @@ const Banner = () => {
             START WITH A FREE TRAIL!
           </button>
           </a>
-          <p style={{ margin: '20px 0 0 40px' }}>
+          <Typography style={{ margin: '20px 0 0 40px' }}>
             Join in minutes. Cancel any time.
-          </p>
+          </Typography>
        
-        </div>
-      </div>
+        </Box>
+      </Box>
     );
   };
   

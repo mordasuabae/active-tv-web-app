@@ -30,7 +30,7 @@ const produceThat = () => {
             <GreenlightBanner/>
             <PointsGrid/>
             <NewIdeas/>  
-            <Whatlive/>
+            <Whatlive/>  
             <Production/>
           </Box>
         ); 
