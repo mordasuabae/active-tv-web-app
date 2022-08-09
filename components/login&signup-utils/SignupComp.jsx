@@ -13,7 +13,20 @@ import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import PersonIcon from "@mui/icons-material/Person";
+import { Auth } from "aws-amplify";
 import Link from "next/link";
+import signUp from "../../amplify/methods/amplifySdk"; // imported the fnction here
+import Router from "next/router";
+import ClipLoader from "react-spinners/ClipLoader";
+import BeatLoader from "react-spinners/BeatLoader";
+import RiseLoader from "react-spinners/RiseLoader";
+import MoonLoader from "react-spinners/MoonLoader";
+import PulseLoader from "react-spinners/PulseLoader";
+import HashLoader from "react-spinners/HashLoader";
+import ScaleLoader from "react-spinners/ScaleLoader";
+import PacmanLoader from "react-spinners/PacmanLoader";
+import PropagateLoader from "react-spinners/PropagateLoader";
+import { TrendingUpRounded } from "@mui/icons-material";
 
 const loginStyles = {
   container: {
@@ -192,6 +205,8 @@ const loginStyles = {
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
+  const [errorLogs, setErrorLogs] = useState('')
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -214,13 +229,70 @@ const LoginComp = () => {
     setShow(!show);
   };
 
+  useEffect(() => {
+    console.log(signUp);
+  }, []);
+
+  //register user
+  async function signUp(username, password, email) {
+    try {
+      const { user } = await Auth.signUp({
+        username: username,
+        password: password,
+        attributes: {
+          email: email, // optional
+          phone_number: null, // optional - E.164 number convention
+          // other custom attributes
+        },
+      });
+      
+      console.log(user);
+
+      if (user) {
+        setRedirecting(true);
+        // setErrorLogs('signing up')
+        setTimeout(() => {
+          setRedirecting(false);
+          Router.push("/confirm"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+        }, 2000);
+      }
+    } catch (error) {
+      console.log("error signing up:", error);
+      // alert('something went wrong  ,please fill in the fields correctly')
+      setErrorLogs(error.message)
+    }
+  }
+
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(formDetails.email + " signed up");
+    // alert(formDetails.email + " submitted the form");
+    signUp(formDetails.email, formDetails.password, formDetails.email);
   };
 
-  return (
+  return redirecting ? (
+    <Box
+      sx={{
+        height: "91vh",
+        background: "#000000",
+        background: "url('login-bg.jpg')",
+     
+      }}
+    >
+      <Box
+       sx={{
+        height: "100%",
+        width:'100%',
+        display: "flex",
+        alignItems: "center",
+        justifyContent: "center",
+        background: "rgba(0,0,0,.5)",
+       }}
+      >
+      <MoonLoader color={"#f3c11a"} loading={true} size={170} />
+      </Box>
+    </Box>
+  ) : (
     <Box sx={{ ...loginStyles.container }}>
       <Box sx={{ ...loginStyles.contentCover }}>
         <Box sx={{ ...loginStyles.formContainer }}>
@@ -234,18 +306,24 @@ const LoginComp = () => {
             <Typography
               variant="h4"
               align="center"
+              className={"active-tv-font"}
               sx={{
-                margin: "10px 0",
+                margin: "20px 0",
                 fontWeight: "900",
                 fontSize: {
-                  md: "30px",
+                  md: "18px",
                   xs: "20px",
                 },
               }}
             >
               Create your account
             </Typography>
-            <Typography className={"active-tv-font"} sx={{ lineHeight: "25px" }} variant="p" align="center">
+            <Typography
+              className={"active-tv-font"}
+              sx={{ lineHeight: "25px", fontSize: "10px" }}
+              variant="p"
+              align="center"
+            >
               Getting started is easy, just a few steps and you can immerse
               yourself with the latest Active TV content!
             </Typography>
@@ -253,7 +331,10 @@ const LoginComp = () => {
           <Box sx={loginStyles.formBox}>
             <form onSubmit={handleSubmit}>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label style={{ ...loginStyles.inputLabel }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
                   Display Name
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
@@ -272,7 +353,10 @@ const LoginComp = () => {
                 </Box>
               </Box>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label style={{ ...loginStyles.inputLabel }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
                   Email address
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
@@ -291,7 +375,12 @@ const LoginComp = () => {
                 </Box>
               </Box>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label style={{ ...loginStyles.inputLabel }}>Password</label>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
+                  Password
+                </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
                     name="password"
@@ -321,7 +410,12 @@ const LoginComp = () => {
                     value={formDetails.check}
                     onChange={handleFieldChange}
                   />
-                  <Typography className={"active-tv-font"} variant="" sx={{ ml: 2 }}>
+                  <Typography
+                    fontSize={11}
+                    className={"active-tv-font"}
+                    variant=""
+                    sx={{ ml: 2 }}
+                  >
                     I have read and accept the Privacy Policy
                   </Typography>
                 </Box>
@@ -333,14 +427,20 @@ const LoginComp = () => {
                     value={formDetails.check}
                     onChange={handleFieldChange}
                   />
-                  <Typography variant="" sx={{ ml: 2 }}>
+                  <Typography
+                    fontSize={11}
+                    className={"active-tv-font"}
+                    variant=""
+                    sx={{ ml: 2 }}
+                  >
                     I have read and accept the Terms and Conditions
                   </Typography>
                 </Box>
               </Box>
 
               <Box sx={{ ...loginStyles.buttonContainer }}>
-                <Button className={"active-tv-font"}
+                <Button
+                  className={"active-tv-font"}
                   sx={{ ...loginStyles.loginBtn }}
                   variant="contained"
                   color="warning"
@@ -349,6 +449,9 @@ const LoginComp = () => {
                   Sign up
                 </Button>
               </Box>
+              <span   style={{color:'red', width:'100%',justifyContent:'center',display:'flex'}}>
+                {errorLogs}
+              </span>
               <Box sx={{ padding: "0 50px" }}>
                 <fieldset style={{ ...loginStyles.fieldset }}>
                   <legend style={{ ...loginStyles.legend }}>OR</legend>
@@ -367,23 +470,27 @@ const LoginComp = () => {
                   },
                 }}
               >
-                <Button className={"active-tv-font"}
-                  sx={{ ...loginStyles.socialBtn }}
+                <Button
+                  className={"active-tv-font"}
+                  sx={{ ...loginStyles.socialBtn, fontSize: "12px" }}
                   variant="contained"
                   type="Submit"
                 >
-                  <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
+                  <GoogleIcon sx={{ margin: "0 10px" }} />
+                  Continue with Google
                 </Button>
                 <Button
                   sx={{
                     ...loginStyles.socialBtn,
+                    fontSize: "12px",
                     "&:hover": { background: "blue", border: "none" },
                   }}
+                  className={"active-tv-font"}
                   variant="contained"
                   type="Submit"
                 >
-                  <FacebookIcon sx={{ margin: "0 10px" }} /> Continue with
-                  Facebook
+                  <FacebookIcon sx={{ margin: "0 10px" }} />
+                  Continue with Facebook
                 </Button>
               </Box>
             </form>
@@ -404,7 +511,7 @@ const LoginComp = () => {
                 fontWeight: "600",
                 marginTop: 2,
                 fontSize: {
-                  md: "14px",
+                  md: "10px",
                   sm: "10px",
                   xs: "12px",
                 },

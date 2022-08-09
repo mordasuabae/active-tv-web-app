@@ -12,7 +12,7 @@ import { Pagination, Navigation, Autoplay } from "swiper";
 import { Box } from "@mui/material";
 import BannerItem from "./banner-item";
 import { USER_CONTEXT } from "../../context/MainContext";
-import LatestShows from "../latest-shows";
+// import LatestShows from "../latest-shows";
 import { Palette } from "@universemc/react-palette";
 import FreeToWatch from "../free-to-watch";
 
@@ -20,7 +20,8 @@ const HomeBanner = () => {
   return (
     <Palette
       src={
-        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmf6hqoRXi9B8uEKDix0ijTCZYcoRu46ARJ-ckdaC5EQ&s"
+        // "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRmf6hqoRXi9B8uEKDix0ijTCZYcoRu46ARJ-ckdaC5EQ&s"
+        "top_banner_full.jpg"
       }
     >
       {({ data, loading, error }) => {
@@ -88,7 +89,7 @@ const HomeBanner = () => {
                 position: "relative",
               }}
             >
-              <LatestShows />
+              {/* <LatestShows /> */}
             </Box>
           </Box>
         );

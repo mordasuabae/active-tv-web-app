@@ -17,7 +17,8 @@ export const FreeToWatchItem = ({ image, showTitle }) => {
         position: "relative",
         alignItems: "flex-end",
         "&:hover": {
-          backgroundImage: "url('https://media1.giphy.com/media/rMGzvqcF2Seq28J1FL/giphy.gif?cid=ecf05e4772yypkchdidj9e8rnp4je84j95244mf5dwgskwyw&rid=giphy.gif&ct=g')",
+          backgroundImage:
+            "url('https://media1.giphy.com/media/rMGzvqcF2Seq28J1FL/giphy.gif?cid=ecf05e4772yypkchdidj9e8rnp4je84j95244mf5dwgskwyw&rid=giphy.gif&ct=g')",
           backgroundSize: "cover",
           backgroundRepeat: "no-repeat",
           backgroundPostion: "center",
@@ -58,19 +59,21 @@ export const FreeToWatchItem = ({ image, showTitle }) => {
           className={"active-tv-font"}
           sx={{
             color: "white",
-            fontSize: "13px",
+            fontSize: "8px",
             fontWeight: "bolder",
             width: "100%",
             height: "100%",
             overflow: "hidden",
             textOverflow: "ellipsis",
-            display: "-webkit-box",
+            display: {
+              lg: "flex",
+            },
+            alignItems: "center",
+            justifyContent: "center",
             lineClamp: "3",
             boxOrient: "vertical",
-            display: {
-              lg: "block",
-              md: "none",
-            },
+            textAlign: "center",
+            padding: "0px 16px",
           }}
         >
           {showTitle}
