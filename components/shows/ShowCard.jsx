@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 
 
-const ShowCard = ({ img, text, openModal, color }) => {
+const ShowCard = ({ img, text, openModal, color, onFetchEpisode }) => {
 
   const { setShowsDetails  } = useContext(USER_CONTEXT)
 
@@ -11,6 +11,7 @@ const ShowCard = ({ img, text, openModal, color }) => {
     <>
       <Box
         onClick={() =>{
+          onFetchEpisode()
           openModal()
           setShowsDetails({
             title:text,

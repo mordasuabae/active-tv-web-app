@@ -32,21 +32,16 @@ export default function ShowsDisplay() {
   let [loading, setLoading] = useState(true);
   let [color, setColor] = useState("#ffffff");
 
-  // function updateShowsDetails( title , img ,episode ){
-  //       setShowsDetails({
-  //         title:title,
-  //         img:img,
-  //         episode:[
-  //              episode
-  //         ]
-  //       })
-  // }
+  const getEpisodes = () => {
+    setTimeout(() => {
+      setEmpty(false);
+    }, 3000);
+  };
 
   useEffect(() => {
     //render a differernt loader whenever the page gets rerendered:
 
     const spinnerItem = new Array();
-
     spinnerItem[0] = <ClipLoader color={color} loading={loading} size={20} />;
     spinnerItem[1] = <BeatLoader color={color} loading={loading} size={20} />;
     spinnerItem[2] = <ScaleLoader color={color} loading={loading} size={20} />;
@@ -61,10 +56,6 @@ export default function ShowsDisplay() {
 
     var i = Math.floor(spinnerItem.length * Math.random());
     setSpinner(spinnerItem[i]);
-
-    // setTimeout(() => {
-    //   setEmpty(!empty);
-    // }, 3000);
   }, []);
 
   return (
@@ -87,6 +78,7 @@ export default function ShowsDisplay() {
               openModal={handleOpen}
               img={card.img}
               text={card.name}
+              onFetchEpisode={getEpisodes}
             />
             <Typography
               className="active-tv-font"
@@ -128,34 +120,52 @@ export default function ShowsDisplay() {
             >
               <img
                 src={showsDetails.img}
-                style={{ objectFit: "cover", objectPosition: "center" , position:'absolute',filter:'brightness(0.2)'}}
+                style={{
+                  objectFit: "cover",
+                  objectPosition: "center",
+                  position: "absolute",
+                  filter: "brightness(0.2)",
+                }}
                 alt=""
                 width={"100%"}
                 height={"40%"}
               />
               <Box sx={styles.fadeContainer}>
                 <Box sx={styles.btnContainer}>
-                  <Button sx={styles.cancelBtn} onClick={() => handleClose()}>
+                  <Button
+                    sx={styles.cancelBtn}
+                    onClick={() => {
+                      handleClose();
+                      setEmpty(true);
+                    }}
+                  >
                     X
                   </Button>
                 </Box>
                 <Box
                   sx={{
                     height: {
-                       md:200,
-                       sm:50,
-                       xs:120
+                      md: 200,
+                      sm: 50,
+                      xs: 120,
                     },
                     display: "flex",
                     alignItems: "flex-end",
                     padding: "0 20px",
                   }}
                 >
-                  <Typography sx={{zIndex:1, fontSize:{
-                    md:16,
-                    sm:14,
-                    xs:12
-                  }}} className="active-tv-font" color="#fff">
+                  <Typography
+                    sx={{
+                      zIndex: 1,
+                      fontSize: {
+                        md: 16,
+                        sm: 14,
+                        xs: 12,
+                      },
+                    }}
+                    className="active-tv-font"
+                    color="#fff"
+                  >
                     {showsDetails.title}
                   </Typography>
                 </Box>
@@ -170,13 +180,13 @@ export default function ShowsDisplay() {
                 </Box>
               ) : (
                 <Box sx={{ ...styles.episodesContainer }}>
-                  <Box
-                    sx={{
-                      border: "1px solid red",
-                      height: "150px",
-                      width: "150px",
-                    }}
-                  ></Box>
+                  
+                
+
+
+
+
+
                 </Box>
               )}
             </Box>
@@ -231,7 +241,7 @@ const styles = {
     width: "100%",
     height: "100%",
     background: "rgba(0,0,0,0.8)",
-    zIndex:100
+    zIndex: 100,
   },
 
   cancelBtn: {
