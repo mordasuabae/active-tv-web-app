@@ -212,6 +212,7 @@ const confirmStyles = {
 const confirm = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
+  const[errorLogs , setErrorLogs] = useState("")
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -242,6 +243,7 @@ const confirm = () => {
 
     } catch (error) {
       console.log('error confirming sign up', error);
+      setErrorLogs(error.message)
     }
   }
 
@@ -253,36 +255,26 @@ const confirm = () => {
 
     } catch (err) {
       console.log('error resending code: ', err);
+      setErrorLogs(err.message)
     }
   }
 
 
   // submit form
   const handleSubmitCode = (e) => { 
-    alert('submitting.....')
+    console.log('submitting code.....')
     e.preventDefault();
-    if (formDetails.code.length !== 6) {
-      alert(" code sent must be six character long");
 
-    } else {
-      alert(formDetails.code + " code sent");
+      console.log(formDetails.code + " code sent");
       confirmSignUp(formDetails.email, formDetails.code)
-    }
 
   };
   // resend form
   const handleResendCode = (e) => {
-    alert('submitting.....')
-    e.preventDefault();
-    if (formDetails.code.length !== 6) {
-      alert(" code sent must be six character long");
-
-
-    } else {
-      alert(formDetails.code + " code sent");
+    console.log('resending code.....')
+    e.preventDefault()
       resendConfirmationCode(formDetails.email)
-    }
-
+    
   };
 
 
@@ -414,7 +406,17 @@ const confirm = () => {
                     </Typography>
                   </Button>
                 </Box>
-
+                <span
+                style={{
+                  color: "red",
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                  padding:'10px'
+                }}
+              >
+                {errorLogs}
+              </span>
                 <Box sx={{ padding: "0 50px" }}>
                   <fieldset style={{ ...confirmStyles.fieldset }}>
                     <legend style={{ ...confirmStyles.legend }}>

@@ -250,7 +250,7 @@ const LoginComp = () => {
 
       if (user) {
         setRedirecting(true);
-        setErrorLogs('signing up')
+        // setErrorLogs('signing up')
         setTimeout(() => {
           setRedirecting(false);
           Router.push("/confirm"); //redirecting the user to the confirm page inorder for us to insert the code sent from email

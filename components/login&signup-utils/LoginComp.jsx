@@ -13,17 +13,16 @@ import EmailIcon from "@mui/icons-material/Email";
 import GoogleIcon from "@mui/icons-material/Google";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
-import Router from 'next/router'
-import { Auth } from 'aws-amplify';
+import Router from "next/router";
+import { Auth } from "aws-amplify";
 
 //amplify methods
 // import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
 // import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
 
-
-
-  const LoginComp = () => {
+const LoginComp = () => {
   const [show, setShow] = useState(false);
+  const [errorLogs, setErrorLogs] = useState("");
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -34,7 +33,6 @@ import { Auth } from 'aws-amplify';
   });
 
   const handleFieldChange = (event) => {
-
     const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
 
     setFormDetails({
@@ -47,31 +45,29 @@ import { Auth } from 'aws-amplify';
     setShow(!show);
   };
 
-
-  async function signIn(username,password) {
-console.log("username", username)
-console.log("password", password)
+  async function signIn(username, password) {
+    console.log("username", username);
+    console.log("password", password);
 
     // return
     // console.log(`user email is ${username} and password is ${password}`)
 
     try {
-     const user = await Auth.signIn(username, password);
-      Router.push('/')
-
+      const user = await Auth.signIn(username, password);
+      Router.push("/");
     } catch (error) {
-        console.log('error signing in', error);
-        console.log('something went wrong while signing in')
+      console.log("error signing in", error);
+      console.log("something went wrong while signing in");
+      setErrorLogs(error.message);
     }
-}
+  }
 
   // submit form
   const handleSubmit = (e) => {
-
     e.preventDefault();
 
-    signIn(formDetails.email , formDetails.password)
-    
+    signIn(formDetails.email, formDetails.password);
+
     // alert( formDetails.email + ' logged in')
   };
 
@@ -84,10 +80,10 @@ console.log("password", password)
               src="glitch-tv.gif"
               alt="logo"
               height="105px"
-              style={{marginBottom:"5"}}
+              style={{ marginBottom: "5" }}
             />
             <Typography
-            className={"active-tv-font"}
+              className={"active-tv-font"}
               variant="h4"
               align="center"
               sx={{
@@ -130,9 +126,9 @@ console.log("password", password)
                 <label style={{ ...loginStyles.inputLabel }}>Password</label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
-                     name="password"
-                     value={formDetails.password}
-                     onChange={handleFieldChange}
+                    name="password"
+                    value={formDetails.password}
+                    onChange={handleFieldChange}
                     className="focusInput"
                     style={{ ...loginStyles.inputElement }}
                     type={show ? "text" : "password"}
@@ -158,6 +154,16 @@ console.log("password", password)
                   Login
                 </Button>
               </Box>
+              <span
+                style={{
+                  color: "red",
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                }}
+              >
+                {errorLogs}
+              </span>
               <Box sx={{ padding: "0 50px" }}>
                 <fieldset style={{ ...loginStyles.fieldset }}>
                   <legend style={{ ...loginStyles.legend }}>OR</legend>
@@ -185,14 +191,16 @@ console.log("password", password)
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>
                 <Button
-                  sx={{ ...loginStyles.socialBtn, '&:hover':{background:'blue', border:'none'} }}
+                  sx={{
+                    ...loginStyles.socialBtn,
+                    "&:hover": { background: "blue", border: "none" },
+                  }}
                   variant="contained"
                   className={"active-tv-font"}
                   type="Submit"
                 >
-                  <FacebookIcon sx={{ margin: "0 10px" }} /> 
-                  Continue with
-                  Facebook
+                  <FacebookIcon sx={{ margin: "0 10px" }} />
+                  Continue with Facebook
                 </Button>
               </Box>
             </form>
@@ -227,10 +235,10 @@ console.log("password", password)
 
             <Typography
               variant="600"
-               className={"active-tv-font"}
+              className={"active-tv-font"}
               sx={{
                 fontWeight: "bolder",
-               
+
                 marginTop: 2,
                 fontSize: {
                   md: "10px",
@@ -294,7 +302,6 @@ console.log("password", password)
 };
 
 export default LoginComp;
-
 
 const loginStyles = {
   container: {
@@ -448,10 +455,9 @@ const loginStyles = {
     color: "#fff",
     fontWeight: "bolder",
     "&:hover": {
-      border:"none",
+      border: "none",
       background: "#ff0000",
       color: "#fff",
     },
   },
 };
-

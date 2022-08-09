@@ -3,7 +3,8 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
 import Link from 'next/link';
-
+import { Box } from "@mui/system";
+import { Typography } from '@mui/material';
 
 const main = {
     backgroundImage: "url('merch-web.jpg')",
@@ -27,10 +28,10 @@ function MerchSection() {
     },[])
     
   return (
-    <div style={main}>
-        <h1 sx={{ display: { md:'block' }, mr:50 }} data-aos="fade-up">ALL MERCH 15% OFF & FIRST DIBS</h1>
-        <p data-aos="fade-up">Site members get 15% off all product and the first</p>
-        <p data-aos="fade-up">opportunity to buy new product before the general public.</p>
+    <Box style={main}>
+        <Typography variant='h3' fontSize={30} className='active-tv-font' align="center"  data-aos="fade-up">ALL MERCH 15% OFF & FIRST DIBS</Typography>
+        <Typography variant="p" fontSize={13} sx={{mt:2, mb:2}} className='active-tv-font'  data-aos="fade-up">Site members get 15% off all product and the first</Typography>
+        <Typography variant="p" fontSize={13} sx={{mt:2, mb:2}} className='active-tv-font' data-aos="fade-up">opportunity to buy new product before the general public.</Typography>
         <Link href="/merch">
         <button style={{
               border:"none",
@@ -47,7 +48,7 @@ function MerchSection() {
             data-aos="fade-up"
             >SEE IT IN ACTION</button>
             </Link>
-    </div>
+    </Box>
   )
 }
 
