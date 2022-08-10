@@ -90,21 +90,21 @@ const LoginComp = () => {
                 margin: "15px 0",
                 fontWeight: "900",
                 fontSize: {
-                  md: "22px",
+                  md: "20px",
                   xs: "20px",
                 },
               }}
             >
               Welcome Back To Active TV
             </Typography>
-            <Typography fontSize={12} className={"active-tv-font"} variant="p">
+            <Typography fontSize={10} className={"active-tv-font"} variant="p">
               Jump back in with the latest Active TV content!
             </Typography>
           </Box>
           <Box sx={loginStyles.formBox}>
             <form onSubmit={handleSubmit}>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label style={{ ...loginStyles.inputLabel }}>
+                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>
                   Email address
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
@@ -123,7 +123,7 @@ const LoginComp = () => {
                 </Box>
               </Box>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label style={{ ...loginStyles.inputLabel }}>Password</label>
+                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>Password</label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
                     name="password"
@@ -155,11 +155,13 @@ const LoginComp = () => {
                 </Button>
               </Box>
               <span
+              className="active-tv-font"
                 style={{
                   color: "red",
                   width: "100%",
                   justifyContent: "center",
                   display: "flex",
+                  fontSize:10
                 }}
               >
                 {errorLogs}
@@ -386,6 +388,7 @@ const loginStyles = {
     width: "100%",
     padding: 10,
     fontWeight: "bold",
+    fontSize:10
   },
   inputBlocks: {
     display: "flex",

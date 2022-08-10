@@ -407,12 +407,14 @@ const confirm = () => {
                   </Button>
                 </Box>
                 <span
+              className="active-tv-font"
                 style={{
                   color: "red",
                   width: "100%",
                   justifyContent: "center",
                   display: "flex",
-                  padding:'10px'
+                  fontSize:10,
+                 marginTop: 10
                 }}
               >
                 {errorLogs}

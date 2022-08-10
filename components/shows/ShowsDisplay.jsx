@@ -19,6 +19,7 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { USER_CONTEXT } from "../../context/MainContext";
+import EpisodeSlider from "./EpisodeSlider";
 
 export default function ShowsDisplay() {
   const [open, setOpen] = React.useState(false);
@@ -179,14 +180,8 @@ export default function ShowsDisplay() {
                   <PulseLoader color={color} loading={loading} size={20} />;
                 </Box>
               ) : (
-                <Box sx={{ ...styles.episodesContainer }}>
-                  
-                
-
-
-
-
-
+                <Box sx={{ ...styles.episodesContainer }}>               
+                <EpisodeSlider data={data} num={12}/>
                 </Box>
               )}
             </Box>
@@ -235,6 +230,9 @@ const styles = {
     width: "100%",
     height: "100%",
     background: "#111",
+    display:'flex',
+    alignItems:'center',
+    justifyContent:'center'
   },
 
   fadeContainer: {

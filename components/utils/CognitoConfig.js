@@ -135,5 +135,5 @@ Amplify.configure({
 const currentConfig = Auth.configure()
 
 
-// Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
+Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 

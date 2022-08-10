@@ -449,7 +449,16 @@ const LoginComp = () => {
                   Sign up
                 </Button>
               </Box>
-              <span   style={{color:'red', width:'100%',justifyContent:'center',display:'flex'}}>
+              <span
+              className="active-tv-font"
+                style={{
+                  color: "red",
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                  fontSize:10
+                }}
+              >
                 {errorLogs}
               </span>
               <Box sx={{ padding: "0 50px" }}>
