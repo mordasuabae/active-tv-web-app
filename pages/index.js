@@ -6,6 +6,7 @@ import { Box } from "@mui/system";
 
 
 export default function Home() {
+
   return (
     <Box sx={{background:'#111'}}>
       <HomeBanner />

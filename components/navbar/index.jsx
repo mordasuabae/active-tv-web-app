@@ -20,6 +20,9 @@ const Navbar = () => {
 
   const UserContext = React.useContext(USER_CONTEXT);
 
+  // destructuring the authenticated user from context
+  const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
+
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   const [logged, setLogged] = React.useState(false);
@@ -45,12 +48,12 @@ const Navbar = () => {
       sx={{
         // background: "#111",
         // background:'linear-gradient(to bottom, #131313, #111, #181818)',
-        background:'black',
+        background: "black",
         height: "70px",
         // padding:'10px 0'
       }}
     >
-      <Container maxWidth="xl" sx={{ paddingTop:'0px' }}>
+      <Container maxWidth="xl" sx={{ paddingTop: "0px" }}>
         <Toolbar disableGutters>
           <Typography
             variant="h6"
@@ -75,7 +78,13 @@ const Navbar = () => {
             />
           </Typography>
 
-          <Box sx={{ flexGrow: 1,paddingTop:0, display: { xs: "flex", md: "none" } }}>
+          <Box
+            sx={{
+              flexGrow: 1,
+              paddingTop: 0,
+              display: { xs: "flex", md: "none" },
+            }}
+          >
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -239,8 +248,8 @@ const Navbar = () => {
               </a>
             </Link>
           </Box>
-          
-        {/* coin system below */}
+
+          {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
             <Typography variant="h6" fontWeight={"bold"} fontSize={16}>
               {"0"}
@@ -249,11 +258,26 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            <Avatar
-              src={UserContext.name + UserContext.surname}
+            {/* <Avatar
+              // src={UserContext.name + UserContext.surname}
+              src={AuthenticatedUser.name[0]}
               alt="/static/images/avatar/2.jpg"
-            />
-
+            /> */}
+            <Box
+              sx={{
+                height: "40px",
+                width: "40px",
+                background: "#f4f4f4",
+                borderRadius: "100%",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+              }}
+            >
+              <Typography fontWeight="bold" color="#000" fontSize={24}>
+                {/* {AuthenticatedUser.name[0]} */}
+                </Typography>
+            </Box>
             {/* {logged ? (
               <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
             ) : (
@@ -339,7 +363,7 @@ const Navbar = () => {
                   sx={{ background: "rgba(1,1,1,0.8)", color: "#bd3535" }}
                 >
                   <Typography textAlign="center" className={"active-tv-font"}>
-                    {setting} 
+                    {setting}
                   </Typography>
                 </MenuItem>
               ))}

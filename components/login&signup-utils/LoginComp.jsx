@@ -15,14 +15,88 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
 import Router from "next/router";
 import { Auth } from "aws-amplify";
+// import { Hub } from 'aws-amplify';
+import { Hub, Logger } from 'aws-amplify'
+// import {Hub} from "@aws-amplify/core"
+
 
 //amplify methods
 // import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
 // import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
 
 const LoginComp = () => {
+
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
+
+
+//hub details
+// Hub.listen('auth', (data) => {
+//   const { payload } = data;
+//   this.onAuthEvent(payload);           
+//   console.log('hub says => A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
+
+  Hub.listen('auth', (data) => {
+      
+    switch (data.payload.event) {
+      case 'signIn':
+          console.log('user signed in');
+          break;
+      case 'signUp':
+          console.log('user signed up');
+          break;
+      case 'signOut':
+          console.log('user signed out');
+          break;
+      case 'signIn_failure':
+          console.log('hub=>log: user sign in failed');
+          console.log(data.payload.event + ' my log')
+          break;
+      case 'configured':
+          console.log('the Auth module is configured');
+    }
+  });
+// })
+
+
+
+// const logger = new Logger('My-Logger');
+
+// const listener = (data) => {
+
+//     switch (data.payload.event) {
+//         case 'signIn':
+//             logger.info('user signed in');
+//             break;
+//         case 'signUp':
+//             logger.info('user signed up');
+//             break;
+//         case 'signOut':
+//             logger.info('user signed out');
+//             break;
+//         case 'signIn_failure':
+//             logger.error('user sign in failed');
+//             break;
+//         case 'tokenRefresh':
+//             logger.info('token refresh succeeded');
+//             break;
+//         case 'tokenRefresh_failure':
+//             logger.error('token refresh failed');
+//             break;
+//         case 'autoSignIn':
+//             logger.info('Auto Sign In after Sign Up succeeded');
+//             break;
+//         case 'autoSignIn_failure':
+//             logger.error('Auto Sign In after Sign Up failed');
+//             break;
+//         case 'configured':
+//             logger.info('the Auth module is configured');
+//     }
+// }
+
+// Hub.listen('auth', listener);
+// console.log('hub module =>', Hub)
+
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -45,15 +119,16 @@ const LoginComp = () => {
     setShow(!show);
   };
 
-  async function signIn(username, password) {
-    console.log("username", username);
-    console.log("password", password);
 
-    // return
-    // console.log(`user email is ${username} and password is ${password}`)
+
+
+  async function signIn(username, password) {
+
+    console.log("username-logs", username);
+    console.log("password-logs", password);
 
     try {
-      const user = await Auth.signIn(username, password);
+      await Auth.signIn(username, password);
       Router.push("/");
     } catch (error) {
       console.log("error signing in", error);
@@ -64,6 +139,7 @@ const LoginComp = () => {
 
   // submit form
   const handleSubmit = (e) => {
+    
     e.preventDefault();
 
     signIn(formDetails.email, formDetails.password);
@@ -82,6 +158,7 @@ const LoginComp = () => {
               height="105px"
               style={{ marginBottom: "5" }}
             />
+       
             <Typography
               className={"active-tv-font"}
               variant="h4"

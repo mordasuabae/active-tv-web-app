@@ -3,11 +3,10 @@ import Navbar from "../components/navbar";
 import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState, useEffect } from "react";
 import { Palette } from "@universemc/react-palette";
-
-
 import { Amplify, Auth } from 'aws-amplify';
 import awsconfig from "./../components/utils/CognitoConfig";
-Amplify.configure(awsconfig);
+import CurrentConfig from './../components/utils/CognitoConfig'
+Amplify.configure(CurrentConfig);
 
 
 function MyApp({ Component, pageProps }) {
@@ -21,22 +20,30 @@ function MyApp({ Component, pageProps }) {
     episodes: []
   })
 
+
+
+
   const checkUser = async () => {
-
-    console.log('getting user')
-    const authUser = await Auth.currentAuthenticatedUser({ bypassCache: true });
-
-    setUser(authUser);
-
+ 
+  await Auth.currentAuthenticatedUser()
+    .then(user => {
+      console.log("User after succesfull login: ", user.attributes.email)
+      setUser(user.attributes.email)
+    })
+    .catch((error) =>{
+      console.log("Error after sucesfull login: ", error) 
+      setUser(null)})
   }
 
-  // useEffect(() => {
-  //   checkUser()
-  // }, [])
+  useEffect(() => {
+    checkUser()
+  }, [])
 
   return (
     <USER_CONTEXT.Provider
-      value={{ UserContext, selectedCategory, setSelectedCategory, showsDetails, setShowsDetails }}
+      value={{ UserContext, selectedCategory, setSelectedCategory, showsDetails, setShowsDetails , AuthenticatedUser:{
+        name:user
+      } }}
     >
       <Navbar />
       <Component {...pageProps} />

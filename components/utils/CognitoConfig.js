@@ -22,40 +22,12 @@ Amplify.configure({
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
         userPoolWebClientId: '5srg77q19ue9ails59lnkkert7', //'active38fde85b_app_clientWeb', //'4g2oc7praeobt637599bqdm6hh' 
 
-        // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
-        mandatorySignIn: false,
-
-        // OPTIONAL - Configuration for cookie storage
-        // Note: if the secure flag is set to true, then the cookie transmission requires a secure protocol
-        cookieStorage: {
-        // REQUIRED - Cookie domain (only required if cookieStorage is provided)
-            domain:  'https://activetvwebapp16baf347-16baf347-dev.auth.us-east-2.amazoncognito.com',//'.yourdomain.com',
-        // OPTIONAL - Cookie path
-            path: '/',
-        // OPTIONAL - Cookie expiration in days
-            expires: 365,
-        // OPTIONAL - See: https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie/SameSite
-            // sameSite: "strict" | "lax",
-        // OPTIONAL - Cookie secure flag
-        // Either true or false, indicating if the cookie transmission requires a secure protocol (https).
-            secure: true
-        },
-
-        // OPTIONAL - customized storage object
-        // storage: MyStorage,
-        
-        // OPTIONAL - Manually set the authentication flow type. Default is 'USER_SRP_AUTH'
-        authenticationFlowType: 'USER_PASSWORD_AUTH',
-
-      // OPTIONAL - Manually set key value pairs that can be pass                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         ed to Cognito Lambda Triggers
-        clientMetadata: { myCustomKey: 'myCustomValue' },
-
          // OPTIONAL - Hosted UI configuration
         oauth: {
             domain: 'https://activetvwebapp16baf347-16baf347-dev.auth.us-east-2.amazoncognito.com', //'your_cognito_domain',
-            scope: ['phone', 'email', 'profile', 'openid', 'aws.cognito.signin.user.admin'],
-            redirectSignIn: 'https://www.activetvonline.co.za/',          //'http://localhost:3000/',
-            redirectSignOut: 'https://www.activetvonline.co.za/signout/',    //'http://localhost:3000/signup',
+            scope: ['phone', 'email', 'profile', 'openid'],
+            redirectSignIn:'http://localhost:3000/', //'https://www.activetvonline.co.za/',          'http://localhost:3000/',
+            redirectSignOut:'http://localhost:3000/signup', //'https://www.activetvonline.co.za/signout/',    //'http://localhost:3000/signup',
             responseType: 'code' // or 'token', note that REFRESH token will only be generated when the responseType is code
         }
     }
@@ -132,9 +104,9 @@ Amplify.configure({
 // });
 
 
-const currentConfig = Auth.configure()
+export const CurrentConfig = Auth.configure()
 
-const AmplifyLoggertest = ""
+const AmplifyLoggertest = "logger test"
 
 // Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 
