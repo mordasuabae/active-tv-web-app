@@ -11,6 +11,7 @@ import Avatar from "@mui/material/Avatar";
 import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
+import Dropdown from "./dropdown";
 import Link from "next/link";
 import { USER_CONTEXT } from "../../context/MainContext";
 
@@ -22,6 +23,10 @@ const Navbar = () => {
 
   // destructuring the authenticated user from context
   const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
+  //user initial
+  const user = AuthenticatedUser.name
+  // const userIntial = user.charAt(0)
+
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -263,7 +268,8 @@ const Navbar = () => {
               src={AuthenticatedUser.name[0]}
               alt="/static/images/avatar/2.jpg"
             /> */}
-            <Box
+             <Dropdown user={user}/>
+            {/* <Box
               sx={{
                 height: "40px",
                 width: "40px",
@@ -275,9 +281,8 @@ const Navbar = () => {
               }}
             >
               <Typography fontWeight="bold" color="#000" fontSize={24}>
-                {/* {AuthenticatedUser.name[0]} */}
                 </Typography>
-            </Box>
+            </Box> */}
             {/* {logged ? (
               <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
             ) : (

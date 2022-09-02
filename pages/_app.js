@@ -24,15 +24,16 @@ function MyApp({ Component, pageProps }) {
 
 
   const checkUser = async () => {
- 
-  await Auth.currentAuthenticatedUser()
-    .then(user => {
-      console.log("User after succesfull login: ", user.attributes.email)
-      setUser(user.attributes.email)
-    })
-    .catch((error) =>{
-      console.log("Error after sucesfull login: ", error) 
-      setUser(null)})
+
+    await Auth.currentAuthenticatedUser()
+      .then(user => {
+        console.log("User after succesfull login: ", user.attributes.email)
+        setUser(user.attributes.email)
+      })
+      .catch((error) => {
+        console.log("Error after succesfull login: ", error.message)
+        setUser(null)
+      })
   }
 
   useEffect(() => {
@@ -41,9 +42,11 @@ function MyApp({ Component, pageProps }) {
 
   return (
     <USER_CONTEXT.Provider
-      value={{ UserContext, selectedCategory, setSelectedCategory, showsDetails, setShowsDetails , AuthenticatedUser:{
-        name:user
-      } }}
+      value={{
+        UserContext, selectedCategory, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+          name: user,
+        }
+      }}
     >
       <Navbar />
       <Component {...pageProps} />

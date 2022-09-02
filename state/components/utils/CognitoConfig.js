@@ -21,9 +21,11 @@ Amplify.configure({
 
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
         userPoolWebClientId: '5srg77q19ue9ails59lnkkert7', //'active38fde85b_app_clientWeb', //'4g2oc7praeobt637599bqdm6hh' 
+        
+        //userPoolWebClientId:'4g2oc7praeobt637599bqdm6hh',   // redirects to active tv current web application
 
         // OPTIONAL - Enforce user authentication prior to accessing AWS resources or not
-        mandatorySignIn: false,
+         mandatorySignIn: false,
 
         // OPTIONAL - Configuration for cookie storage
         // Note: if the secure flag is set to true, then the cookie transmission requires a secure protocol

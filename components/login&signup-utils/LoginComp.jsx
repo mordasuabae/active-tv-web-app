@@ -262,6 +262,9 @@ const LoginComp = () => {
                 }}
               >
                 <Button
+                   onClick={()=>{
+                    Auth.federatedSignIn({provider:'google'})
+                   }}
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
@@ -276,7 +279,9 @@ const LoginComp = () => {
                   }}
                   variant="contained"
                   className={"active-tv-font"}
-                  type="Submit"
+                   onClick={()=>{
+                    Auth.federatedSignIn({provider:'Facebook'})
+                   }}
                 >
                   <FacebookIcon sx={{ margin: "0 10px" }} />
                   Continue with Facebook
@@ -541,3 +546,5 @@ const loginStyles = {
     },
   },
 };
+
+

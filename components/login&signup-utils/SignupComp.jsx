@@ -266,7 +266,6 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert(formDetails.email + " submitted the form");
     signUp(formDetails.email, formDetails.password, formDetails.email);
   };
 
