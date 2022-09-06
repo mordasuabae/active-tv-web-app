@@ -263,6 +263,23 @@ const LoginComp = () => {
     }
   }
 
+
+  const GoogleSignin = () => {
+    try {
+      Auth.federatedSignIn({ provider: "Google" });
+    } catch (err) {
+      console.log(`Google auth returns ${err.message}`);
+    }
+  };
+  const FacebookSignin = () => {
+    try {
+      Auth.federatedSignIn({ provider: "Facebook" });
+    } catch (err) {
+      console.log(`Facebook auth returns ${err.message}`);
+    }
+  };
+
+
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();

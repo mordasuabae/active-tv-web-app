@@ -9,10 +9,10 @@ import Paper from '@mui/material/Paper';
 import Avatar from "@mui/material/Avatar";
 import { Auth } from 'aws-amplify';
 import Router from 'next/router';
-import {useState} from 'react'
+import { useState } from 'react'
 
 
-export default function PositionedPopper({user}) {
+export default function PositionedPopper({ user }) {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
@@ -25,30 +25,54 @@ export default function PositionedPopper({user}) {
 
 
   async function signOut() {
+
+
     try {
-        await Auth.signOut();
-        Router.push('/signup')
+      await Auth.signOut();
+      Router.push('/login')
     } catch (error) {
-        console.log('error signing out: ', error);
+      console.log('error signing out: ', error);
     }
-}
+  }
 
 
 
   return (
-    <Box sx={{ width: 100, zIndex:1000 }}>
+    <Box sx={{ width: 100, zIndex: 1000 }}>
       <Popper open={open} anchorEl={anchorEl} placement={placement} transition>
         {({ TransitionProps }) => (
           <Fade {...TransitionProps} timeout={350}>
-            <Paper sx={{background:'#222'}}>
-              <Typography sx={{ p: 2 , color:'#fff'}}>The content of the Popper.</Typography>
-              <Typography sx={{ p: 2 , color:'#fff'}}>The content of the Popper.</Typography>
-              <Typography sx={{ p: 2 , color:'#fff'}}></Typography>
-               <Button onClick={()=>{
-                  signOut()
-               }}>
-                  sign out
-               </Button>
+            <Paper sx={{
+              background: '#222',
+              minHeight: '150px',
+              minWidth: "140px",
+              padding: '5px',
+              display: 'flex',
+              flexDirection: 'column',
+              alignItems: 'flex-start',
+              justifyContent: 'flex-end'
+            }}>
+              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+                Router.push('/account')
+              }}>
+                <Typography variant="p" color="#fff" fontSize={14}>
+                  account
+                </Typography>
+              </Button>
+              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+                Router.push('/')
+              }}>
+                <Typography variant="p" color="#fff" fontSize={14}>
+                  Settings
+                </Typography>
+              </Button>
+              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+                signOut()
+              }}>
+                <Typography variant="p" color="#fff" fontSize={14}>
+                  Sign out
+                </Typography>
+              </Button>
             </Paper>
           </Fade>
         )}
@@ -57,9 +81,9 @@ export default function PositionedPopper({user}) {
       <Grid container justifyContent="center">
         <Grid item>
           <Button onClick={handleClick('bottom-end')}>
-          <Avatar sx={{ bgcolor: 'red' }}>
-               {user}
-             </Avatar>
+            <Avatar sx={{ bgcolor: 'red' }}>
+              {user}
+            </Avatar>
           </Button>
         </Grid>
       </Grid>

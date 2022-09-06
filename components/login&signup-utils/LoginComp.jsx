@@ -15,88 +15,76 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
 import Router from "next/router";
 import { Auth } from "aws-amplify";
-// import { Hub } from 'aws-amplify';
-import { Hub, Logger } from 'aws-amplify'
-// import {Hub} from "@aws-amplify/core"
-
-
-//amplify methods
-// import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
-// import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
+import { Hub, Logger } from "aws-amplify";
 
 const LoginComp = () => {
-
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
+  //hub details
+  // Hub.listen('auth', (data) => {
+  //   const { payload } = data;
+  //   this.onAuthEvent(payload);
+  //   console.log('hub says => A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
 
-//hub details
-// Hub.listen('auth', (data) => {
-//   const { payload } = data;
-//   this.onAuthEvent(payload);           
-//   console.log('hub says => A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
-
-  Hub.listen('auth', (data) => {
-      
+  Hub.listen("auth", (data, event) => {
     switch (data.payload.event) {
-      case 'signIn':
-          console.log('user signed in');
-          break;
-      case 'signUp':
-          console.log('user signed up');
-          break;
-      case 'signOut':
-          console.log('user signed out');
-          break;
-      case 'signIn_failure':
-          console.log('hub=>log: user sign in failed');
-          console.log(data.payload.event + ' my log')
-          break;
-      case 'configured':
-          console.log('the Auth module is configured');
+      case "signIn":
+        console.log("user signed in " + event);
+        break;
+      case "signUp":
+        console.log("user signed up " + event);
+        break;
+      case "signOut":
+        console.log("user signed out " + event);
+        break;
+      case "signIn_failure":
+        console.log("hub=>log: user sign in failed " + event);
+        console.log(data.payload.event + " my log");
+        break;
+      case "configured":
+        console.log("the Auth module is configured " + event);
     }
   });
-// })
+  // })
 
+  // const logger = new Logger('My-Logger');
 
+  // const listener = (data) => {
 
-// const logger = new Logger('My-Logger');
+  //     switch (data.payload.event) {
+  //         case 'signIn':
+  //             logger.info('user signed in');
+  //             break;
+  //         case 'signUp':
+  //             logger.info('user signed up');
+  //             break;
+  //         case 'signOut':
+  //             logger.info('user signed out');
+  //             break;
+  //         case 'signIn_failure':
+  //             logger.error('user sign in failed');
+  //             break;
+  //         case 'tokenRefresh':
+  //             logger.info('token refresh succeeded');
+  //             break;
+  //         case 'tokenRefresh_failure':
+  //             logger.error('token refresh failed');
+  //             break;
+  //         case 'autoSignIn':
+  //             logger.info('Auto Sign In after Sign Up succeeded');
+  //             break;
+  //         case 'autoSignIn_failure':
+  //             logger.error('Auto Sign In after Sign Up failed');
+  //             break;
+  //         case 'configured':
+  //             logger.info('the Auth module is configured');
+  //     }
+  // }
 
-// const listener = (data) => {
-
-//     switch (data.payload.event) {
-//         case 'signIn':
-//             logger.info('user signed in');
-//             break;
-//         case 'signUp':
-//             logger.info('user signed up');
-//             break;
-//         case 'signOut':
-//             logger.info('user signed out');
-//             break;
-//         case 'signIn_failure':
-//             logger.error('user sign in failed');
-//             break;
-//         case 'tokenRefresh':
-//             logger.info('token refresh succeeded');
-//             break;
-//         case 'tokenRefresh_failure':
-//             logger.error('token refresh failed');
-//             break;
-//         case 'autoSignIn':
-//             logger.info('Auto Sign In after Sign Up succeeded');
-//             break;
-//         case 'autoSignIn_failure':
-//             logger.error('Auto Sign In after Sign Up failed');
-//             break;
-//         case 'configured':
-//             logger.info('the Auth module is configured');
-//     }
-// }
-
-// Hub.listen('auth', listener);
-// console.log('hub module =>', Hub)
-
+  // Hub.listen('auth', listener);
+  // console.log('hub module =>', Hub)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -119,11 +107,25 @@ const LoginComp = () => {
     setShow(!show);
   };
 
+  const GoogleSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Google" });
+     console.log('using Google for federation')
 
-
+    } catch (err) {
+      console.log(`Google auth returns ${err.message}`);
+    }
+  };
+  const FacebookSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Facebook" });
+     console.log('using facebook for federation')
+    } catch (err) {
+      console.log(`Facebook auth returns ${err.message}`);
+    }
+  };
 
   async function signIn(username, password) {
-
     console.log("username-logs", username);
     console.log("password-logs", password);
 
@@ -131,20 +133,15 @@ const LoginComp = () => {
       await Auth.signIn(username, password);
       Router.push("/");
     } catch (error) {
-      console.log("error signing in", error);
-      console.log("something went wrong while signing in");
+      console.log("error signing in ", error);
       setErrorLogs(error.message);
     }
   }
 
   // submit form
   const handleSubmit = (e) => {
-    
     e.preventDefault();
-
     signIn(formDetails.email, formDetails.password);
-
-    // alert( formDetails.email + ' logged in')
   };
 
   return (
@@ -158,7 +155,7 @@ const LoginComp = () => {
               height="105px"
               style={{ marginBottom: "5" }}
             />
-       
+
             <Typography
               className={"active-tv-font"}
               variant="h4"
@@ -181,7 +178,10 @@ const LoginComp = () => {
           <Box sx={loginStyles.formBox}>
             <form onSubmit={handleSubmit}>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel }}
+                >
                   Email address
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
@@ -200,7 +200,12 @@ const LoginComp = () => {
                 </Box>
               </Box>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>Password</label>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel }}
+                >
+                  Password
+                </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
                     name="password"
@@ -232,13 +237,13 @@ const LoginComp = () => {
                 </Button>
               </Box>
               <span
-              className="active-tv-font"
+                className="active-tv-font"
                 style={{
                   color: "red",
                   width: "100%",
                   justifyContent: "center",
                   display: "flex",
-                  fontSize:10
+                  fontSize: 10,
                 }}
               >
                 {errorLogs}
@@ -262,9 +267,11 @@ const LoginComp = () => {
                 }}
               >
                 <Button
-                   onClick={()=>{
-                    Auth.federatedSignIn({provider:'google'})
-                   }}
+                  onClick={() => {
+                    GoogleSignin();
+                    // Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Google})
+                    // Auth.federatedSignIn({ provider: "Google" });
+                  }}
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
@@ -279,9 +286,11 @@ const LoginComp = () => {
                   }}
                   variant="contained"
                   className={"active-tv-font"}
-                   onClick={()=>{
-                    Auth.federatedSignIn({provider:'Facebook'})
-                   }}
+                  onClick={() => {
+                    FacebookSignin();
+                    // Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Facebook})
+                    // Auth.federatedSignIn({ provider: "Facebook" });
+                  }}
                 >
                   <FacebookIcon sx={{ margin: "0 10px" }} />
                   Continue with Facebook
@@ -322,7 +331,6 @@ const LoginComp = () => {
               className={"active-tv-font"}
               sx={{
                 fontWeight: "bolder",
-
                 marginTop: 2,
                 fontSize: {
                   md: "10px",
@@ -470,7 +478,7 @@ const loginStyles = {
     width: "100%",
     padding: 10,
     fontWeight: "bold",
-    fontSize:10
+    fontSize: 10,
   },
   inputBlocks: {
     display: "flex",
@@ -546,5 +554,3 @@ const loginStyles = {
     },
   },
 };
-
-

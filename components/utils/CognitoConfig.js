@@ -24,12 +24,12 @@ Amplify.configure({
 
          // OPTIONAL - Hosted UI configuration
         oauth: {
-            domain: 'https://activetvwebapp16baf347-16baf347-dev.auth.us-east-2.amazoncognito.com', //'your_cognito_domain',
+            domain: 'activetvwebapp16baf347-16baf347-dev.auth.us-east-2.amazoncognito.com', //'your_cognito_domain',
             // scope: ['phone', 'email', 'profile', 'openid'],
-            redirectSignIn:'http://localhost:3000/', //'https://www.activetvonline.co.za/',          'http://localhost:3000/',
-            redirectSignOut:'http://localhost:3000/signup', //'https://www.activetvonline.co.za/signout/',    //'http://localhost:3000/signup',
-            responseType: 'code', // or 'token', note that REFRESH token will only be generated when the responseType is code
-            // responseType:'token'
+            redirectSignIn: 'http://localhost:3000/', //'https://www.activetvonline.co.za/',   //        'http://localhost:3000/',
+            redirectSignOut:  'http://localhost:3000/signup', //'https://www.activetvonline.co.za/signout/',//'http://localhost:3000/signup', //'https://www.activetvonline.co.za/signout/',    //'http://localhost:3000/signup',
+            responseType: 'token' // or 'token', note that REFRESH token will only be generated when the responseType is code
+            // responseType:'code'
         }
     }
 });
@@ -107,7 +107,8 @@ Amplify.configure({
 
 export const CurrentConfig = Auth.configure()
 
-const AmplifyLoggertest = "logger test"
+// const AmplifyLoggertest = "logger test"
+console.log('current config')
 
 // Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 
