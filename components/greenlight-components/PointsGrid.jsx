@@ -13,7 +13,7 @@ const PointsGrid = () => {
             <img style={styles.img} src="point.png" alt="img" />
           </Box>
           <Box sx={styles.header}>
-            <Typography variant="h6" fontWeight={'bold'} color="#fff">
+            <Typography  className={"active-tv-font"} variant="h6" fontWeight={'bold'} color="#fff" fontSize={16}>
               01 EARN POINTS
             </Typography>
           </Box>
@@ -28,7 +28,7 @@ const PointsGrid = () => {
             <img style={styles.img} src="browse.png" alt="img" />
           </Box>
           <Box sx={styles.header}>
-            <Typography variant="h6" fontWeight={'bold'} color="#fff">
+          <Typography  className={"active-tv-font"} variant="h6" fontWeight={'bold'} color="#fff" fontSize={16}>
               02 BROWSE PROJECTS
             </Typography>
           </Box>
@@ -43,12 +43,12 @@ const PointsGrid = () => {
             <img style={styles.img} src="contribute.png" alt="img" />
           </Box>
           <Box sx={styles.header}>
-            <Typography variant="h6" fontWeight={'bold'} color="#fff">
+          <Typography  className={"active-tv-font"} variant="h6" fontWeight={'bold'} color="#fff" fontSize={16}>
               03 CONTRIBUTE POINTS
             </Typography>
           </Box>
           <Box sx={styles.body}>
-             <Typography align="center" variant="h6" color="#fff" fontSize={16} sm={6}>
+             <Typography align="center" align="center" variant="h6" color="#fff" fontSize={16} sm={6}>
              Contribute Your Producer Points Towards Any Project You Would Like To See Us Make.
              </Typography>
           </Box>
@@ -58,7 +58,7 @@ const PointsGrid = () => {
             <img style={styles.img} src="watch.png" alt="img" />
           </Box>
           <Box sx={styles.header}>
-            <Typography  variant="h6" fontWeight={'bold'} color="#fff" fontSize={20}>
+          <Typography  className={"active-tv-font"} variant="h6" fontWeight={'bold'} color="#fff" fontSize={16}>
               04 WATCH SHOWS
             </Typography>
           </Box>

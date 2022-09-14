@@ -10,6 +10,13 @@ import Avatar from "@mui/material/Avatar";
 import { Auth } from 'aws-amplify';
 import Router from 'next/router';
 import { useState } from 'react'
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import LogoutIcon from '@mui/icons-material/Logout';
+import SettingsIcon from '@mui/icons-material/Settings';
+
+
+
+
 
 
 export default function PositionedPopper({ user }) {
@@ -25,8 +32,6 @@ export default function PositionedPopper({ user }) {
 
 
   async function signOut() {
-
-
     try {
       await Auth.signOut();
       Router.push('/login')
@@ -44,31 +49,47 @@ export default function PositionedPopper({ user }) {
           <Fade {...TransitionProps} timeout={350}>
             <Paper sx={{
               background: '#222',
-              minHeight: '150px',
-              minWidth: "140px",
-              padding: '5px',
+              minHeight: '130px',
+              minWidth: "130px",
+              padding: '5px 1px',
               display: 'flex',
               flexDirection: 'column',
               alignItems: 'flex-start',
-              justifyContent: 'flex-end'
+              justifyContent: 'flex-end',
+              zIndex: 1000
             }}>
-              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+              <Button sx={{
+                '&:hover': {
+                  background: 'transparent'
+                }
+              }} variant="text" onClick={() => {
                 Router.push('/account')
               }}>
+                <AccountCircleIcon sx={{ color: "#fff", marginRight: '2px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
                   account
                 </Typography>
               </Button>
-              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+              <Button variant="text" sx={{
+                width: 'auto', '&:hover': {
+                  background: 'transparent'
+                }
+              }} onClick={() => {
                 Router.push('/')
               }}>
+                <SettingsIcon sx={{ color: "#fff", marginRight: '2px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
                   Settings
                 </Typography>
               </Button>
-              <Button variant="text" sx={{ width: 'auto' }} onClick={() => {
+              <Button variant="text" sx={{
+                width: 'auto', '&:hover': {
+                  background: 'transparent'
+                }
+              }} onClick={() => {
                 signOut()
               }}>
+                <LogoutIcon sx={{ color: "#fff", marginRight: '2px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
                   Sign out
                 </Typography>

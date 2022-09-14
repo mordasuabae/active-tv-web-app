@@ -23,8 +23,8 @@ const Navbar = () => {
 
   // destructuring the authenticated user from context
   const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
-  //user initial
-  const user = AuthenticatedUser.name
+  // //user initial
+  // const user = AuthenticatedUser.name
   // const userIntial = user.charAt(0)
 
 
@@ -263,84 +263,8 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-            {/* <Avatar
-              // src={UserContext.name + UserContext.surname}
-              src={AuthenticatedUser.name[0]}
-              alt="/static/images/avatar/2.jpg"
-            /> */}
-             <Dropdown user={user}/>
-            {/* <Box
-              sx={{
-                height: "40px",
-                width: "40px",
-                background: "#f4f4f4",
-                borderRadius: "100%",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <Typography fontWeight="bold" color="#000" fontSize={24}>
-                </Typography>
-            </Box> */}
-            {/* {logged ? (
-              <Avatar alt={UserContext.name} src="/static/images/avatar/2.jpg" />
-            ) : (
-              <Box
-                sx={{
-                  width: "100%",
-                }}
-              >
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Button
-                      sx={{
-                        mr: 2,
-                        color: "#eee",
-                        display: "block",
-                        fontSize: "16px",
-                        width:{
-                          lg: "130px",
-                          xs:'100%'
-                        },
-                        "&:hover": {
-                          background: "#eee",
-                          color: "#111",
-                        },
-                      }}
-                    >
-                      Log in
-                    </Button>
-                  </IconButton>
-                </Tooltip>
-                <Tooltip title="Open settings">
-                  <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                    <Button
-                      variant="outline"
-                      sx={{
-                        mr: 2,
-                        color: "#eee",
-                        display: "block",
-                        fontSize: "16px",
-                        width: {
-                          lg:"130px",
-                          xs:'100%'
-                        },
-                        border: "1px solid #eee",
-                        "&:hover": {
-                          background: "#eee",
-                          color: "#111",
-                        },
-                      }}
-                    >
-                      Sign Up
-                    </Button>
-                  </IconButton>
-                </Tooltip>
-              </Box>
-            )} */}
-
-            <Menu
+             <Dropdown user={AuthenticatedUser.name}/>
+            {/* <Menu
               sx={{
                 mt: "45px",
                 display: "flex",
@@ -372,7 +296,7 @@ const Navbar = () => {
                   </Typography>
                 </MenuItem>
               ))}
-            </Menu>
+            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

@@ -22,69 +22,6 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-  //hub details
-  // Hub.listen('auth', (data) => {
-  //   const { payload } = data;
-  //   this.onAuthEvent(payload);
-  //   console.log('hub says => A new auth event has happened: ', data.payload.data.username + ' has ' + data.payload.event);
-
-  Hub.listen("auth", (data, event) => {
-    switch (data.payload.event) {
-      case "signIn":
-        console.log("user signed in " + event);
-        break;
-      case "signUp":
-        console.log("user signed up " + event);
-        break;
-      case "signOut":
-        console.log("user signed out " + event);
-        break;
-      case "signIn_failure":
-        console.log("hub=>log: user sign in failed " + event);
-        console.log(data.payload.event + " my log");
-        break;
-      case "configured":
-        console.log("the Auth module is configured " + event);
-    }
-  });
-  // })
-
-  // const logger = new Logger('My-Logger');
-
-  // const listener = (data) => {
-
-  //     switch (data.payload.event) {
-  //         case 'signIn':
-  //             logger.info('user signed in');
-  //             break;
-  //         case 'signUp':
-  //             logger.info('user signed up');
-  //             break;
-  //         case 'signOut':
-  //             logger.info('user signed out');
-  //             break;
-  //         case 'signIn_failure':
-  //             logger.error('user sign in failed');
-  //             break;
-  //         case 'tokenRefresh':
-  //             logger.info('token refresh succeeded');
-  //             break;
-  //         case 'tokenRefresh_failure':
-  //             logger.error('token refresh failed');
-  //             break;
-  //         case 'autoSignIn':
-  //             logger.info('Auto Sign In after Sign Up succeeded');
-  //             break;
-  //         case 'autoSignIn_failure':
-  //             logger.error('Auto Sign In after Sign Up failed');
-  //             break;
-  //         case 'configured':
-  //             logger.info('the Auth module is configured');
-  //     }
-  // }
-
-  // Hub.listen('auth', listener);
-  // console.log('hub module =>', Hub)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -126,8 +63,6 @@ const LoginComp = () => {
   };
 
   async function signIn(username, password) {
-    console.log("username-logs", username);
-    console.log("password-logs", password);
 
     try {
       await Auth.signIn(username, password);
