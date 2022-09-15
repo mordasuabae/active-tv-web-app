@@ -54,14 +54,19 @@ export default function TabsEpisode() {
     setValue(newValue);
   };
 
-  const liked = () => toast.success("YOU HAVE LIKED THIS EPISODE",{position: toast.POSITION.TOP_RIGHT,
+  const liked = () => {
+    toast.success("YOU HAVE LIKED THIS EPISODE",{position: toast.POSITION.TOP_RIGHT,
     autoClose: 1000, marginTop:"40px",
-});
+    
+    })
+  };
 
 
 const disliked = () => toast.error("EPISODE HAS BEEN DISLIKED",{position: toast.POSITION.TOP_RIGHT,
 autoClose: 1000, marginTop:"40px"
 });
+
+
 
   return (
     <Box sx={{ width: '100%',background: "#111", height: "100%" }}>
@@ -70,9 +75,9 @@ autoClose: 1000, marginTop:"40px"
             <p style={{fontSize:"16px"}}>Sort by:</p> 
         </div>
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" style={{ paddingLeft:"140px"}}>
-        <Tab label="SEASON 1" {...a11yProps(0)} className="active-tv-font" />
-        <Tab label="SEASON 2" {...a11yProps(1)} className="active-tv-font" />
-        <Tab label="SEASON 3" {...a11yProps(2)} className="active-tv-font" />
+        <Tab label="SEASON 1" {...a11yProps(0)} className="active-tv-font" style={{color:"white"}} />
+        <Tab label="SEASON 2" {...a11yProps(1)} className="active-tv-font" style={{color:"white"}} />
+        <Tab label="SEASON 3" {...a11yProps(2)} className="active-tv-font" style={{color:"white"}} />
       </Tabs>
       </Box>
 
@@ -116,7 +121,7 @@ autoClose: 1000, marginTop:"40px"
                     }}>
                 
                 <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
-                  <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked}/></div>
+                  <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked} /></div>
                   <div><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></div>
                   <ToastContainer/>
                 </p>
@@ -131,7 +136,7 @@ autoClose: 1000, marginTop:"40px"
       </Box>
       </TabPanel>
 
-      <TabPanel value={value} index={1}>
+      <TabPanel  value={value} index={1}>
         <Box style={{ marginLeft: "50px", marginTop:"110px" }}>
         <Box
           style={{
