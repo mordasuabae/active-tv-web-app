@@ -9,7 +9,6 @@ import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
 import awsconfig from "./../components/utils/CognitoConfig";
 import CurrentConfig from './../components/utils/CognitoConfig'
-import { getListSubheaderUtilityClass } from "@mui/material";
 Amplify.configure(CurrentConfig);
 
 
@@ -54,7 +53,7 @@ function MyApp({ Component, pageProps }) {
       const userInfo =  await Auth.currentUserCredentials()
       const userSession = await Auth.currentSession()
       const currentCredentials = await Auth.currentCredentials()
-      const getUser =  await Auth.currentAuthenticatedUser(user => user)
+      const getUser =  await Auth.currentAuthenticatedUser().then(user => user.username)
       
       console.log(userInfo, 'user information')
       console.log(userSession, 'user session')
@@ -64,8 +63,7 @@ function MyApp({ Component, pageProps }) {
     }catch(err){
         console.log(err.message)
     }
-    // await Auth.currentUserInfo()
-    //logs
+   
   }
 
 
@@ -76,7 +74,7 @@ function MyApp({ Component, pageProps }) {
       .then(user => {
         const currentUser = user.attributes.email
         const userInitial = currentUser.charAt(0)
-        // console.log("User after succesfull login: ", user.attributes.email)
+        console.log("User after succesfull login: ", user.attributes.email)
         setUser(userInitial)
         console.log('user checking for federation' , user)
       })
@@ -86,7 +84,14 @@ function MyApp({ Component, pageProps }) {
       })
   }
 
+
+const reload = ()=>{
+  window.location.reload()
+}
+
+
   useEffect(() => {
+    console.log('running user functions')
     checkUser()
     getUserInfo()
   }, [])

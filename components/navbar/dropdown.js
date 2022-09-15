@@ -12,6 +12,7 @@ import Router from 'next/router';
 import { useState } from 'react'
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import LogoutIcon from '@mui/icons-material/Logout';
+import LoginIcon from '@mui/icons-material/Login';
 import SettingsIcon from '@mui/icons-material/Settings';
 
 
@@ -87,6 +88,18 @@ export default function PositionedPopper({ user }) {
                   background: 'transparent'
                 }
               }} onClick={() => {
+                 Router.push('/login')
+              }}>
+                <LoginIcon sx={{ color: "#fff", marginRight: '2px' }} />
+                <Typography variant="p" color="#fff" fontSize={14}>
+                  Sign in
+                </Typography>
+              </Button>
+              <Button variant="text" sx={{
+                width: 'auto', '&:hover': {
+                  background: 'transparent'
+                }
+              }} onClick={() => {
                 signOut()
               }}>
                 <LogoutIcon sx={{ color: "#fff", marginRight: '2px' }} />
@@ -98,11 +111,13 @@ export default function PositionedPopper({ user }) {
           </Fade>
         )}
       </Popper>
-
+      {/* the user */}
       <Grid container justifyContent="center">
         <Grid item>
           <Button onClick={handleClick('bottom-end')}>
+
             <Avatar sx={{ bgcolor: 'red' }}>
+              {/* {user.charAt(0) == "g" ? <img src={"google.png"} width={"100%"} height={"100%"} /> : user.charAt(0) == "f" ? <img src={"google.png"} width={"100%"} height={"100%"} /> : user} */}
               {user}
             </Avatar>
           </Button>
