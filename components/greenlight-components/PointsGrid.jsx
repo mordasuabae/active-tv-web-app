@@ -48,7 +48,7 @@ const PointsGrid = () => {
             </Typography>
           </Box>
           <Box sx={styles.body}>
-             <Typography align="center" align="center" variant="h6" color="#fff" fontSize={16} sm={6}>
+             <Typography align="center"  variant="h6" color="#fff" fontSize={16} sm={6}>
              Contribute Your Producer Points Towards Any Project You Would Like To See Us Make.
              </Typography>
           </Box>
