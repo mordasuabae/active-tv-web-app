@@ -24,8 +24,8 @@ const Navbar = () => {
   // destructuring the authenticated user from context
   const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
   // //user initial
-  // const user = AuthenticatedUser.name
-  // const userIntial = user.charAt(0)
+  const currentUser = AuthenticatedUser.name
+  const userIntial = currentUser.charAt(0)
 
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -263,7 +263,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-             <Dropdown user={AuthenticatedUser.name}/>
+             <Dropdown user={currentUser} userInitial={userIntial}/>
             {/* <Menu
               sx={{
                 mt: "45px",

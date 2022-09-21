@@ -9,6 +9,7 @@ import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
 import awsconfig from "./../components/utils/CognitoConfig";
 import CurrentConfig from './../components/utils/CognitoConfig'
+import { FlashlightOnRounded } from "@mui/icons-material";
 Amplify.configure(CurrentConfig);
 
 
@@ -16,7 +17,8 @@ function MyApp({ Component, pageProps }) {
 
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
-  const [user, setUser] = useState("A")
+  const [user, setUser] = useState("Active-tv")
+  const [loggedIn , setLoggedIn] = useState(false)
   const [showsDetails, setShowsDetails] = useState({
     title: '',
     img: 'imortal.webp',
@@ -73,14 +75,16 @@ function MyApp({ Component, pageProps }) {
     await Auth.currentAuthenticatedUser()
       .then(user => {
         const currentUser = user.attributes.email
-        const userInitial = currentUser.charAt(0)
+        // const userInitial = currentUser.charAt(0)
         console.log("User after succesfull login: ", user.attributes.email)
-        setUser(userInitial)
-        console.log('user checking for federation' , user)
+        setUser(currentUser)
+        setLoggedIn(true)
+        // console.log('user checking for federation' , user)
       })
       .catch((error) => {
         console.log("Error after succesfull login: ", error)
-        setUser("A")
+        setUser("Active-tv")
+        setLoggedIn(false)
       })
   }
 
@@ -99,7 +103,7 @@ const reload = ()=>{
   return (
     <USER_CONTEXT.Provider
       value={{
-        UserContext, selectedCategory, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext, selectedCategory,loggedIn ,setLoggedIn, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
           name: user,
         }
       }}
