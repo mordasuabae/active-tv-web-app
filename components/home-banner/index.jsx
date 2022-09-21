@@ -25,12 +25,13 @@ const HomeBanner = () => {
       }
     >
       {({ data, loading, error }) => {
-        console.log(data, loading, error);
+        // console.log(data, loading, error);
         return (
           <Box
             sx={{
               minHeight: "100vh",
               maxHeight: "107vh",
+              zIndex:1
               // background:data.darkVibrant
             }}
           >
@@ -46,6 +47,7 @@ const HomeBanner = () => {
               loop={true}
               modules={[Pagination, Navigation, Autoplay]}
               className="mySwiper"
+              style={{zIndex:0}}
             >
               <SwiperSlide>
                 <BannerItem
@@ -85,7 +87,7 @@ const HomeBanner = () => {
                   "linear-gradient(to bottom,rgba(0,0,0,0.2) 0,rgba(0,0,0,0.5) 20%,rgba(0,0,0,0.7) 50%,rgba(0,0,0,0.5) 90% , rgba(0,0,0,0) 100%)",
                 width: "100%",
                 transform: "translateY(-150px)",
-                zIndex: "2",
+                zIndex: "1",
                 position: "relative",
               }}
             >

@@ -247,7 +247,9 @@ const Navbar = () => {
             </Typography>
             <img src="coin.gif" alt="coin" width={18} height={18} />
           </Box>
-
+    <Typography variant="h6" color="#fff">
+  hello
+    </Typography>
           <Box sx={{ flexGrow: 0 }}>
             <Avatar
               src={UserContext.name + UserContext.surname}
