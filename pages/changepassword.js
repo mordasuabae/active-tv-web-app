@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Auth } from 'aws-amplify';
 
 const background = {
   backgroundColor: "#111",
   width: "100%",
-  minHeight: "88.8vh",
+  minHeight: "calc(100vh - 70px)",
   overflow: "hidden",
   display: "flex",
   alignItems: "center",
@@ -21,7 +22,7 @@ const container = {
   paddingLeft: "50px",
   paddingTop: "30px",
   background: "rgba(0,0,0,0.6)",
-  
+
 };
 
 const InputContainer = {
@@ -35,6 +36,9 @@ const inputBox = {
   width: "700px",
   height: "30px",
   fontSize: "13px",
+  outline:'none',
+  padding:'0 10px',
+  border:'none'
 };
 
 const button = {
@@ -58,50 +62,53 @@ const buttonTwo = {
 };
 
 function changepassword() {
-  // const initialValues = { newpassword: "", confirmpassword: "" };
-  // const [formValues, setFormValues] = useState(initialValues);
-  // const [formErrors, setFormErrors] = useState({});
-  const [newPassword ,setNewPassword] = useState("");
-  const [confirmPassword ,setConfirmPassword] = useState("");
+
+  const [oldPassword, setoldPassword] = useState("");
+  const [newPassword, setnewPassword] = useState("");
+
+
+
+  const AuthResetPassword = (oldPassword, newPassword) => {
+    try {
+      Auth.currentAuthenticatedUser()
+        .then(user => {
+          return Auth.changePassword(user, oldPassword, newPassword);
+        })
+        .then(data => console.log(data))
+        .catch(err => console.log(err));
+
+    } catch (err) {
+      console.log(err.message , 'error after password reset')
+    }
+
+  }
+
 
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if(confirmPassword,newPassword){
-      const passwordDetails = {
-        newPassword:newPassword,
-        confirmPassword:confirmPassword
-      }
-        
-      console.log(passwordDetails)
-      setNewPassword("")
-      setConfirmPassword("")
+
+    if (newPassword, oldPassword) {
+
+      // const passwordDetails = {
+      //   oldPassword: oldPassword,
+      //   newPassword: newPassword
+      // }
+      AuthResetPassword(oldPassword, newPassword)
+
+      // console.log(passwordDetails)
+      setoldPassword("")
+      setnewPassword("")
     }
 
 
   };
 
-  // useEffect(() => {
-  //   console.log(formErrors);
-  //   if (Object.keys(formErrors).length === 0 && isSubmit) {
-  //     console.log(formValues);
-  //   }
-  // }, [formErrors]);
 
-  // const validate = (values) => {
-  //   const errors = {};
-  //   if (!values.newpassword) {
-  //     errors.newpassword = "password is required!";
-  //   }
-  //   if (!values.confirmpassword) {
-  //     errors.confirmpassword = "newpassword is required!";
-  //   }
-  //   return errors;
-  // };
 
   return (
     <div className="active-tv-font" style={background}>
-     
+
       <form style={container} onSubmit={handleSubmit}>
         <h4>CHANGE PASSWORD</h4>
         <hr style={{ marginRight: "20px" }} />
@@ -110,30 +117,30 @@ function changepassword() {
           <p>New Password</p>
           <input
             type="text"
-            name="newpassword"
+            name="oldPassword"
             placeholder="Enter New Psssword..."
             style={inputBox}
-            value={newPassword}
-            onChange={(e)=>setNewPassword(e.target.value)}
+            value={oldPassword}
+            onChange={(e) => setoldPassword(e.target.value)}
           />
           <br />
           <br />
           <p>Confirm Password</p>
           <input
             type="text"
-            name="confirmpassword"
+            name="newPassword"
             placeholder="Confirm New Password..."
             style={inputBox}
-            value={confirmPassword}
-            onChange={(e)=>setConfirmPassword(e.target.value)}
+            value={newPassword}
+            onChange={(e) => setnewPassword(e.target.value)}
           />
         </div>
 
         <div style={{ display: "flex", flexDirection: "column" }}>
-        
-            <button type="submit" style={button} className="active-tv-font">
-              <p className="changepassword">Change Password</p>
-            </button>
+
+          <button type="submit" style={button} className="active-tv-font">
+            <p className="changepassword">Change Password</p>
+          </button>
 
           <Link href="/">
             <button style={buttonTwo} className="active-tv-font">
