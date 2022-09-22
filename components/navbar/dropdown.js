@@ -49,7 +49,8 @@ export default function PositionedPopper({ user, userInitial }) {
       }
 
     }else{
-      Router.push('/shows')
+      Router.push('/login')
+      console.log('logged out with no current user')
       
     }
 
