@@ -1,0 +1,57 @@
+[
+ {
+    "name":"crew cuts",
+    "age":"20",
+    "color":"#fff",
+    "img":"greenlightp1.jpg"
+ },
+ {
+    "name":"planet of apes",
+    "age":"20",
+    "color":"#fff",
+    "img":"greenlightp2.jpg"
+ },
+ {
+    "name":"avatar",
+    "age":"20",
+    "color":"#fff",
+    "img":"greenlightp3.jpg"
+ },
+ {
+    "name":"terrance",
+    "age":"20",
+    "color":"#fff",
+    "img":"greenlightp4.jpg"
+ },
+ {
+    "name":"jerry cruger",
+    "age":"20",
+    "color":"#fff",
+    "img":"greenlightp2.jpg"
+ },
+ {
+    "name":"imortal combat 11",
+    "age":"11",
+    "color":"#fff",
+    "img":"imortal.webp"
+ },
+ {
+   "name":"son of a dungeon",
+   "age":"20",
+   "color":"#fff",
+   "img":"greenlightp4.jpg"
+} ,
+{
+   "name":"avatar",
+   "age":"20",
+   "color":"#fff",
+   "img":"greenlightp3.jpg"
+},
+
+{
+   "name":"planet of apes",
+   "age":"20",
+   "color":"#fff",
+   "img":"greenlightp2.jpg"
+}
+]

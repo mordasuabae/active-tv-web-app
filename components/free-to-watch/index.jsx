@@ -25,7 +25,7 @@ export default function FreeToWatch() {
   },[shows])
   
   const parsedShows = JSON.parse(shows)
-  console.log(shows)
+  // console.log(shows)
   return (
     <Box>
       <Box sx={{ padding: "18px 0px 0px 48px" }}>

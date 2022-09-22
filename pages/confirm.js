@@ -212,7 +212,7 @@ const confirmStyles = {
 const confirm = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
-  const[errorLogs , setErrorLogs] = useState("")
+  const [errorLogs, setErrorLogs] = useState("")
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -233,13 +233,12 @@ const confirm = () => {
   async function confirmSignUp(username, code) {
     try {
       await Auth.confirmSignUp(username, code);
-      
-      
+
       setRedirecting(true);
-        setTimeout(() => {
-          setRedirecting(false);
-          Router.push("/login"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
-        }, 2000);
+      setTimeout(() => {
+        setRedirecting(false);
+        Router.push("/login"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+      }, 2000);
 
     } catch (error) {
       console.log('error confirming sign up', error);
@@ -261,20 +260,20 @@ const confirm = () => {
 
 
   // submit form
-  const handleSubmitCode = (e) => { 
+  const handleSubmitCode = (e) => {
     console.log('submitting code.....')
     e.preventDefault();
 
-      console.log(formDetails.code + " code sent");
-      confirmSignUp(formDetails.email, formDetails.code)
+    console.log(formDetails.code + " code sent");
+    confirmSignUp(formDetails.email, formDetails.code)
 
   };
   // resend form
   const handleResendCode = (e) => {
     console.log('resending code.....')
     e.preventDefault()
-      resendConfirmationCode(formDetails.email)
-    
+    resendConfirmationCode(formDetails.email)
+
   };
 
 
@@ -407,18 +406,18 @@ const confirm = () => {
                   </Button>
                 </Box>
                 <span
-              className="active-tv-font"
-                style={{
-                  color: "red",
-                  width: "100%",
-                  justifyContent: "center",
-                  display: "flex",
-                  fontSize:10,
-                 marginTop: 10
-                }}
-              >
-                {errorLogs}
-              </span>
+                  className="active-tv-font"
+                  style={{
+                    color: "red",
+                    width: "100%",
+                    justifyContent: "center",
+                    display: "flex",
+                    fontSize: 10,
+                    marginTop: 10
+                  }}
+                >
+                  {errorLogs}
+                </span>
                 <Box sx={{ padding: "0 50px" }}>
                   <fieldset style={{ ...confirmStyles.fieldset }}>
                     <legend style={{ ...confirmStyles.legend }}>
@@ -436,3 +435,7 @@ const confirm = () => {
 };
 
 export default confirm;
+
+
+
+

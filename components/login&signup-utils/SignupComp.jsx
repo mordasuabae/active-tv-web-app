@@ -263,10 +263,30 @@ const LoginComp = () => {
     }
   }
 
+
+
+  const GoogleSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Google" });
+     console.log('using Google for federation')
+
+    } catch (err) {
+      console.log(`Google auth returns ${err.message}`);
+    }
+  };
+  const FacebookSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Facebook" });
+     console.log('using facebook for federation')
+    } catch (err) {
+      console.log(`Facebook auth returns ${err.message}`);
+    }
+  };
+
+
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    // alert(formDetails.email + " submitted the form");
     signUp(formDetails.email, formDetails.password, formDetails.email);
   };
 
@@ -483,7 +503,7 @@ const LoginComp = () => {
                   className={"active-tv-font"}
                   sx={{ ...loginStyles.socialBtn, fontSize: "12px" }}
                   variant="contained"
-                  type="Submit"
+                  onClick={GoogleSignin}
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} />
                   Continue with Google
@@ -496,7 +516,7 @@ const LoginComp = () => {
                   }}
                   className={"active-tv-font"}
                   variant="contained"
-                  type="Submit"
+                  onClick={FacebookSignin}
                 >
                   <FacebookIcon sx={{ margin: "0 10px" }} />
                   Continue with Facebook

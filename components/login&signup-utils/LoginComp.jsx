@@ -15,14 +15,13 @@ import FacebookIcon from "@mui/icons-material/Facebook";
 import Link from "next/link";
 import Router from "next/router";
 import { Auth } from "aws-amplify";
-
-//amplify methods
-// import signIn from '../../amplify/methods/amplifySdk' //login method from amplify module
-// import signOut from '../../amplify/methods/amplifySdk' //login method from amplify module
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
+import { Hub, Logger } from "aws-amplify";
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
+
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -45,19 +44,31 @@ const LoginComp = () => {
     setShow(!show);
   };
 
-  async function signIn(username, password) {
-    console.log("username", username);
-    console.log("password", password);
+  const GoogleSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Google" });
+     console.log('using Google for federation')
 
-    // return
-    // console.log(`user email is ${username} and password is ${password}`)
+    } catch (err) {
+      console.log(`Google auth returns ${err.message}`);
+    }
+  };
+  const FacebookSignin = async () => {
+    try {
+     await Auth.federatedSignIn({ provider: "Facebook" });
+     console.log('using facebook for federation')
+    } catch (err) {
+      console.log(`Facebook auth returns ${err.message}`);
+    }
+  };
+
+  async function signIn(username, password) {
 
     try {
-      const user = await Auth.signIn(username, password);
+      await Auth.signIn(username, password);
       Router.push("/");
     } catch (error) {
-      console.log("error signing in", error);
-      console.log("something went wrong while signing in");
+      console.log("error signing in ", error);
       setErrorLogs(error.message);
     }
   }
@@ -65,10 +76,7 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-
     signIn(formDetails.email, formDetails.password);
-
-    // alert( formDetails.email + ' logged in')
   };
 
   return (
@@ -82,6 +90,7 @@ const LoginComp = () => {
               height="105px"
               style={{ marginBottom: "5" }}
             />
+
             <Typography
               className={"active-tv-font"}
               variant="h4"
@@ -104,7 +113,10 @@ const LoginComp = () => {
           <Box sx={loginStyles.formBox}>
             <form onSubmit={handleSubmit}>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel }}
+                >
                   Email address
                 </label>
                 <Box sx={{ ...loginStyles.input }}>
@@ -123,7 +135,12 @@ const LoginComp = () => {
                 </Box>
               </Box>
               <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label className="active-tv-font" style={{ ...loginStyles.inputLabel }}>Password</label>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel }}
+                >
+                  Password
+                </label>
                 <Box sx={{ ...loginStyles.input }}>
                   <input
                     name="password"
@@ -155,13 +172,13 @@ const LoginComp = () => {
                 </Button>
               </Box>
               <span
-              className="active-tv-font"
+                className="active-tv-font"
                 style={{
                   color: "red",
                   width: "100%",
                   justifyContent: "center",
                   display: "flex",
-                  fontSize:10
+                  fontSize: 10,
                 }}
               >
                 {errorLogs}
@@ -185,6 +202,11 @@ const LoginComp = () => {
                 }}
               >
                 <Button
+                  onClick={() => {
+                    GoogleSignin();
+                    // Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Google})
+                    // Auth.federatedSignIn({ provider: "Google" });
+                  }}
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
@@ -199,7 +221,11 @@ const LoginComp = () => {
                   }}
                   variant="contained"
                   className={"active-tv-font"}
-                  type="Submit"
+                  onClick={() => {
+                    FacebookSignin();
+                    // Auth.federatedSignIn({provider:CognitoHostedUIIdentityProvider.Facebook})
+                    // Auth.federatedSignIn({ provider: "Facebook" });
+                  }}
                 >
                   <FacebookIcon sx={{ margin: "0 10px" }} />
                   Continue with Facebook
@@ -240,7 +266,6 @@ const LoginComp = () => {
               className={"active-tv-font"}
               sx={{
                 fontWeight: "bolder",
-
                 marginTop: 2,
                 fontSize: {
                   md: "10px",
@@ -388,7 +413,7 @@ const loginStyles = {
     width: "100%",
     padding: 10,
     fontWeight: "bold",
-    fontSize:10
+    fontSize: 10,
   },
   inputBlocks: {
     display: "flex",

@@ -35,6 +35,7 @@ const GreenlightBanner = () => {
           <Grid sx={styles.gridItem} item md={4} sm={4} xs={12}>
             <Box sx={{ ...styles.content }}>
               <Typography
+              className={"active-tv-font"}
                 sx={{
                   ...styles.bannerHeading,
                   ...styles.textDecorate,
@@ -43,7 +44,7 @@ const GreenlightBanner = () => {
                   fontWeight: "300",
                   fontStyle: "italic",
                   fontSize: {
-                    md: 60,
+                    md: 40,
                     sm: 24,
                     xs: 24,
                   },
@@ -70,12 +71,13 @@ const GreenlightBanner = () => {
                 </b>
               </Typography>
               <Typography
+               className={"active-tv-font"}
                 sx={{
                   ...styles.bannerHeading,
                   fontWeight: "700",
                   marginTop: "20px",
                   fontSize: {
-                    md: 23,
+                    md: 20,
                     sm: 18,
                     xs: 16,
                   },
@@ -86,6 +88,7 @@ const GreenlightBanner = () => {
                 Be a Producer
               </Typography>
               <Typography
+               className={"active-tv-font"}
                 variant="h6"
                 color="#fff"
                 sx={{
@@ -93,9 +96,9 @@ const GreenlightBanner = () => {
                   fontWeight: "200",
                   marginTop: "20px",
                   fontSize: {
-                    md: 18,
-                    sm: 14,
-                    xs: 10,
+                    md: 14,
+                    sm: 12,
+                    xs: 8,
                   },
                 }}
               >

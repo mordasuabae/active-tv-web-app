@@ -20,7 +20,7 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function RowAndColumnSpacing() {
   return (
-    <>
+    <Box sx={{zIndex:'1'}}>
       <Box sx={{ padding: "8px 48px" }}>
         <SectionHeader text={"Popular Now"} textColor={"#eee"} />
       </Box>
@@ -37,6 +37,6 @@ export default function RowAndColumnSpacing() {
           })}
         </Grid>
       </Box>
-    </>
+    </Box>
   );
 }
