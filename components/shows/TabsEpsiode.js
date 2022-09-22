@@ -70,10 +70,14 @@ autoClose: 1000, marginTop:"40px"
 
   return (
     <Box sx={{ width: '100%',background: "#111", height: "100%" }}>
-      <Box style={{ marginLeft:"700px"}} className="active-tv-font">
-        <div style={{ marginLeft: "50px", display:"flex", color:"white", marginBottom:"10px", fontSize:"12px", borderRadius:"5px", display:"flex", alignItems:"center", justifyContent:"center"}}>
-            <p style={{fontSize:"16px"}}>Sort by:</p> 
-        </div>
+      <Box style={{ marginLeft:"130px", display:"flex", marginTop:"50px"}} className="active-tv-font">
+        <Box style={{
+              marginRight:"100px",
+              textDecoration: "underline",
+              color: "white",
+              fontSize: "30px",
+              paddingTop: "10px",
+              }}>episodes</Box>
       <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" style={{ paddingLeft:"140px"}}>
         <Tab label="SEASON 1" {...a11yProps(0)} className="active-tv-font" style={{color:"white"}} />
         <Tab label="SEASON 2" {...a11yProps(1)} className="active-tv-font" style={{color:"white"}} />
@@ -83,10 +87,10 @@ autoClose: 1000, marginTop:"40px"
 
      <Box>
      <TabPanel value={value} index={0}>
-      <Box style={{ marginLeft: "50px", marginTop:"110px" }}>
+      <Box style={{ marginLeft: "50px", marginTop:"20px" }}>
         <Box
           style={{
-            marginTop: "60px",
+            marginTop: "20px",
             alignItems: "center",
             marginLeft: "30px",
             flexDirection:"colum"
@@ -120,11 +124,11 @@ autoClose: 1000, marginTop:"40px"
                     marginLeft: "45px",
                     }}>
                 
-                <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
+                {/* <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
                   <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked} /></div>
                   <div><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></div>
                   <ToastContainer/>
-                </p>
+                </p> */}
                 </Box>
                 </div>
                 </div>
@@ -137,10 +141,10 @@ autoClose: 1000, marginTop:"40px"
       </TabPanel>
 
       <TabPanel  value={value} index={1}>
-        <Box style={{ marginLeft: "50px", marginTop:"110px" }}>
+        <Box style={{ marginLeft: "50px", marginTop:"10px" }}>
         <Box
           style={{
-            marginTop: "60px",
+            marginTop: "20px",
             alignItems: "center",
             marginLeft: "30px",
             flexDirection:"colum"
@@ -174,11 +178,11 @@ autoClose: 1000, marginTop:"40px"
                     marginLeft: "45px",
                     }}>
                 
-                <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
+                {/* <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
                   <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked}/></div>
                   <div><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></div>
                   <ToastContainer/>
-                </p>
+                </p> */}
                 </Box>
                 </div>
                 </div>
@@ -191,10 +195,10 @@ autoClose: 1000, marginTop:"40px"
       </TabPanel>
 
       <TabPanel value={value} index={2}>
-       <Box style={{ marginLeft: "50px", marginTop:"110px" }}>
+       <Box style={{ marginLeft: "50px", marginTop:"10px" }}>
         <Box
           style={{
-            marginTop: "60px",
+            marginTop: "20px",
             alignItems: "center",
             marginLeft: "30px",
             flexDirection:"colum"
@@ -228,11 +232,11 @@ autoClose: 1000, marginTop:"40px"
                     marginLeft: "45px",
                     }}>
                 
-                <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
+                {/* <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
                   <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked}/></div>
                   <div><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></div>
                   <ToastContainer/>
-                </p>
+                </p> */}
                 </Box>
                 </div>
                 </div>

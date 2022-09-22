@@ -41,7 +41,7 @@
  /* Track */
  ::-webkit-scrollbar-track {
    background: #111;
-   border-radius: 20px;
+   border-radius: 20px; 
  }
  
  /* Handle */
@@ -318,6 +318,22 @@
   transition: ease-in-out;
   transition: 1s;
  }
+
+ .changepassword:hover{
+  transform: scale(1.1);
+  z-index: 1;
+  width:"3000px";
+  transition: ease-in-out;
+  transition: 1s;
+}
+
+.backtoyouraccount:hover{
+  transform: scale(1.1);
+  z-index: 1;
+  /* width:"10px"; */
+  transition: ease-in-out;
+  transition: 1s;
+}
 
 
  

@@ -30,18 +30,6 @@ const ShowsEpisodes = () => {
         }}
       >
       </Box>
-      <Box className="active-tv-font"  style={{ display:"flex", justifyContent:"space-between"}}>
-          <h1
-            style={{
-              textDecoration: "underline",
-              color: "white",
-              fontSize: "23px",
-              marginLeft: "50px",
-            }}
-          >
-            EPISODES
-          </h1>
-      </Box>
       <div>
       <TabsEpisode/>
       </div>
