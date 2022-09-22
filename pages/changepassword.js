@@ -68,7 +68,7 @@ function changepassword() {
 
 
 
-  const AuthResetPassword = (oldPassword, newPassword) => {
+  const AuthResetPassword = async (oldPassword, newPassword) => {
     try {
       Auth.currentAuthenticatedUser()
         .then(user => {
@@ -96,7 +96,7 @@ function changepassword() {
       // }
       AuthResetPassword(oldPassword, newPassword)
 
-      // console.log(passwordDetails)
+      //reset the inputs to null
       setoldPassword("")
       setnewPassword("")
     }
