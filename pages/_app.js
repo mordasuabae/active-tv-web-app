@@ -89,9 +89,9 @@ function MyApp({ Component, pageProps }) {
   }
 
 
-const reload = ()=>{
-  window.location.reload()
-}
+// const reload = ()=>{
+//   window.location.reload()
+// }
 
 
   useEffect(() => {
