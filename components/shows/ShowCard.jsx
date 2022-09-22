@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 
 
-const ShowCard = ({ img, text, openModal, color, onFetchEpisode }) => {
+const ShowCard = ({ img, text, openModal, color, onFetchEpisode, one, two, three, four, five, six, seven, eight, nine}) => {
 
   const { setShowsDetails  } = useContext(USER_CONTEXT)
 
@@ -15,7 +15,16 @@ const ShowCard = ({ img, text, openModal, color, onFetchEpisode }) => {
           openModal()
           setShowsDetails({
             title:text,
-            img:img
+            img:img,
+            episodeone:one,
+            episodetwo:two,
+            episodethree:three,
+            episodefour:four,
+            episodefive:five,
+            episodesix:six,
+            episodeseven:seven,
+            episodeeight:eight,
+            episodenine:nine,
           })
         } }
         style={{

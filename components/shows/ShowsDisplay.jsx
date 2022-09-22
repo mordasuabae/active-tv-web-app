@@ -1,25 +1,12 @@
 import * as React from "react";
-import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
-import Modal from "@mui/material/Modal";
-import Fade from "@mui/material/Fade";
-import Button from "@mui/material/Button";
 import ShowCard from "./ShowCard";
 import Typography from "@mui/material/Typography";
 import data from "./test.json";
 import ShowHeader from "./ShowsHeader";
 import { useEffect, useState, useContext } from "react";
-import ClipLoader from "react-spinners/ClipLoader";
-import BeatLoader from "react-spinners/BeatLoader";
-import RiseLoader from "react-spinners/RiseLoader";
-import MoonLoader from "react-spinners/MoonLoader";
-import PulseLoader from "react-spinners/PulseLoader";
-import HashLoader from "react-spinners/HashLoader";
-import ScaleLoader from "react-spinners/ScaleLoader";
-import PacmanLoader from "react-spinners/PacmanLoader";
-import PropagateLoader from "react-spinners/PropagateLoader";
 import { USER_CONTEXT } from "../../context/MainContext";
-import EpisodeSlider from "./EpisodeSlider";
+import Link from 'next/link';
 
 export default function ShowsDisplay() {
   const [open, setOpen] = React.useState(false);
@@ -39,25 +26,7 @@ export default function ShowsDisplay() {
     }, 3000);
   };
 
-  useEffect(() => {
-    //render a differernt loader whenever the page gets rerendered:
 
-    const spinnerItem = new Array();
-    spinnerItem[0] = <ClipLoader color={color} loading={loading} size={20} />;
-    spinnerItem[1] = <BeatLoader color={color} loading={loading} size={20} />;
-    spinnerItem[2] = <ScaleLoader color={color} loading={loading} size={20} />;
-    spinnerItem[3] = <HashLoader color={color} loading={loading} size={40} />;
-    spinnerItem[4] = <RiseLoader color={color} loading={loading} size={20} />;
-    spinnerItem[5] = <MoonLoader color={color} loading={loading} size={20} />;
-    spinnerItem[6] = <PulseLoader color={color} loading={loading} size={20} />;
-    spinnerItem[7] = <PacmanLoader color={color} loading={loading} size={20} />;
-    spinnerItem[8] = (
-      <PropagateLoader color={color} loading={loading} size={20} />
-    );
-
-    var i = Math.floor(spinnerItem.length * Math.random());
-    setSpinner(spinnerItem[i]);
-  }, []);
 
   return (
     <div>
@@ -66,19 +35,27 @@ export default function ShowsDisplay() {
         sx={{
           display: "flex",
           gap: 5,
-          // overflowX: "auto",
           width: "100%",
-          // border: "1px solid red",
           flexWrap: "wrap",
         }}
       >
         {data.map((card) => (
-          <Box>
+          <Link href={`/shows-episodes/${card.name}`}>
+            <a> 
             <ShowCard
               color={card.color}
               openModal={handleOpen}
               img={card.img}
               text={card.name}
+              one={card.episodeone}
+              two={card.episodetwo}
+              three={card.episodethree}
+              four={card.episodefour}
+              five={card.episodefive}
+              six={card.episodesix}
+              seven={card.episodeseven}
+              eight={card.episodeeight}
+              nine={card.episodenine}
               onFetchEpisode={getEpisodes}
             />
             <Typography
@@ -94,100 +71,10 @@ export default function ShowsDisplay() {
             >
               {card.name}
             </Typography>
-          </Box>
+            </a>
+          </Link>
         ))}
       </Box>
-
-      <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
-        open={open}
-        onClose={handleClose}
-        closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 1000,
-        }}
-      >
-        <Fade in={open}>
-          <Box sx={{ ...styles.container }}>
-            <Box
-              sx={{
-                ...styles.topShowContainer,
-                background: `url(${showsDetails.img})`,
-                backgroundSize: "cover",
-                backgroundPosition: "center",
-              }}
-            >
-              <img
-                src={showsDetails.img}
-                style={{
-                  objectFit: "cover",
-                  objectPosition: "center",
-                  position: "absolute",
-                  filter: "brightness(0.2)",
-                }}
-                alt=""
-                width={"100%"}
-                height={"40%"}
-              />
-              <Box sx={styles.fadeContainer}>
-                <Box sx={styles.btnContainer}>
-                  <Button
-                    sx={styles.cancelBtn}
-                    onClick={() => {
-                      handleClose();
-                      setEmpty(true);
-                    }}
-                  >
-                    X
-                  </Button>
-                </Box>
-                <Box
-                  sx={{
-                    height: {
-                      md: 200,
-                      sm: 50,
-                      xs: 120,
-                    },
-                    display: "flex",
-                    alignItems: "flex-end",
-                    padding: "0 20px",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      zIndex: 1,
-                      fontSize: {
-                        md: 16,
-                        sm: 14,
-                        xs: 12,
-                      },
-                    }}
-                    className="active-tv-font"
-                    color="#fff"
-                  >
-                    {showsDetails.title}
-                  </Typography>
-                </Box>
-              </Box>
-            </Box>
-            <Box sx={{ ...styles.bottomShowContainer }}>
-              {empty ? (
-                <Box sx={{ ...styles.emptyBox }}>
-                  <img src="load.png" alt="" width={250} />
-                  {/* {spinner} */}
-                  <PulseLoader color={color} loading={loading} size={20} />;
-                </Box>
-              ) : (
-                <Box sx={{ ...styles.episodesContainer }}>               
-                <EpisodeSlider data={data} num={12}/>
-                </Box>
-              )}
-            </Box>
-          </Box>
-        </Fade>
-      </Modal>
     </div>
   );
 }
