@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import { Box } from "@mui/system";
 import { Auth } from 'aws-amplify';
+import { Typography } from "@mui/material";
 
 const background = {
   backgroundColor: "#111",
@@ -107,14 +109,14 @@ function changepassword() {
 
 
   return (
-    <div className="active-tv-font" style={background}>
+    <Box className="active-tv-font" style={background}>
 
       <form style={container} onSubmit={handleSubmit}>
-        <h4>CHANGE PASSWORD</h4>
+        <Typography variant="h4" fontSize={22}>CHANGE PASSWORD</Typography>
         <hr style={{ marginRight: "20px" }} />
 
-        <div style={InputContainer}>
-          <p>New Password</p>
+        <Box style={InputContainer}>
+          <Typography variant="p">New Password</Typography>
           <input
             type="text"
             name="oldPassword"
@@ -125,7 +127,7 @@ function changepassword() {
           />
           <br />
           <br />
-          <p>Confirm Password</p>
+          <Typography variant="p">Confirm Password</Typography>
           <input
             type="text"
             name="newPassword"
@@ -134,22 +136,22 @@ function changepassword() {
             value={newPassword}
             onChange={(e) => setnewPassword(e.target.value)}
           />
-        </div>
+        </Box>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
+        <Box style={{ display: "flex", flexDirection: "column" }}>
 
           <button type="submit" style={button} className="active-tv-font">
-            <p className="changepassword">Change Password</p>
+            <Typography variant="p" className="changepassword">Change Password</Typography>
           </button>
 
-          <Link href="/">
+          <Link href="/account">
             <button style={buttonTwo} className="active-tv-font">
               <p className="backtoyouraccount">Back To Your Account</p>
             </button>
           </Link>
-        </div>
+        </Box>
       </form>
-    </div>
+    </Box>
   );
 }
 
