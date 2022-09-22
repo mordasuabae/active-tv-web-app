@@ -34,10 +34,10 @@ const InputContainer = {
 
 const inputBox = {
   width: "700px",
-  height: "30px",
+  // height: "30px",
   fontSize: "13px",
   outline:'none',
-  padding:'0 10px',
+  padding:'20px',
   border:'none'
 };
 
