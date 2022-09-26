@@ -1,12 +1,14 @@
 import React from 'react'
-import { Box, Typography } from '@mui/system'
+import { Box } from '@mui/system'
+import { Typography } from '@mui/material'
 
 const AccountLoggedIn = () => {
 
   return (
     <Box sx={styles.container}>
          <Box sx={styles.contentBox}>
-             
+            {/* insert code here */}
+  
          </Box>
     </Box>
   )
