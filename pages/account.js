@@ -5,33 +5,36 @@ import Subscriptions from '../components/Account-Page/subscriptions'
 import ViewOnDevice from '../components/Account-Page/ViewOnDevice'
 import Banner from '../components/Account-Page/Banner'
 import { Box } from '@mui/system'
-import {useState} from 'react'
+import { useState, useContext } from 'react'
+import { USER_CONTEXT } from '../context/MainContext'
+import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
 
 
 
 const account = () => {
 
-const [loggedIn, setloggedIn] = useState(false)
+ 
+  // const {loggedIn, SetLoggedIn, AuthenticatedUser} = useContext(USER_CONTEXT) //getting the user auth details 
+  const [loggedIn, SetLoggedIn] = useState(true)
+
 
   return (
 
-      loggedIn  ?
+    loggedIn ?
 
-    <Box>
+      <Box>
+        <AccountLoggedIn />
+      </Box>
 
-    {"logged in"}
-    
-    </Box>
+      :
 
-    :
-
-    <Box>
-        <Banner/>
-        <Subscriptions/>
-        <ViewOnDevice/>
-        <MerchSection/>
-        <AccountFooter/>
-    </Box>
+      <Box>
+        <Banner />
+        <Subscriptions />
+        <ViewOnDevice />
+        <MerchSection />
+        <AccountFooter />
+      </Box>
   )
 }
 
