@@ -27,7 +27,7 @@ export default function PositionedPopper({ user, userInitial }) {
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
   // const [loggedIn , setLoggedIn]  = React.useState(true)
-  const { loggedIn, setLoggedIn } = useContext(USER_CONTEXT)
+  const { loggedIn, setLoggedIn, setUser } = useContext(USER_CONTEXT)
 
 
 
@@ -40,21 +40,20 @@ export default function PositionedPopper({ user, userInitial }) {
 
   async function signOut() {
 
-    if (loggedIn) {
+    if (loggedIn && user !== 'Activetv@gmail.com') {
       try {
         await Auth.signOut();
         Router.push('/login')
+        setUser('Activetv@gmail.com')
       } catch (error) {
         console.log('error signing out: ', error);
       }
 
-    }else{
+    } else {
       Router.push('/login')
-      console.log('logged out with no current user')
-      
+      console.log('logged out with no present user')
+
     }
-
-
 
   }
 
@@ -79,7 +78,6 @@ export default function PositionedPopper({ user, userInitial }) {
 
               <Box sx={{ height: '140px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
 
-
                 <Box sx={styles.DropUser}>
 
                   {loggedIn ?
@@ -101,10 +99,6 @@ export default function PositionedPopper({ user, userInitial }) {
                   }
 
                 </Box>
-
-
-
-
               </Box>
 
               <Button sx={{
@@ -153,7 +147,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   Active studio
                 </Typography>
               </Button>
-          
+
               <Button variant="text" sx={{
                 width: 'auto', '&:hover': {
                   background: 'transparent'

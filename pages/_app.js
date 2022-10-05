@@ -17,7 +17,8 @@ function MyApp({ Component, pageProps }) {
 
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
-  const [user, setUser] = useState("Active-tv")
+  const [user, setUser] = useState("Activetv@gmail.com")
+  const [displayName, setDisplayName] = useState("display name")
   const [loggedIn , setLoggedIn] = useState(false)
   const [showsDetails, setShowsDetails] = useState({
     title: '',
@@ -75,11 +76,13 @@ function MyApp({ Component, pageProps }) {
     await Auth.currentAuthenticatedUser()
       .then(user => {
         const currentUser = user.attributes.email
-        // const userInitial = currentUser.charAt(0)
-        console.log("User after succesfull login: ", user.attributes.email)
+        const DisplayUser = user.attributes.displayName
+        // our setters
         setUser(currentUser)
         setLoggedIn(true)
-        // console.log('user checking for federation' , user)
+        //testing logs
+        console.log("User after succesfull login: ", currentUser)
+        console.log("display name after succesfull login: ",DisplayUser)
       })
       .catch((error) => {
         console.log("Error after succesfull login: ", error)
@@ -89,21 +92,16 @@ function MyApp({ Component, pageProps }) {
   }
 
 
-// const reload = ()=>{
-//   window.location.reload()
-// }
-
-
   useEffect(() => {
-    console.log('running user functions')
     checkUser()
     getUserInfo()
-  }, [])
+    console.log('use effect ran after user changed to ' , user )
+  }, [user])
 
   return (
     <USER_CONTEXT.Provider
       value={{
-        UserContext, selectedCategory,loggedIn ,setLoggedIn, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext, selectedCategory,loggedIn ,setLoggedIn,setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
           name: user,
         }
       }}

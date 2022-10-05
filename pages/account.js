@@ -14,9 +14,8 @@ import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
 const account = () => {
 
  
-  // const {loggedIn, SetLoggedIn, AuthenticatedUser} = useContext(USER_CONTEXT) //getting the user auth details 
-  const [loggedIn, SetLoggedIn] = useState(true)
-
+   const {loggedIn} = useContext(USER_CONTEXT) //getting the user auth details 
+  // const [loggedIn, SetLoggedIn] = useState(true)
 
   return (
 

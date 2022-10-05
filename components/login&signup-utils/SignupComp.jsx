@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useRouter from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -27,12 +27,14 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
+import { USER_CONTEXT } from "../../context/MainContext";
+
 
 const loginStyles = {
   container: {
     minHeight: "145vh",
     width: "100%",
-    background: "url('login-bg.jpg')",
+    background: "url('active-tv-login-test1.png')",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -207,6 +209,7 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const [errorLogs, setErrorLogs] = useState('')
+  const {AuthenticatedUser} = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -237,16 +240,17 @@ const LoginComp = () => {
   async function signUp(username, password, email) {
     try {
       const { user } = await Auth.signUp({
-        username: username,
+        username: email,
         password: password,
         attributes: {
           email: email, // optional
           phone_number: null, // optional - E.164 number convention
           // other custom attributes
+          displayName:username
         },
       });
       
-      console.log(user);
+      console.log(user, 'signup authclass running');
 
       if (user) {
         setRedirecting(true);
@@ -287,7 +291,7 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUp(formDetails.email, formDetails.password, formDetails.email);
+    signUp(formDetails.name, formDetails.password, formDetails.email);
   };
 
   return redirecting ? (
