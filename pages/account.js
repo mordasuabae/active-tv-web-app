@@ -11,7 +11,7 @@ import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
 
 
 
-const account = () => {
+const Account = () => {
 
  
    const {loggedIn} = useContext(USER_CONTEXT) //getting the user auth details 
@@ -37,4 +37,4 @@ const account = () => {
   )
 }
 
-export default account
+export default Account

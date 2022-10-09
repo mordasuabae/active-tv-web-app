@@ -209,7 +209,7 @@ const confirmStyles = {
   },
 };
 
-const confirm = () => {
+const Confirm = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const [errorLogs, setErrorLogs] = useState("")
@@ -434,7 +434,7 @@ const confirm = () => {
     )
 };
 
-export default confirm;
+export default Confirm;
 
 
 

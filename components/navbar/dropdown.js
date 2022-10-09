@@ -27,7 +27,7 @@ export default function PositionedPopper({ user, userInitial }) {
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
   // const [loggedIn , setLoggedIn]  = React.useState(true)
-  const { loggedIn, setLoggedIn, setUser } = useContext(USER_CONTEXT)
+  const { loggedIn, setLoggedIn, setUser, ForceReload } = useContext(USER_CONTEXT)
 
 
 
@@ -43,8 +43,9 @@ export default function PositionedPopper({ user, userInitial }) {
     if (loggedIn && user !== 'Activetv@gmail.com') {
       try {
         await Auth.signOut();
-        Router.push('/login')
+        await Router.push('/login')
         setUser('Activetv@gmail.com')
+        ForceReload()
       } catch (error) {
         console.log('error signing out: ', error);
       }

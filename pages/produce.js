@@ -11,7 +11,7 @@ import Whatlive from '../components/greenlight-components/greenlight-shows/Whatl
 import Production from '../components/greenlight-components/greenlight-shows/Production';
 
 
-const produceThat = () => {
+const ProduceThat = () => {
   
   return (
     <Palette
@@ -40,6 +40,6 @@ const produceThat = () => {
 
 }
 
-export default produceThat
+export default ProduceThat
 
 

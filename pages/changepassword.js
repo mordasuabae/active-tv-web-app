@@ -66,7 +66,7 @@ const ButtonTwo = {
   fontSize: "10px",
 };
 
-function changepassword() {
+function Changepassword() {
 
   const [oldPassword, setoldPassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
@@ -158,4 +158,4 @@ function changepassword() {
   );
 }
 
-export default changepassword;
+export default Changepassword;

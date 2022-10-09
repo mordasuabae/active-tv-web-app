@@ -7,7 +7,7 @@ import { Palette } from "@universemc/react-palette";
 import { useState, useEffect } from 'react';
 import ShowsDisplay from '../components/shows/ShowsDisplay';
 
-const shows = () => {
+const Shows = () => {
   
   return (
     <Palette
@@ -34,4 +34,4 @@ const shows = () => {
   )
 }
 
-export default shows
+export default Shows

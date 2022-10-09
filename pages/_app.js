@@ -19,7 +19,7 @@ function MyApp({ Component, pageProps }) {
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
-  const [loggedIn , setLoggedIn] = useState(false)
+  const [loggedIn, setLoggedIn] = useState(false)
   const [showsDetails, setShowsDetails] = useState({
     title: '',
     img: 'imortal.webp',
@@ -28,8 +28,11 @@ function MyApp({ Component, pageProps }) {
 
 
 
+  const ForceReload = () => window.location.reload()
 
-//hub listeners
+
+
+  //hub listeners
   Hub.listen("auth", (data) => {
     switch (data.payload.event) {
       case "signIn":
@@ -51,22 +54,24 @@ function MyApp({ Component, pageProps }) {
 
 
 
-  const getUserInfo = async ()=>{
-    try{
-      const userInfo =  await Auth.currentUserCredentials()
+
+
+  const getUserInfo = async () => {
+    try {
+      const userInfo = await Auth.currentUserCredentials()
       const userSession = await Auth.currentSession()
       const currentCredentials = await Auth.currentCredentials()
-      const getUser =  await Auth.currentAuthenticatedUser().then(user => user.username)
-      
+      const getUser = await Auth.currentAuthenticatedUser().then(user => user.username)
+
       console.log(userInfo, 'user information')
       console.log(userSession, 'user session')
       console.log(currentCredentials, 'current credentials')
       console.log(getUser, 'getting federated user ')
-      
-    }catch(err){
-        console.log(err.message)
+
+    } catch (err) {
+      console.log(err.message)
     }
-   
+
   }
 
 
@@ -82,7 +87,8 @@ function MyApp({ Component, pageProps }) {
         setLoggedIn(true)
         //testing logs
         console.log("User after succesfull login: ", currentUser)
-        console.log("display name after succesfull login: ",DisplayUser)
+        console.log("display name after succesfull login: ", DisplayUser)
+
       })
       .catch((error) => {
         console.log("Error after succesfull login: ", error)
@@ -95,13 +101,14 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     checkUser()
     getUserInfo()
-    console.log('use effect ran after user changed to ' , user )
+    console.log('use effect ran after user changed to ', user)
+
   }, [user])
 
   return (
     <USER_CONTEXT.Provider
       value={{
-        UserContext, selectedCategory,loggedIn ,setLoggedIn,setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext, selectedCategory, loggedIn, ForceReload, setLoggedIn, setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
           name: user,
         }
       }}
