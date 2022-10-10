@@ -5,12 +5,9 @@ import { useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 
-
 const AccountLoggedIn = () => {
+  const { AuthenticatedUser } = useContext(USER_CONTEXT); //pulling out the current authenticated user
 
-
-const {AuthenticatedUser} = useContext(USER_CONTEXT) //pulling out the current authenticated user
-  
   const [subscribed, setSubscribed] = useState(false);
 
   return (
@@ -61,7 +58,7 @@ const {AuthenticatedUser} = useContext(USER_CONTEXT) //pulling out the current a
               >
                 <a href="/changepassword">Change password</a>
               </Typography>
-        
+
               <Typography
                 sx={{
                   marginBottom: "4px",
@@ -152,17 +149,38 @@ const {AuthenticatedUser} = useContext(USER_CONTEXT) //pulling out the current a
             </Grid>
             <Grid sx={styles.gridItem} item md={5.5}>
               <Typography
-                className="active-tv-font" sx={{display:'flex', alignItems:'center',marginBottom:'4px'}}
+                className="active-tv-font"
+                sx={{
+                  display: "flex",
+                  alignItems: "center",
+                  marginBottom: "4px",
+                }}
                 variant="h3"
                 fontSize={10}
               >
                 You have 0 Producer Points
-
-               <img style={{margin:'0 5px'}} src="coin.gif" alt="coin" width={18} height={18} />
+                <img
+                  style={{ margin: "0 5px" }}
+                  src="coin.gif"
+                  alt="coin"
+                  width={18}
+                  height={18}
+                />
               </Typography>
-              <Typography className="active-tv-font" sx={{display:'flex', alignItems:'center'}} variant="h3" fontSize={10}>
+              <Typography
+                className="active-tv-font"
+                sx={{ display: "flex", alignItems: "center" }}
+                variant="h3"
+                fontSize={10}
+              >
                 Since signing up you've earned 0 points
-              <img style={{margin:'0 5px'}} src="coin.gif" alt="coin" width={18} height={18} />
+                <img
+                  style={{ margin: "0 5px" }}
+                  src="coin.gif"
+                  alt="coin"
+                  width={18}
+                  height={18}
+                />
               </Typography>
             </Grid>
             <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>

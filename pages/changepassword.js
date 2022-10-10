@@ -147,7 +147,7 @@ function Changepassword() {
             <Typography variant="p" className="changepassword">Change Password</Typography>
           </Button>
 
-          <Link href="/account">
+          <Link href="/account" passHref={true}>
             <Button style={ButtonTwo} className="active-tv-font">
               <p className="backtoyouraccount">Back To Your Account</p>
             </Button>
