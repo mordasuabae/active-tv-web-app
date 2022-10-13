@@ -23,7 +23,7 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-   const {ForceReload} = useContext(USER_CONTEXT)
+   const {ForceReload, authorisedJWT, setAuthorisedJWT } = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({

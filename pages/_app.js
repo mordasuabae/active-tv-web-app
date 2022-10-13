@@ -10,6 +10,9 @@ import { Hub, Logger } from "aws-amplify";
 import awsconfig from "./../components/utils/CognitoConfig";
 import CurrentConfig from './../components/utils/CognitoConfig'
 import { FlashlightOnRounded } from "@mui/icons-material";
+import axios from 'axios'
+
+
 Amplify.configure(CurrentConfig);
 
 
@@ -20,6 +23,7 @@ function MyApp({ Component, pageProps }) {
   const [user, setUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
+  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
   const [showsDetails, setShowsDetails] = useState({
     title: '',
     img: 'imortal.webp',
@@ -53,6 +57,14 @@ function MyApp({ Component, pageProps }) {
   });
 
 
+  //test for federation
+  const fetchUserInfo = (domain) => {
+    //let domain = 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com'
+    // the original call  axios.get('https://<your-user-pool-domain>/oauth2/userInfo')
+    axios.get(`https://${domain}/oauth2/userInfo`)
+      .then((response) => console.log(response, 'fetching userInfo info with axios'))
+      .catch(err => console.log('failing to fetch user from axios bcz', err.message))
+  }
 
 
 
@@ -61,7 +73,12 @@ function MyApp({ Component, pageProps }) {
       const userInfo = await Auth.currentUserCredentials()
       const userSession = await Auth.currentSession()
       const currentCredentials = await Auth.currentCredentials()
-      const getUser = await Auth.currentAuthenticatedUser().then(user => user.username)
+      const getUser = await Auth.currentAuthenticatedUser().then(user => {
+        const token = user.signInUserSession.accessToken.jwtToken
+        setAuthorisedJWT(token)
+        console.log(authorisedJWT,'how to access jwt statefully')
+           
+      })
 
       console.log(userInfo, 'user information')
       console.log(userSession, 'user session')
@@ -89,6 +106,10 @@ function MyApp({ Component, pageProps }) {
         console.log("User after succesfull login: ", currentUser)
         console.log("display name after succesfull login: ", DisplayUser)
 
+        //get jwt token from user object
+        // const token = user.signInUserSession.accessToken.jwtToken
+        // setAuthorisedJWT('')
+
       })
       .catch((error) => {
         console.log("Error after succesfull login: ", error)
@@ -101,6 +122,7 @@ function MyApp({ Component, pageProps }) {
   useEffect(() => {
     checkUser()
     getUserInfo()
+    fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
     console.log('use effect ran after user changed to ', user)
 
   }, [user])
@@ -108,7 +130,7 @@ function MyApp({ Component, pageProps }) {
   return (
     <USER_CONTEXT.Provider
       value={{
-        UserContext, selectedCategory, loggedIn, ForceReload, setLoggedIn, setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext,authorisedJWT, setAuthorisedJWT, selectedCategory, loggedIn, ForceReload, setLoggedIn, setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
           name: user,
         }
       }}
