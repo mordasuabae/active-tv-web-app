@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Dropdown from "./dropdown";
 import Link from "next/link";
+import axios from 'axios'
 import { USER_CONTEXT } from "../../context/MainContext";
 
 const Navbar = () => {
@@ -22,7 +23,7 @@ const Navbar = () => {
   const UserContext = React.useContext(USER_CONTEXT);
 
   // destructuring the authenticated user from context
-  const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
+  const { AuthenticatedUser, authorisedJWT } = React.useContext(USER_CONTEXT);
   // //user initial
   const currentUser = AuthenticatedUser.name
   const userIntial = currentUser.charAt(0)
@@ -46,6 +47,29 @@ const Navbar = () => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/UserPoolStage/get-config`;
+  const tokenHalndler = async () => {
+    const response = await axios({
+      method: "get",
+      url: endpoint,
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+      //   "Access-Control-Allow-Headers":
+      //     "Origin, X-Requested-With, Content-Type",
+      //   "Access-Control-Allow-Credentials": true,
+      //   Authorization: `Bearer ${authorisedJWT} `,
+      //   // mode: "no-cors",
+      // },
+    });
+    console.log(response)
+  }
+
+
+  
 
   return (
     <AppBar
@@ -252,6 +276,8 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
+
+            {/* <Button onClick={tokenHalndler}>token</Button> */}
           </Box>
 
           {/* coin system below */}

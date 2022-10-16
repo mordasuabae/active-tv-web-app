@@ -68,13 +68,14 @@ function MyApp({ Component, pageProps }) {
 
 
 
+
   const getUserInfo = async () => {
     try {
       const userInfo = await Auth.currentUserCredentials()
       const userSession = await Auth.currentSession()
       const currentCredentials = await Auth.currentCredentials()
       const getUser = await Auth.currentAuthenticatedUser().then(user => {
-        const token = user.signInUserSession.accessToken.jwtToken
+        const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
         console.log(authorisedJWT,'how to access jwt statefully')
            

@@ -17,13 +17,15 @@ import Router from "next/router";
 import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { Hub, Logger } from "aws-amplify";
-import {USER_CONTEXT} from '../../context/MainContext'
+import { USER_CONTEXT } from "../../context/MainContext";
+import axios from "axios";
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-   const {ForceReload, authorisedJWT, setAuthorisedJWT } = useContext(USER_CONTEXT)
+  const { ForceReload, authorisedJWT, setAuthorisedJWT } =
+    useContext(USER_CONTEXT);
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -48,17 +50,16 @@ const LoginComp = () => {
 
   const GoogleSignin = async () => {
     try {
-     await Auth.federatedSignIn({ provider: "Google" });
-     console.log('using Google for federation')
-
+      await Auth.federatedSignIn({ provider: "Google" });
+      console.log("using Google for federation");
     } catch (err) {
       console.log(`Google auth returns ${err.message}`);
     }
   };
   const FacebookSignin = async () => {
     try {
-     await Auth.federatedSignIn({ provider: "Facebook" });
-     console.log('using facebook for federation')
+      await Auth.federatedSignIn({ provider: "Facebook" });
+      console.log("using facebook for federation");
     } catch (err) {
       console.log(`Facebook auth returns ${err.message}`);
     }
@@ -68,12 +69,39 @@ const LoginComp = () => {
     try {
       await Auth.signIn(username, password);
       await Router.push("/");
-       ForceReload()
+      ForceReload();
     } catch (error) {
       console.log("error signing in ", error);
       setErrorLogs(error.message);
     }
   }
+
+
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/UserPoolStage/get-config`;
+  const headers = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
+    "Access-Control-Allow-Headers": "Content-Type, Authorization",
+    Bearer: authorisedJWT,
+  };
+
+  const tokenHalndler = async () => {
+    const response = await axios({
+      method: "get",
+      url: endpoint,
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+      //   "Access-Control-Allow-Headers":
+      //     "Origin, X-Requested-With, Content-Type",
+      //   "Access-Control-Allow-Credentials": true,
+      //   Authorization: `Bearer ${authorisedJWT} `,
+      //   mode: "no-cors",
+      // },
+    });
+    console.log(response);
+  };
 
   // submit form
   const handleSubmit = (e) => {
@@ -164,6 +192,7 @@ const LoginComp = () => {
               </Box>
               <Box sx={{ ...loginStyles.buttonContainer }}>
                 <Button
+                  onClick={tokenHalndler}
                   sx={{ ...loginStyles.loginBtn }}
                   variant="contained"
                   className={"active-tv-font"}
