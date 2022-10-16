@@ -23,7 +23,7 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-   const {ForceReload, authorisedJWT, setAuthorisedJWT } = useContext(USER_CONTEXT)
+   const {ForceReload, authorisedJWT, setAuthorisedJWT ,getUserInfo } = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -49,6 +49,7 @@ const LoginComp = () => {
   const GoogleSignin = async () => {
     try {
      await Auth.federatedSignIn({ provider: "Google" });
+     getUserInfo()
      console.log('using Google for federation')
 
     } catch (err) {
@@ -79,6 +80,7 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(formDetails.email, formDetails.password);
+    
   };
 
   return (

@@ -246,7 +246,8 @@ const LoginComp = () => {
           email: email, // optional
           phone_number: null, // optional - E.164 number convention
           // other custom attributes
-          displayName:username
+          'custom:display_name':username,
+          name:username
         },
       });
       
