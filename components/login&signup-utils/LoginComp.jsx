@@ -214,7 +214,7 @@ const LoginComp = () => {
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
-                  type="Submit"
+                  // type="Submit"
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>

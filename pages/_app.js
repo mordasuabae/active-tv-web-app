@@ -147,7 +147,6 @@ function MyApp({ Component, pageProps }) {
     getUserInfo()
     fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
     console.log('use effect ran after user changed to ', user)
-
   }, [])
 
   return (
