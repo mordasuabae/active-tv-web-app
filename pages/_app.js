@@ -136,7 +136,7 @@ function MyApp({ Component, pageProps }) {
         //update user attriubutes
       })
       .catch((error) => {
-        console.log("Error after succesfull login: ", error)
+        console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
       })
