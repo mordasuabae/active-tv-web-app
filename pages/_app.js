@@ -14,6 +14,7 @@ import axios from 'axios'
 
 
 Amplify.configure(CurrentConfig);
+import {ShowsProvider} from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
@@ -173,7 +174,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Navbar />
+      <ShowsProvider>
       <Component {...pageProps} />
+      </ShowsProvider>
     </USER_CONTEXT.Provider>
   );
 }
