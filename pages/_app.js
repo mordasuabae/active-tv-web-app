@@ -81,23 +81,14 @@ function MyApp({ Component, pageProps }) {
       const userInfo = await Auth.currentUserCredentials()
       const userSession = await Auth.currentSession()
       const currentCredentials = await Auth.currentCredentials()
-      // const getUser = await Auth.currentAuthenticatedUser().then(user => {
-      //   const token = user.signInUserSession.accessToken.jwtToken
-      //   setAuthorisedJWT(token)
-      //   console.log(authorisedJWT, 'how to access jwt statefully')
-
-      //   updateAttributes(user)
-      // })
-
-      //update attributes
-      // await Auth.updateUserAttributes(getUser, {
-      //   'address': '105 Main St. New York, NY 10001'
-      // });
+      const getUser = await Auth.currentAuthenticatedUser().then(user => {
+          console.log(user)
+      });
 
       console.log(userInfo, 'user information')
       console.log(userSession, 'user session')
       console.log(currentCredentials, 'current credentials')
-      // console.log(getUser, 'getting federated user ')
+      console.log(getUser, 'getting federated user ')
 
     } catch (err) {
       console.log(err.message,'getuserInfo function error')
@@ -105,20 +96,82 @@ function MyApp({ Component, pageProps }) {
 
   }
 
+//get the auth user with force
+// Auth.currentAuthenticatedUser().then(data => {
+//   try{
+//   console.log(data , 'getting data forcefully whenever the user is authenticated')
+//   }catch(err){
+//       console.log(err.message , 'failed to get user forcefully')
+//   }
+// })
 
 
-  const checkUser = async () => {
 
-    await Auth.currentAuthenticatedUser()
+  // const getUser = Auth.currentAuthenticatedUser()
+  // .then(user => {
+//     console.log(user)
+// }).catch(err =>{
+//   console.log(err,'the get user method')
+// });
+
+// console.log('get user', getUser)
+
+
+  // const checkUser = async () => {
+
+    // await 
+    // Auth.currentAuthenticatedUser({
+    //   bypassCache:false //i am setting this to test the usability
+    // })
+    //   .then(user => {
+    //     const currentUser = user.attributes.email
+    //     const DisplayUser = user.attributes.name
+
+    //     //get token
+    //     const token = user.signInUserSession.id.jwtToken
+    //     setAuthorisedJWT(token)
+    //     console.log(authorisedJWT, 'how to access jwt statefully')
+
+    //     // our setters
+    //     setUser(currentUser)
+    //     setDisplayName(DisplayUser)
+    //     setLoggedIn(true)
+    //     //testing logs
+    //     console.log('attributes:', user.attributes);
+    //     console.log(user, '=> user in current authenticated for federation')
+    //     console.log("User after succesfull login: ", currentUser)
+    //     console.log("display name after succesfull login: ", DisplayUser)
+
+    //     //get jwt token from user object
+    //     // const token = user.signInUserSession.accessToken.jwtToken
+    //     // setAuthorisedJWT('')
+    //     //update user attriubutes
+    //   })
+    //   .catch((error) => {
+    //     console.log("failed to get the existing user because ", error)
+    //     setUser("Active-tv")
+    //     setLoggedIn(false)
+    //   })
+  // }
+
+
+
+  useEffect(() => {
+    // checkUser()
+    // getUserInfo()
+    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
+    // console.log('use effect ran after user changed to ', getUser)
+    Auth.currentAuthenticatedUser({
+      bypassCache:false //i am setting this to test the usability
+    })
       .then(user => {
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
 
         //get token
-        const token = user.signInUserSession.accessToken.jwtToken
+        const token = user.signInUserSession.id.jwtToken
         setAuthorisedJWT(token)
         console.log(authorisedJWT, 'how to access jwt statefully')
-
 
         // our setters
         setUser(currentUser)
@@ -136,18 +189,13 @@ function MyApp({ Component, pageProps }) {
         //update user attriubutes
       })
       .catch((error) => {
-        console.log("failed to get the existing user because ", error)
+        console.log("failed to get the existing user because ", error.message)
         setUser("Active-tv")
         setLoggedIn(false)
       })
-  }
 
 
-  useEffect(() => {
-    checkUser()
-    getUserInfo()
-    fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-    console.log('use effect ran after user changed to ', user)
+
   }, [])
 
   return (

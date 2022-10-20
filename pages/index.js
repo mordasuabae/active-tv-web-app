@@ -16,7 +16,7 @@ export default function Home() {
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(
-          <Homeshows index={index} latestVid={latestVid} height={item.height} width={item.width}  title={item.categoryName} />
+          <Homeshows key={index} latestVid={latestVid} height={item.height} width={item.width}  title={item.categoryName} />
         
         )):""
        
