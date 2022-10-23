@@ -6,9 +6,20 @@ import Button from "@mui/material/Button";
 import { Palette } from "@universemc/react-palette";
 import { useState, useEffect } from 'react';
 import ShowsDisplay from '../components/shows/ShowsDisplay';
+import axios from 'axios'
 
-const shows = () => {
-  
+export  async function getStaticProps(){
+  const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+  const response = await axios.get(endpoint)
+  console.log('SHOWS',response.data)
+  return {
+    props : {
+      shows : response.data
+    }
+  }
+};
+const shows = ({shows}) => {
+  console.log({shows})
   return (
     <Palette
       src={
@@ -26,7 +37,7 @@ const shows = () => {
                padding:'40px 40px'
             }}
           >  
-         <ShowsDisplay/>
+         <ShowsDisplay shows ={shows}/>
           </Box>
         ); 
       }} 
