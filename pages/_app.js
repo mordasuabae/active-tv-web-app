@@ -126,7 +126,6 @@ function MyApp({ Component, pageProps }) {
 
       value={{
         UserContext,
-        getUserInfo,
         authorisedJWT,
         setAuthorisedJWT,
         displayName,
