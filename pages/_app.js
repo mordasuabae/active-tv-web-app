@@ -87,7 +87,7 @@ function MyApp({ Component, pageProps }) {
         const DisplayUser = user.attributes.name
 
         //get token
-        const token = user.signInUserSession.id.jwtToken
+        const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
@@ -119,7 +119,7 @@ function MyApp({ Component, pageProps }) {
     checkUser()
     // getUserInfo()
     // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-  }, [])
+  },[])
 
   return (
     <USER_CONTEXT.Provider
