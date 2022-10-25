@@ -12,6 +12,7 @@ import "swiper/css/navigation";
 
 // import required modules
 import { Pagination, Navigation } from "swiper";
+import { ConnectingAirportsOutlined } from "@mui/icons-material";
 
 export default function FreeToWatch() {
 
@@ -19,9 +20,15 @@ export default function FreeToWatch() {
   const [shows,setShows] = useState(null)
 
   useEffect(()=>{
-    fetch("https://kqurnl9cz4.execute-api.us-east-2.amazonaws.com/test/activetv/popular-shows")
-    .then(data => data.json())
-    .then(response => setShows(response.body))
+    
+      fetch("https://kqurnl9cz4.execute-api.us-east-2.amazonaws.com/test/activetv/popular-shows")
+      .then(data => data.json())
+      .then(response => setShows(response.body))
+      .catch(err =>{
+        console.log('failed to fetch freeshows')
+      })
+
+  
   },[shows])
   
   const parsedShows = JSON.parse(shows)

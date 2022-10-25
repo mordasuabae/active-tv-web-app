@@ -107,6 +107,7 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(formDetails.email, formDetails.password);
+    
   };
 
   return (
@@ -241,7 +242,6 @@ const LoginComp = () => {
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
-                  type="Submit"
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>

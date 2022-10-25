@@ -13,7 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Dropdown from "./dropdown";
 import Link from "next/link";
-import axios from 'axios'
+import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
 
 const Navbar = () => {
@@ -25,9 +25,8 @@ const Navbar = () => {
   // destructuring the authenticated user from context
   const { AuthenticatedUser, authorisedJWT } = React.useContext(USER_CONTEXT);
   // //user initial
-  const currentUser = AuthenticatedUser.name
-  const userIntial = currentUser.charAt(0)
-
+  const currentUser = AuthenticatedUser.name;
+  const userIntial = currentUser.charAt(0);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -48,28 +47,25 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/UserPoolStage/get-config`;
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows`;
+  // https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows
   const tokenHalndler = async () => {
     const response = await axios({
       method: "get",
       url: endpoint,
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   "Access-Control-Allow-Origin": "*",
-      //   // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
-      //   "Access-Control-Allow-Headers":
-      //     "Origin, X-Requested-With, Content-Type",
-      //   "Access-Control-Allow-Credentials": true,
-      //   Authorization: `Bearer ${authorisedJWT} `,
-      //   // mode: "no-cors",
-      // },
+      // BearerToken: authorisedJWT,
+      // mode: 'no-cors',
+      headers: {
+        // "Access-Control-Allow-Origin": "*",
+        // "Content-Type": "application/json",
+        // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type",
+        // "Access-Control-Allow-Credentials": true,
+        "Authorization": `Bearer ${authorisedJWT} `,
+      },
     });
-    console.log(response)
-  }
-
-
-  
+    console.log(response);
+  };
 
   return (
     <AppBar
@@ -277,9 +273,8 @@ const Navbar = () => {
               </a>
             </Link>
 
-            {/* <Button onClick={tokenHalndler}>token</Button> */}
+           
           </Box>
-
           {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
             <Typography variant="h6" fontWeight={"bold"} fontSize={16}>
@@ -289,7 +284,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-             <Dropdown user={currentUser} userInitial={userIntial}/>
+            <Dropdown user={currentUser} userInitial={userIntial} />
             {/* <Menu
               sx={{
                 mt: "45px",

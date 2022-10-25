@@ -6,7 +6,7 @@ import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 
 const AccountLoggedIn = () => {
-  const { AuthenticatedUser } = useContext(USER_CONTEXT); //pulling out the current authenticated user
+  const { AuthenticatedUser,displayName } = useContext(USER_CONTEXT); //pulling out the current authenticated user
 
   const [subscribed, setSubscribed] = useState(false);
 

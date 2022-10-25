@@ -21,6 +21,8 @@ function MyApp({ Component, pageProps }) {
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
+  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
+  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
   const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
@@ -37,24 +39,24 @@ function MyApp({ Component, pageProps }) {
 
 
   //hub listeners
-  Hub.listen("auth", (data) => {
-    switch (data.payload.event) {
-      case "signIn":
-        console.log("user signed in " + data.payload.event);
-        break;
-      case "signUp":
-        console.log("user signed up " + data.payload.event);
-        break;
-      case "signOut":
-        console.log("user signed out " + data.payload.event);
-        break;
-      case "signIn_failure":
-        console.log("user sign_in failed :" + data.payload.event);
-        break;
-      case "configured":
-        console.log("the Auth module is configured " + data.payload.event);
-    }
-  });
+  // Hub.listen("auth", (data) => {
+  //   switch (data.payload.event) {
+  //     case "signIn":
+  //       console.log("user signed in " + data.payload.event);
+  //       break;
+  //     case "signUp":
+  //       console.log("user signed up " + data.payload.event);
+  //       break;
+  //     case "signOut":
+  //       console.log("user signed out " + data.payload.event);
+  //       break;
+  //     case "signIn_failure":
+  //       console.log("user sign_in failed :" + data.payload.event);
+  //       break;
+  //     case "configured":
+  //       console.log("the Auth module is configured " + data.payload.event);
+  //   }
+  // });
 
 
   //test for federation
@@ -64,8 +66,14 @@ function MyApp({ Component, pageProps }) {
     axios.get(`https://${domain}/oauth2/userInfo`)
       .then((response) => console.log(response, 'fetching userInfo info with axios'))
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
+
   }
 
+  // const updateAttributes = async (user) => {
+  //   await Auth.updateUserAttributes(user, {
+  //     // 'name': 'schadrack'
+  //   });
+  // }
 
 
 
@@ -84,10 +92,10 @@ function MyApp({ Component, pageProps }) {
       console.log(userInfo, 'user information')
       console.log(userSession, 'user session')
       console.log(currentCredentials, 'current credentials')
-      console.log(getUser, 'getting federated user ')
+      // console.log(getUser, 'getting federated user ')
 
     } catch (err) {
-      console.log(err.message)
+      console.log(err.message,'getuserInfo function error')
     }
 
   }
@@ -99,18 +107,28 @@ function MyApp({ Component, pageProps }) {
     await Auth.currentAuthenticatedUser()
       .then(user => {
         const currentUser = user.attributes.email
-        const DisplayUser = user.attributes.displayName
+        const DisplayUser = user.attributes.name
+
+        //get token
+        const token = user.signInUserSession.idToken.jwtToken
+        setAuthorisedJWT(token)
+        console.log(authorisedJWT, 'how to access jwt statefully')
+
+
         // our setters
         setUser(currentUser)
+        setDisplayName(DisplayUser)
         setLoggedIn(true)
         //testing logs
-        console.log("User after succesfull login: ", currentUser)
-        console.log("display name after succesfull login: ", DisplayUser)
+        // console.log('attributes:', user.attributes);
+        // console.log(user, '=> user in current authenticated for federation')
+        // console.log("User after succesfull login: ", currentUser)
+        // console.log("display name after succesfull login: ", DisplayUser)
 
         //get jwt token from user object
         // const token = user.signInUserSession.accessToken.jwtToken
         // setAuthorisedJWT('')
-
+        //update user attriubutes
       })
       .catch((error) => {
         console.log("Error after succesfull login: ", error)
@@ -119,19 +137,34 @@ function MyApp({ Component, pageProps }) {
       })
   }
 
+  const userSession =  Auth.currentSession()
 
   useEffect(() => {
     checkUser()
     getUserInfo()
-    fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
+    fetchUserInfo('activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
     console.log('use effect ran after user changed to ', user)
 
-  }, [user])
+  }, [])
 
   return (
     <USER_CONTEXT.Provider
+
       value={{
-        UserContext,authorisedJWT, setAuthorisedJWT, selectedCategory, loggedIn, ForceReload, setLoggedIn, setUser, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext,
+        getUserInfo,
+        authorisedJWT,
+        setAuthorisedJWT,
+        displayName,
+        selectedCategory,
+        loggedIn,
+        ForceReload,
+        setLoggedIn,
+        setUser,
+        setSelectedCategory,
+        showsDetails,
+        setShowsDetails,
+        AuthenticatedUser: {
           name: user,
         }
       }}
