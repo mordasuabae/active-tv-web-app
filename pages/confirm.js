@@ -237,7 +237,8 @@ const Confirm = () => {
       setRedirecting(true);
       setTimeout(() => {
         setRedirecting(false);
-        Router.push("/login"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+        Router.push("/login");
+        // Router.push("/subscribepayment");
       }, 2000);
 
     } catch (error) {

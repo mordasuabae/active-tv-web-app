@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Subscription from "../components/Payment/subscriptions.json"
 import { useState } from "react";
 
+
 const PACKAGES = [
   {
     type: "monthly",
@@ -64,26 +65,30 @@ export default function Paypage() {
 
 
   return (
-    <div style={{ height: '500vh', width: '100%', backgroundColor: '#1f1f1f' }}>
+    <Box 
+    style={{ 
+      minHeight: ' calc(100vh - 70px)',
+      width: '100%', 
+      backgroundColor: '#1f1f1f',
+      padding:'30px',
+      display:'flex',
+      alignItems:'center', 
+      justifyContent:"center" ,
+    }}>
 
 
 
-      <div style={{
-        position: 'absolute',
-        top: '10%',
-        bottom: '10%',
-        left: '25%',
-        right: '25%',
+      <Box style={{
+             display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
         borderRadius: '5px',
-        // backgroundColor: '#f2f2f2',
-        //   backgroundColor: "#343a40",
-        // backgroundColor: '#212529',
         backgroundColor: 'rgba(0,0,0,0.5)',
         opacity: '0.7',
         borderRadius: '5px',
         padding: '20px',
         width: '50%',
-        height: '650px'
+        height: '100%'
       }}>
         <Script src="https://js.paystack.co/v1/inline.js" />
 
@@ -99,15 +104,16 @@ export default function Paypage() {
             style={{ marginBottom: "5" }}
           />
     */}
-          <div className="MuiBox-root css-17kuhbv" ></div>
+          // <Box className="MuiBox-root css-17kuhbv" ></Box>
           <Typography
             variant="h4"
             align="center"
             className={"active-tv-font"}
             sx={{
               color: '#f1f1f1',
-              margin: "20px 0",
+              padding: "20px",
               fontWeight: "900",
+              letterSpacing:'-1px',
               fontSize: {
                 md: "18px",
                 xs: "20px",
@@ -120,9 +126,9 @@ export default function Paypage() {
 
 
 
-          <div className="flex justify-center items-center w-full h-screen  active-tv-font">
+          <Box className="flex justify-center items-center w-full h-screen  active-tv-font">
             <form id="paymentForm" className="p-5 shadow-lg space-y-8">
-              <div className="space-x-4 flex justify-between items-center w-full">
+              <Box className="space-x-4 flex justify-between items-center w-full">
                 <label style={{ color: '#f1f1f2' }} htmlFor="first-name">First Name</label>
                 <input type="text" id="first-name" placeholder="First Name" style={{
                   width: '100%',
@@ -136,10 +142,10 @@ export default function Paypage() {
 
                 }} required />
 
-              </div>
+              </Box>
 
 
-              <div className="space-x-4 flex justify-between items-center w-full active-tv-font">
+              <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="last-name">Last Name</label>
                 <input type="text" id="last-name" placeholder="Last Name" style={{
                   width: '100%',
@@ -151,14 +157,14 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '20px'
                 }} required />
-              </div>
+              </Box>
 
 
 
 
 
 
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="email">Email Address</label>
                 <input type="email" id="email-address" placeholder="Email address" style={{
                   width: '100%',
@@ -170,9 +176,9 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '45px'
                 }} required></input>
-              </div>
+              </Box>
 
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 {/* <label style={{ color: '#f1f1f2' }} htmlFor="subscription">Subscription Type</label>
                 <select onChange={() => setAmount(amount)
                 }
@@ -189,11 +195,11 @@ export default function Paypage() {
                   <option onClick={() => setAmount(2)}>Annual-2</option>
                   <option onClick={() => setAmount(1)}>Monthly-1</option>
                 </select> */}
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="email">Subscription Type</label>
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 {/* <label style={{ color: '#f1f1f2' }} htmlFor="amount">Amount</label>
                 <input type="tel" id="amount" value={amount} style={{
                   width: '100%',
@@ -216,15 +222,15 @@ export default function Paypage() {
                 ))}
 
 
-              </div>
+              </Box>
 
 
-              <div >
+              <Box>
                 <button className="active-tv-font" style={{
                   width: '50%',
-                  position: 'absolute',
-                  left: '26%',
-                  right: '24%',
+                  // position: 'absolute',
+                  // left: '26%',
+                  // right: '24%',
                   //   backgroundColor: '#4CAF50',
                   backgroundColor: '#fff203',
                   color: '#000',
@@ -238,19 +244,20 @@ export default function Paypage() {
                   opacity: '1',
                   zIndex: '1',
                   bottom: '25px',
-                  marginTop: '220px'
+                  margin: '18px 0',
+                  width:'100%'
 
                 }}> Pay </button>
-              </div>
+              </Box>
 
 
             </form>
 
-          </div>
+          </Box>
         </Box>
 
-      </div >
-    </div >
+      </Box >
+    </Box >
 
 
   )

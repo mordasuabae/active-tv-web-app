@@ -39,7 +39,7 @@ const Homeshows = ({ latestVid, title, height, width }) => {
       >
         {latestVid.map((item, index) => (
           <SwiperSlide
-            index={index}
+            key={index}
             style={{
               marginRight: "10px",
               paddingRight: "12px",
