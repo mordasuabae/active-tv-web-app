@@ -3,6 +3,7 @@ import Navbar from "../components/navbar";
 import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState, useEffect } from "react";
 import { Palette } from "@universemc/react-palette";
+import Footer from '../components/footer/Footer'
 
 //amplify imports
 import { Amplify, Auth } from 'aws-amplify';
@@ -171,6 +172,7 @@ function MyApp({ Component, pageProps }) {
     >
       <Navbar />
       <Component {...pageProps} />
+      <Footer />
     </USER_CONTEXT.Provider>
   );
 }
