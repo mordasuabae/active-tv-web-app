@@ -8,17 +8,17 @@ import Button from "@mui/material/Button";
 import Subscription from "../components/Payment/subscriptions.json"
 import { useState } from "react";
 
-const PACKAGES = [
-  {
-    type: "monthly",
-    price: 1
-  },
-  {
-    type: "annual",
-    price: 2
-  },
+// const PACKAGES = [
+//   {
+//     type: "monthly",
+//     price: 1
+//   },
+//   {
+//     type: "annual",
+//     price: 2
+//   },
 
-];
+// ];
 
 export default function Paypage() {
   const [amount, setAmount] = useState(Subscription);
@@ -134,7 +134,7 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '20px'
 
-                }} required />
+                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}><PersonIcon style={{ color: '#667' }} /></button>
 
               </div>
 
@@ -151,6 +151,7 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '20px'
                 }} required />
+                 <button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '43px', position: 'absolute', right: '26%', top: '279px' }}><PersonIcon style={{ color: '#667' }} /></button>
               </div>
 
 
@@ -170,6 +171,8 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '45px'
                 }} required></input>
+                 </div>
+              <button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '369px' }}><EmailIcon style={{ color: '#667' }} /></button>
               </div>
 
               <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
@@ -206,13 +209,13 @@ export default function Paypage() {
                 }} required /> */}
 
                 <select style={{ height: '45px', width: '100%' }} onChange={subscriptionType}>
-                  <option value="monthly" >Monthly</option>
-                  <option value="annual">Annual</option>
+                  <option value="monthly" >Monthly @R1</option>
+                  <option value="annual">Annual @R2</option>
 
                 </select>
 
                 {prices.map((p) => (
-                  <input key="" type="tel" id="amount" value={p.price} required />
+                  <input key="" type="hidden" id="amount" value={p.price} required />
                 ))}
 
 
