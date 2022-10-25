@@ -13,8 +13,8 @@ import CurrentConfig from './../components/utils/CognitoConfig'
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
-
 Amplify.configure(CurrentConfig);
+import {ShowsProvider} from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
@@ -78,40 +78,19 @@ function MyApp({ Component, pageProps }) {
 
 
 
-  const getUserInfo = async () => {
-    try {
-      const userInfo = await Auth.currentUserCredentials()
-      const userSession = await Auth.currentSession()
-      const currentCredentials = await Auth.currentCredentials()
-      const getUser = await Auth.currentAuthenticatedUser().then(user => {
-        const token = user.signInUserSession.idToken.jwtToken
-        setAuthorisedJWT(token)
-        console.log(authorisedJWT,'how to access jwt statefully')
-           
-      })
-
-      console.log(userInfo, 'user information')
-      console.log(userSession, 'user session')
-      console.log(currentCredentials, 'current credentials')
-      // console.log(getUser, 'getting federated user ')
-
-    } catch (err) {
-      console.log(err.message,'getuserInfo function error')
-    }
-
-  }
-
 
 
   const checkUser = async () => {
 
-    await Auth.currentAuthenticatedUser()
+    await Auth.currentAuthenticatedUser({
+      bypassCache:false
+    })
       .then(user => {
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
 
         //get token
-        const token = user.signInUserSession.idToken.jwtToken
+        const token = user.signInUserSession.id.jwtToken
         setAuthorisedJWT(token)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
@@ -132,7 +111,7 @@ function MyApp({ Component, pageProps }) {
         //update user attriubutes
       })
       .catch((error) => {
-        console.log("Error after succesfull login: ", error)
+        console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
       })
@@ -142,10 +121,8 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     checkUser()
-    getUserInfo()
-    fetchUserInfo('activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-    console.log('use effect ran after user changed to ', user)
-
+    // getUserInfo()
+    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
   }, [])
 
   return (
@@ -153,7 +130,6 @@ function MyApp({ Component, pageProps }) {
 
       value={{
         UserContext,
-        getUserInfo,
         authorisedJWT,
         setAuthorisedJWT,
         displayName,
@@ -171,10 +147,13 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Navbar />
+      <ShowsProvider>
       <Component {...pageProps} />
+      </ShowsProvider>
       <Footer />
     </USER_CONTEXT.Provider>
   );
 }
 
 export default MyApp;
+

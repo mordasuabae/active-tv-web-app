@@ -16,7 +16,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useContext } from 'react';
 import { USER_CONTEXT } from '../../context/MainContext';
 import SettingsIcon from '@mui/icons-material/Settings';
-
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 
 
@@ -40,7 +40,7 @@ export default function PositionedPopper({ user, userInitial }) {
 
   async function signOut() {
 
-    if (loggedIn && user !== 'Activetv@gmail.com') {
+    if (loggedIn) {
       try {
         await Auth.signOut();
         await Router.push('/login')
@@ -121,9 +121,9 @@ export default function PositionedPopper({ user, userInitial }) {
               }} onClick={() => {
                 Router.push('/')
               }}>
-                <SettingsIcon sx={{ color: "#fff", marginRight: '16px' }} />
+                <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
-                  Settings
+                  Need help?
                 </Typography>
               </Button>
               <Button variant="text" sx={{
