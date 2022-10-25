@@ -28,6 +28,7 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
 import { USER_CONTEXT } from "../../context/MainContext";
+import axios from 'axios'
 
 
 const loginStyles = {
@@ -209,7 +210,7 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const [errorLogs, setErrorLogs] = useState('')
-  const {AuthenticatedUser} = useContext(USER_CONTEXT)
+  const {AuthenticatedUser, authorisedJWT} = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -232,6 +233,20 @@ const LoginComp = () => {
     setShow(!show);
   };
 
+  console.log('user',AuthenticatedUser)
+  const endpoint = `http://127.0.0.1:3000/store-users`;
+  const tokenHandler = async () => {
+    // const response = await axios({
+    //   method: "POST",
+    //   url: endpoint,
+    //   data :AuthenticatedUser,
+    //   // BearerToken: authorisedJWT,
+    //   // mode: 'no-cors',
+    //   });
+    const response = await axios.post(endpoint,AuthenticatedUser,{'Content-Type':'application/json'},)
+    console.log('RESPONSE=>',response);
+  };
+  
   // useEffect(() => {
   //   console.log(signUp);
   // }, []);
@@ -470,9 +485,11 @@ const LoginComp = () => {
                   variant="contained"
                   color="warning"
                   type="Submit"
+                  onClick={tokenHandler}
                 >
                   Sign up
                 </Button>
+
               </Box>
               <span
               className="active-tv-font"

@@ -139,6 +139,7 @@ function MyApp({ Component, pageProps }) {
         setShowsDetails,
         AuthenticatedUser: {
           name: user,
+          email: user
         }
       }}
     >
