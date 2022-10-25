@@ -8,17 +8,17 @@ import Button from "@mui/material/Button";
 import Subscription from "../components/Payment/subscriptions.json"
 import { useState } from "react";
 
-// const PACKAGES = [
-//   {
-//     type: "monthly",
-//     price: 1
-//   },
-//   {
-//     type: "annual",
-//     price: 2
-//   },
+const PACKAGES = [
+  {
+    type: "monthly",
+    price: 1
+  },
+  {
+    type: "annual",
+    price: 2
+  },
 
-// ];
+];
 
 export default function Paypage() {
   const [amount, setAmount] = useState(Subscription);
@@ -60,38 +60,30 @@ export default function Paypage() {
       handler.openIframe();
     }
   }
-
-
-
   return (
-    <div style={{ height: '500vh', width: '100%', backgroundColor: '#1f1f1f' }}>
-
-
-
-      <div style={{
-        position: 'absolute',
-        top: '10%',
-        bottom: '10%',
-        left: '25%',
-        right: '25%',
+    <Box 
+    style={{ 
+      minHeight: ' calc(100vh - 70px)',
+      width: '100%', 
+      backgroundColor: '#1f1f1f',
+      padding:'30px',
+      display:'flex',
+      alignItems:'center', 
+      justifyContent:"center" ,
+    }}>
+      <Box style={{
+             display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
         borderRadius: '5px',
-        // backgroundColor: '#f2f2f2',
-        //   backgroundColor: "#343a40",
-        // backgroundColor: '#212529',
         backgroundColor: 'rgba(0,0,0,0.5)',
         opacity: '0.7',
         borderRadius: '5px',
         padding: '20px',
         width: '50%',
-        height: '650px'
+        height: '100%'
       }}>
-        <Script src="https://js.paystack.co/v1/inline.js" />
-
-
-        <Box sx={{ ...loginStyles.header }}>
-
-
-          {/*   <img
+        <Script src="https://js.paystack.co/v1/inline.js" />        <Box sx={{ ...loginStyles.header }}>          {/*   <img
             src="glitch-tv.gif"
             alt="logo"
             height="105px"
@@ -99,15 +91,16 @@ export default function Paypage() {
             style={{ marginBottom: "5" }}
           />
     */}
-          <div className="MuiBox-root css-17kuhbv" ></div>
+          // <Box className="MuiBox-root css-17kuhbv" ></Box>
           <Typography
             variant="h4"
             align="center"
             className={"active-tv-font"}
             sx={{
               color: '#f1f1f1',
-              margin: "20px 0",
+              padding: "20px",
               fontWeight: "900",
+              letterSpacing:'-1px',
               fontSize: {
                 md: "18px",
                 xs: "20px",
@@ -117,12 +110,9 @@ export default function Paypage() {
             Enter your payment details
           </Typography>
 
-
-
-
-          <div className="flex justify-center items-center w-full h-screen  active-tv-font">
+          <Box className="flex justify-center items-center w-full h-screen  active-tv-font">
             <form id="paymentForm" className="p-5 shadow-lg space-y-8">
-              <div className="space-x-4 flex justify-between items-center w-full">
+              <Box className="space-x-4 flex justify-between items-center w-full">
                 <label style={{ color: '#f1f1f2' }} htmlFor="first-name">First Name</label>
                 <input type="text" id="first-name" placeholder="First Name" style={{
                   width: '100%',
@@ -134,12 +124,10 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '20px'
 
-                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}><PersonIcon style={{ color: '#667' }} /></button>
+                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}>
+                  <PersonIcon style={{ color: '#667' }} /></button>
 
-              </div>
-
-
-              <div className="space-x-4 flex justify-between items-center w-full active-tv-font">
+              </Box>              <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="last-name">Last Name</label>
                 <input type="text" id="last-name" placeholder="Last Name" style={{
                   width: '100%',
@@ -150,16 +138,10 @@ export default function Paypage() {
                   borderRadius: '4px',
                   boxSizing: 'border-box',
                   marginBottom: '20px'
-                }} required />
-                 <button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '43px', position: 'absolute', right: '26%', top: '279px' }}><PersonIcon style={{ color: '#667' }} /></button>
-              </div>
-
-
-
-
-
-
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}>
+                  <PersonIcon style={{ color: '#667' }} /></button>
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="email">Email Address</label>
                 <input type="email" id="email-address" placeholder="Email address" style={{
                   width: '100%',
@@ -170,12 +152,10 @@ export default function Paypage() {
                   borderRadius: '4px',
                   boxSizing: 'border-box',
                   marginBottom: '45px'
-                }} required></input>
-                 </div>
-              <button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '369px' }}><EmailIcon style={{ color: '#667' }} /></button>
-              </div>
+                }} required></input><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '369px' }}><EmailIcon style={{ color: '#667' }} /></button>
+              </Box>
 
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 {/* <label style={{ color: '#f1f1f2' }} htmlFor="subscription">Subscription Type</label>
                 <select onChange={() => setAmount(amount)
                 }
@@ -192,11 +172,11 @@ export default function Paypage() {
                   <option onClick={() => setAmount(2)}>Annual-2</option>
                   <option onClick={() => setAmount(1)}>Monthly-1</option>
                 </select> */}
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="email">Subscription Type</label>
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 {/* <label style={{ color: '#f1f1f2' }} htmlFor="amount">Amount</label>
                 <input type="tel" id="amount" value={amount} style={{
                   width: '100%',
@@ -209,25 +189,19 @@ export default function Paypage() {
                 }} required /> */}
 
                 <select style={{ height: '45px', width: '100%' }} onChange={subscriptionType}>
-                  <option value="monthly" >Monthly @R1</option>
-                  <option value="annual">Annual @R2</option>
+                  <option value="monthly" >Monthly</option>
+                  <option value="annual">Annual</option>
 
                 </select>
 
                 {prices.map((p) => (
-                  <input key="" type="hidden" id="amount" value={p.price} required />
-                ))}
-
-
-              </div>
-
-
-              <div >
+                  <input key="" type="tel" id="amount" value={p.price} required />
+                ))}              </Box>              <Box>
                 <button className="active-tv-font" style={{
                   width: '50%',
-                  position: 'absolute',
-                  left: '26%',
-                  right: '24%',
+                  // position: 'absolute',
+                  // left: '26%',
+                  // right: '24%',
                   //   backgroundColor: '#4CAF50',
                   backgroundColor: '#fff203',
                   color: '#000',
@@ -241,27 +215,19 @@ export default function Paypage() {
                   opacity: '1',
                   zIndex: '1',
                   bottom: '25px',
-                  marginTop: '220px'
+                  margin: '18px 0',
+                  width:'100%'
 
                 }}> Pay </button>
-              </div>
+              </Box>            </form>
 
-
-            </form>
-
-          </div>
+          </Box>
         </Box>
 
-      </div >
-    </div >
+      </Box >
+    </Box >  )
 
-
-  )
-
-}
-
-
-const loginStyles = {
+}const loginStyles = {
   container: {
     minHeight: "125vh",
     width: "100%",
