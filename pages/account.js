@@ -8,6 +8,8 @@ import { Box } from '@mui/system'
 import { useState, useContext } from 'react'
 import { USER_CONTEXT } from '../context/MainContext'
 import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
+import ContactUs from '../components/ContactUs-Page/ContactUs'
+
 
 
 
@@ -22,7 +24,8 @@ const Account = () => {
     loggedIn ?
 
       <Box>
-        <AccountLoggedIn />
+        {/* <AccountLoggedIn /> */}
+        <ContactUs />
       </Box>
 
       :
