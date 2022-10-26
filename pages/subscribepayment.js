@@ -61,9 +61,6 @@ export default function Paypage() {
       handler.openIframe();
     }
   }
-
-
-
   return (
     <Box 
     style={{ 
@@ -75,9 +72,6 @@ export default function Paypage() {
       alignItems:'center', 
       justifyContent:"center" ,
     }}>
-
-
-
       <Box style={{
              display:'flex',
         flexDirection:'column',
@@ -90,13 +84,7 @@ export default function Paypage() {
         width: '50%',
         height: '100%'
       }}>
-        <Script src="https://js.paystack.co/v1/inline.js" />
-
-
-        <Box sx={{ ...loginStyles.header }}>
-
-
-          {/*   <img
+        <Script src="https://js.paystack.co/v1/inline.js" />        <Box sx={{ ...loginStyles.header }}>          {/*   <img
             src="glitch-tv.gif"
             alt="logo"
             height="105px"
@@ -123,9 +111,6 @@ export default function Paypage() {
             Enter your payment details
           </Typography>
 
-
-
-
           <Box className="flex justify-center items-center w-full h-screen  active-tv-font">
             <form id="paymentForm" className="p-5 shadow-lg space-y-8">
               <Box className="space-x-4 flex justify-between items-center w-full">
@@ -140,12 +125,10 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                   marginBottom: '20px'
 
-                }} required />
+                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}>
+                  <PersonIcon style={{ color: '#667' }} /></button>
 
-              </Box>
-
-
-              <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
+              </Box>              <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="last-name">Last Name</label>
                 <input type="text" id="last-name" placeholder="Last Name" style={{
                   width: '100%',
@@ -156,14 +139,9 @@ export default function Paypage() {
                   borderRadius: '4px',
                   boxSizing: 'border-box',
                   marginBottom: '20px'
-                }} required />
+                }} required /><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '190px' }}>
+                  <PersonIcon style={{ color: '#667' }} /></button>
               </Box>
-
-
-
-
-
-
               <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
                 <label style={{ color: '#f1f1f2' }} htmlFor="email">Email Address</label>
                 <input type="email" id="email-address" placeholder="Email address" style={{
@@ -175,7 +153,7 @@ export default function Paypage() {
                   borderRadius: '4px',
                   boxSizing: 'border-box',
                   marginBottom: '45px'
-                }} required></input>
+                }} required></input><button style={{ backgroundColor: '#f1f1f1', border: 'none', borderRadius: '5px', top: '10px', width: '30px', height: '42px', position: 'absolute', right: '26%', top: '369px' }}><EmailIcon style={{ color: '#667' }} /></button>
               </Box>
 
               <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
@@ -219,13 +197,7 @@ export default function Paypage() {
 
                 {prices.map((p) => (
                   <input key="" type="tel" id="amount" value={p.price} required />
-                ))}
-
-
-              </Box>
-
-
-              <Box>
+                ))}              </Box>              <Box>
                 <button className="active-tv-font" style={{
                   width: '50%',
                   // position: 'absolute',
@@ -248,24 +220,15 @@ export default function Paypage() {
                   width:'100%'
 
                 }}> Pay </button>
-              </Box>
-
-
-            </form>
+              </Box>            </form>
 
           </Box>
         </Box>
 
       </Box >
-    </Box >
+    </Box >  )
 
-
-  )
-
-}
-
-
-const loginStyles = {
+}const loginStyles = {
   container: {
     minHeight: "125vh",
     width: "100%",
