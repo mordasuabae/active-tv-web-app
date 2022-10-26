@@ -2,18 +2,18 @@ import React from 'react'
 
 
 const background = {
-  width:"100%",
-  background:"#0e0d00",
-  color:"white",
-  height:"70px",
-  display:"flex",
-  alignItems:"center",
-  justifyContent:"center",
-  flexDirection:"column",
+  width: "100%",
+  background: "#0e0d00",
+  color: "white",
+  height: "70px",
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  flexDirection: "column",
   // fontFamily:"AnjaliOldLipi",
-  fontFamily:"Arcade Normal",
-  fontSize:"12px",
-  lineHeight:"0px"
+  fontFamily: "Arcade Normal",
+  fontSize: "12px",
+  lineHeight: "0px"
 }
 function AccountFooter() {
   return (

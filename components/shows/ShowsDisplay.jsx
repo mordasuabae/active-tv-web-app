@@ -45,6 +45,7 @@ export default function ShowsDisplay({shows}) {
       >
         {shows.map((show) => (
           <Link href={`/shows-episodes/${show.Title}`}>
+
             <a> 
             <ShowCard
               color={show.color}

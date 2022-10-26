@@ -51,7 +51,7 @@ Amplify.configure({
     Auth: {
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
         identityPoolId: "us-east-2:939de7f6-03e1-4a73-bca6-c3c9b6cded14", //changed
-        //  indentityPoolId:'us-east-2:066ceeec-734d-4b62-bfa5-80b9019a96c',
+
         // REQUIRED - Amazon Cognito Region
         region: 'us-east-2',
 
@@ -69,7 +69,7 @@ Amplify.configure({
         oauth: {
             domain: 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com', //changed
             // scope: [
-            //     // 'phone',
+            //     'phone',
             //     'email',
             //     'profile',
             //     'openid'
@@ -85,8 +85,7 @@ Amplify.configure({
 
 export const CurrentConfig = Auth.configure()
 
-// const AmplifyLoggertest = "logger test"
-console.log('current config')
 
-// Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
+
+ //Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 

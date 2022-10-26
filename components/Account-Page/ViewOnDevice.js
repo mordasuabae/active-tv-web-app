@@ -70,9 +70,9 @@ export default function ViewOnDevice() {
 
         <Grid item xs={4} style={{ background: "transparent", border: "none" }}>
           <Item style={{ background: "transparent", color: "white", fontFamily: "Arcade Normal" }} sx={{ display: { xs: 'none', sm: 'none', md: 'block' }, mr: 1 }}>
-            <Typography sx={{lineHeight:2, fontSize:13}} className='active-tv-font' data-aos="fade-up">VIEW ON ANY DEVICE</Typography>
-            <Typography sx={{lineHeight:2, fontSize:13}} className='active-tv-font' data-aos="fade-up">Every episode ad-free, including new exclusive shows.</Typography>
-            <Typography sx={{lineHeight:2, fontSize:13}} className='active-tv-font' data-aos="fade-up">Higher quality than YouTube, and just as fast.</Typography>
+            <Typography sx={{ lineHeight: 2, fontSize: 13 }} className='active-tv-font' data-aos="fade-up">VIEW ON ANY DEVICE</Typography>
+            <Typography sx={{ lineHeight: 2, fontSize: 13 }} className='active-tv-font' data-aos="fade-up">Every episode ad-free, including new exclusive shows.</Typography>
+            <Typography sx={{ lineHeight: 2, fontSize: 13 }} className='active-tv-font' data-aos="fade-up">Higher quality than YouTube, and just as fast.</Typography>
 
             <Box style={box1}>
               <button style={Appbutton} data-aos="fade-up">
@@ -118,26 +118,26 @@ export default function ViewOnDevice() {
 
             }}>
               <Box sx={{
-                marginLeft: "30px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column", 
+                marginLeft: "30px", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column",
               }}>
                 <Typography align="center" style={{ fontSize: 18 }} className='active-tv-font' data-aos="fade-up">BE A PRODUCER</Typography>
                 <Typography variant="h6" align="center" sx={{ fontSize: 10, mt: 2, lineHeight: 2 }} className='active-tv-font' data-aos="fade-up">Directly control what your subscription dollars are</Typography>
                 <Typography variant="h6" align="center" sx={{ fontSize: 10, mt: 2, mb: 2, lineHeight: 2 }} className='active-tv-font' data-aos="fade-up">spent on by using your Producer Points</Typography>
                 <Link href="/produceThat">
-                  <button 
-                  className='active-tv-font'
-                  style={{
-                    border: "none",
-                    width: "250px",
-                    height: "50px",
-                    color: "#000",
-                    background: "#FFF203",
-                    fontWeight: "bold",
-                    cursor: "pointer",
-                    borderRadius: "25px",
-                    fontFamily: "Arcade Normal",
-                    fontSize: "10px"
-                  }}
+                  <button
+                    className='active-tv-font'
+                    style={{
+                      border: "none",
+                      width: "250px",
+                      height: "50px",
+                      color: "#000",
+                      background: "#FFF203",
+                      fontWeight: "bold",
+                      cursor: "pointer",
+                      borderRadius: "25px",
+                      fontFamily: "Arcade Normal",
+                      fontSize: "10px"
+                    }}
                     data-aos="fade-up"
                   >SEE IT IN ACTION</button>
                 </Link>

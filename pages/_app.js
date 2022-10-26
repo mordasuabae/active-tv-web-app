@@ -10,15 +10,22 @@ import { Hub, Logger } from "aws-amplify";
 import awsconfig from "./../components/utils/CognitoConfig";
 import CurrentConfig from './../components/utils/CognitoConfig'
 import { FlashlightOnRounded } from "@mui/icons-material";
+import axios from 'axios'
+
 Amplify.configure(CurrentConfig);
+import {ShowsProvider} from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
 
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
-  const [user, setUser] = useState("Active-tv")
-  const [loggedIn , setLoggedIn] = useState(false)
+  const [user, setUser] = useState("Activetv@gmail.com")
+  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
+  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
+  const [displayName, setDisplayName] = useState("display name")
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
   const [showsDetails, setShowsDetails] = useState({
     title: '',
     img: 'imortal.webp',
@@ -27,8 +34,11 @@ function MyApp({ Component, pageProps }) {
 
 
 
+  const ForceReload = () => window.location.reload()
 
-//hub listeners
+
+
+  //hub listeners
   Hub.listen("auth", (data) => {
     switch (data.payload.event) {
       case "signIn":
@@ -49,69 +59,97 @@ function MyApp({ Component, pageProps }) {
   });
 
 
-
-  const getUserInfo = async ()=>{
-    try{
-      const userInfo =  await Auth.currentUserCredentials()
-      const userSession = await Auth.currentSession()
-      const currentCredentials = await Auth.currentCredentials()
-      const getUser =  await Auth.currentAuthenticatedUser().then(user => user.username)
-      
-      console.log(userInfo, 'user information')
-      console.log(userSession, 'user session')
-      console.log(currentCredentials, 'current credentials')
-      console.log(getUser, 'getting federated user ')
-      
-    }catch(err){
-        console.log(err.message)
-    }
-   
+  //test for federation
+  const fetchUserInfo = (domain) => {
+    //let domain = 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com'
+    // the original call  axios.get('https://<your-user-pool-domain>/oauth2/userInfo')
+    axios.get(`https://${domain}/oauth2/userInfo`)
+      .then((response) => console.log(response, 'fetching userInfo info with axios'))
+      .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
+
+  const updateAttributes = async (user) => {
+    await Auth.updateUserAttributes(user, {
+      // 'name': 'schadrack'
+    });
+  }
+
 
 
 
   const checkUser = async () => {
 
-    await Auth.currentAuthenticatedUser()
+    await Auth.currentAuthenticatedUser({
+      bypassCache:false
+    })
       .then(user => {
         const currentUser = user.attributes.email
-        // const userInitial = currentUser.charAt(0)
-        console.log("User after succesfull login: ", user.attributes.email)
+        const DisplayUser = user.attributes.name
+
+        //get token
+        const token = user.signInUserSession.id.jwtToken
+        setAuthorisedJWT(token)
+        console.log(authorisedJWT, 'how to access jwt statefully')
+
+
+        // our setters
         setUser(currentUser)
+        setDisplayName(DisplayUser)
         setLoggedIn(true)
-        // console.log('user checking for federation' , user)
+        //testing logs
+        console.log('attributes:', user.attributes);
+        console.log(user, '=> user in current authenticated for federation')
+        console.log("User after succesfull login: ", currentUser)
+        console.log("display name after succesfull login: ", DisplayUser)
+
+        //get jwt token from user object
+        // const token = user.signInUserSession.accessToken.jwtToken
+        // setAuthorisedJWT('')
+        //update user attriubutes
       })
       .catch((error) => {
-        console.log("Error after succesfull login: ", error)
+        console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
       })
   }
 
 
-// const reload = ()=>{
-//   window.location.reload()
-// }
-
-
   useEffect(() => {
-    console.log('running user functions')
     checkUser()
-    getUserInfo()
+    // getUserInfo()
+    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
   }, [])
 
   return (
     <USER_CONTEXT.Provider
+
       value={{
-        UserContext, selectedCategory,loggedIn ,setLoggedIn, setSelectedCategory, showsDetails, setShowsDetails, AuthenticatedUser: {
+        UserContext,
+        authorisedJWT,
+        setAuthorisedJWT,
+        displayName,
+        selectedCategory,
+        loggedIn,
+        ForceReload,
+        setLoggedIn,
+        setUser,
+        setSelectedCategory,
+        showsDetails,
+        setShowsDetails,
+        AuthenticatedUser: {
           name: user,
+          email: user
         }
       }}
     >
       <Navbar />
+      <ShowsProvider>
       <Component {...pageProps} />
+      </ShowsProvider>
     </USER_CONTEXT.Provider>
   );
 }
 
 export default MyApp;
+

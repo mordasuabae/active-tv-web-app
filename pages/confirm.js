@@ -209,7 +209,7 @@ const confirmStyles = {
   },
 };
 
-const confirm = () => {
+const Confirm = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const [errorLogs, setErrorLogs] = useState("")
@@ -237,7 +237,8 @@ const confirm = () => {
       setRedirecting(true);
       setTimeout(() => {
         setRedirecting(false);
-        Router.push("/login"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+        Router.push("/login");
+        // Router.push("/subscribepayment");
       }, 2000);
 
     } catch (error) {
@@ -434,7 +435,7 @@ const confirm = () => {
     )
 };
 
-export default confirm;
+export default Confirm;
 
 
 

@@ -37,7 +37,7 @@ export async function signIn(username , password) {
     }
 }
 //resend confimation code
-export async function resendConfirmationCode() {
+export async function resendConfirmationCode(username) {
     try {
         await Auth.resendSignUp(username);
         console.log('code resent successfully');
@@ -65,3 +65,13 @@ export const changePassword =() =>{
     .then(data => console.log(data))
     .catch(err => console.log(err));
 }
+
+//delele user
+async function deleteUser() {
+    try {
+      const result = await Auth.deleteUser();
+      console.log(result);
+    } catch (error) {
+      console.log('Error deleting user', error);
+    }
+  }

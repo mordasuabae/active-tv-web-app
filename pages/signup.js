@@ -1,7 +1,8 @@
 import React from 'react'
 import SignupComp from '../components/login&signup-utils/SignupComp'
 
-const signup = () => {
+
+const Signup = () => {
   
   return (
     <>
@@ -12,4 +13,4 @@ const signup = () => {
   )
 }
 
-export default signup
+export default Signup

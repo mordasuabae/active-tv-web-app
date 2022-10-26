@@ -16,7 +16,7 @@ import LoginIcon from '@mui/icons-material/Login';
 import { useContext } from 'react';
 import { USER_CONTEXT } from '../../context/MainContext';
 import SettingsIcon from '@mui/icons-material/Settings';
-
+import SupportAgentIcon from '@mui/icons-material/SupportAgent';
 
 
 
@@ -27,7 +27,7 @@ export default function PositionedPopper({ user, userInitial }) {
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
   // const [loggedIn , setLoggedIn]  = React.useState(true)
-  const { loggedIn, setLoggedIn } = useContext(USER_CONTEXT)
+  const { loggedIn, setLoggedIn, setUser, ForceReload } = useContext(USER_CONTEXT)
 
 
 
@@ -43,18 +43,18 @@ export default function PositionedPopper({ user, userInitial }) {
     if (loggedIn) {
       try {
         await Auth.signOut();
-        Router.push('/login')
+        await Router.push('/login')
+        setUser('Activetv@gmail.com')
+        ForceReload()
       } catch (error) {
         console.log('error signing out: ', error);
       }
 
-    }else{
+    } else {
       Router.push('/login')
-      console.log('logged out with no current user')
-      
+      console.log('logged out with no present user')
+
     }
-
-
 
   }
 
@@ -79,7 +79,6 @@ export default function PositionedPopper({ user, userInitial }) {
 
               <Box sx={{ height: '140px', width: '100%', display: 'flex', alignItems: 'center', justifyContent: 'center', }}>
 
-
                 <Box sx={styles.DropUser}>
 
                   {loggedIn ?
@@ -101,10 +100,6 @@ export default function PositionedPopper({ user, userInitial }) {
                   }
 
                 </Box>
-
-
-
-
               </Box>
 
               <Button sx={{
@@ -126,9 +121,9 @@ export default function PositionedPopper({ user, userInitial }) {
               }} onClick={() => {
                 Router.push('/')
               }}>
-                <SettingsIcon sx={{ color: "#fff", marginRight: '16px' }} />
+                <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
-                  Settings
+                  Need help?
                 </Typography>
               </Button>
               <Button variant="text" sx={{
@@ -153,7 +148,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   Active studio
                 </Typography>
               </Button>
-          
+
               <Button variant="text" sx={{
                 width: 'auto', '&:hover': {
                   background: 'transparent'

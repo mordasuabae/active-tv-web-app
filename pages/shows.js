@@ -20,6 +20,7 @@ export  async function getStaticProps(){
 };
 const shows = ({shows}) => {
   console.log({shows})
+
   return (
     <Palette
       src={
@@ -45,4 +46,4 @@ const shows = ({shows}) => {
   )
 }
 
-export default shows
+export default Shows

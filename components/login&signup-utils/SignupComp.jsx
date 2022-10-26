@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useRouter from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -27,13 +27,14 @@ import ScaleLoader from "react-spinners/ScaleLoader";
 import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
+import { USER_CONTEXT } from "../../context/MainContext";
 import axios from 'axios'
 
 const loginStyles = {
   container: {
     minHeight: "145vh",
     width: "100%",
-    background: "url('login-bg.jpg')",
+    background: "url('active-tv-login-test1.png')",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -208,6 +209,7 @@ const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
   const [errorLogs, setErrorLogs] = useState('')
+  const {AuthenticatedUser, authorisedJWT} = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -230,24 +232,40 @@ const LoginComp = () => {
     setShow(!show);
   };
 
-  useEffect(() => {
-    console.log(signUp);
-  }, []);
+  console.log('user',AuthenticatedUser)
+  const endpoint = `http://127.0.0.1:3000/store-users`;
+  const tokenHandler = async () => {
+    // const response = await axios({
+    //   method: "POST",
+    //   url: endpoint,
+    //   data :AuthenticatedUser,
+    //   // BearerToken: authorisedJWT,
+    //   // mode: 'no-cors',
+    //   });
+    const response = await axios.post(endpoint,AuthenticatedUser,{'Content-Type':'application/json'},)
+    console.log('RESPONSE=>',response);
+  };
+  
+  // useEffect(() => {
+  //   console.log(signUp);
+  // }, []);
 
   //register user
   async function signUp(username, password, email) {
     try {
       const { user } = await Auth.signUp({
-        username: username,
+        username: email,
         password: password,
         attributes: {
           email: email, // optional
           phone_number: null, // optional - E.164 number convention
           // other custom attributes
+          'custom:display_name':username,
+          name:username
         },
       });
       
-      console.log(user);
+      console.log(user, 'signup authclass running');
 
       if (user) {
         setRedirecting(true);
@@ -310,6 +328,7 @@ const tokenHalndler = async () => {
     e.preventDefault();
     signUp(formDetails.email, formDetails.password, formDetails.email);
     tokenHalndler()
+
   };
 
   return redirecting ? (
@@ -487,10 +506,11 @@ const tokenHalndler = async () => {
                   variant="contained"
                   color="warning"
                   type="Submit"
-                  
+                  onClick={tokenHandler}
                 >
                   Sign up
                 </Button>
+
               </Box>
               <span
               className="active-tv-font"

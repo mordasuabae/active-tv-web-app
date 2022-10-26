@@ -1,7 +1,7 @@
 import React from 'react'
 import LoginComp from '../components/login&signup-utils/LoginComp'
 
-const login = () => {
+const Login = () => {
   return (
     <div>
         <LoginComp/>
@@ -9,4 +9,4 @@ const login = () => {
   )
 }
 
-export default login
+export default Login

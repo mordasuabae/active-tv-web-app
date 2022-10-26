@@ -3,7 +3,7 @@ import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import useRouter from "next/router";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -17,11 +17,13 @@ import Router from "next/router";
 import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { Hub, Logger } from "aws-amplify";
+import {USER_CONTEXT} from '../../context/MainContext'
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
+   const {ForceReload, authorisedJWT, setAuthorisedJWT ,getUserInfo } = useContext(USER_CONTEXT)
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -47,6 +49,7 @@ const LoginComp = () => {
   const GoogleSignin = async () => {
     try {
      await Auth.federatedSignIn({ provider: "Google" });
+     getUserInfo()
      console.log('using Google for federation')
 
     } catch (err) {
@@ -63,10 +66,10 @@ const LoginComp = () => {
   };
 
   async function signIn(username, password) {
-
     try {
       await Auth.signIn(username, password);
-      Router.push("/");
+      await Router.push("/");
+       ForceReload()
     } catch (error) {
       console.log("error signing in ", error);
       setErrorLogs(error.message);
@@ -77,6 +80,7 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(formDetails.email, formDetails.password);
+    
   };
 
   return (
@@ -210,7 +214,7 @@ const LoginComp = () => {
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
-                  type="Submit"
+                  // type="Submit"
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>

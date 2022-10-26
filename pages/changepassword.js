@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Box } from "@mui/system";
 import { Auth } from 'aws-amplify';
 import { Typography } from "@mui/material";
+import {Button} from "@mui/material";
 
 const background = {
   backgroundColor: "#111",
@@ -39,11 +40,12 @@ const inputBox = {
   height: "20px",
   fontSize: "13px",
   outline:'none',
-  padding:'20px',
-  border:'none'
+  padding:'10px',
+  border:'none',
+  marginTop:'10px'
 };
 
-const button = {
+const ButtonStyle = {
   border: "1px solid yellow",
   background: "transparent",
   color: "yellow",
@@ -54,7 +56,7 @@ const button = {
   height:"30px"
 };
 
-const buttonTwo = {
+const ButtonTwo = {
   border: "1px solid white",
   background: "transparent",
   color: "white",
@@ -64,7 +66,7 @@ const buttonTwo = {
   fontSize: "10px",
 };
 
-function changepassword() {
+function Changepassword() {
 
   const [oldPassword, setoldPassword] = useState("");
   const [newPassword, setnewPassword] = useState("");
@@ -113,7 +115,7 @@ function changepassword() {
     <Box className="active-tv-font" style={background}>
 
       <form style={container} onSubmit={handleSubmit}>
-        <Typography variant="h4" fontSize={22}>CHANGE PASSWORD</Typography>
+        <Typography className="active-tv-font" variant="h4" fontSize={18}>CHANGE PASSWORD</Typography>
         <hr style={{ marginRight: "20px" }} />
 
         <Box style={InputContainer}>
@@ -121,7 +123,7 @@ function changepassword() {
           <input
             type="text"
             name="oldPassword"
-            placeholder="Enter New Psssword..."
+            placeholder="Enter current password..."
             style={inputBox}
             value={oldPassword}
             onChange={(e) => setoldPassword(e.target.value)}
@@ -132,7 +134,7 @@ function changepassword() {
           <input
             type="text"
             name="newPassword"
-            placeholder="Confirm New Password..."
+            placeholder="Confirm new password..."
             style={inputBox}
             value={newPassword}
             onChange={(e) => setnewPassword(e.target.value)}
@@ -141,14 +143,14 @@ function changepassword() {
 
         <Box style={{ display: "flex", flexDirection: "column" }}>
 
-          <button type="submit" style={button} className="active-tv-font">
+          <Button type="submit" style={ButtonStyle} className="active-tv-font">
             <Typography variant="p" className="changepassword">Change Password</Typography>
-          </button>
+          </Button>
 
-          <Link href="/account">
-            <button style={buttonTwo} className="active-tv-font">
+          <Link href="/account" passHref={true}>
+            <Button style={ButtonTwo} className="active-tv-font">
               <p className="backtoyouraccount">Back To Your Account</p>
-            </button>
+            </Button>
           </Link>
         </Box>
       </form>
@@ -156,4 +158,4 @@ function changepassword() {
   );
 }
 
-export default changepassword;
+export default Changepassword;
