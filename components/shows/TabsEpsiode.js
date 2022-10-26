@@ -47,9 +47,10 @@ function a11yProps(index) {
   };
 }
 
-export default function TabsEpisode() {
-  const [value, setValue] = React.useState(0);
+export default function TabsEpisode(props) {
 
+  const [value, setValue] = React.useState(0);
+  const mediaUrl = 'https://active-studio-content-bucket.s3.us-east-2.amazonaws.com/Shows/'
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -97,13 +98,14 @@ autoClose: 1000, marginTop:"40px"
             }}>
 
           {
-            data.map( episode => {
+            props.episodes.map( episode => {
+              console.log({episode})
               return(
 
                 <div style={{display:"flex"}}>
 
                 <div className="Episodehover">
-                  <img src={episode.img} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
+                  <img src={`${mediaUrl}${episode.showTitle}/episodes/${episode.Title}/large-${episode.thumbnailFilename}`} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
                   <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <PlayCircleOutlineIcon style={{color:"white",fontSize:"80px", marginTop:"-190px", zIndex:"1", cursor:"pointer"}}/>
                 </div>
@@ -111,8 +113,8 @@ autoClose: 1000, marginTop:"40px"
                 </div>
 
                 <div style={{marginLeft:"45px", color:"white", marginTop:"25px"}}>
-                  <h4 className="active-tv-font">{episode.episodeone}</h4>
-                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description1}</p>
+                  <h4 className="active-tv-font">{episode.Title}</h4>
+                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description}</p>
                   <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description2}</p>
                   <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description3}</p>
                   <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description4}</p>

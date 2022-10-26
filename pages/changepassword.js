@@ -37,7 +37,7 @@ const InputContainer = {
 
 const inputBox = {
   width: "700px",
-  // height: "30px",
+  height: "20px",
   fontSize: "13px",
   outline:'none',
   padding:'10px',
@@ -53,7 +53,7 @@ const ButtonStyle = {
   width: "180px",
   cursor: "pointer",
   fontSize: "10px",
-  padding:10
+  height:"30px"
 };
 
 const ButtonTwo = {
