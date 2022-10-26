@@ -2,11 +2,12 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ShowCard from "./ShowCard";
 import Typography from "@mui/material/Typography";
-import data from "./test.json";
+// import data from "./test.json";
 import ShowHeader from "./ShowsHeader";
 import { useEffect, useState, useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 import Link from 'next/link';
+import axios from "axios";
 
 export default function ShowsDisplay() {
   const [open, setOpen] = React.useState(false);
@@ -25,6 +26,11 @@ export default function ShowsDisplay() {
       setEmpty(false);
     }, 3000);
   };
+
+  const getShows = () => {
+    const getShowsResponse = axios.get("https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows");
+  }
+    
 
 
 
