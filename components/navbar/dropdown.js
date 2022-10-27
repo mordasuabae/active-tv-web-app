@@ -84,7 +84,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   {loggedIn ?
 
                     <Typography variant="h1" color="#fff" fontSize={30}>
-                      {userInitial}
+                      {userInitial} 
                     </Typography>
                     :
                     <Box

@@ -74,7 +74,7 @@ function MyApp({ Component, pageProps }) {
     });
   }
 
-
+//changed >>>>>>>>
 
 
   const checkUser = async () => {

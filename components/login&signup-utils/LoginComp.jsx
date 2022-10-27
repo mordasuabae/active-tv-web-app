@@ -339,6 +339,7 @@ const loginStyles = {
     minHeight: "125vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
+     backgroundSize:'cover',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

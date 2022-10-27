@@ -90,13 +90,13 @@ const AccountLoggedIn = () => {
               <Typography
                 sx={{
                   marginBottom: "4px",
-                  "&:hover": { textDecoration: "underline" },
+                  // "&:hover": { textDecoration: "underline" },
                 }}
                 variant="h5"
                 fontSize={18}
                 color={"#df522b"}
               >
-                <Button onClick={()=>setOpen(true) }>delete account</Button> {/*//check here*/}
+                <Button variant="error" onClick={()=>setOpen(true) }>delete account</Button> {/*//check here*/}
               </Typography>
             </Grid>
           </Grid>
@@ -126,7 +126,7 @@ const AccountLoggedIn = () => {
                 Have an active Patreon membership?
               </Typography>
             </Grid>
-            <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
+            <Grid sx={{ ...styles.gridItem,...styles.lastGrid }} item md={3}>
               <Typography
                 sx={{
                   marginBottom: "4px",
@@ -136,7 +136,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Payment method</a>
+                <a href="/subscribepayment">Payment method</a>
               </Typography>
               <Typography
                 sx={{
