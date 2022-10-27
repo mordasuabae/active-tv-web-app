@@ -284,23 +284,7 @@ const LoginComp = () => {
 
 
 
-const endpoint = `http://127.0.0.1:3000/store-users`;
-const tokenHalndler = async () => {
-  const response = await axios({
-    method:"POST",
-    url:endpoint,
-    // BearerToken: authorisedJWT,
-    // mode: 'no-cors',
-    headers: {
-      "Content-Type": "application/json",
-      "Access-Control-Allow-Origin": "*",
-      "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT",
-      "Access-Control-Allow-Headers":
-      "Origin, X-Requested-With, Content-Type",
-  }
-});
-  console.log(response);
-};
+
 
 
 

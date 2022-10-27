@@ -24,8 +24,8 @@ const Account = () => {
     loggedIn ?
 
       <Box>
-        {/* <AccountLoggedIn /> */}
-        <ContactUs />
+        <AccountLoggedIn />
+        {/* <ContactUs /> */}
       </Box>
 
       :

@@ -18,7 +18,7 @@ export  async function getStaticProps(){
     }
   }
 };
-const shows = ({shows}) => {
+const Shows = ({shows}) => {
   console.log({shows})
 
   return (
