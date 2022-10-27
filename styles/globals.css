@@ -292,6 +292,10 @@
     font-weight: lighter !important;
   }
    .swiper-button-prev::after { color: black; }
+
+   .link{
+    color:'yellow'
+   }
   
    /* done */
    

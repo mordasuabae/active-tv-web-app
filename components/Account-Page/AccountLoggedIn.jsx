@@ -303,7 +303,7 @@ const styles = {
   container: {
     minHeight: "calc(100vh - 70px)",
     background: "url('active-tv-login-test1.png')",
-    // backgroundSize:'cover',
+    backgroundSize:'cover',
     display: "flex",
     alignItems: "center",
     width: "100%",

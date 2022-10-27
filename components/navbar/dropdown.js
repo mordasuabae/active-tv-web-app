@@ -119,7 +119,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   background: 'transparent'
                 }
               }} onClick={() => {
-                Router.push('/')
+                Router.push('/contact-us')
               }}>
                 <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>

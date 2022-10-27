@@ -11,6 +11,7 @@ import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
 
 
 
+
 const Account = () => {
 
  
@@ -22,7 +23,7 @@ const Account = () => {
     loggedIn ?
 
       <Box>
-        <AccountLoggedIn />
+             <AccountLoggedIn /> 
       </Box>
 
       :
