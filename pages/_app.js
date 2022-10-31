@@ -21,6 +21,7 @@ function MyApp({ Component, pageProps }) {
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
+  const [subCode, setSubCode] = useState("no-sub-user")
   const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
   const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
@@ -85,10 +86,12 @@ function MyApp({ Component, pageProps }) {
       .then(user => {
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
+        const sub = user.attributes.sub
 
         //get token
         const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
+        setSubCode(sub)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
 
@@ -137,6 +140,8 @@ function MyApp({ Component, pageProps }) {
         setSelectedCategory,
         showsDetails,
         setShowsDetails,
+        subCode,
+        setSubCode,
         AuthenticatedUser: {
           name: user,
         }
