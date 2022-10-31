@@ -134,7 +134,7 @@ const copy = ()=>{
         <Box sx={styles.body}>
           <form  onSubmit={handleForm}>
             <Typography className={'active-tv-font'} variant="h6" className={'active-tv-font'} fontSize={8} color="#fff">deletion code :</Typography>
-            <Box sx={{display:'flex', alignItems:'center', height:30, gap:3}}>
+            <Box sx={{display:'flex', alignItems:'center', height:30, gap:3,padding:'30px, 0 10px, 0'}}>
                        <Typography variant="h6" className={'active-tv-font'} color='#fff' fontSize={11} fontWeight={'bold'} >{subCode}</Typography>
                       <Button onClick={copy}><AssignmentIcon sx={{color:"darkgrey"}}/></Button>
                       <span style={{color:'green', fontSize:10}}>{isCopied?'Copied!' : ''}</span>
