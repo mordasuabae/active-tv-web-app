@@ -68,7 +68,7 @@ const LoginComp = () => {
   async function signIn(username, password) {
     try {
       await Auth.signIn(username, password);
-      await Router.push("/");
+      // await Router.push("/");
       ForceReload();
     } catch (error) {
       console.log("error signing in ", error);
@@ -242,10 +242,7 @@ const LoginComp = () => {
                   sx={{ ...loginStyles.socialBtn }}
                   variant="contained"
                   className={"active-tv-font"}
-<<<<<<< HEAD
-=======
                   // type="Submit"
->>>>>>> 212a022f37c18d40ee82593c593cc55a6da0aee9
                 >
                   <GoogleIcon sx={{ margin: "0 10px" }} /> Continue with Google
                 </Button>

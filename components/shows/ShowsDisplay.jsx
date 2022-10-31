@@ -2,7 +2,7 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import ShowCard from "./ShowCard";
 import Typography from "@mui/material/Typography";
-// import data from "./test.json";
+import data from "./test.json";
 import ShowHeader from "./ShowsHeader";
 import { useEffect, useState, useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
@@ -15,6 +15,7 @@ export default function ShowsDisplay() {
   const handleClose = () => setOpen(false);
   const [empty, setEmpty] = useState(true);
   const [spinner, setSpinner] = useState(null);
+  const [shows , setShows] = useState([]);
 
   const { showsDetails, setShowsDetails } = useContext(USER_CONTEXT);
 
@@ -27,9 +28,17 @@ export default function ShowsDisplay() {
     }, 3000);
   };
 
-  const getShows = () => {
-    const getShowsResponse = axios.get("https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows");
+  const getShows = async () => {
+    const getShowsResponse = await axios.get("https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows");
+    const results = getShowsResponse.data
+    setShows(results)
+    console.log(results)
   }
+
+  useEffect(()=>{
+    console.log("Running")
+    getShows();
+  },[])
     
 
 

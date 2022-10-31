@@ -272,6 +272,26 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
+            <Link href="/">
+              <a>
+                <Button
+                  className={"active-tv-font"}
+                  onClick={tokenHalndler}
+                  sx={{
+                    m: 2,
+                    color: "#eee",
+                    display: "block",
+                    fontSize: "12px",
+                    "&:hover": {
+                      color: "#7A9EA3",
+                      borderBottom: "1px solid #7A9EA3",
+                    },
+                  }}
+                >
+                 token
+                </Button>
+              </a>
+            </Link>
 
            
           </Box>

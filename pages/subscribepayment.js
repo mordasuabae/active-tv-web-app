@@ -1,5 +1,5 @@
 import Script from "next/script";
-import Box from "@mui/material/Box";
+import { Box , MenuItem, Select } from "@mui/material";
 import Typography from "@mui/material/Typography";
 import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from '@mui/icons-material/Person';
@@ -211,11 +211,11 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                 }} required /> */}
 
-                <select style={{ height: '45px', width: '100%' }} onChange={subscriptionType}>
-                  <option value="monthly" >Monthly</option>
-                  <option value="annual">Annual</option>
+                <Select sx={{ background:'#111' , height: '45px', width: '100%' }} onChange={subscriptionType}>
+                  <MenuItem value="monthly" >Monthly : R50 </MenuItem>
+                  <MenuItem value="annual">Annual : R450 </MenuItem>
 
-                </select>
+                </Select>
 
                 {prices.map((p) => (
                   <input key="" type="tel" id="amount" value={p.price} required />

@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -15,8 +15,31 @@ import { USER_CONTEXT } from "../../context/MainContext";
 // import LatestShows from "../latest-shows";
 import { Palette } from "@universemc/react-palette";
 import FreeToWatch from "../free-to-watch";
+import axios from "axios";
 
 const HomeBanner = () => {
+
+  const [banners , setBanners] = useState([]);
+  const [haveBanners , setHaveBanners] = useState(false);
+
+  const getShows = async () => {
+    const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-config`;
+    const getShowsResponse = await axios.get(endpoint);
+    const results = getShowsResponse.data
+    // const bannerResults = await axios.get(getShowsResponse.data["configJsonData"])
+    const copyOfBanners = results.BannerImageUrls
+    setBanners(copyOfBanners)
+    setHaveBanners(true)
+    console.log("copyOfBanners : " ,copyOfBanners)
+    // console.log(bannerResults.data)
+    console.log(results);
+  }
+  console.log(banners)
+
+  useEffect(()=>{
+    // console.log("Running")
+    getShows();
+  },[])
   return (
     <Palette
       src={
@@ -49,36 +72,21 @@ const HomeBanner = () => {
               className="mySwiper"
               style={{zIndex:0}}
             >
-              <SwiperSlide>
+           {
+            haveBanners && banners.map((item,index)=>{
+              return(
+                <SwiperSlide>
                 <BannerItem
-                  background={
-                    "https://cdn.watchcorridor.com/i/3173dc6a-9eba-4f58-b11c-43d5ad8144df.jpg"
-                  }
-                  logo={
-                    "https://cdn.watchcorridor.com/i/3cba7496-c740-4e28-bfdb-b45d31b5b5b9.png"
-                  }
+                  background={item}
+                  // logo={
+                  //   "https://cdn.watchcorridor.com/i/3cba7496-c740-4e28-bfdb-b45d31b5b5b9.png"
+                  // }
                 />
               </SwiperSlide>
-              <SwiperSlide>
-                <BannerItem
-                  background={
-                    "https://cdn.watchcorridor.com/i/7a78565c-86ac-4217-83c9-3fb2be9b0f09.jpg"
-                  }
-                  logo={
-                    "https://cdn.watchcorridor.com/i/c9572323-988a-4773-ace9-2b6a1b997fc6.png"
-                  }
-                />
-              </SwiperSlide>
-              <SwiperSlide>
-                <BannerItem
-                  background={
-                    "https://cdn.watchcorridor.com/i/19b0945d-b36c-4741-aefd-f5952c6d20fc.jpg"
-                  }
-                  logo={
-                    "https://cdn.watchcorridor.com/i/94d71c41-71a3-4b1a-ba5c-253ec3d643e8.png"
-                  }
-                />
-              </SwiperSlide>
+              )
+            })
+           }
+             
             </Swiper>
 
             <Box

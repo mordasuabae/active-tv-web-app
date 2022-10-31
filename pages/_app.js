@@ -3,41 +3,37 @@ import Navbar from "../components/navbar";
 import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState, useEffect } from "react";
 import { Palette } from "@universemc/react-palette";
-import Footer from '../components/footer/Footer'
+import Footer from "../components/footer/Footer";
 
 //amplify imports
-import { Amplify, Auth } from 'aws-amplify';
+import { Amplify, Auth } from "aws-amplify";
 import { Hub, Logger } from "aws-amplify";
 import awsconfig from "./../components/utils/CognitoConfig";
-import CurrentConfig from './../components/utils/CognitoConfig'
+import CurrentConfig from "./../components/utils/CognitoConfig";
 import { FlashlightOnRounded } from "@mui/icons-material";
-import axios from 'axios'
+import axios from "axios";
 
 Amplify.configure(CurrentConfig);
-import {ShowsProvider} from '../context/ShowContext'
-
+import { ShowsProvider } from "../context/ShowContext";
 
 function MyApp({ Component, pageProps }) {
-
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
-  const [user, setUser] = useState("Activetv@gmail.com")
-  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
-  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
-  const [displayName, setDisplayName] = useState("display name")
-  const [loggedIn, setLoggedIn] = useState(false)
-  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
+  const [user, setUser] = useState("Activetv@gmail.com");
+  const [googleFederatedUser, setGoogleFederatedUser] =
+    useState("Activetv@gmail.com");
+  const [facebookFederatedUser, setFacebookFederatedUser] =
+    useState("Activetv@gmail.com");
+  const [displayName, setDisplayName] = useState("display name");
+  const [loggedIn, setLoggedIn] = useState(false);
+  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid");
   const [showsDetails, setShowsDetails] = useState({
-    title: '',
-    img: 'imortal.webp',
-    episodes: []
-  })
+    title: "",
+    img: "imortal.webp",
+    episodes: [],
+  });
 
-
-
-  const ForceReload = () => window.location.reload()
-
-
+  const ForceReload = () => window.location.reload();
 
   //hub listeners
   // Hub.listen("auth", (data) => {
@@ -59,16 +55,19 @@ function MyApp({ Component, pageProps }) {
   //   }
   // });
 
-
   //test for federation
   const fetchUserInfo = (domain) => {
     //let domain = 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com'
     // the original call  axios.get('https://<your-user-pool-domain>/oauth2/userInfo')
-    axios.get(`https://${domain}/oauth2/userInfo`)
-      .then((response) => console.log(response, 'fetching userInfo info with axios'))
-      .catch(err => console.log('failing to fetch user from axios bcz', err.message))
-
-  }
+    axios
+      .get(`https://${domain}/oauth2/userInfo`)
+      .then((response) =>
+        console.log(response, "fetching userInfo info with axios")
+      )
+      .catch((err) =>
+        console.log("failing to fetch user from axios bcz", err.message)
+      );
+  };
 
   // const updateAttributes = async (user) => {
   //   await Auth.updateUserAttributes(user, {
@@ -76,29 +75,23 @@ function MyApp({ Component, pageProps }) {
   //   });
   // }
 
-
-
-
-
   const checkUser = async () => {
-
     await Auth.currentAuthenticatedUser({
-      bypassCache:false
+      bypassCache: false,
     })
-      .then(user => {
-        const currentUser = user.attributes.email
-        const DisplayUser = user.attributes.name
+      .then((user) => {
+        const currentUser = user.attributes.email;
+        const DisplayUser = user.attributes.name;
 
         //get token
-        const token = user.signInUserSession.id.jwtToken
-        setAuthorisedJWT(token)
-        console.log(authorisedJWT, 'how to access jwt statefully')
-
+        const token = user.signInUserSession.id.jwtToken;
+        setAuthorisedJWT(token);
+        console.log(authorisedJWT, "how to access jwt statefully");
 
         // our setters
-        setUser(currentUser)
-        setDisplayName(DisplayUser)
-        setLoggedIn(true)
+        setUser(currentUser);
+        setDisplayName(DisplayUser);
+        setLoggedIn(true);
         //testing logs
         // console.log('attributes:', user.attributes);
         // console.log(user, '=> user in current authenticated for federation')
@@ -111,23 +104,22 @@ function MyApp({ Component, pageProps }) {
         //update user attriubutes
       })
       .catch((error) => {
-        console.log("failed to get the existing user because ", error)
-        setUser("Active-tv")
-        setLoggedIn(false)
-      })
-  }
+        console.log("failed to get the existing user because ", error);
+        setUser("Active-tv");
+        setLoggedIn(false);
+      });
+  };
 
-  const userSession =  Auth.currentSession()
+  const userSession = Auth.currentSession();
 
   useEffect(() => {
-    checkUser()
+    checkUser();
     // getUserInfo()
     // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-  }, [])
+  }, []);
 
   return (
     <USER_CONTEXT.Provider
-
       value={{
         UserContext,
         authorisedJWT,
@@ -143,12 +135,12 @@ function MyApp({ Component, pageProps }) {
         setShowsDetails,
         AuthenticatedUser: {
           name: user,
-        }
+        },
       }}
     >
       <Navbar />
       <ShowsProvider>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
       </ShowsProvider>
       <Footer />
     </USER_CONTEXT.Provider>
@@ -156,4 +148,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-

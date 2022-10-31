@@ -6,6 +6,7 @@ import Button from "@mui/material/Button";
 import { Palette } from "@universemc/react-palette";
 import { useState, useEffect } from 'react';
 import ShowsDisplay from '../components/shows/ShowsDisplay';
+import Homeshows from '../components/home-shows/Homeshows';
 
 const Shows = () => {
   
@@ -26,7 +27,8 @@ const Shows = () => {
                padding:'40px 40px'
             }}
           >  
-         <ShowsDisplay/>
+         {/* <ShowsDisplay/> */}
+         <Homeshows />
           </Box>
         ); 
       }} 

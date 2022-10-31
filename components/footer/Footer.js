@@ -4,18 +4,23 @@ import Typography from "@mui/material/Typography";
 
 const container = {
   width: "100%",
-  height: "64px",
+  height: "120px",
   backgroundColor: "#111",
+  // border: '1px solid red',
+  position: 'relative'
 };
 
 const overLay = {
   width: "100%",
-  height: "100%",
+  height: "64px",
   display: "flex",
   alignItems: "flex-end",
   justifyContent: "flex-end",
   padding: "0 100px",
   background: "rgba(0,0,0,0.3)",
+  // border: '1px solid yellow',
+  position:'absolute',
+  bottom: 0
 };
 
 const container2 = {
