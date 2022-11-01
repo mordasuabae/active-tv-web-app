@@ -60,11 +60,7 @@ const ButtonStyle = {
   width: "180px",
   cursor: "pointer",
   fontSize: "10px",
-<<<<<<< HEAD
-  padding: 10
-=======
   height:"30px"
->>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
 };
 
 const ButtonTwo = {

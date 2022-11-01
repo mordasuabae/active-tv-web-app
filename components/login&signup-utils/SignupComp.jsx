@@ -34,13 +34,8 @@ import axios from 'axios'
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
-<<<<<<< HEAD
   const [errorLogs, setErrorLogs] = useState("");
   const { AuthenticatedUser } = useContext(USER_CONTEXT);
-=======
-  const [errorLogs, setErrorLogs] = useState('')
-  const {AuthenticatedUser, authorisedJWT} = useContext(USER_CONTEXT)
->>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -113,15 +108,12 @@ const LoginComp = () => {
     }
   }
 
-<<<<<<< HEAD
-=======
 
 
 
 
 
 
->>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
   const GoogleSignin = async () => {
     try {
       await Auth.federatedSignIn({ provider: "Google" });
