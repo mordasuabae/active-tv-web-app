@@ -249,7 +249,7 @@ const ProductCard = ({
               >
                 <img
                   src="https://static.afterpay.com/integration/product-page/logo-afterpay-colour@3x.png"
-                  alt="..."
+                  alt="logo"
                   height="16px"
                   width="80px"
                 />

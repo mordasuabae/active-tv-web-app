@@ -64,7 +64,7 @@ const PointsGrid = () => {
           </Box>
           <Box sx={styles.body}>
              <Typography align="center" variant="h6" color="#fff" fontSize={16}>
-             When Enough Members Contribute Points To Meet A Project’s Goal, We Make It.
+             When Enough Members Contribute Points To Meet A {"Project’s"} Goal, We Make It.
              </Typography>
           </Box>
         </Grid>

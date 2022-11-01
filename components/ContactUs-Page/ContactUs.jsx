@@ -14,10 +14,10 @@ const ContactUs = () => {
   
     return ( 
         <Box className={"active-tv-font"} sx={styles.container}>
-            <Box style={{color:'white'}} sx={styles.contentBox}>
+            <Box sx={{color:'white'}} style={styles.contentBox}>
                  <h1 style={{fontSize:'20px'}}>Contact Us</h1>
                  <p style={{fontSize:'8px'}}>Please check out our FAQ pages to see if your answer is there first, if not use one of the contact methods below.</p>
-                 <Link href='/'>
+                 <Link href='/' passHref={true}>
                  <p style={{fontSize:'8px',color:'yellow'}}>Check our FAQ for your issue.</p>
                  </Link>
                  <br/>
@@ -80,6 +80,3 @@ const styles = {
   
   };
 
-// Repository
-// https://github.com/mordasuabae/activetv.git
-  

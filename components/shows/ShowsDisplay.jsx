@@ -29,7 +29,7 @@ export default function ShowsDisplay() {
 
 
   return (
-    <div>
+    <Box>
       <ShowHeader title="Shows" />
       <Box
         sx={{
@@ -40,8 +40,7 @@ export default function ShowsDisplay() {
         }}
       >
         {data.map((card, index) => (
-          <Link key={index} href={`/shows-episodes/${card.name}`}>
-            <a> 
+          <Link key={index} href={`/shows-episodes/${card.name}`} passHref={true}>
             <ShowCard
               color={card.color}
               openModal={handleOpen}
@@ -71,11 +70,10 @@ export default function ShowsDisplay() {
             >
               {card.name}
             </Typography>
-            </a>
           </Link>
         ))}
       </Box>
-    </div>
+    </Box>
   );
 }
 

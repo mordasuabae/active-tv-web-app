@@ -120,8 +120,6 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     checkUser()
-    // getUserInfo()
-    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
   },[])
 
   return (
