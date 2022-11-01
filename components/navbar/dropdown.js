@@ -80,7 +80,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 <Box sx={styles.DropUser}>
                   {loggedIn ? (
                     <Typography variant="h1" color="#fff" fontSize={30}>
-                      {userInitial}
+                      {userInitial} 
                     </Typography>
                   ) : (
                     <Box
@@ -94,16 +94,9 @@ export default function PositionedPopper({ user, userInitial }) {
                       }}
                     />
                   )}
+
                 </Box>
               </Box>
-
-
-            {/* Avater Profile changer */}
-              <Box style={{ marginLeft:"100px", marginBottom:"15px"}}>
-              <AvaterPicChanger/>  
-              </Box>
-            {/* Avater Profile changer */}
-
 
               <Button
                 sx={{
@@ -123,19 +116,14 @@ export default function PositionedPopper({ user, userInitial }) {
                   account
                 </Typography>
               </Button>
-              <Button
-                variant="text"
-                sx={{
-                  width: "auto",
-                  "&:hover": {
-                    background: "transparent",
-                  },
-                }}
-                onClick={() => {
-                  Router.push("/");
-                }}
-              >
-                <SupportAgentIcon sx={{ color: "#fff", marginRight: "16px" }} />
+              <Button variant="text" sx={{
+                width: 'auto', '&:hover': {
+                  background: 'transparent'
+                }
+              }} onClick={() => {
+                Router.push('/contact-us')
+              }}>
+                <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>
                   Need help?
                 </Typography>

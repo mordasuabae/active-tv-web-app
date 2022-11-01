@@ -8,7 +8,6 @@ import { Box } from '@mui/system'
 import { useState, useContext } from 'react'
 import { USER_CONTEXT } from '../context/MainContext'
 import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
-import ContactUs from '../components/ContactUs-Page/ContactUs'
 
 
 
@@ -17,15 +16,14 @@ const Account = () => {
 
  
    const {loggedIn} = useContext(USER_CONTEXT) //getting the user auth details 
-  // const [loggedIn, SetLoggedIn] = useState(true)
+  // const [loggedIn, SetLoggedIn] = useState(true) // for testing purposes
 
   return (
 
     loggedIn ?
 
       <Box>
-        <AccountLoggedIn />
-        {/* <ContactUs /> */}
+          <AccountLoggedIn /> 
       </Box>
 
       :

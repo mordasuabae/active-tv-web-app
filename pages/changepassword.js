@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
+import Router from 'next/router'
 import Link from "next/link";
 import { Box } from "@mui/system";
 import { Auth } from 'aws-amplify';
 import { Typography } from "@mui/material";
 import {Button} from "@mui/material";
+  import { ToastContainer, toast } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
 
 const background = {
   backgroundColor: "#111",
@@ -15,15 +18,16 @@ const background = {
   justifyContent: "center",
   color: "white",
   background: "url('active-tv-login-test1.png')",
+  backgroundSize:'cover',
 };
 
 const container = {
   // border: "1px solid yellow",
-  width: "800px",
+  width: "650px",
   height: "440px",
   flexDirection: "column",
-  paddingLeft: "50px",
-  paddingTop: "30px",
+  paddingLeft: "20px",
+  paddingTop: "50px",
   background: "rgba(0,0,0,0.6)",
 
 };
@@ -32,12 +36,15 @@ const InputContainer = {
   display: "flex",
   flexDirection: "column",
   marginTop: "30px",
+  // padding:'0 30px',
   fontSize: "10px",
 };
 
 const inputBox = {
-  width: "700px",
-  height: "20px",
+  width: "600px",
+  borderRadius:"4px",
+
+  // height: "30px",
   fontSize: "13px",
   outline:'none',
   padding:'10px',
@@ -75,12 +82,35 @@ function Changepassword() {
 
   const AuthResetPassword = async (oldPassword, newPassword) => {
     try {
-      Auth.currentAuthenticatedUser()
+     await Auth.currentAuthenticatedUser()
         .then(user => {
           return Auth.changePassword(user, oldPassword, newPassword);
         })
-        .then(data => console.log(data))
-        .catch(err => console.log(err));
+        .then(data => {
+          Router.push('/account')
+           toast.success(`${data} , user changed their password to ${newPassword}`, {
+position: "top-right",
+autoClose: 3000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+        })
+        .catch(err => {
+          toast.error(err.message, {
+position: "top-right",
+autoClose: 2000,
+hideProgressBar: false,
+closeOnClick: true,
+pauseOnHover: true,
+draggable: true,
+progress: undefined,
+theme: "dark",
+});
+        });
 
     } catch (err) {
       console.log(err.message , 'error after password reset')
@@ -88,17 +118,11 @@ function Changepassword() {
 
   }
 
-
-
   const handleSubmit = (e) => {
     e.preventDefault();
 
     if (newPassword, oldPassword) {
 
-      // const passwordDetails = {
-      //   oldPassword: oldPassword,
-      //   newPassword: newPassword
-      // }
       AuthResetPassword(oldPassword, newPassword)
 
       //reset the inputs to null
@@ -115,11 +139,11 @@ function Changepassword() {
     <Box className="active-tv-font" style={background}>
 
       <form style={container} onSubmit={handleSubmit}>
-        <Typography className="active-tv-font" variant="h4" fontSize={18}>CHANGE PASSWORD</Typography>
+        <Typography className="active-tv-font" variant="h4"  color={'yellow'}fontSize={16}>CHANGE PASSWORD</Typography>
         <hr style={{ marginRight: "20px" }} />
 
         <Box style={InputContainer}>
-          <Typography variant="p">New Password</Typography>
+          <Typography variant="p">Current Password</Typography>
           <input
             type="text"
             name="oldPassword"
@@ -130,7 +154,7 @@ function Changepassword() {
           />
           <br />
           <br />
-          <Typography variant="p">Confirm Password</Typography>
+          <Typography variant="p">New Password</Typography>
           <input
             type="text"
             name="newPassword"
@@ -143,15 +167,17 @@ function Changepassword() {
 
         <Box style={{ display: "flex", flexDirection: "column" }}>
 
-          <Button type="submit" style={ButtonStyle} className="active-tv-font">
+          <Button  sx={{ backgroundColor:'blue','&:hover':{backgroundColor:'red'}}} type="submit" style={ButtonStyle} className="active-tv-font">
             <Typography variant="p" className="changepassword">Change Password</Typography>
           </Button>
 
           <Link href="/account" passHref={true}>
-            <Button style={ButtonTwo} className="active-tv-font">
+            <Button  style={ButtonTwo} className="active-tv-font">
               <p className="backtoyouraccount">Back To Your Account</p>
             </Button>
           </Link>
+        
+          <ToastContainer />
         </Box>
       </form>
     </Box>

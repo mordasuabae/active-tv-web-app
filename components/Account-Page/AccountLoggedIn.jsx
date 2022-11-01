@@ -1,17 +1,23 @@
 import React from "react";
 import { Box } from "@mui/system";
-import { Typography } from "@mui/material";
+import { Typography, Button } from "@mui/material";
 import { useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
+import DeleteModal from './deleteModal'
 
 const AccountLoggedIn = () => {
   const { AuthenticatedUser,displayName } = useContext(USER_CONTEXT); //pulling out the current authenticated user
 
   const [subscribed, setSubscribed] = useState(false);
 
+ const [open, setOpen] = React.useState(false);
+
   return (
     <Box className={"active-tv-font"} sx={styles.container}>
+
+     <DeleteModal open={open} setOpen={setOpen} />
+
       <Box sx={styles.contentBox}>
         {/* insert code here */}
         <Box
@@ -37,12 +43,23 @@ const AccountLoggedIn = () => {
         >
           <Grid container>
             <Grid sx={styles.gridItem} item md={3.5}>
-              <Typography className="active-tv-font" variant="h3" fontSize={13}>
+            {/*  <Typography className="active-tv-font" variant="h3" fontSize={13}>
                 profile
               </Typography>
+*/}               <Typography className="active-tv-font" variant="h3" fontSize={10}>
+                display name
+              </Typography>
+               <Typography sx={{margin:'10px 0'}} className="active-tv-font" variant="h3" fontSize={10}>
+                email
+              </Typography>
+
+
             </Grid>
             <Grid sx={styles.gridItem} item md={5.5}>
-              <Typography className="active-tv-font" variant="h3" fontSize={10}>
+               <Typography  className="active-tv-font" variant="h3" fontSize={10}>
+                {displayName}
+              </Typography>
+              <Typography sx={{margin:'10px 0'}} className="active-tv-font" variant="h3" fontSize={10}>
                 {AuthenticatedUser.name}
               </Typography>
             </Grid>
@@ -73,13 +90,13 @@ const AccountLoggedIn = () => {
               <Typography
                 sx={{
                   marginBottom: "4px",
-                  "&:hover": { textDecoration: "underline" },
+                  // "&:hover": { textDecoration: "underline" },
                 }}
                 variant="h5"
                 fontSize={18}
                 color={"#df522b"}
               >
-                <a href="">delete account</a>
+                <Button variant="error" onClick={()=>setOpen(true) }>delete account</Button> {/*//check here*/}
               </Typography>
             </Grid>
           </Grid>
@@ -88,7 +105,7 @@ const AccountLoggedIn = () => {
           sx={{
             minHeight: "80px",
             borderTop: "1px solid #F2F2F2 ",
-          }}
+          }} nknkm
         >
           <Grid container>
             <Grid sx={styles.gridItem} item md={3.5}>
@@ -109,7 +126,7 @@ const AccountLoggedIn = () => {
                 Have an active Patreon membership?
               </Typography>
             </Grid>
-            <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
+            <Grid sx={{ ...styles.gridItem,...styles.lastGrid }} item md={3}>
               <Typography
                 sx={{
                   marginBottom: "4px",
@@ -119,7 +136,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Payment method</a>
+                <a href="/subscribepayment">Payment method</a>
               </Typography>
               <Typography
                 sx={{
@@ -286,7 +303,7 @@ const styles = {
   container: {
     minHeight: "calc(100vh - 70px)",
     background: "url('active-tv-login-test1.png')",
-    // backgroundSize:'cover',
+    backgroundSize:'cover',
     display: "flex",
     alignItems: "center",
     width: "100%",
