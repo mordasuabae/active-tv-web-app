@@ -11,8 +11,8 @@ const style = {
   top: '50%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "700px",
-  height:"400px",
+  width: "690px",
+  height:"388px",
   bgcolor: 'black',
   boxShadow: 24,
   p: 4,
@@ -20,17 +20,22 @@ const style = {
 };
 
 const cancelBtn = {
-  background:"red",
+  // background:"red",
   marginTop:"10px",
-  color:"white",
-  fontWeight:"bold"
+  color:"red",
+  fontWeight:"bold",
+  border:"1px solid red",
+  height:"30px"
 }
 
 const confirmBtn = {
-  background:"green",
+  // background:"green",
   marginTop:"10px",
-  color:"white",
-  fontWeight:"bold"
+  color:"green",
+  fontWeight:"bold",
+  border:"1px solid green",
+  height:"30px"
+
 }
 
 const images = {
