@@ -28,14 +28,19 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
 import { USER_CONTEXT } from "../../context/MainContext";
-
+import axios from 'axios'
 
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [redirecting, setRedirecting] = useState(false);
+<<<<<<< HEAD
   const [errorLogs, setErrorLogs] = useState("");
   const { AuthenticatedUser } = useContext(USER_CONTEXT);
+=======
+  const [errorLogs, setErrorLogs] = useState('')
+  const {AuthenticatedUser, authorisedJWT} = useContext(USER_CONTEXT)
+>>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -58,6 +63,20 @@ const LoginComp = () => {
     setShow(!show);
   };
 
+  console.log('user',AuthenticatedUser)
+  const endpoint = `http://127.0.0.1:3000/store-users`;
+  const tokenHandler = async () => {
+    // const response = await axios({
+    //   method: "POST",
+    //   url: endpoint,
+    //   data :AuthenticatedUser,
+    //   // BearerToken: authorisedJWT,
+    //   // mode: 'no-cors',
+    //   });
+    const response = await axios.post(endpoint,AuthenticatedUser,{'Content-Type':'application/json'},)
+    console.log('RESPONSE=>',response);
+  };
+  
   // useEffect(() => {
   //   console.log(signUp);
   // }, []);
@@ -94,6 +113,15 @@ const LoginComp = () => {
     }
   }
 
+<<<<<<< HEAD
+=======
+
+
+
+
+
+
+>>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
   const GoogleSignin = async () => {
     try {
       await Auth.federatedSignIn({ provider: "Google" });
@@ -114,7 +142,9 @@ const LoginComp = () => {
   // submit form
   const handleSubmit = (e) => {
     e.preventDefault();
-    signUp(formDetails.name, formDetails.password, formDetails.email);
+    signUp(formDetails.email, formDetails.password, formDetails.email);
+    tokenHalndler()
+
   };
 
   return redirecting ? (
@@ -291,9 +321,11 @@ const LoginComp = () => {
                   variant="contained"
                   color="warning"
                   type="Submit"
+                  onClick={tokenHandler}
                 >
                   Sign up
                 </Button>
+
               </Box>
               <span
                 className="active-tv-font"

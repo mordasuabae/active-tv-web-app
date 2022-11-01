@@ -142,6 +142,7 @@ function MyApp({ Component, pageProps }) {
         setSubCode,
         AuthenticatedUser: {
           name: user,
+          email: user
         }
       }}
     >

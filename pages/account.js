@@ -23,7 +23,7 @@ const Account = () => {
     loggedIn ?
 
       <Box>
-             <AccountLoggedIn /> 
+          <AccountLoggedIn /> 
       </Box>
 
       :

@@ -47,9 +47,10 @@ function a11yProps(index) {
   };
 }
 
-export default function TabsEpisode() {
-  const [value, setValue] = React.useState(0);
+export default function TabsEpisode(props) {
 
+  const [value, setValue] = React.useState(0);
+  const mediaUrl = 'https://active-studio-content-bucket.s3.us-east-2.amazonaws.com/Shows/'
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -87,6 +88,7 @@ export default function TabsEpisode() {
         </Tabs>
       </Box>
 
+<<<<<<< HEAD
       <Box>
         <TabPanel value={value} index={0}>
           <Box style={{ marginLeft: "50px", marginTop: "20px" }}>
@@ -129,6 +131,51 @@ export default function TabsEpisode() {
                           {/* <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
                   <Box><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked} /></Box>
                   <Box><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></Box>
+=======
+     <Box>
+     <TabPanel value={value} index={0}>
+      <Box style={{ marginLeft: "50px", marginTop:"20px" }}>
+        <Box
+          style={{
+            marginTop: "20px",
+            alignItems: "center",
+            marginLeft: "30px",
+            flexDirection:"colum"
+            }}>
+
+          {
+            props.episodes.map( episode => {
+              console.log({episode})
+              return(
+
+                <div style={{display:"flex"}}>
+
+                <div className="Episodehover">
+                  <img src={`${mediaUrl}${episode.showTitle}/episodes/${episode.Title}/large-${episode.thumbnailFilename}`} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
+                  <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
+                  <PlayCircleOutlineIcon style={{color:"white",fontSize:"80px", marginTop:"-190px", zIndex:"1", cursor:"pointer"}}/>
+                </div>
+
+                </div>
+
+                <div style={{marginLeft:"45px", color:"white", marginTop:"25px"}}>
+                  <h4 className="active-tv-font">{episode.Title}</h4>
+                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description}</p>
+                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description2}</p>
+                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description3}</p>
+                  <p className="active-tv-font" style={{fontSize:"10px"}}>{episode.description4}</p>
+                  <Box
+                  style={{
+                    color: "white",
+                    fontSize: "13px",
+                    marginBottom: "50px",
+                    marginLeft: "45px",
+                    }}>
+                
+                {/* <p className="active-tv-font" style={{marginLeft:"-200px", width:"400px", display:"flex", justifyContent:"center"}}>
+                  <div><ThumbUpOffAltIcon style={{ color: "green",cursor: "pointer"}} onClick={liked} /></div>
+                  <div><ThumbDownOffAltIcon style={{ color: "red",cursor: "pointer", marginLeft:"8px"}} onClick={disliked}/></div>
+>>>>>>> 7dc3cb06abc3e760a986de8bd261ed73591874b4
                   <ToastContainer/>
                 </p> */}
                         </Box>
