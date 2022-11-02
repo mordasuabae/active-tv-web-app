@@ -30,11 +30,11 @@ const HomeBanner = () => {
     const copyOfBanners = results.BannerImageUrls
     setBanners(copyOfBanners)
     setHaveBanners(true)
-    console.log("copyOfBanners : " ,copyOfBanners)
+    // console.log("copyOfBanners : " ,copyOfBanners)
     // console.log(bannerResults.data)
-    console.log(results);
+    // console.log(results);
   }
-  console.log(banners)
+  // console.log(banners)
 
   useEffect(()=>{
     // console.log("Running")

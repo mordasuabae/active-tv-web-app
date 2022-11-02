@@ -59,21 +59,19 @@ function MyApp({ Component, pageProps }) {
   const fetchUserInfo = (domain) => {
     //let domain = 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com'
     // the original call  axios.get('https://<your-user-pool-domain>/oauth2/userInfo')
-    axios
-      .get(`https://${domain}/oauth2/userInfo`)
-      .then((response) =>
-        console.log(response, "fetching userInfo info with axios")
-      )
-      .catch((err) =>
-        console.log("failing to fetch user from axios bcz", err.message)
-      );
-  };
+    axios.get(`https://${domain}/oauth2/userInfo`)
+      .then((response) => console.log(response, 'fetching userInfo info with axios'))
+      .catch(err => console.log('failing to fetch user from axios bcz', err.message))
+  }
 
-  // const updateAttributes = async (user) => {
-  //   await Auth.updateUserAttributes(user, {
-  //     // 'name': 'schadrack'
-  //   });
-  // }
+  const updateAttributes = async (user) => {
+    await Auth.updateUserAttributes(user, {
+      // 'name': 'schadrack'
+    });
+  }
+
+//changed >>>>>>>>
+
 
   const checkUser = async () => {
     await Auth.currentAuthenticatedUser({
@@ -84,9 +82,10 @@ function MyApp({ Component, pageProps }) {
         const DisplayUser = user.attributes.name;
 
         //get token
-        const token = user.signInUserSession.id.jwtToken;
-        setAuthorisedJWT(token);
-        console.log(authorisedJWT, "how to access jwt statefully");
+        const token = user.signInUserSession.idToken.jwtToken
+        setAuthorisedJWT(token)
+        console.log(authorisedJWT, 'how to access jwt statefully')
+
 
         // our setters
         setUser(currentUser);
@@ -116,7 +115,7 @@ function MyApp({ Component, pageProps }) {
     checkUser();
     // getUserInfo()
     // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-  }, []);
+  },[])
 
   return (
     <USER_CONTEXT.Provider

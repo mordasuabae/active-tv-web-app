@@ -84,7 +84,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   {loggedIn ?
 
                     <Typography variant="h1" color="#fff" fontSize={30}>
-                      {userInitial}
+                      {userInitial} 
                     </Typography>
                     :
                     <Box
@@ -119,7 +119,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   background: 'transparent'
                 }
               }} onClick={() => {
-                Router.push('/')
+                Router.push('/contact-us')
               }}>
                 <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
                 <Typography variant="p" color="#fff" fontSize={14}>

@@ -17,12 +17,12 @@ import axios from "axios";
 const Homeshows = ({ latestVid, title, height, width }) => {
 
   const [showsContainer , setShowsContainer] = useState([]);
-console.log(showsContainer)
+// console.log(showsContainer)
   const getShows = async () => {
     const getShowsResponse = await axios.get("https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows");
     const results = getShowsResponse.data
     setShowsContainer(results)
-    console.log(results)
+    // console.log(results)
   }
 
   const banners = [

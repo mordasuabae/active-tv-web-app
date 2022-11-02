@@ -47,26 +47,7 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows`;
-  // https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows
-  const tokenHalndler = async () => {
-    const response = await axios({
-      method: "get",
-      url: endpoint,
-      // BearerToken: authorisedJWT,
-      // mode: 'no-cors',
-      headers: {
-        // "Access-Control-Allow-Origin": "*",
-        // "Content-Type": "application/json",
-        // "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
-        // "Access-Control-Allow-Headers": "Origin, X-Requested-With, Content-Type",
-        // "Access-Control-Allow-Credentials": true,
-        "Authorization": `Bearer ${authorisedJWT} `,
-      },
-    });
-    console.log(response);
-  };
-
+  
   return (
     <AppBar
       position="sticky"
@@ -272,27 +253,6 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
-            <Link href="/">
-              <a>
-                <Button
-                  className={"active-tv-font"}
-                  onClick={tokenHalndler}
-                  sx={{
-                    m: 2,
-                    color: "#eee",
-                    display: "block",
-                    fontSize: "12px",
-                    "&:hover": {
-                      color: "#7A9EA3",
-                      borderBottom: "1px solid #7A9EA3",
-                    },
-                  }}
-                >
-                 token
-                </Button>
-              </a>
-            </Link>
-
            
           </Box>
           {/* coin system below */}

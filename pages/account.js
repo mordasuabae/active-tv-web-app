@@ -11,18 +11,19 @@ import AccountLoggedIn from '../components/Account-Page/AccountLoggedIn'
 
 
 
+
 const Account = () => {
 
  
    const {loggedIn} = useContext(USER_CONTEXT) //getting the user auth details 
-  // const [loggedIn, SetLoggedIn] = useState(true)
+  // const [loggedIn, SetLoggedIn] = useState(true) // for testing purposes
 
   return (
 
     loggedIn ?
 
       <Box>
-        <AccountLoggedIn />
+             <AccountLoggedIn /> 
       </Box>
 
       :

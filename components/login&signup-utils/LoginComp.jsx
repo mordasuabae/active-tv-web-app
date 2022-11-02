@@ -77,28 +77,20 @@ const LoginComp = () => {
   }
 
 
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/UserPoolStage/get-config`;
-  const headers = {
-    "Access-Control-Allow-Origin": "*",
-    "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-    "Access-Control-Allow-Headers": "Content-Type, Authorization",
-    Bearer: authorisedJWT,
-  };
-
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
   const tokenHalndler = async () => {
     const response = await axios({
       method: "get",
       url: endpoint,
-      // headers: {
-      //   "Content-Type": "application/json",
-      //   "Access-Control-Allow-Origin": "*",
-      //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
-      //   "Access-Control-Allow-Headers":
-      //     "Origin, X-Requested-With, Content-Type",
-      //   "Access-Control-Allow-Credentials": true,
-      //   Authorization: `Bearer ${authorisedJWT} `,
-      //   mode: "no-cors",
-      // },
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type",
+        "Access-Control-Allow-Credentials": true,
+        Authorization: `Bearer ${authorisedJWT} `,
+      },
     });
     console.log(response);
   };
@@ -193,7 +185,7 @@ const LoginComp = () => {
               </Box>
               <Box sx={{ ...loginStyles.buttonContainer }}>
                 <Button
-                  onClick={tokenHalndler}
+                  // onClick={tokenHalndler}
                   sx={{ ...loginStyles.loginBtn }}
                   variant="contained"
                   className={"active-tv-font"}
@@ -367,6 +359,7 @@ const loginStyles = {
     minHeight: "125vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
+     backgroundSize:'cover',
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
