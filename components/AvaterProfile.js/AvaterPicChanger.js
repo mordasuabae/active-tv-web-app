@@ -41,7 +41,7 @@ const confirmBtn = {
 const images = {
   width:"100%",
   height:"320px",
-  background:"#121212",
+  background:"#222",
   borderRadius:"15px",
   marginTop:"-10px",
   display:"flex",
@@ -82,7 +82,8 @@ export default function AvaterPicChanger() {
         cursor: "pointer",
         marginLeft: "30px",
         borderRadius:"25px",
-        background:"#B3B3B3"
+        background:"#444",
+        // boxShadow:'2px 2px 2px 2px #444'
       }}
       >
        <CameraAltIcon/>

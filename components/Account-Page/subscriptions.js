@@ -1,5 +1,8 @@
 import Aos from "aos"
 import "aos/dist/aos.css"
+import Link from 'next/link'
+import Box from "@mui/material/Box";
+
 import { useEffect } from 'react'
 
 const Subscriptions = () => {
@@ -7,8 +10,8 @@ const Subscriptions = () => {
     Aos.init({ duration: 2000 });
   }, [])
   return (
-    <div className="active-tv-font" style={{ width: '100%', display: 'flex', justifyContent: 'center', minHeight: '100vh', alignItems: 'center' }}>
-      <div
+    <Box className="active-tv-font" style={{ width: '100%', display: 'flex', justifyContent: 'center', minHeight: '100vh', alignItems: 'center' }}>
+      <Box
         style={{
           border: '4px solid black',
           height: '400px',
@@ -29,7 +32,7 @@ const Subscriptions = () => {
         <p>
           <strong>$3.99 / month</strong>
         </p>
-        <a href="/signup">
+        <Link href="/signup" passHref={true}>
           <button className='card'
             style={{
               border: '1px black solid',
@@ -44,10 +47,10 @@ const Subscriptions = () => {
           >
             GO MONTHLY
           </button>
-        </a>
-      </div>
+        </Link>
+      </Box>
 
-      <div
+      <Box
         style={{
           border: '4px solid black',
           height: '530px',
@@ -65,7 +68,7 @@ const Subscriptions = () => {
         <p>
           <strong>$39.99 / year</strong>
         </p>
-        <a href="/signup">
+        <Link href="/signup" passHref={true}>
           <button className='card'
             style={{
               backgroundColor: '#fff203',
@@ -81,10 +84,10 @@ const Subscriptions = () => {
           >
             SAVE WITH ANNUAL
           </button>
-        </a>
-      </div>
+        </Link>
+      </Box>
 
-      <div
+      <Box
         style={{
           border: '4px solid black',
           height: '400px',
@@ -100,9 +103,9 @@ const Subscriptions = () => {
       >
         <h1>FREE 14-DAY TRIAL</h1>
         <hr />
-        <p>Every subscription gets a 14-day free trial!</p>
-      </div>
-    </div>
+        <p>Every subscription gets a {"14-day"} free trial!</p>
+      </Box>
+    </Box>
   );
 };
 
