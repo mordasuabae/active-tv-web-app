@@ -8,7 +8,7 @@ import { Palette } from "@universemc/react-palette";
 import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
 // import awsconfig from "./../components/utils/CognitoConfig";
-import CurrentConfig from './../components/utils/CognitoConfig' //added curly braces for import signinficance
+import {CurrentConfig} from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
