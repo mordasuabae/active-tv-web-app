@@ -79,7 +79,7 @@ export default function PositionedPopper({ user, userInitial }) {
               >
                 <Box sx={styles.DropUser}>
                   {loggedIn ? (
-                    <Typography variant="h1" color="#fff" fontSize={30}>
+                    <Typography className={'active-tv-font'}  variant="h1" color="#fff" fontSize={30}>
                       {userInitial} 
                     </Typography>
                   ) : (
@@ -88,7 +88,7 @@ export default function PositionedPopper({ user, userInitial }) {
                         height: "60px",
                         width: "70px",
                         backgroundImage:
-                          'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                          'url("ATV_logo.png")',
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                       }}
@@ -101,7 +101,7 @@ export default function PositionedPopper({ user, userInitial }) {
               <Box style={AvaterPack}>
                
                 {loggedIn ? (
-                    <Typography variant="h1" color="#fff" fontSize={30}>
+                    <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
                       {/* {userInitial}  */}
                        <AvaterPicChanger/>
                     </Typography>
@@ -127,7 +127,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 <AccountCircleIcon
                   sx={{ color: "#fff", marginRight: "16px" }}
                 />
-                <Typography variant="p" color="#fff" fontSize={14}>
+                <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
                   account
                 </Typography>
               </Button>
@@ -139,7 +139,8 @@ export default function PositionedPopper({ user, userInitial }) {
                 Router.push('/contact-us')
               }}>
                 <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
-                <Typography variant="p" color="#fff" fontSize={14}>
+                  <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
+
                   Need help?
                 </Typography>
               </Button>
@@ -161,12 +162,12 @@ export default function PositionedPopper({ user, userInitial }) {
                     width: "30px",
                     marginRight: "12px",
                     backgroundImage:
-                      'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                      'url("ATV_logo.png")',
                     backgroundSize: "cover",
                     backgroundPosition: "center",
                   }}
                 />
-                <Typography variant="p" color="#fff" fontSize={14}>
+          <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
                   Active studio
                 </Typography>
               </Button>
@@ -184,7 +185,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 }}
               >
                 <LogoutIcon sx={{ color: "#fff", marginRight: "16px" }} />
-                <Typography variant="p" color="#fff" fontSize={14}>
+              <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
                   Sign out
                 </Typography>
               </Button>
@@ -195,10 +196,9 @@ export default function PositionedPopper({ user, userInitial }) {
       {/* the user */}
       <Grid container justifyContent="center">
         <Grid item>
-          <Button onClick={handleClick("bottom-end")}>
-            <Avatar sx={{ bgcolor: "#333" }}>
-              {/* {user.charAt(0) == "g" ? <img src={"google.png"} width={"100%"} height={"100%"} /> : user.charAt(0) == "f" ? <img src={"google.png"} width={"100%"} height={"100%"} /> : user} */}
-              {userInitial}
+          <Button className={'active-tv-font'} onClick={handleClick("bottom-end")}>
+            <Avatar className={'active-tv-font'} sx={{ bgcolor: "#333", fontSize:20 }}>
+              {loggedIn ? userInitial : <Avatar sx={{ bgcolor: "#333"}} ></Avatar> }
             </Avatar>
           </Button>
         </Grid>

@@ -83,12 +83,12 @@ autoClose: 1000, marginTop:"40px"
             flexDirection:"colum"
             }}>
           {
-            props.episodes.map( episode => {
+            props.episodes.map( (episode, index )=> {
               console.log({episode})
               return(
-                <div style={{display:"flex"}}>
+                <div key={index} style={{display:"flex"}}>
                 <div className="Episodehover">
-                  <img src={`${mediaUrl}${episode.showTitle}/episodes/${episode.Title}/large-${episode.thumbnailFilename}`} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
+                  <img alt="" src={`${mediaUrl}${episode.showTitle}/episodes/${episode.Title}/large-${episode.thumbnailFilename}`} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
                   <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <PlayCircleOutlineIcon style={{color:"white",fontSize:"80px", marginTop:"-190px", zIndex:"1", cursor:"pointer"}}/>
                 </div>
@@ -130,11 +130,11 @@ autoClose: 1000, marginTop:"40px"
             flexDirection:"colum"
             }}>
           {
-            dataTwo.map( episode => {
+            dataTwo.map( (episode, index) => {
               return(
-                <div style={{display:"flex"}}>
+                <div key={index} style={{display:"flex"}}>
                 <div className="Episodehover">
-                  <img src={episode.img} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
+                  <img alt="" src={episode.img} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
                   <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <PlayCircleOutlineIcon style={{color:"white",fontSize:"80px", marginTop:"-190px", zIndex:"1", cursor:"pointer"}}/>
                 </div>
@@ -176,11 +176,11 @@ autoClose: 1000, marginTop:"40px"
             flexDirection:"colum"
             }}>
           {
-            dataThree.map( episode => {
+            dataThree.map( (episode, index) => {
               return(
-                <div style={{display:"flex"}}>
+                <div key={index} style={{display:"flex"}}>
                 <div className="Episodehover">
-                  <img src={episode.img} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
+                  <img alt="" src={episode.img} style={{width:400, height:200, borderRadius:"25px", position:"relative",marginTop:"40px", cursor:"pointer", objectFit:"cover"}}/>
                   <div style={{display:"flex", alignItems:"center", justifyContent:"center"}}>
                   <PlayCircleOutlineIcon style={{color:"white",fontSize:"80px", marginTop:"-190px", zIndex:"1", cursor:"pointer"}}/>
                 </div>

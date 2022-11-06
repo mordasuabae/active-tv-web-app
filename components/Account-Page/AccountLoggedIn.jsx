@@ -5,6 +5,8 @@ import { useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 import DeleteModal from './deleteModal'
+import Link from 'next/link'
+
 
 const AccountLoggedIn = () => {
   const { AuthenticatedUser,displayName } = useContext(USER_CONTEXT); //pulling out the current authenticated user
@@ -73,7 +75,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="/changepassword">Change password</a>
+                <Link href="/changepassword">Change password</Link>
               </Typography>
 
               <Typography
@@ -85,7 +87,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href=""></a>
+                
               </Typography>
               <Typography
                 sx={{
@@ -136,7 +138,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="/subscribepayment">Payment method</a>
+                <Link href="/subscribepayment">Payment method</Link>
               </Typography>
               <Typography
                 sx={{
@@ -147,7 +149,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">subscribe now</a>
+                <Link href="/subscribepayment">subscribe now</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -210,7 +212,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Point History</a>
+                <Link href="/produce">Point History</Link>
               </Typography>
               <Typography
                 sx={{
@@ -221,7 +223,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">test</a>
+                <Link href="/produce">test</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -249,7 +251,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Video Quality</a>
+                <Link href="/">Video Quality</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -277,7 +279,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">FAQ</a>
+                <Link href="/">FAQ</Link>
               </Typography>
               <Typography
                 sx={{
@@ -288,7 +290,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Contact support</a>
+                <Link href="/contact-us">Contact support</Link>
               </Typography>
             </Grid>
           </Grid>

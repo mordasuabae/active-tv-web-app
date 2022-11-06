@@ -146,7 +146,8 @@ export default function Paypage() {
                  
                 </Box>
                
-              </Box>              <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
+              </Box>             
+               <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
                 <label style={{ color: "#fff", fontSize:12 }} htmlFor="last-name">Last Name</label>
                 <Box sx={{display:'flex'}}>
                   <input type="text" id="last-name" placeholder="Enter your last-name" style={{

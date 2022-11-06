@@ -349,7 +349,7 @@ const Confirm = () => {
                       className={'confirmInput'}
                       value={formDetails.email}
                       onChange={handleFieldChange}
-                      // className="focusInput"
+                      className="focusInput"
                       style={{ ...confirmStyles.inputElement }}
                       type={"text"}
                       placeholder="Enter Email address "
@@ -369,7 +369,7 @@ const Confirm = () => {
                       className={'confirmInput'}
                       value={formDetails.code}
                       onChange={handleFieldChange}
-                      // className="focusInput"
+                      className="focusInput"
                       style={{ ...confirmStyles.inputElement }}
                       type={"number"}
                       placeholder="Enter Confirmation code"

@@ -69,13 +69,14 @@ function MyApp({ Component, pageProps }) {
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
 
+//updating attributes-or-change-the-values
   const updateAttributes = async (user) => {
     await Auth.updateUserAttributes(user, {
-      // 'name': 'schadrack'
+      // 'name': 'schadrack',
+      //'email':'schadrackBotombe'
     });
   }
 
-//changed >>>>>>>>
 
 
   const checkUser = async () => {
@@ -84,33 +85,32 @@ function MyApp({ Component, pageProps }) {
       bypassCache:false
     })
       .then(user => {
+
+        //assign context variables
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
         const sub = user.attributes.sub
 
-        //get token
+        //retrieve web-token
         const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
         setSubCode(sub)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
-
         // our setters
         setUser(currentUser)
         setDisplayName(DisplayUser)
         setLoggedIn(true)
+
         //testing logs
         console.log('attributes:', user.attributes);
-        console.log(user, '=> user in current authenticated for federation')
-        console.log("User after succesfull login: ", currentUser)
-        console.log("display name after succesfull login: ", DisplayUser)
-
-        //get jwt token from user object
-        // const token = user.signInUserSession.accessToken.jwtToken
-        // setAuthorisedJWT('')
-        //update user attriubutes
+        console.log(user, '=> user in current authenticated')
+        console.log("userEmail after succesfull login: ", currentUser)
+        console.log("displayName after succesfull login: ", DisplayUser)
+  
       })
       .catch((error) => {
+        //error handling
         console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
