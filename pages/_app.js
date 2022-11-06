@@ -8,7 +8,7 @@ import { Palette } from "@universemc/react-palette";
 import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
 // import awsconfig from "./../components/utils/CognitoConfig";
-import { CurrentConfig } from './../components/utils/CognitoConfig' //added curly braces for import signinficance
+import CurrentConfig from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
@@ -24,8 +24,6 @@ function MyApp({ Component, pageProps }) {
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
   const [subCode, setSubCode] = useState("no-sub-user")
-  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
-  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
   const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
@@ -72,10 +70,10 @@ function MyApp({ Component, pageProps }) {
   }
 
   //updating attributes-or-change-the-values
-  const updateAttributes = async (user) => {
+  const updateAttributes = async (user, nameAttibute,emailAttribute) => {
     await Auth.updateUserAttributes(user, {
-      // 'name': 'schadrack',
-      //'email':'schadrackBotombe'
+      //'name': 'nameAttribute',
+      //'email':'emailAttributes'
     });
   }
 
