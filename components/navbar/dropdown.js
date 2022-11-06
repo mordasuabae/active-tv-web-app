@@ -79,8 +79,8 @@ export default function PositionedPopper({ user, userInitial }) {
               >
                 <Box sx={styles.DropUser}>
                   {loggedIn ? (
-                    <Typography className={'active-tv-font'}  variant="h1" color="#fff" fontSize={30}>
-                      {userInitial} 
+                    <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
+                      {userInitial}
                     </Typography>
                   ) : (
                     <Box
@@ -99,17 +99,17 @@ export default function PositionedPopper({ user, userInitial }) {
               </Box>
 
               <Box style={AvaterPack}>
-               
+
                 {loggedIn ? (
-                    <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
-                      {/* {userInitial}  */}
-                       <AvaterPicChanger/>
-                    </Typography>
-                  ) : (
-                    <Box
-                      sx={{}}
-                    />
-                  )}
+                  <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
+                    {/* {userInitial}  */}
+                    <AvaterPicChanger />
+                  </Typography>
+                ) : (
+                  <Box
+                    sx={{}}
+                  />
+                )}
 
               </Box>
 
@@ -127,7 +127,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 <AccountCircleIcon
                   sx={{ color: "#fff", marginRight: "16px" }}
                 />
-                <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
+                <Typography className={'active-tv-font'} variant="p" color="#fff" fontSize={10}>
                   account
                 </Typography>
               </Button>
@@ -139,7 +139,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 Router.push('/contact-us')
               }}>
                 <SupportAgentIcon sx={{ color: "#fff", marginRight: '16px' }} />
-                  <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
+                <Typography className={'active-tv-font'} variant="p" color="#fff" fontSize={10}>
 
                   Need help?
                 </Typography>
@@ -167,7 +167,7 @@ export default function PositionedPopper({ user, userInitial }) {
                     backgroundPosition: "center",
                   }}
                 />
-          <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
+                <Typography className={'active-tv-font'} variant="p" color="#fff" fontSize={10}>
                   Active studio
                 </Typography>
               </Button>
@@ -185,7 +185,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 }}
               >
                 <LogoutIcon sx={{ color: "#fff", marginRight: "16px" }} />
-              <Typography className={'active-tv-font'}  variant="p" color="#fff" fontSize={10}>
+                <Typography className={'active-tv-font'} variant="p" color="#fff" fontSize={10}>
                   Sign out
                 </Typography>
               </Button>
@@ -197,8 +197,8 @@ export default function PositionedPopper({ user, userInitial }) {
       <Grid container justifyContent="center">
         <Grid item>
           <Button className={'active-tv-font'} onClick={handleClick("bottom-end")}>
-            <Avatar className={'active-tv-font'} sx={{ bgcolor: "#333", fontSize:20 }}>
-              {loggedIn ? userInitial : <Avatar sx={{ bgcolor: "#333"}} ></Avatar> }
+            <Avatar className={'active-tv-font'} sx={{ bgcolor: "#333", fontSize: 20 }}>
+              {loggedIn ? userInitial : <Avatar sx={{ bgcolor: "#333" }} ></Avatar>}
             </Avatar>
           </Button>
         </Grid>
@@ -221,5 +221,5 @@ const styles = {
 };
 
 const AvaterPack = {
-  marginLeft:"110px"
+  marginLeft: "110px"
 }

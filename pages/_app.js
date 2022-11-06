@@ -13,7 +13,7 @@ import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
 Amplify.configure(CurrentConfig);
-import {ShowsProvider} from '../context/ShowContext'
+import { ShowsProvider } from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
@@ -69,7 +69,7 @@ function MyApp({ Component, pageProps }) {
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
 
-//updating attributes-or-change-the-values
+  //updating attributes-or-change-the-values
   const updateAttributes = async (user) => {
     await Auth.updateUserAttributes(user, {
       // 'name': 'schadrack',
@@ -82,7 +82,7 @@ function MyApp({ Component, pageProps }) {
   const checkUser = async () => {
 
     await Auth.currentAuthenticatedUser({
-      bypassCache:false
+      bypassCache: false
     })
       .then(user => {
 
@@ -107,7 +107,7 @@ function MyApp({ Component, pageProps }) {
         console.log(user, '=> user in current authenticated')
         console.log("userEmail after succesfull login: ", currentUser)
         console.log("displayName after succesfull login: ", DisplayUser)
-  
+
       })
       .catch((error) => {
         //error handling
@@ -120,7 +120,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     checkUser()
-  },[])
+  }, [])
 
   return (
     <USER_CONTEXT.Provider
@@ -148,7 +148,7 @@ function MyApp({ Component, pageProps }) {
     >
       <Navbar />
       <ShowsProvider>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
       </ShowsProvider>
     </USER_CONTEXT.Provider>
   );

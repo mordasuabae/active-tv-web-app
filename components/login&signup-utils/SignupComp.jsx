@@ -28,8 +28,7 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
 import { USER_CONTEXT } from "../../context/MainContext";
-import axios from 'axios'
-
+import axios from "axios";
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
@@ -58,7 +57,7 @@ const LoginComp = () => {
     setShow(!show);
   };
 
-  console.log('user',AuthenticatedUser)
+  console.log("user", AuthenticatedUser);
   const endpoint = `http://127.0.0.1:3000/store-users`;
   const tokenHandler = async () => {
     // const response = await axios({
@@ -68,10 +67,12 @@ const LoginComp = () => {
     //   // BearerToken: authorisedJWT,
     //   // mode: 'no-cors',
     //   });
-    const response = await axios.post(endpoint,AuthenticatedUser,{'Content-Type':'application/json'},)
-    console.log('RESPONSE=>',response);
+    const response = await axios.post(endpoint, AuthenticatedUser, {
+      "Content-Type": "application/json",
+    });
+    console.log("RESPONSE=>", response);
   };
-  
+
   // useEffect(() => {
   //   console.log(signUp);
   // }, []);
@@ -108,12 +109,6 @@ const LoginComp = () => {
     }
   }
 
-
-
-
-
-
-
   const GoogleSignin = async () => {
     try {
       await Auth.federatedSignIn({ provider: "Google" });
@@ -135,8 +130,7 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signUp(formDetails.email, formDetails.password, formDetails.email);
-    tokenHalndler()
-
+    tokenHalndler();
   };
 
   return redirecting ? (
@@ -317,7 +311,6 @@ const LoginComp = () => {
                 >
                   Sign up
                 </Button>
-
               </Box>
               <span
                 className="active-tv-font"
@@ -408,9 +401,7 @@ const LoginComp = () => {
                   },
                 }}
               >
-                <Link href="/login">
-                  Login here
-                </Link>
+                <Link href="/login">Login here</Link>
               </Box>
             </Typography>
           </Box>
@@ -421,8 +412,6 @@ const LoginComp = () => {
 };
 
 export default LoginComp;
-
-
 
 const loginStyles = {
   container: {

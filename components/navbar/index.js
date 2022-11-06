@@ -75,9 +75,9 @@ const Navbar = () => {
               sx={{
                 height: "60px",
                 width: "70px",
-                backgroundImage:'url("ATV_logo.png")'
-                  // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
-                  ,
+                backgroundImage: 'url("ATV_logo.png")'
+                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
+                ,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -264,7 +264,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-             <Dropdown user={currentUser} userInitial={userIntial}/>
+            <Dropdown user={currentUser} userInitial={userIntial} />
           </Box>
         </Toolbar>
       </Container>

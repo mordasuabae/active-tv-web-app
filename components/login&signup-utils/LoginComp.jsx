@@ -17,13 +17,14 @@ import Router from "next/router";
 import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { Hub, Logger } from "aws-amplify";
-import {USER_CONTEXT} from '../../context/MainContext'
+import { USER_CONTEXT } from "../../context/MainContext";
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-   const {ForceReload, authorisedJWT, setAuthorisedJWT ,getUserInfo } = useContext(USER_CONTEXT)
+  const { ForceReload, authorisedJWT, setAuthorisedJWT, getUserInfo } =
+    useContext(USER_CONTEXT);
 
   // form state
   const [formDetails, setFormDetails] = useState({
@@ -48,18 +49,17 @@ const LoginComp = () => {
 
   const GoogleSignin = async () => {
     try {
-     await Auth.federatedSignIn({ provider: "Google" });
-     getUserInfo()
-     console.log('using Google for federation')
-
+      await Auth.federatedSignIn({ provider: "Google" });
+      getUserInfo();
+      console.log("using Google for federation");
     } catch (err) {
       console.log(`Google auth returns ${err.message}`);
     }
   };
   const FacebookSignin = async () => {
     try {
-     await Auth.federatedSignIn({ provider: "Facebook" });
-     console.log('using facebook for federation')
+      await Auth.federatedSignIn({ provider: "Facebook" });
+      console.log("using facebook for federation");
     } catch (err) {
       console.log(`Facebook auth returns ${err.message}`);
     }
@@ -69,7 +69,7 @@ const LoginComp = () => {
     try {
       await Auth.signIn(username, password);
       await Router.push("/");
-       ForceReload()
+      ForceReload();
     } catch (error) {
       console.log("error signing in ", error);
       setErrorLogs(error.message);
@@ -80,7 +80,6 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(formDetails.email, formDetails.password);
-    
   };
 
   return (
@@ -339,7 +338,7 @@ const loginStyles = {
     minHeight: "125vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
-     backgroundSize:'cover',
+    backgroundSize: "cover",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

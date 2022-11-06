@@ -1,13 +1,11 @@
 
 // Manage core logic by this variable
 var Settlement = [];
-Settlement.array_key_exists = function(key, search)
-{
-    if (!search || 
-        (search.constructor !== Array && 
-         search.constructor !== Object)
-    )
-    {
+Settlement.array_key_exists = function (key, search) {
+    if (!search ||
+        (search.constructor !== Array &&
+            search.constructor !== Object)
+    ) {
         return false;
     }
     return key in search;
@@ -29,12 +27,12 @@ if (!_SERVER['REQUEST_METHOD'] == 'POST' || !typeof _POST['reference'] !== 'unde
 //set reference to a variable @ref
 reference = _POST['reference'];
 //The parameter after verify/ is the transaction reference to be verified
-url = 'https://api.paystack.co/transaction/verify/'+reference;
+url = 'https://api.paystack.co/transaction/verify/' + reference;
 ch = curl_init();
 curl_setopt(ch, CURLOPT_URL, url);
 curl_setopt(ch, CURLOPT_RETURNTRANSFER, 1);
 // curl_setopt(ch, CURLOPT_HTTPHEADER, {0:'Authorization: Bearer sk_test_b784617507a44f632aa33c8c5af80f5f177eb795'});
-curl_setopt(ch, CURLOPT_HTTPHEADER, {0:'Authorization: Bearer sk_live_451239effa3005233c15983c7b36fb630cf1b826'});
+curl_setopt(ch, CURLOPT_HTTPHEADER, { 0: 'Authorization: Bearer sk_live_451239effa3005233c15983c7b36fb630cf1b826' });
 
 //send request
 request = curl_exec(ch);

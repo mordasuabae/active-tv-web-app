@@ -122,7 +122,7 @@ const AccountLoggedIn = () => {
                 variant="h3"
                 fontSize={10}
               >
-                You don't seem to have a subscription!
+                You {"don't"} seem to have a subscription!
               </Typography>
               <Typography className="active-tv-font" variant="h3" fontSize={10}>
                 Have an active Patreon membership?
@@ -192,7 +192,7 @@ const AccountLoggedIn = () => {
                 variant="h3"
                 fontSize={10}
               >
-                Since signing up you've earned 0 points
+                Since signing up {"you've"} earned 0 points
                 <img
                   style={{ margin: "0 5px" }}
                   src="coin.gif"
