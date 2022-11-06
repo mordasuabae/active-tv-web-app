@@ -7,16 +7,18 @@ import { Palette } from "@universemc/react-palette";
 //amplify imports
 import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
-import awsconfig from "./../components/utils/CognitoConfig";
-import CurrentConfig from './../components/utils/CognitoConfig'
+// import awsconfig from "./../components/utils/CognitoConfig";
+import { CurrentConfig } from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
-Amplify.configure(CurrentConfig);
 import { ShowsProvider } from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
+
+  Amplify.configure(CurrentConfig); //moved this file inside the module
+
 
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
