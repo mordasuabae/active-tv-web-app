@@ -50,7 +50,7 @@ const ShowsEpisodes = (
         sx={{
           width: "100%",
           height: "70vh",
-          backgroundImage: `url('${show.showItem.Item.CoverArtLarge}')`,
+          // backgroundImage: `url('${show.showItem.Item.CoverArtLarge}')`,
           backgroundSize:'cover',
           backgroundPosition:'top-center',
           backgroundRepeat: "no-repeat",
