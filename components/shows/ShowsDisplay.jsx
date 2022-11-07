@@ -25,7 +25,7 @@ export default function ShowsDisplay({ shows }) {
   const getEpisodes = () => {
     setTimeout(() => {
       setEmpty(false);
-    }, 3000);
+    }, 1500);
   };
 
   return (
