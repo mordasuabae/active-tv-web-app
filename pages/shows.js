@@ -24,32 +24,32 @@ const Shows = () => {
 
   //console.log({shows} ,'teesting to see whta this is ')
 
-  const [shows, setShows] = useState([])
+const [shows, setShows] = useState([])
   const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+ // const endpoint = "test"
 
 
+const getShows = async(endpoint)=>{
 
-  const getShows = async (endpoint) => {
+  try{
+       const response = await axios.get(endpoint);
+       const removeItem =  response.data;
+       const newArr =  removeItem.pop()
+       setShows(newArr)
+       console.log(shows ,'last test')
 
-    try {
-      const response = await axios.get(endpoint);
-      setShows(response.data)
-      console.log(shows, 'last test')
-    } catch (err) {
-      console.log('error after fetching shows', err.message)
-    }
-
+  }catch(err){
+    console.log('error after fetching shows' , err.message)
   }
+  
+}
 
 
-  useEffect(() => {
+useEffect(()=>{
+    
+  getShows(endpoint)
 
-    getShows(endpoint)
-
-  }, [])
-
-
-
+},[])
 
 
   return (
@@ -69,7 +69,7 @@ const Shows = () => {
               padding: '40px 40px'
             }}
           >
-            <ShowsDisplay shows={shows} />
+            {/*<ShowsDisplay shows={shows} />*/}
           </Box>
         );
       }}
