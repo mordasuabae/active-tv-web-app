@@ -26,17 +26,22 @@ import axios from 'axios'
 //   return {
 //     props : {
 //       show : response.data
-//     }
+//     }//
 //   }
 // } 
 
-const ShowsEpisodes = ({show}) => {
-  console.log({show})
+const ShowsEpisodes = (
+  
+  // {show}
+  
+  ) => {
+  // console.log({show})
+
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
 
-  const { showsDetails, setShowsDetails } = useContext(USER_CONTEXT);
+  // const { showsDetails, setShowsDetails } = useContext(USER_CONTEXT);
 
   return (
     <Box style={{ background: "#111", height: "100vh", flexDirection: "column" }}>

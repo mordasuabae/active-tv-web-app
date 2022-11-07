@@ -69,6 +69,7 @@ useEffect(()=>{
               padding: '40px 40px'
             }}
           >
+            test
             {/*<ShowsDisplay shows={shows} />*/}
           </Box>
         );
