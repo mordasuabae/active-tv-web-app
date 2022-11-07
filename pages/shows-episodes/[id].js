@@ -7,28 +7,28 @@ import Box from '@mui/material/Box';
 import TabsEpisode from "../../components/shows/TabsEpsiode";
 import axios from 'axios'
 
-export async function getStaticPaths(){
+// export async function getStaticPaths(){
   
-  const endpoint  = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
-  const response = await axios.get(endpoint);
+//   const endpoint  = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+//   const response = await axios.get(endpoint);
 
-  const paths = response.data.map(show =>({
-    params : {id : show.Title}  
-  }))
-  return {paths,fallback : false}
-}
+//   const paths = response.data.map(show =>({
+//     params : {id : show.Title}  
+//   }))
+//   return {paths,fallback : false}
+// }
 
-export async function getStaticProps({params}){
-  const endpoint  = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-show/${params.id}`
+// export async function getStaticProps({params}){
+//   const endpoint  = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-show/${params.id}`
 
-  const response = await axios.get(endpoint);
-  console.log('response',response.data)
-  return {
-    props : {
-      show : response.data
-    }
-  }
-} 
+//   const response = await axios.get(endpoint);
+//   console.log('response',response.data)
+//   return {
+//     props : {
+//       show : response.data
+//     }
+//   }
+// } 
 
 const ShowsEpisodes = ({show}) => {
   console.log({show})
