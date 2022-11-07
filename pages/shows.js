@@ -24,30 +24,29 @@ const Shows = () => {
 
   //console.log({shows} ,'teesting to see whta this is ')
 
-const [shows, setShows] = useState([])
-const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+  const [shows, setShows] = useState([])
+  const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
 
 
 
-const getShows = async(endpoint)=>{
+  const getShows = async (endpoint) => {
 
-  try{
+    try {
+      const response = await axios.get(endpoint);
+      setShows(response.data)
+      console.log(shows, 'last test')
+    } catch (err) {
+      console.log('error after fetching shows', err.message)
+    }
 
-       const response = await axios.get(endpoint);
-       setShows(response.data)
-       console.log(shows ,'last test')
-  }catch(err){
-    console.log('error after fetching shows' , err.message)
   }
-  
-}
 
 
-useEffect(()=>{
-    
-  getShows(endpoint)
+  useEffect(() => {
 
-},[])
+    getShows(endpoint)
+
+  }, [])
 
 
 
