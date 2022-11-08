@@ -276,7 +276,6 @@ const Navbar = () => {
               </a>
             </Link>
            
-           <Button onClick={tokenHalndler}>test</Button>
           </Box>
           {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
