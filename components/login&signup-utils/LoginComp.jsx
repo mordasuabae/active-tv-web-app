@@ -68,7 +68,7 @@ const LoginComp = () => {
   async function signIn(username, password) {
     try {
       await Auth.signIn(username, password);
-      // await Router.push("/");
+       await Router.push("/");
       ForceReload();
     } catch (error) {
       console.log("error signing in ", error);
@@ -77,11 +77,12 @@ const LoginComp = () => {
   }
 
 
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows`;
   const tokenHalndler = async () => {
     const response = await axios({
       method: "get",
       url: endpoint,
+      Authorization: `Bearer ${authorisedJWT} `,
       headers: {
         "Content-Type": "application/json",
         "Access-Control-Allow-Origin": "*",

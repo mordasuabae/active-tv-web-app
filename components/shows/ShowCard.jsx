@@ -35,7 +35,7 @@ const ShowCard = ({ img, text, openModal, color, onFetchEpisode, one, two, three
           backgroundPosition: "",
         }}
       >
-        <img src={img} style={{objectFit:'cover', objectPosition:'top', borderRadius:'10px 10px 0 0'}} alt="" width={"100%"} height={"100%"} />
+        <img src={img} style={{objectFit:'cover', objectPosition:'top', borderRadius:'10px 10px 0 0'}} alt="img" width={"100%"} height={"100%"} />
       </Box>
     </>
   );

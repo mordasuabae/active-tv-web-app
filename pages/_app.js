@@ -19,14 +19,13 @@ import { ShowsProvider } from "../context/ShowContext";
 function MyApp({ Component, pageProps }) {
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
-  const [user, setUser] = useState("Activetv@gmail.com");
-  const [googleFederatedUser, setGoogleFederatedUser] =
-    useState("Activetv@gmail.com");
-  const [facebookFederatedUser, setFacebookFederatedUser] =
-    useState("Activetv@gmail.com");
-  const [displayName, setDisplayName] = useState("display name");
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid");
+  const [user, setUser] = useState("Activetv@gmail.com")
+  const [subCode, setSubCode] = useState("no-sub-user")
+  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
+  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
+  const [displayName, setDisplayName] = useState("display name")
+  const [loggedIn, setLoggedIn] = useState(false)
+  const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
   const [showsDetails, setShowsDetails] = useState({
     title: "",
     img: "imortal.webp",
@@ -77,13 +76,15 @@ function MyApp({ Component, pageProps }) {
     await Auth.currentAuthenticatedUser({
       bypassCache: false,
     })
-      .then((user) => {
-        const currentUser = user.attributes.email;
-        const DisplayUser = user.attributes.name;
+      .then(user => {
+        const currentUser = user.attributes.email
+        const DisplayUser = user.attributes.name
+        const sub = user.attributes.sub
 
         //get token
         const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
+        setSubCode(sub)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
 
@@ -112,9 +113,7 @@ function MyApp({ Component, pageProps }) {
   const userSession = Auth.currentSession();
 
   useEffect(() => {
-    checkUser();
-    // getUserInfo()
-    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
+    checkUser()
   },[])
 
   return (
@@ -132,9 +131,12 @@ function MyApp({ Component, pageProps }) {
         setSelectedCategory,
         showsDetails,
         setShowsDetails,
+        subCode,
+        setSubCode,
         AuthenticatedUser: {
           name: user,
-        },
+          email: user
+        }
       }}
     >
       <Navbar />

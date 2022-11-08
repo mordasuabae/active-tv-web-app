@@ -66,7 +66,9 @@ const Homeshows = ({ latestVid, title, height, width }) => {
             key={index}
             style={{
               marginRight: "10px",
-              paddingRight: "12px",
+              paddingRight: "12px","Content-Type": "application/json",
+              "Access-Control-Allow-Origin": "*",
+              "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
               display: "flex",
               justifyContent: "flex-start",
             }}

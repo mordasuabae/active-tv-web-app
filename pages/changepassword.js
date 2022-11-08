@@ -4,9 +4,9 @@ import Link from "next/link";
 import { Box } from "@mui/system";
 import { Auth } from 'aws-amplify';
 import { Typography } from "@mui/material";
-import {Button} from "@mui/material";
-  import { ToastContainer, toast } from 'react-toastify';
-  import 'react-toastify/dist/ReactToastify.css';
+import { Button } from "@mui/material";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const background = {
   backgroundColor: "#111",
@@ -18,7 +18,7 @@ const background = {
   justifyContent: "center",
   color: "white",
   background: "url('active-tv-login-test1.png')",
-  backgroundSize:'cover',
+  backgroundSize: 'cover',
 };
 
 const container = {
@@ -42,14 +42,14 @@ const InputContainer = {
 
 const inputBox = {
   width: "600px",
-  borderRadius:"4px",
+  borderRadius: "4px",
 
   // height: "30px",
   fontSize: "13px",
-  outline:'none',
-  padding:'10px',
-  border:'none',
-  marginTop:'10px'
+  outline: 'none',
+  padding: '10px',
+  border: 'none',
+  marginTop: '10px'
 };
 
 const ButtonStyle = {
@@ -60,7 +60,7 @@ const ButtonStyle = {
   width: "180px",
   cursor: "pointer",
   fontSize: "10px",
-  padding:10
+  height:"30px"
 };
 
 const ButtonTwo = {
@@ -82,38 +82,38 @@ function Changepassword() {
 
   const AuthResetPassword = async (oldPassword, newPassword) => {
     try {
-     await Auth.currentAuthenticatedUser()
+      await Auth.currentAuthenticatedUser()
         .then(user => {
           return Auth.changePassword(user, oldPassword, newPassword);
         })
         .then(data => {
           Router.push('/account')
-           toast.success(`${data} , user changed their password to ${newPassword}`, {
-position: "top-right",
-autoClose: 3000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "dark",
-});
+          toast.success(`${data} , user changed their password to ${newPassword}`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         })
         .catch(err => {
           toast.error(err.message, {
-position: "top-right",
-autoClose: 2000,
-hideProgressBar: false,
-closeOnClick: true,
-pauseOnHover: true,
-draggable: true,
-progress: undefined,
-theme: "dark",
-});
+            position: "top-right",
+            autoClose: 2000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "dark",
+          });
         });
 
     } catch (err) {
-      console.log(err.message , 'error after password reset')
+      console.log(err.message, 'error after password reset')
     }
 
   }
@@ -139,7 +139,7 @@ theme: "dark",
     <Box className="active-tv-font" style={background}>
 
       <form style={container} onSubmit={handleSubmit}>
-        <Typography className="active-tv-font" variant="h4"  color={'yellow'}fontSize={16}>CHANGE PASSWORD</Typography>
+        <Typography className="active-tv-font" variant="h4" color={'yellow'} fontSize={16}>CHANGE PASSWORD</Typography>
         <hr style={{ marginRight: "20px" }} />
 
         <Box style={InputContainer}>
@@ -167,16 +167,16 @@ theme: "dark",
 
         <Box style={{ display: "flex", flexDirection: "column" }}>
 
-          <Button  sx={{ backgroundColor:'blue','&:hover':{backgroundColor:'red'}}} type="submit" style={ButtonStyle} className="active-tv-font">
+          <Button sx={{ backgroundColor: 'blue', '&:hover': { backgroundColor: 'red' } }} type="submit" style={ButtonStyle} className="active-tv-font">
             <Typography variant="p" className="changepassword">Change Password</Typography>
           </Button>
 
           <Link href="/account" passHref={true}>
-            <Button  style={ButtonTwo} className="active-tv-font">
+            <Button style={ButtonTwo} className="active-tv-font">
               <p className="backtoyouraccount">Back To Your Account</p>
             </Button>
           </Link>
-        
+
           <ToastContainer />
         </Box>
       </form>

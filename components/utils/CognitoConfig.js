@@ -1,6 +1,6 @@
 import { Amplify, Auth } from 'aws-amplify';
 
-
+//please do not alter or edit any item within this file 
 
 //first userpool => active-tv-web
 // Amplify.configure({
@@ -84,8 +84,5 @@ Amplify.configure({
 
 
 export const CurrentConfig = Auth.configure()
-
-
-
- //Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
+Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 

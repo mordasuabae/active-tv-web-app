@@ -47,6 +47,27 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+
+
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows`;
+  const tokenHalndler = async () => {
+    const response = await axios({
+      method: "get",
+      url: endpoint,
+      Authorization: `Bearer ${authorisedJWT} `,
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+        "Access-Control-Allow-Headers":
+          "Origin, X-Requested-With, Content-Type",
+        "Access-Control-Allow-Credentials": true,
+        Authorization: `Bearer ${authorisedJWT} `,
+      },
+    });
+    console.log(response);
+  };
+
   
   return (
     <AppBar
