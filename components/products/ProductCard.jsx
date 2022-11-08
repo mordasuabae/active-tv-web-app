@@ -171,7 +171,6 @@ const ProductCard = ({
               // pagination={{ clickable: true }}
             >
               <SwiperSlide>
-                {" "}
                 <img
                   src={productImg}
                   alt={productName}
@@ -185,7 +184,6 @@ const ProductCard = ({
                 />
               </SwiperSlide>
               <SwiperSlide>
-                {" "}
                 <img
                   src={productImg}
                   alt={productName}
@@ -225,14 +223,11 @@ const ProductCard = ({
           >
             <Box
               sx={{
-                // height: "100%",
                 width: "80%",
                 display: "flex",
                 alignItems: "center",
                 flexDirection: "column",
-                // justifyContent: "center",
                 color: "#656565",
-                // pt: 20,
               }}
             >
               <Typography className="active-tv-font" fontSize="10px">
@@ -287,7 +282,7 @@ const ProductCard = ({
                 <label
                   className="active-tv-font"
                   style={{ fontSize: 9, marginBottom: 12, paddingRight: 18 }}
-                  for="pet-select"
+                  htmlFor="pet-select"
                 >
                   SIZE:
                 </label>
@@ -391,9 +386,9 @@ const ProductCard = ({
                   className="active-tv-font"
                   style={{ fontSize: "8px", textAlign: "center" }}
                 >
-                  <li style={{ marginBottom: 7 }}>100% cotton t-shirt</li>
+                  <li style={{ marginBottom: 7 }}>100% cotton {"t-shirt"}</li>
                   {/* <li>Light Blue t-shirt with ink print </li> */}
-                  <li>Featuring the 'Active' design </li>
+                  <li>Featuring the {'Active'} design </li>
                 </ul>
               </Box>
 

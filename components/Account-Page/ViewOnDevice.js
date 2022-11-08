@@ -123,7 +123,7 @@ export default function ViewOnDevice() {
                 <Typography align="center" style={{ fontSize: 18 }} className='active-tv-font' data-aos="fade-up">BE A PRODUCER</Typography>
                 <Typography variant="h6" align="center" sx={{ fontSize: 10, mt: 2, lineHeight: 2 }} className='active-tv-font' data-aos="fade-up">Directly control what your subscription dollars are</Typography>
                 <Typography variant="h6" align="center" sx={{ fontSize: 10, mt: 2, mb: 2, lineHeight: 2 }} className='active-tv-font' data-aos="fade-up">spent on by using your Producer Points</Typography>
-                <Link href="/produceThat">
+                <Link href="/produceThat" passHref={true}>
                   <button
                     className='active-tv-font'
                     style={{
@@ -137,7 +137,7 @@ export default function ViewOnDevice() {
                       borderRadius: "25px",
                       fontFamily: "Arcade Normal",
                       fontSize: "10px"
-                    }}
+                    }}S
                     data-aos="fade-up"
                   >SEE IT IN ACTION</button>
                 </Link>

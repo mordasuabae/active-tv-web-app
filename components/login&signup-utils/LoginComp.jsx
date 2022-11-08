@@ -18,13 +18,12 @@ import { Auth } from "aws-amplify";
 import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth";
 import { Hub, Logger } from "aws-amplify";
 import { USER_CONTEXT } from "../../context/MainContext";
-import axios from "axios";
 
 const LoginComp = () => {
   const [show, setShow] = useState(false);
   const [errorLogs, setErrorLogs] = useState("");
 
-  const { ForceReload, authorisedJWT, setAuthorisedJWT } =
+  const { ForceReload, authorisedJWT, setAuthorisedJWT, getUserInfo } =
     useContext(USER_CONTEXT);
 
   // form state
@@ -51,6 +50,7 @@ const LoginComp = () => {
   const GoogleSignin = async () => {
     try {
       await Auth.federatedSignIn({ provider: "Google" });
+      getUserInfo();
       console.log("using Google for federation");
     } catch (err) {
       console.log(`Google auth returns ${err.message}`);
@@ -68,7 +68,7 @@ const LoginComp = () => {
   async function signIn(username, password) {
     try {
       await Auth.signIn(username, password);
-       await Router.push("/");
+      await Router.push("/");
       ForceReload();
     } catch (error) {
       console.log("error signing in ", error);
@@ -100,7 +100,6 @@ const LoginComp = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     signIn(formDetails.email, formDetails.password);
-    
   };
 
   return (
@@ -360,7 +359,7 @@ const loginStyles = {
     minHeight: "125vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
-     backgroundSize:'cover',
+    backgroundSize: "cover",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

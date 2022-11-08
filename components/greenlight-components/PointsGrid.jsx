@@ -34,7 +34,7 @@ const PointsGrid = () => {
           </Box>
           <Box sx={styles.body}>
              <Typography align="center" variant="h6" color="#fff" fontSize={16}>
-             Each project Has A point Goal It Must Reach In Order To Be Made.audit fix
+             Each project Has A point Goal It Must Reach In Order To Be Made audit fix
              </Typography>
           </Box>
         </Grid>

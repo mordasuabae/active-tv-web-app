@@ -64,7 +64,7 @@ Amplify.configure({
 
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
         userPoolWebClientId: '2v0n86ar28d4cfi6h9kb8ac9h4', //changed
- 
+
         // OPTIONAL - Hosted UI configuration
         oauth: {
             domain: 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com', //changed

@@ -3,7 +3,7 @@ import SignupComp from '../components/login&signup-utils/SignupComp'
 
 
 const Signup = () => {
-  
+
   return (
     <>
 

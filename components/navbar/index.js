@@ -49,23 +49,23 @@ const Navbar = () => {
 
 
 
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-shows`;
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
   const tokenHalndler = async () => {
     const response = await axios({
       method: "get",
       url: endpoint,
       Authorization: `Bearer ${authorisedJWT} `,
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
-        "Access-Control-Allow-Headers":
-          "Origin, X-Requested-With, Content-Type",
-        "Access-Control-Allow-Credentials": true,
-        Authorization: `Bearer ${authorisedJWT} `,
-      },
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+      //   "Access-Control-Allow-Headers":
+      //   "Origin, X-Requested-With, Content-Type",
+      //   "Access-Control-Allow-Credentials": true,
+      //   // Authorization: `Bearer ${authorisedJWT} `,
+      // },
     });
-    console.log(response);
+    console.log("Response => ", response);
   };
 
   
@@ -97,8 +97,9 @@ const Navbar = () => {
               sx={{
                 height: "60px",
                 width: "70px",
-                backgroundImage:
-                  'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                backgroundImage: 'url("ATV_logo.png")'
+                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
+                ,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -275,6 +276,7 @@ const Navbar = () => {
               </a>
             </Link>
            
+           <Button onClick={tokenHalndler}>test</Button>
           </Box>
           {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
@@ -286,39 +288,6 @@ const Navbar = () => {
 
           <Box sx={{ flexGrow: 0 }}>
             <Dropdown user={currentUser} userInitial={userIntial} />
-            {/* <Menu
-              sx={{
-                mt: "45px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                  sx={{ background: "rgba(1,1,1,0.8)", color: "#bd3535" }}
-                >
-                  <Typography textAlign="center" className={"active-tv-font"}>
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
           </Box>
         </Toolbar>
       </Container>

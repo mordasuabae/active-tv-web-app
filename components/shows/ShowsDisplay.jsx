@@ -39,8 +39,8 @@ export default function ShowsDisplay({ shows }) {
           flexWrap: "wrap",
         }}
       >
-        {shows.map((show) => (
-          <Link href={`/shows-episodes/${show.Title}`} passHref={true}>
+        {shows.map((show, index) => (
+          <Link key={index} href={`/shows-episodes/${show.Title}`} passHref={true}>
             <a>
             <ShowCard
               color={show.color}

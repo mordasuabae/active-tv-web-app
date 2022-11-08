@@ -3,56 +3,62 @@ import Navbar from "../components/navbar";
 import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState, useEffect } from "react";
 import { Palette } from "@universemc/react-palette";
-import Footer from "../components/footer/Footer";
 
 //amplify imports
-import { Amplify, Auth } from "aws-amplify";
+import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
-import awsconfig from "./../components/utils/CognitoConfig";
-import CurrentConfig from "./../components/utils/CognitoConfig";
+// import awsconfig from "./../components/utils/CognitoConfig";
+import {CurrentConfig} from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
-import axios from "axios";
+import axios from 'axios'
 
-Amplify.configure(CurrentConfig);
-import { ShowsProvider } from "../context/ShowContext";
+import { ShowsProvider } from '../context/ShowContext'
+
 
 function MyApp({ Component, pageProps }) {
+
+  Amplify.configure(CurrentConfig); //moved this file inside the module
+
+
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
   const [subCode, setSubCode] = useState("no-sub-user")
-  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
-  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
   const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
   const [showsDetails, setShowsDetails] = useState({
-    title: "",
-    img: "imortal.webp",
-    episodes: [],
-  });
+    title: '',
+    img: 'imortal.webp',
+    episodes: []
+  })
 
-  const ForceReload = () => window.location.reload();
+
+
+  const ForceReload = () => window.location.reload()
+
+
 
   //hub listeners
-  // Hub.listen("auth", (data) => {
-  //   switch (data.payload.event) {
-  //     case "signIn":
-  //       console.log("user signed in " + data.payload.event);
-  //       break;
-  //     case "signUp":
-  //       console.log("user signed up " + data.payload.event);
-  //       break;
-  //     case "signOut":
-  //       console.log("user signed out " + data.payload.event);
-  //       break;
-  //     case "signIn_failure":
-  //       console.log("user sign_in failed :" + data.payload.event);
-  //       break;
-  //     case "configured":
-  //       console.log("the Auth module is configured " + data.payload.event);
-  //   }
-  // });
+  Hub.listen("auth", (data) => {
+    switch (data.payload.event) {
+      case "signIn":
+        console.log("user signed in " + data.payload.event);
+        break;
+      case "signUp":
+        console.log("user signed up " + data.payload.event);
+        break;
+      case "signOut":
+        console.log("user signed out " + data.payload.event);
+        break;
+      case "signIn_failure":
+        console.log("user sign_in failed :" + data.payload.event);
+        break;
+      case "configured":
+        console.log("the Auth module is configured " + data.payload.event);
+    }
+  });
+
 
   //test for federation
   const fetchUserInfo = (domain) => {
@@ -63,61 +69,62 @@ function MyApp({ Component, pageProps }) {
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
 
-  const updateAttributes = async (user) => {
+  //updating attributes-or-change-the-values
+  const updateAttributes = async (user, nameAttibute,emailAttribute) => {
     await Auth.updateUserAttributes(user, {
-      // 'name': 'schadrack'
+      //'name': 'nameAttribute',
+      //'email':'emailAttributes'
     });
   }
 
-//changed >>>>>>>>
 
 
   const checkUser = async () => {
+
     await Auth.currentAuthenticatedUser({
-      bypassCache: false,
+      bypassCache: false
     })
       .then(user => {
+
+        //assign context variables
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
         const sub = user.attributes.sub
 
-        //get token
+        //retrieve web-token
         const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
         setSubCode(sub)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
-
         // our setters
-        setUser(currentUser);
-        setDisplayName(DisplayUser);
-        setLoggedIn(true);
-        //testing logs
-        // console.log('attributes:', user.attributes);
-        // console.log(user, '=> user in current authenticated for federation')
-        // console.log("User after succesfull login: ", currentUser)
-        // console.log("display name after succesfull login: ", DisplayUser)
+        setUser(currentUser)
+        setDisplayName(DisplayUser)
+        setLoggedIn(true)
 
-        //get jwt token from user object
-        // const token = user.signInUserSession.accessToken.jwtToken
-        // setAuthorisedJWT('')
-        //update user attriubutes
+        //testing logs
+        console.log('attributes:', user.attributes);
+        console.log(user, '=> user in current authenticated')
+        console.log("userEmail after succesfull login: ", currentUser)
+        console.log("displayName after succesfull login: ", DisplayUser)
+
       })
       .catch((error) => {
-        console.log("failed to get the existing user because ", error);
-        setUser("Active-tv");
-        setLoggedIn(false);
-      });
-  };
+        //error handling
+        console.log("failed to get the existing user because ", error)
+        setUser("Active-tv")
+        setLoggedIn(false)
+      })
+  }
 
-  const userSession = Auth.currentSession();
 
   useEffect(() => {
     checkUser()
-  },[])
+  }, [])
 
   return (
     <USER_CONTEXT.Provider
+
       value={{
         UserContext,
         authorisedJWT,
@@ -143,7 +150,6 @@ function MyApp({ Component, pageProps }) {
       <ShowsProvider>
         <Component {...pageProps} />
       </ShowsProvider>
-      <Footer />
     </USER_CONTEXT.Provider>
   );
 }
