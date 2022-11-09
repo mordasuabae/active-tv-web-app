@@ -37,7 +37,6 @@ const HomeBanner = () => {
   // console.log(banners)
 
   useEffect(()=>{
-    // console.log("Running")
     getShows();
   },[])
   return (
