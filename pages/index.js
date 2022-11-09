@@ -13,7 +13,7 @@ export default function Home() {
   console.log("amazing shows that michee likes!!=>",homeshow)
  
   return (
-    <Box sx={{background:'#111'}}>
+    <Box sx={{background:'#111', paddingBottom: '70px'}}>
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(
