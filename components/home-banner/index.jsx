@@ -75,7 +75,7 @@ const HomeBanner = () => {
            {
             haveBanners && banners.map((item,index)=>{
               return(
-                <SwiperSlide>
+                <SwiperSlide key={index}>
                 <BannerItem
                   background={item}
                   // logo={
