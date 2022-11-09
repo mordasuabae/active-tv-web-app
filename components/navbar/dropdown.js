@@ -17,7 +17,7 @@ import { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
-import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
+// import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
 
 
 export default function PositionedPopper({ user, userInitial }) {
@@ -98,11 +98,10 @@ export default function PositionedPopper({ user, userInitial }) {
                 </Box>
               </Box>
 
-              <Box style={AvaterPack}>
+              {/* <Box style={AvaterPack}>
                
                 {loggedIn ? (
                     <Typography variant="h1" color="#fff" fontSize={30}>
-                      {/* {userInitial}  */}
                        <AvaterPicChanger/>
                     </Typography>
                   ) : (
@@ -111,7 +110,7 @@ export default function PositionedPopper({ user, userInitial }) {
                     />
                   )}
 
-              </Box>
+              </Box> */}
 
               <Button
                 sx={{
@@ -220,6 +219,4 @@ const styles = {
   },
 };
 
-const AvaterPack = {
-  marginLeft:"110px"
-}
+

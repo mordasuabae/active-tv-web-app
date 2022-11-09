@@ -4,6 +4,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import CameraAltIcon from "@mui/icons-material/CameraAlt";
+import Images from './Images';
 
 
 const style = {
@@ -12,11 +13,12 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: "690px",
-  height:"388px",
+  height:"390px",
   bgcolor: 'black',
   boxShadow: 24,
   p: 4,
   borderRadius:"15px",
+  border:"1px solid #121212"
 };
 
 const cancelBtn = {
@@ -44,11 +46,9 @@ const images = {
   background:"#121212",
   borderRadius:"15px",
   marginTop:"-10px",
-  display:"flex",
-  alignItems:"center",
-  justifyContent:"center",
   color:"white",
-  fontWeight:"bold"
+  fontWeight:"bold",
+  padding:"10px"
 }
 
 const buttons = {
@@ -60,7 +60,7 @@ const buttons = {
   marginLeft:"450px"
 }
 
-export default function AvaterPicChanger() {
+export default function AvaterPicChanger({ grady }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -82,7 +82,7 @@ export default function AvaterPicChanger() {
         cursor: "pointer",
         marginLeft: "30px",
         borderRadius:"25px",
-        background:"#B3B3B3"
+        background:"#B3B3B3",
       }}
       >
        <CameraAltIcon/>
@@ -91,7 +91,7 @@ export default function AvaterPicChanger() {
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={style}>
         <Box style={images}>
-          <p>hello images</p>
+        <Images/>
         </Box>
 
         <Box style={buttons}>

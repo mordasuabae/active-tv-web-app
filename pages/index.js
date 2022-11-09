@@ -4,6 +4,7 @@ import { Box } from "@mui/system";
 import Homeshows from "../components/home-shows/Homeshows";
 import latestVid from "../components/home-shows/Latest-video.json"
 import { ShowsContext } from "../context/ShowContext";
+import Navbar from "../components/navbar";
 
 export default function Home() {
 
@@ -12,7 +13,7 @@ export default function Home() {
   console.log("amazing shows that michee likes!!=>",homeshow)
  
   return (
-    <Box sx={{background:'#111'}}>
+    <Box sx={{background:'#111'}}> 
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(

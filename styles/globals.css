@@ -298,4 +298,40 @@
    }
   
    /* done */
-   
+
+
+   /* search bar */
+   .outer{
+    max-width: 290px;
+    height: 40px;
+    background-color: #333333;
+    border-radius: 40px;
+   }
+
+   .anchr{
+    float: right;
+    height: 40px;
+    width: 40px;
+    color: #ddd;
+    box-shadow: 0 0 10px #2e2e2e;
+    border-radius: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+   }
+
+   .search_box{
+    float: left;
+    line-height: 40px;
+    background: transparent;
+    padding: 0;
+    outline: none;
+    border: none;
+    color: white;
+    padding: 0 10px;
+    /* width: 120px; */
+   }
+
+    .search_box::placeholder{
+      color: rgb(170, 170, 170);
+    }

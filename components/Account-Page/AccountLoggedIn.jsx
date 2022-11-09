@@ -5,6 +5,8 @@ import { useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 import DeleteModal from './deleteModal'
+import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
+
 
 const AccountLoggedIn = () => {
   const { AuthenticatedUser,displayName } = useContext(USER_CONTEXT); //pulling out the current authenticated user
@@ -12,6 +14,13 @@ const AccountLoggedIn = () => {
   const [subscribed, setSubscribed] = useState(false);
 
  const [open, setOpen] = React.useState(false);
+
+ const AvaterPack = {
+  paddingRight:"395px",
+  display:"flex", 
+  alignItems:"center",
+  justifyContent:"center",
+}
 
   return (
     <Box className={"active-tv-font"} sx={styles.container}>
@@ -28,12 +37,23 @@ const AccountLoggedIn = () => {
             alignItems: "center",
             fontSize: "18px",
             letterSpacing: "2px",
-            // borderTop: "1px solid #F2F2F2",
             height: "85px",
           }}
         >
           <p>Account</p>
+
+          <Box style={AvaterPack}>
+            <p style={{ fontSize:"12px"}}>Change Avater:</p>
+                { 
+                <Typography variant="h1" color="#fff" fontSize={30} style={{marginTop:"45px"}}>
+                    <AvaterPicChanger/>
+                </Typography>
+              }
+          </Box>
+          
         </Box>
+
+
 
         <Box
           sx={{
@@ -41,6 +61,7 @@ const AccountLoggedIn = () => {
             borderTop: "1px solid #F2F2F2 ",
           }}
         >
+
           <Grid container>
             <Grid sx={styles.gridItem} item md={3.5}>
             {/*  <Typography className="active-tv-font" variant="h3" fontSize={13}>

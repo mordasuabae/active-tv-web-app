@@ -3,6 +3,7 @@ import "aos/dist/aos.css"
 import { useEffect } from 'react'
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
+import Link from 'next/link'
 
 const Banner = () => {
   useEffect(() => {
@@ -11,7 +12,7 @@ const Banner = () => {
 
   return (
 
-    <Box className="active-tv-font" sx={{ width: '100%', minHeight: '100vh', backgroundImage: `url('hero-bg.jpg')`, backgroundSize: 'cover', }}>
+    <Box className="active-tv-font" sx={{ width: '100%', minHeight: '100vh', backgroundImage: `url('https://active-tv-app-public-content.s3.us-east-2.amazonaws.com/video-thumbnails/The%2520Nerve%2520of%2520A%2520Male%2520Margaret%2520%257C%2520Episode%25202-fd95f404-39e2-4da4-8113-af4eb92fa843.jpg')`, backgroundSize: 'cover'}}>
       <Box
         style={{
           // border: '1px solid white',
@@ -43,8 +44,8 @@ const Banner = () => {
             <Typography style={{ color: 'white' }}>Watch on ANY device</Typography>
           </li>
         </ul>
-        <a href="/signup">
-          <button className='card'
+        <Link href="/signup">
+          <button  className="active-tv-font"
             style={{
               backgroundColor: '#fff203',
               width: '423px',
@@ -53,12 +54,13 @@ const Banner = () => {
               border: 'none',
               margin: '35px 0 0 2px',
               fontFamily: "Arcade Normal",
-              fontSize: "12px"
+              fontSize: "9px",
+               cursor:"pointer"
             }}
           >
             START WITH A FREE TRAIL!
           </button>
-        </a>
+        </Link>
         <Typography style={{ margin: '20px 0 0 40px' }}>
           Join in minutes. Cancel any time.
         </Typography>

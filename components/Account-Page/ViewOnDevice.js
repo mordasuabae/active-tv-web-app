@@ -147,8 +147,7 @@ export default function ViewOnDevice() {
 
           <Grid item xs={8} sx={{ display: { xs: 'none', sm: 'none', md: 'block' }, mr: 1 }}>
             <Box sx={{ display: { xs: 'none', sm: 'none', md: 'block' }, mr: 1 }} style={{ display: "flex", alignItems: "center", justifyContent: "center" }}>
-              <img src="accountPic1.png" style={{ width: "100%" }} />
-
+              <img src={"https://active-tv-app-public-content.s3.us-east-2.amazonaws.com/video-thumbnails/A%2520New%2520World%2520Order%2520-fd95f404-39e2-4da4-8113-af4eb92fa843.jpg"} width={500} height={340} style={{borderRadius:"10px"}} />
             </Box>
           </Grid>
         </Grid>
