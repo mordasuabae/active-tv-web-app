@@ -101,8 +101,9 @@ const Navbar = () => {
               sx={{
                 height: "60px",
                 width: "70px",
-                backgroundImage:
-                  'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                backgroundImage: 'url("ATV_logo.png")'
+                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
+                ,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}

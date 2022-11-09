@@ -7,23 +7,23 @@ import { Palette } from "@universemc/react-palette";
 //amplify imports
 import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
-import awsconfig from "./../components/utils/CognitoConfig";
-import CurrentConfig from './../components/utils/CognitoConfig'
+// import awsconfig from "./../components/utils/CognitoConfig";
+import {CurrentConfig} from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
-Amplify.configure(CurrentConfig);
-import {ShowsProvider} from '../context/ShowContext'
+import { ShowsProvider } from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
+
+  Amplify.configure(CurrentConfig); //moved this file inside the module
+
 
   const UserContext = useContext(USER_CONTEXT);
   const [selectedCategory, setSelectedCategory] = useState("None");
   const [user, setUser] = useState("Activetv@gmail.com")
   const [subCode, setSubCode] = useState("no-sub-user")
-  const [googleFederatedUser, setGoogleFederatedUser] = useState("Activetv@gmail.com")
-  const [facebookFederatedUser, setFacebookFederatedUser] = useState("Activetv@gmail.com")
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
   const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
@@ -69,48 +69,48 @@ function MyApp({ Component, pageProps }) {
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
 
-  const updateAttributes = async (user) => {
+  //updating attributes-or-change-the-values
+  const updateAttributes = async (user, nameAttibute,emailAttribute) => {
     await Auth.updateUserAttributes(user, {
-      // 'name': 'schadrack'
+      //'name': 'nameAttribute',
+      //'email':'emailAttributes'
     });
   }
 
-//changed >>>>>>>>
 
 
   const checkUser = async () => {
 
     await Auth.currentAuthenticatedUser({
-      bypassCache:false
+      bypassCache: false
     })
       .then(user => {
+
+        //assign context variables
         const currentUser = user.attributes.email
         const DisplayUser = user.attributes.name
         const sub = user.attributes.sub
 
-        //get token
+        //retrieve web-token
         const token = user.signInUserSession.idToken.jwtToken
         setAuthorisedJWT(token)
         setSubCode(sub)
         console.log(authorisedJWT, 'how to access jwt statefully')
 
-
         // our setters
         setUser(currentUser)
         setDisplayName(DisplayUser)
         setLoggedIn(true)
+
         //testing logs
         console.log('attributes:', user.attributes);
-        console.log(user, '=> user in current authenticated for federation')
-        console.log("User after succesfull login: ", currentUser)
-        console.log("display name after succesfull login: ", DisplayUser)
+        console.log(user, '=> user in current authenticated')
+        console.log("userEmail after succesfull login: ", currentUser)
+        console.log("displayName after succesfull login: ", DisplayUser)
 
-        //get jwt token from user object
-        // const token = user.signInUserSession.accessToken.jwtToken
-        // setAuthorisedJWT('')
-        //update user attriubutes
       })
       .catch((error) => {
+        //error handling
         console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
@@ -120,9 +120,7 @@ function MyApp({ Component, pageProps }) {
 
   useEffect(() => {
     checkUser()
-    // getUserInfo()
-    // fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
-  },[])
+  }, [])
 
   return (
     <USER_CONTEXT.Provider
@@ -150,7 +148,7 @@ function MyApp({ Component, pageProps }) {
     >
       <Navbar />
       <ShowsProvider>
-      <Component {...pageProps} />
+        <Component {...pageProps} />
       </ShowsProvider>
     </USER_CONTEXT.Provider>
   );

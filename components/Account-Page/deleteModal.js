@@ -146,8 +146,8 @@ const copy = ()=>{
 
 
         <Box style={{marginTop:45}} sx={styles.footer}>
-        <Button onClick={handleClose} style={styles.deleteBtn} variant="contained" color="error">cancel</Button>
-          <Button type="submit" style={styles.deleteBtn} variant="contained" color="success">confirm</Button>
+        <Button onClick={handleClose} style={styles.deleteBtn} variant="outlined" color="error">cancel</Button>
+          <Button type="submit" style={styles.deleteBtn} variant="outlined" color="success">confirm</Button>
           </Box>
           </form>
 

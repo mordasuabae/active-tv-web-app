@@ -6,7 +6,8 @@ const CorridorStore = () => {
     return ( 
         <Box className={"active-tv-font"} sx={styles.container} style={{fontSize:'8px',margin:'-50px 0 0 0'}}>
             <Box style={{color:'white'}} sx={styles.contentBox}>
-            Our store purchases are handled by a third party, Merchline, for order support please contact <p style={{fontSize:'8px',color:'yellow'}}><Link className="link"  href="/"> support@merchline.com</Link></p>
+            Our store purchases are handled by a third party, Merchline, for order support please contact
+             <p style={{fontSize:'8px',color:'yellow'}}><Link className="link"  href="/"> support@merchline.com</Link></p>
               </Box>
         </Box>
      );

@@ -1,6 +1,7 @@
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 import Link from 'next/link'
@@ -45,7 +46,7 @@ const Banner = () => {
           </li>
         </ul>
         <Link href="/signup">
-          <button  className="active-tv-font"
+          <button className='card'
             style={{
               backgroundColor: '#fff203',
               width: '423px',

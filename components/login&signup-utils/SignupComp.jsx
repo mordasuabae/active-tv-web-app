@@ -28,14 +28,397 @@ import PacmanLoader from "react-spinners/PacmanLoader";
 import PropagateLoader from "react-spinners/PropagateLoader";
 import { TrendingUpRounded } from "@mui/icons-material";
 import { USER_CONTEXT } from "../../context/MainContext";
-import axios from 'axios'
+import axios from "axios";
+
+const LoginComp = () => {
+  const [show, setShow] = useState(false);
+  const [redirecting, setRedirecting] = useState(false);
+  const [errorLogs, setErrorLogs] = useState("");
+  const { AuthenticatedUser } = useContext(USER_CONTEXT);
+
+  // form state
+  const [formDetails, setFormDetails] = useState({
+    name: "",
+    email: "",
+    password: "",
+    check: "",
+  });
+
+  const handleFieldChange = (event) => {
+    const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
+
+    setFormDetails({
+      ...formDetails,
+      [field]: event.currentTarget.value,
+    });
+  };
+  // password display
+  const tooglePassword = () => {
+    setShow(!show);
+  };
+
+  console.log("user", AuthenticatedUser);
+  const endpoint = `http://127.0.0.1:3000/store-users`;
+  const tokenHandler = async () => {
+    // const response = await axios({
+    //   method: "POST",
+    //   url: endpoint,
+    //   data :AuthenticatedUser,
+    //   // BearerToken: authorisedJWT,
+    //   // mode: 'no-cors',
+    //   });
+    const response = await axios.post(endpoint, AuthenticatedUser, {
+      "Content-Type": "application/json",
+    });
+    console.log("RESPONSE=>", response);
+  };
+
+  // useEffect(() => {
+  //   console.log(signUp);
+  // }, []);
+
+  //register user
+  async function signUp(username, password, email) {
+    try {
+      const { user } = await Auth.signUp({
+        username: email,
+        password: password,
+        attributes: {
+          email: email, // optional
+          phone_number: null, // optional - E.164 number convention
+          // other custom attributes
+          "custom:display_name": username,
+          name: username,
+        },
+      });
+
+      console.log(user, "signup authclass running");
+
+      if (user) {
+        setRedirecting(true);
+        // setErrorLogs('signing up')
+        setTimeout(() => {
+          setRedirecting(false);
+          Router.push("/confirm"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+        }, 2000);
+      }
+    } catch (error) {
+      console.log("error signing up:", error);
+      // alert('something went wrong  ,please fill in the fields correctly')
+      setErrorLogs(error.message);
+    }
+  }
+
+  const GoogleSignin = async () => {
+    try {
+      await Auth.federatedSignIn({ provider: "Google" });
+      console.log("using Google for federation");
+    } catch (err) {
+      console.log(`Google auth returns ${err.message}`);
+    }
+  };
+  const FacebookSignin = async () => {
+    try {
+      await Auth.federatedSignIn({ provider: "Facebook" });
+      console.log("using facebook for federation");
+    } catch (err) {
+      console.log(`Facebook auth returns ${err.message}`);
+    }
+  };
+
+  // submit form
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    signUp(formDetails.email, formDetails.password, formDetails.email);
+    tokenHalndler();
+  };
+
+  return redirecting ? (
+    <Box
+      sx={{
+        height: "91vh",
+        background: "#000000",
+        background: "url('login-bg.jpg')",
+      }}
+    >
+      <Box
+        sx={{
+          height: "100%",
+          width: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          background: "rgba(0,0,0,.5)",
+        }}
+      >
+        <MoonLoader color={"#f3c11a"} loading={true} size={170} />
+      </Box>
+    </Box>
+  ) : (
+    <Box sx={{ ...loginStyles.container }}>
+      <Box sx={{ ...loginStyles.contentCover }}>
+        <Box sx={{ ...loginStyles.formContainer }}>
+          <Box sx={{ ...loginStyles.header }}>
+            <img
+              src="glitch-tv.gif"
+              alt="logo"
+              height="105px"
+              style={{ marginBottom: "5" }}
+            />
+            <Typography
+              variant="h4"
+              align="center"
+              className={"active-tv-font"}
+              sx={{
+                margin: "20px 0",
+                fontWeight: "900",
+                fontSize: {
+                  md: "18px",
+                  xs: "20px",
+                },
+              }}
+            >
+              Create your account
+            </Typography>
+            <Typography
+              className={"active-tv-font"}
+              sx={{ lineHeight: "25px", fontSize: "10px" }}
+              variant="p"
+              align="center"
+            >
+              Getting started is easy, just a few steps and you can immerse
+              yourself with the latest Active TV content!
+            </Typography>
+          </Box>
+          <Box sx={loginStyles.formBox}>
+            <form onSubmit={handleSubmit}>
+              <Box sx={{ ...loginStyles.inputBlocks }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
+                  Display Name
+                </label>
+                <Box sx={{ ...loginStyles.input }}>
+                  <input
+                    name="name"
+                    value={formDetails.name}
+                    onChange={handleFieldChange}
+                    className="focusInput"
+                    style={{ ...loginStyles.inputElement }}
+                    type={"text"}
+                    placeholder="Enter display name"
+                  />
+                  <Button>
+                    <PersonIcon sx={loginStyles.icon} />
+                  </Button>
+                </Box>
+              </Box>
+              <Box sx={{ ...loginStyles.inputBlocks }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
+                  Email address
+                </label>
+                <Box sx={{ ...loginStyles.input }}>
+                  <input
+                    name="email"
+                    value={formDetails.email}
+                    onChange={handleFieldChange}
+                    className="focusInput"
+                    style={{ ...loginStyles.inputElement }}
+                    type={"email"}
+                    placeholder="Enter email address"
+                  />
+                  <Button>
+                    <EmailIcon sx={loginStyles.icon} />
+                  </Button>
+                </Box>
+              </Box>
+              <Box sx={{ ...loginStyles.inputBlocks }}>
+                <label
+                  className="active-tv-font"
+                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
+                >
+                  Password
+                </label>
+                <Box sx={{ ...loginStyles.input }}>
+                  <input
+                    name="password"
+                    value={formDetails.password}
+                    onChange={handleFieldChange}
+                    className="focusInput"
+                    style={{ ...loginStyles.inputElement }}
+                    type={show ? "text" : "password"}
+                    placeholder="Enter your password"
+                  />
+                  <Button onClick={tooglePassword}>
+                    {show ? (
+                      <VisibilityIcon sx={loginStyles.icon} />
+                    ) : (
+                      <VisibilityOffIcon sx={loginStyles.icon} />
+                    )}
+                  </Button>
+                </Box>
+              </Box>
+              {/* checkboxes */}
+              <Box sx={{ ...loginStyles.checkboxContainer }}>
+                <Box sx={{ display: "flex" }}>
+                  <input
+                    style={{ padding: "5px" }}
+                    type="checkbox"
+                    name="check"
+                    value={formDetails.check}
+                    onChange={handleFieldChange}
+                  />
+                  <Typography
+                    fontSize={11}
+                    className={"active-tv-font"}
+                    variant=""
+                    sx={{ ml: 2 }}
+                  >
+                    I have read and accept the Privacy Policy
+                  </Typography>
+                </Box>
+                <Box sx={{ display: "flex" }}>
+                  <input
+                    style={{ padding: "5px" }}
+                    type="checkbox"
+                    name="check"
+                    value={formDetails.check}
+                    onChange={handleFieldChange}
+                  />
+                  <Typography
+                    fontSize={11}
+                    className={"active-tv-font"}
+                    variant=""
+                    sx={{ ml: 2 }}
+                  >
+                    I have read and accept the Terms and Conditions
+                  </Typography>
+                </Box>
+              </Box>
+
+              <Box sx={{ ...loginStyles.buttonContainer }}>
+                <Button
+                  className={"active-tv-font"}
+                  sx={{ ...loginStyles.loginBtn }}
+                  variant="contained"
+                  color="warning"
+                  type="Submit"
+                  onClick={tokenHandler}
+                >
+                  Sign up
+                </Button>
+              </Box>
+              <span
+                className="active-tv-font"
+                style={{
+                  color: "red",
+                  width: "100%",
+                  justifyContent: "center",
+                  display: "flex",
+                  fontSize: 10,
+                }}
+              >
+                {errorLogs}
+              </span>
+              <Box sx={{ padding: "0 50px" }}>
+                <fieldset style={{ ...loginStyles.fieldset }}>
+                  <legend style={{ ...loginStyles.legend }}>OR</legend>
+                </fieldset>
+              </Box>
+              {/* login with socials */}
+              <Box
+                sx={{
+                  ...loginStyles.buttonContainer,
+                  flexDirection: "column",
+                  justifyContent: "space-between",
+                  height: {
+                    md: "120px",
+                    sm: "140px",
+                    xs: "170px",
+                  },
+                }}
+              >
+                <Button
+                  className={"active-tv-font"}
+                  sx={{ ...loginStyles.socialBtn, fontSize: "12px" }}
+                  variant="contained"
+                  onClick={GoogleSignin}
+                >
+                  <GoogleIcon sx={{ margin: "0 10px" }} />
+                  Continue with Google
+                </Button>
+                <Button
+                  sx={{
+                    ...loginStyles.socialBtn,
+                    fontSize: "12px",
+                    "&:hover": { background: "blue", border: "none" },
+                  }}
+                  className={"active-tv-font"}
+                  variant="contained"
+                  onClick={FacebookSignin}
+                >
+                  <FacebookIcon sx={{ margin: "0 10px" }} />
+                  Continue with Facebook
+                </Button>
+              </Box>
+            </form>
+          </Box>
+          <Box
+            sx={{
+              padding: "10px",
+              minHeight: "100px",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "space-between",
+            }}
+          >
+            <Typography
+              variant="h6"
+              className={"active-tv-font"}
+              sx={{
+                fontWeight: "600",
+                marginTop: 2,
+                fontSize: {
+                  md: "10px",
+                  sm: "10px",
+                  xs: "12px",
+                },
+              }}
+              color="#fff"
+              align="center"
+            >
+              Already have an account?
+              <Box
+                sx={{
+                  display: "inline-block",
+                  margin: "0 5px",
+                  "&:hover": {
+                    textDecoration: "underline",
+                  },
+                }}
+              >
+                <Link href="/login">Login here</Link>
+              </Box>
+            </Typography>
+          </Box>
+        </Box>
+      </Box>
+    </Box>
+  );
+};
+
+export default LoginComp;
 
 const loginStyles = {
   container: {
     minHeight: "145vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
-     backgroundSize:'cover',
+    backgroundSize: "cover",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
@@ -205,397 +588,3 @@ const loginStyles = {
     },
   },
 };
-
-const LoginComp = () => {
-  const [show, setShow] = useState(false);
-  const [redirecting, setRedirecting] = useState(false);
-  const [errorLogs, setErrorLogs] = useState('')
-  const {AuthenticatedUser, authorisedJWT} = useContext(USER_CONTEXT)
-
-  // form state
-  const [formDetails, setFormDetails] = useState({
-    name: "",
-    email: "",
-    password: "",
-    check: "",
-  });
-
-  const handleFieldChange = (event) => {
-    const field = event.currentTarget.name; //created an object that gets the name of inputs and store its value
-
-    setFormDetails({
-      ...formDetails,
-      [field]: event.currentTarget.value,
-    });
-  };
-  // password display
-  const tooglePassword = () => {
-    setShow(!show);
-  };
-
-  console.log('user',AuthenticatedUser)
-  const endpoint = `http://127.0.0.1:3000/store-users`;
-  const tokenHandler = async () => {
-    // const response = await axios({
-    //   method: "POST",
-    //   url: endpoint,
-    //   data :AuthenticatedUser,
-    //   // BearerToken: authorisedJWT,
-    //   // mode: 'no-cors',
-    //   });
-    const response = await axios.post(endpoint,AuthenticatedUser,{'Content-Type':'application/json'},)
-    console.log('RESPONSE=>',response);
-  };
-  
-  // useEffect(() => {
-  //   console.log(signUp);
-  // }, []);
-
-  //register user
-  async function signUp(username, password, email) {
-    try {
-      const { user } = await Auth.signUp({
-        username: email,
-        password: password,
-        attributes: {
-          email: email, // optional
-          phone_number: null, // optional - E.164 number convention
-          // other custom attributes
-          'custom:display_name':username,
-          name:username
-        },
-      });
-      
-      console.log(user, 'signup authclass running');
-
-      if (user) {
-        setRedirecting(true);
-        // setErrorLogs('signing up')
-        setTimeout(() => {
-          setRedirecting(false);
-          Router.push("/confirm"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
-        }, 2000);
-      }
-    } catch (error) {
-      console.log("error signing up:", error);
-      // alert('something went wrong  ,please fill in the fields correctly')
-      setErrorLogs(error.message)
-    }
-  }
-
-
-
-
-
-
-
-  const GoogleSignin = async () => {
-    try {
-     await Auth.federatedSignIn({ provider: "Google" });
-     console.log('using Google for federation')
-
-    } catch (err) {
-      console.log(`Google auth returns ${err.message}`);
-    }
-  };
-  const FacebookSignin = async () => {
-    try {
-     await Auth.federatedSignIn({ provider: "Facebook" });
-     console.log('using facebook for federation')
-    } catch (err) {
-      console.log(`Facebook auth returns ${err.message}`);
-    }
-  };
-
-
-  // submit form
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    signUp(formDetails.email, formDetails.password, formDetails.email);
-    tokenHalndler()
-
-  };
-
-  return redirecting ? (
-    <Box
-      sx={{
-        height: "91vh",
-        background: "#000000",
-        background: "url('login-bg.jpg')",
-     
-      }}
-    >
-      <Box
-       sx={{
-        height: "100%",
-        width:'100%',
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        background: "rgba(0,0,0,.5)",
-       }}
-      >
-      <MoonLoader color={"#f3c11a"} loading={true} size={170} />
-      </Box>
-    </Box>
-  ) : (
-    <Box sx={{ ...loginStyles.container }}>
-      <Box sx={{ ...loginStyles.contentCover }}>
-        <Box sx={{ ...loginStyles.formContainer }}>
-          <Box sx={{ ...loginStyles.header }}>
-            <img
-              src="glitch-tv.gif"
-              alt="logo"
-              height="105px"
-              style={{ marginBottom: "5" }}
-            />
-            <Typography
-              variant="h4"
-              align="center"
-              className={"active-tv-font"}
-              sx={{
-                margin: "20px 0",
-                fontWeight: "900",
-                fontSize: {
-                  md: "18px",
-                  xs: "20px",
-                },
-              }}
-            >
-              Create your account
-            </Typography>
-            <Typography
-              className={"active-tv-font"}
-              sx={{ lineHeight: "25px", fontSize: "10px" }}
-              variant="p"
-              align="center"
-            >
-              Getting started is easy, just a few steps and you can immerse
-              yourself with the latest Active TV content!
-            </Typography>
-          </Box>
-          <Box sx={loginStyles.formBox}>
-            <form onSubmit={handleSubmit}>
-              <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label
-                  className="active-tv-font"
-                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
-                >
-                  Display Name
-                </label>
-                <Box sx={{ ...loginStyles.input }}>
-                  <input
-                    name="name"
-                    value={formDetails.name}
-                    onChange={handleFieldChange}
-                    className="focusInput"
-                    style={{ ...loginStyles.inputElement }}
-                    type={"text"}
-                    placeholder="Enter display name"
-                  />
-                  <Button>
-                    <PersonIcon sx={loginStyles.icon} />
-                  </Button>
-                </Box>
-              </Box>
-              <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label
-                  className="active-tv-font"
-                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
-                >
-                  Email address
-                </label>
-                <Box sx={{ ...loginStyles.input }}>
-                  <input
-                    name="email"
-                    value={formDetails.email}
-                    onChange={handleFieldChange}
-                    className="focusInput"
-                    style={{ ...loginStyles.inputElement }}
-                    type={"email"}
-                    placeholder="Enter email address"
-                  />
-                  <Button>
-                    <EmailIcon sx={loginStyles.icon} />
-                  </Button>
-                </Box>
-              </Box>
-              <Box sx={{ ...loginStyles.inputBlocks }}>
-                <label
-                  className="active-tv-font"
-                  style={{ ...loginStyles.inputLabel, fontSize: "10px" }}
-                >
-                  Password
-                </label>
-                <Box sx={{ ...loginStyles.input }}>
-                  <input
-                    name="password"
-                    value={formDetails.password}
-                    onChange={handleFieldChange}
-                    className="focusInput"
-                    style={{ ...loginStyles.inputElement }}
-                    type={show ? "text" : "password"}
-                    placeholder="Enter your password"
-                  />
-                  <Button onClick={tooglePassword}>
-                    {show ? (
-                      <VisibilityIcon sx={loginStyles.icon} />
-                    ) : (
-                      <VisibilityOffIcon sx={loginStyles.icon} />
-                    )}
-                  </Button>
-                </Box>
-              </Box>
-              {/* checkboxes */}
-              <Box sx={{ ...loginStyles.checkboxContainer }}>
-                <Box sx={{ display: "flex" }}>
-                  <input
-                    style={{ padding: "5px" }}
-                    type="checkbox"
-                    name="check"
-                    value={formDetails.check}
-                    onChange={handleFieldChange}
-                  />
-                  <Typography
-                    fontSize={11}
-                    className={"active-tv-font"}
-                    variant=""
-                    sx={{ ml: 2 }}
-                  >
-                    I have read and accept the Privacy Policy
-                  </Typography>
-                </Box>
-                <Box sx={{ display: "flex" }}>
-                  <input
-                    style={{ padding: "5px" }}
-                    type="checkbox"
-                    name="check"
-                    value={formDetails.check}
-                    onChange={handleFieldChange}
-                  />
-                  <Typography
-                    fontSize={11}
-                    className={"active-tv-font"}
-                    variant=""
-                    sx={{ ml: 2 }}
-                  >
-                    I have read and accept the Terms and Conditions
-                  </Typography>
-                </Box>
-              </Box>
-
-              <Box sx={{ ...loginStyles.buttonContainer }}>
-                <Button
-                  className={"active-tv-font"}
-                  sx={{ ...loginStyles.loginBtn }}
-                  variant="contained"
-                  color="warning"
-                  type="Submit"
-                  onClick={tokenHandler}
-                >
-                  Sign up
-                </Button>
-
-              </Box>
-              <span
-              className="active-tv-font"
-                style={{
-                  color: "red",
-                  width: "100%",
-                  justifyContent: "center",
-                  display: "flex",
-                  fontSize:10
-                }}
-              >
-                {errorLogs}
-              </span>
-              <Box sx={{ padding: "0 50px" }}>
-                <fieldset style={{ ...loginStyles.fieldset }}>
-                  <legend style={{ ...loginStyles.legend }}>OR</legend>
-                </fieldset>
-              </Box>
-              {/* login with socials */}
-              <Box
-                sx={{
-                  ...loginStyles.buttonContainer,
-                  flexDirection: "column",
-                  justifyContent: "space-between",
-                  height: {
-                    md: "120px",
-                    sm: "140px",
-                    xs: "170px",
-                  },
-                }}
-              >
-                <Button
-                  className={"active-tv-font"}
-                  sx={{ ...loginStyles.socialBtn, fontSize: "12px" }}
-                  variant="contained"
-                  onClick={GoogleSignin}
-                >
-                  <GoogleIcon sx={{ margin: "0 10px" }} />
-                  Continue with Google
-                </Button>
-                <Button
-                  sx={{
-                    ...loginStyles.socialBtn,
-                    fontSize: "12px",
-                    "&:hover": { background: "blue", border: "none" },
-                  }}
-                  className={"active-tv-font"}
-                  variant="contained"
-                  onClick={FacebookSignin}
-                >
-                  <FacebookIcon sx={{ margin: "0 10px" }} />
-                  Continue with Facebook
-                </Button>
-              </Box>
-            </form>
-          </Box>
-          <Box
-            sx={{
-              padding: "10px",
-              minHeight: "100px",
-              display: "flex",
-              flexDirection: "column",
-              justifyContent: "space-between",
-            }}
-          >
-            <Typography
-              variant="h6"
-              className={"active-tv-font"}
-              sx={{
-                fontWeight: "600",
-                marginTop: 2,
-                fontSize: {
-                  md: "10px",
-                  sm: "10px",
-                  xs: "12px",
-                },
-              }}
-              color="#fff"
-              align="center"
-            >
-              Already have an account?
-              <Box
-                sx={{
-                  display: "inline-block",
-                  margin: "0 5px",
-                  "&:hover": {
-                    textDecoration: "underline",
-                  },
-                }}
-              >
-                <Link href="/login">
-                  <a>Login here</a>
-                </Link>
-              </Box>
-            </Typography>
-          </Box>
-        </Box>
-      </Box>
-    </Box>
-  );
-};
-
-export default LoginComp;

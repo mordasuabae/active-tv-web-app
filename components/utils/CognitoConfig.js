@@ -1,6 +1,6 @@
 import { Amplify, Auth } from 'aws-amplify';
 
-
+//please do not alter or edit any item within this file 
 
 //first userpool => active-tv-web
 // Amplify.configure({
@@ -64,7 +64,7 @@ Amplify.configure({
 
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
         userPoolWebClientId: '2v0n86ar28d4cfi6h9kb8ac9h4', //changed
- 
+
         // OPTIONAL - Hosted UI configuration
         oauth: {
             domain: 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com', //changed
@@ -84,8 +84,5 @@ Amplify.configure({
 
 
 export const CurrentConfig = Auth.configure()
-
-
-
  //Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 

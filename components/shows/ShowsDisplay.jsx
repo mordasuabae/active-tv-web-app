@@ -6,13 +6,11 @@ import data from "./test.json";
 import ShowHeader from "./ShowsHeader";
 import { useEffect, useState, useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
-import Link from 'next/link';
-import axios from 'axios'
+import Link from "next/link";
+import axios from "axios";
 
-
-
-export default function ShowsDisplay({shows}) {
-  console.log({shows})
+export default function ShowsDisplay({ shows }) {
+  console.log({ shows });
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,10 +28,8 @@ export default function ShowsDisplay({shows}) {
     }, 3000);
   };
 
-
-
   return (
-    <div>
+    <Box>
       <ShowHeader title="Shows" />
       <Box
         sx={{
@@ -43,10 +39,9 @@ export default function ShowsDisplay({shows}) {
           flexWrap: "wrap",
         }}
       >
-        {shows.map((show) => (
-          <Link href={`/shows-episodes/${show.Title}`}>
-
-            <a> 
+        {shows.map((show, index) => (
+          <Link key={index} href={`/shows-episodes/${show.Title}`} passHref={true}>
+            <a>
             <ShowCard
               color={show.color}
               openModal={handleOpen}
@@ -80,7 +75,7 @@ export default function ShowsDisplay({shows}) {
           </Link>
         ))}
       </Box>
-    </div>
+    </Box>
   );
 }
 
@@ -122,9 +117,9 @@ const styles = {
     width: "100%",
     height: "100%",
     background: "#111",
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   fadeContainer: {

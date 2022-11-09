@@ -6,6 +6,7 @@ import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 import DeleteModal from './deleteModal'
 import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
+import Link from 'next/link'
 
 
 const AccountLoggedIn = () => {
@@ -94,7 +95,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="/changepassword">Change password</a>
+                <Link href="/changepassword">Change password</Link>
               </Typography>
 
               <Typography
@@ -106,7 +107,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href=""></a>
+                
               </Typography>
               <Typography
                 sx={{
@@ -141,7 +142,7 @@ const AccountLoggedIn = () => {
                 variant="h3"
                 fontSize={10}
               >
-                You don't seem to have a subscription!
+                You {"don't"} seem to have a subscription!
               </Typography>
               <Typography className="active-tv-font" variant="h3" fontSize={10}>
                 Have an active Patreon membership?
@@ -157,7 +158,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="/subscribepayment">Payment method</a>
+                <Link href="/subscribepayment">Payment method</Link>
               </Typography>
               <Typography
                 sx={{
@@ -168,7 +169,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">subscribe now</a>
+                <Link href="/subscribepayment">subscribe now</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -211,7 +212,7 @@ const AccountLoggedIn = () => {
                 variant="h3"
                 fontSize={10}
               >
-                Since signing up you've earned 0 points
+                Since signing up {"you've"} earned 0 points
                 <img
                   style={{ margin: "0 5px" }}
                   src="coin.gif"
@@ -231,7 +232,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Point History</a>
+                <Link href="/produce">Point History</Link>
               </Typography>
               <Typography
                 sx={{
@@ -242,7 +243,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">test</a>
+                <Link href="/produce">test</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -270,7 +271,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Video Quality</a>
+                <Link href="/">Video Quality</Link>
               </Typography>
             </Grid>
           </Grid>
@@ -298,7 +299,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">FAQ</a>
+                <Link href="/">FAQ</Link>
               </Typography>
               <Typography
                 sx={{
@@ -309,7 +310,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <a href="">Contact support</a>
+                <Link href="/contact-us">Contact support</Link>
               </Typography>
             </Grid>
           </Grid>
