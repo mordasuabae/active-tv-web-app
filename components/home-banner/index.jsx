@@ -35,7 +35,6 @@ const HomeBanner = () => {
     // console.log(results);
   }
   // console.log(banners)
-
   useEffect(()=>{
     getShows();
   },[])
@@ -49,7 +48,7 @@ const HomeBanner = () => {
       {({ data, loading, error }) => {
         // console.log(data, loading, error);
         return (
-          <Box
+          <Bx
             sx={{
               minHeight: "100vh",
               maxHeight: "107vh",
@@ -96,6 +95,7 @@ const HomeBanner = () => {
                 transform: "translateY(-150px)",
                 zIndex: "1",
                 position: "relative",
+
               }}
             >
               {/* <LatestShows /> */}

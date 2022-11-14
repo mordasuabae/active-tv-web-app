@@ -11,6 +11,7 @@ import Router from 'next/router'
 
 
 export default function SimpleBackdrop() {
+
   const [redirecting, setRedirecting] = React.useState(false);
 
   const handleClose = () => {
@@ -19,7 +20,10 @@ export default function SimpleBackdrop() {
   const handleToggle = () => {
     setRedirecting(!open);
   };
+
+
   useEffect(() => {
+
     setTimeout(() => {
 
       if (!redirecting) {
@@ -60,8 +64,6 @@ export default function SimpleBackdrop() {
             {redirecting ? 'Could not find the url you queried' : 'Redirecting to the home page in 4..seconds'}
           </Typography>
       }
-
-
 
     </Box>
   )
