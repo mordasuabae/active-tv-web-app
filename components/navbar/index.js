@@ -13,6 +13,7 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Dropdown from "./dropdown";
 import Link from "next/link";
+import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
 
 const Navbar = () => {
@@ -22,11 +23,10 @@ const Navbar = () => {
   const UserContext = React.useContext(USER_CONTEXT);
 
   // destructuring the authenticated user from context
-  const { AuthenticatedUser } = React.useContext(USER_CONTEXT);
+  const { AuthenticatedUser, authorisedJWT } = React.useContext(USER_CONTEXT);
   // //user initial
-  const currentUser = AuthenticatedUser.name
-  const userIntial = currentUser.charAt(0)
-
+  const currentUser = AuthenticatedUser.name;
+  const userIntial = currentUser.charAt(0);
 
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
@@ -47,6 +47,28 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+
+
+  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
+  const tokenHalndler = async () => {
+    const response = await axios({
+      method: "get",
+      url: endpoint,
+      Authorization: `Bearer ${authorisedJWT} `,
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+      //   "Access-Control-Allow-Headers":
+      //   "Origin, X-Requested-With, Content-Type",
+      //   "Access-Control-Allow-Credentials": true,
+      //   // Authorization: `Bearer ${authorisedJWT} `,
+      // },
+    });
+    console.log("Response => ", response);
+  };
+
+  
   return (
     <AppBar
       position="sticky"
@@ -253,8 +275,8 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
+           
           </Box>
-
           {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
             <Typography variant="h6" fontWeight={"bold"} fontSize={16}>

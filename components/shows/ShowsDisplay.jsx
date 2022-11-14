@@ -9,8 +9,15 @@ import { USER_CONTEXT } from "../../context/MainContext";
 import Link from "next/link";
 import axios from "axios";
 
+<<<<<<< HEAD
 export default function ShowsDisplay({ shows }) {
   console.log({ shows });
+=======
+export default function ShowsDisplay(
+  // { shows }
+  ) {
+  // console.log({ shows });
+>>>>>>> b9da9204eedfd6e65b2c1f37595c3dd9317afe0e
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,7 +32,7 @@ export default function ShowsDisplay({ shows }) {
   const getEpisodes = () => {
     setTimeout(() => {
       setEmpty(false);
-    }, 3000);
+    }, 1500);
   };
 
   return (
@@ -39,7 +46,11 @@ export default function ShowsDisplay({ shows }) {
           flexWrap: "wrap",
         }}
       >
+<<<<<<< HEAD
         {shows.map((show, index) => (
+=======
+        {/* {shows.map((show, index) => (
+>>>>>>> b9da9204eedfd6e65b2c1f37595c3dd9317afe0e
           <Link key={index} href={`/shows-episodes/${show.Title}`} passHref={true}>
             <a>
             <ShowCard
@@ -73,7 +84,7 @@ export default function ShowsDisplay({ shows }) {
             </Typography>
             </a>
           </Link>
-        ))}
+        ))} */}
       </Box>
     </Box>
   );

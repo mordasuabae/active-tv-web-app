@@ -4,7 +4,7 @@ import { FreeToWatchItem } from "./free-to-watch-item";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 import SectionHeader from "../utils/SectionHeader";
-import {allShows} from "../../state/allshows"
+import { allShows } from "../../state/allShows";
 // Import Swiper styles
 import "swiper/css";
 import "swiper/css/pagination";

@@ -154,5 +154,9 @@ function MyApp({ Component, pageProps }) {
   );
 }
 
+<<<<<<< HEAD
 export default MyApp;
 
+=======
+export default MyApp;
+>>>>>>> b9da9204eedfd6e65b2c1f37595c3dd9317afe0e
