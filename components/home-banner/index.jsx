@@ -48,7 +48,7 @@ const HomeBanner = () => {
       {({ data, loading, error }) => {
         // console.log(data, loading, error);
         return (
-          <Bx
+          <Box
             sx={{
               minHeight: "100vh",
               maxHeight: "107vh",

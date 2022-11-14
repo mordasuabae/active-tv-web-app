@@ -8,49 +8,18 @@ import { useState, useEffect } from 'react';
 import ShowsDisplay from '../components/shows/ShowsDisplay';
 import axios from 'axios'
 
-// export async function getStaticProps() {
-//   const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
-//   const response = await axios.get(endpoint)
-//   console.log('SHOWS', response.data)
-//   return {
-//     props: {
-//       shows: response.data
-//     }
-//   }
-// };
-
-
-const Shows = () => {
-
-  //console.log({shows} ,'teesting to see whta this is ')
-
-const [shows, setShows] = useState([])
-  // const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
- // const endpoint = "test"
-
-
-// const getShows = async(endpoint)=>{
-
-//   try{
-//        const response = await axios.get(endpoint);
-//        const removeItem =  response.data;
-//        const newArr =  removeItem.pop()
-//        setShows(newArr)
-//        console.log(shows ,'last test')
-
-//   }catch(err){
-//     console.log('error after fetching shows' , err.message)
-//   }
-  
-// }
-
-
-useEffect(()=>{
-    
-  // getShows(endpoint)
-
-},[])
-
+export async function getStaticProps() {
+  const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+  const response = await axios.get(endpoint)
+  console.log('SHOWS', response.data)
+  return {
+    props: {
+      shows: response.data
+    }
+  }
+};
+const Shows = ({ shows }) => {
+  console.log({ shows })
 
   return (
     <Palette
@@ -69,8 +38,7 @@ useEffect(()=>{
               padding: '40px 40px'
             }}
           >
-            test
-            {/*<ShowsDisplay shows={shows} />*/}
+            <ShowsDisplay shows={shows} />
           </Box>
         );
       }}
