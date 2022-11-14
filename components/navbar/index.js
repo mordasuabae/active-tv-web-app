@@ -75,8 +75,9 @@ const Navbar = () => {
               sx={{
                 height: "60px",
                 width: "70px",
-                backgroundImage:
-                  'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")',
+                backgroundImage: 'url("ATV_logo.png")'
+                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
+                ,
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -263,40 +264,7 @@ const Navbar = () => {
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
-             <Dropdown user={currentUser} userInitial={userIntial}/>
-            {/* <Menu
-              sx={{
-                mt: "45px",
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-              }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            >
-              {settings.map((setting) => (
-                <MenuItem
-                  key={setting}
-                  onClick={handleCloseUserMenu}
-                  sx={{ background: "rgba(1,1,1,0.8)", color: "#bd3535" }}
-                >
-                  <Typography textAlign="center" className={"active-tv-font"}>
-                    {setting}
-                  </Typography>
-                </MenuItem>
-              ))}
-            </Menu> */}
+            <Dropdown user={currentUser} userInitial={userIntial} />
           </Box>
         </Toolbar>
       </Container>

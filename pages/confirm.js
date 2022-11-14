@@ -237,7 +237,8 @@ const Confirm = () => {
       setRedirecting(true);
       setTimeout(() => {
         setRedirecting(false);
-        Router.push("/login"); //redirecting the user to the confirm page inorder for us to insert the code sent from email
+        Router.push("/login");
+        // Router.push("/subscribepayment");
       }, 2000);
 
     } catch (error) {
@@ -345,10 +346,9 @@ const Confirm = () => {
                   <Box sx={{ ...confirmStyles.input }}>
                     <input
                       name="email"
-                      className={'confirmInput'}
+                      className={'confirmInput focusInput'}
                       value={formDetails.email}
                       onChange={handleFieldChange}
-                      // className="focusInput"
                       style={{ ...confirmStyles.inputElement }}
                       type={"text"}
                       placeholder="Enter Email address "
@@ -365,10 +365,9 @@ const Confirm = () => {
                   <Box sx={{ ...confirmStyles.input }}>
                     <input
                       name="code"
-                      className={'confirmInput'}
+                      className={'confirmInput focusInput'}
                       value={formDetails.code}
                       onChange={handleFieldChange}
-                      // className="focusInput"
                       style={{ ...confirmStyles.inputElement }}
                       type={"number"}
                       placeholder="Enter Confirmation code"

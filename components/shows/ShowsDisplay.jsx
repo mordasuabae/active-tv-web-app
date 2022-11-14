@@ -6,9 +6,11 @@ import data from "./test.json";
 import ShowHeader from "./ShowsHeader";
 import { useEffect, useState, useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
-import Link from 'next/link';
+import Link from "next/link";
+import axios from "axios";
 
-export default function ShowsDisplay() {
+export default function ShowsDisplay({ shows }) {
+  console.log({ shows });
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -26,10 +28,8 @@ export default function ShowsDisplay() {
     }, 3000);
   };
 
-
-
   return (
-    <div>
+    <Box>
       <ShowHeader title="Shows" />
       <Box
         sx={{
@@ -39,23 +39,23 @@ export default function ShowsDisplay() {
           flexWrap: "wrap",
         }}
       >
-        {data.map((card) => (
-          <Link href={`/shows-episodes/${card.name}`}>
-            <a> 
+        {shows.map((show, index) => (
+          <Link key={index} href={`/shows-episodes/${show.Title}`} passHref={true}>
+            <a>
             <ShowCard
-              color={card.color}
+              color={show.color}
               openModal={handleOpen}
-              img={card.img}
-              text={card.name}
-              one={card.episodeone}
-              two={card.episodetwo}
-              three={card.episodethree}
-              four={card.episodefour}
-              five={card.episodefive}
-              six={card.episodesix}
-              seven={card.episodeseven}
-              eight={card.episodeeight}
-              nine={card.episodenine}
+              img={show.CoverArtLarge}
+              text={show.Title}
+              one={show.episodeone}
+              two={show.episodetwo}
+              three={show.episodethree}
+              four={show.episodefour}
+              five={show.episodefive}
+              six={show.episodesix}
+              seven={show.episodeseven}
+              eight={show.episodeeight}
+              nine={show.episodenine}
               onFetchEpisode={getEpisodes}
             />
             <Typography
@@ -69,13 +69,13 @@ export default function ShowsDisplay() {
                 background: "rgba(0,0,0,0.3)",
               }}
             >
-              {card.name}
+              {show.Title}
             </Typography>
             </a>
           </Link>
         ))}
       </Box>
-    </div>
+    </Box>
   );
 }
 
@@ -117,9 +117,9 @@ const styles = {
     width: "100%",
     height: "100%",
     background: "#111",
-    display:'flex',
-    alignItems:'center',
-    justifyContent:'center'
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
   },
 
   fadeContainer: {

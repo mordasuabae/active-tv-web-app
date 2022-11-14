@@ -8,6 +8,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@aws-sdk/service-error-classification": "^3.201.0",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
     "@mui/icons-material": "^5.3.1",
@@ -20,19 +21,20 @@
     "emoji-picker-react": "^3.5.1",
     "framer-motion": "^6.3.3",
     "material-ui-popup-state": "^4.0.2",
-    "next": "^12.2.3",
+    "next": "^12.3.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.5.0",
     "react-dom": "17.0.2",
+    "react-hls-player": "^3.0.7",
     "react-player": "^2.10.1",
     "react-spinners": "^0.13.3",
     "react-toastify": "^9.0.8",
     "styled-components": "^5.3.5",
     "swiper": "^8.3.2",
-    "toastify": "^2.0.1",
-    "use-image-color": "0.0.9"
+    "toastify": "^2.0.1"
   },
   "devDependencies": {
+    "@babel/core": "^7.19.6",
     "eslint": "8.8.0",
     "eslint-config-next": "12.0.9"
   }

@@ -1,6 +1,7 @@
 import Aos from "aos"
 import "aos/dist/aos.css"
 import { useEffect } from 'react'
+import Link from 'next/link'
 import { Box } from "@mui/system";
 import { Typography } from "@mui/material";
 
@@ -43,7 +44,7 @@ const Banner = () => {
             <Typography style={{ color: 'white' }}>Watch on ANY device</Typography>
           </li>
         </ul>
-        <a href="/signup">
+        <Link href="/signup">
           <button className='card'
             style={{
               backgroundColor: '#fff203',
@@ -58,7 +59,7 @@ const Banner = () => {
           >
             START WITH A FREE TRAIL!
           </button>
-        </a>
+        </Link>
         <Typography style={{ margin: '20px 0 0 40px' }}>
           Join in minutes. Cancel any time.
         </Typography>

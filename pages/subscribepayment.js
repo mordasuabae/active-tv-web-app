@@ -1,21 +1,24 @@
 import Script from "next/script";
 import Box from "@mui/material/Box";
 import Typography from "@mui/material/Typography";
-import EmailIcon from "@mui/icons-material/Email";
 import PersonIcon from '@mui/icons-material/Person';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import Button from "@mui/material/Button";
 import Subscription from "../components/Payment/subscriptions.json"
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import EmailIcon from '@mui/icons-material/Email';
+import PeopleIcon from '@mui/icons-material/People';
 import { useState } from "react";
+
 
 const PACKAGES = [
   {
     type: "monthly",
-    price: 1
+    price: "R 40"
   },
   {
     type: "annual",
-    price: 2
+    price: " R 450"
   },
 
 ];
@@ -60,56 +63,60 @@ export default function Paypage() {
       handler.openIframe();
     }
   }
-
-
-
   return (
-    <div style={{ height: '500vh', width: '100%', backgroundColor: '#1f1f1f' }}>
+    <Box 
+     style={{ 
+      minHeight: ' calc(100vh - 70px)',
+      width: '100%', 
+       background: "url('active-tv-login-test1.png')",
+        backgroundSize:'cover',
+      padding:'30px',
+      display:'flex',
+      alignItems:'center', 
+      justifyContent:"center" ,
+    }}>
 
-
-
-      <div style={{
-        position: 'absolute',
-        top: '10%',
-        bottom: '10%',
-        left: '25%',
-        right: '25%',
-        borderRadius: '5px',
-        // backgroundColor: '#f2f2f2',
-        //   backgroundColor: "#343a40",
-        // backgroundColor: '#212529',
+      <Box style={{
+        display:'flex',
+        flexDirection:'column',
+        justifyContent:'space-evenly',
+        borderRadius: '30px',
         backgroundColor: 'rgba(0,0,0,0.5)',
-        opacity: '0.7',
-        borderRadius: '5px',
+        // opacity: '0.7',
+        borderRadius: '20px',
         padding: '20px',
         width: '50%',
-        height: '650px'
+        height: '100%'
       }}>
-        <Script src="https://js.paystack.co/v1/inline.js" />
-
-
-        <Box sx={{ ...loginStyles.header }}>
-
-
-          {/*   <img
+        <Script src="https://js.paystack.co/v1/inline.js" />        
+        <Box sx={{ ...loginStyles.header }}>         
+         {/*   <img
             src="glitch-tv.gif"
             alt="logo"
             height="105px"
 
             style={{ marginBottom: "5" }}
           />
-    */}
-          <div className="MuiBox-root css-17kuhbv" ></div>
+         */}
+       <Box>
+            <img
+              src="https://thumbs.gfycat.com/GlitteringMatureAfricangoldencat-max-1mb.gif"
+              alt="logo"
+              height="80px"
+              style={{ marginBottom: "5" , objectFit:'cover'}}
+            />
+       </Box>
           <Typography
             variant="h4"
             align="center"
             className={"active-tv-font"}
             sx={{
-              color: '#f1f1f1',
-              margin: "20px 0",
+              color: '#fff',
+              padding: "20px",
               fontWeight: "900",
+              letterSpacing:'-1px',
               fontSize: {
-                md: "18px",
+                md: "13px",
                 xs: "20px",
               },
             }}
@@ -117,14 +124,53 @@ export default function Paypage() {
             Enter your payment details
           </Typography>
 
-
-
-
-          <div className="flex justify-center items-center w-full h-screen  active-tv-font">
+          <Box className="flex justify-center items-center w-full h-screen  active-tv-font">
             <form id="paymentForm" className="p-5 shadow-lg space-y-8">
-              <div className="space-x-4 flex justify-between items-center w-full">
-                <label style={{ color: '#f1f1f2' }} htmlFor="first-name">First Name</label>
-                <input type="text" id="first-name" placeholder="First Name" style={{
+              <Box sx={{width:'500px'}} className="space-x-4 flex justify-between items-center w-full">
+                <label style={{ color: "#fff", fontSize:12 }} htmlFor="first-name">First Name</label>
+                <Box sx={{display:'flex'}}>
+                  <input type="text" id="first-name" placeholder="Enter your first-name" style={{
+                  width: '100%',
+                  padding: '12px 20px',
+                  margin: '8px 0',
+                  display: 'inline-block',
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  boxSizing: 'border-box',
+                  marginBottom: '20px'
+
+                }} required />
+                 <Box sx={{ padding:'0 12px', height:'50px', display:'flex', alignItems:'center'}}>
+                      <AccountCircleIcon size={30} />
+                 </Box>
+                 
+                </Box>
+               
+              </Box>             
+               <Box className="space-x-4 flex justify-between items-center w-full active-tv-font">
+                <label style={{ color: "#fff", fontSize:12 }} htmlFor="last-name">Last Name</label>
+                <Box sx={{display:'flex'}}>
+                  <input type="text" id="last-name" placeholder="Enter your last-name" style={{
+                  width: '100%',
+                  padding: '12px 20px',
+                  margin: '8px 0',
+                  display: 'inline-block',
+                  border: '1px solid #ccc',
+                  borderRadius: '4px',
+                  boxSizing: 'border-box',
+                  marginBottom: '20px'
+
+                }} required />
+                    <Box sx={{padding:'0 12px', height:'50px', display:'flex', alignItems:'center'}}>
+                      <PeopleIcon size={30} sx={{height:'40px'}}/>
+                     </Box>
+                
+                </Box>
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+                <label style={{ color: "#fff", fontSize:12 }} htmlFor="email">Email Address</label>
+                 <Box sx={{display:'flex'}}>
+                  <input type="text" id="email-address" placeholder="Enter your email address" style={{
                   width: '100%',
                   padding: '12px 20px',
                   margin: '8px 0',
@@ -136,68 +182,23 @@ export default function Paypage() {
 
                 }} required />
 
-              </div>
+                   <Box sx={{ padding:'0 12px', height:'50px', display:'flex', alignItems:'center'}}>
+                    <EmailIcon size={30} sx={{height:'40px'}}/>
+                   </Box>
+                 
+                </Box>
 
+              </Box>
 
-              <div className="space-x-4 flex justify-between items-center w-full active-tv-font">
-                <label style={{ color: '#f1f1f2' }} htmlFor="last-name">Last Name</label>
-                <input type="text" id="last-name" placeholder="Last Name" style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  margin: '8px 0',
-                  display: 'inline-block',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  boxSizing: 'border-box',
-                  marginBottom: '20px'
-                }} required />
-              </div>
-
-
-
-
-
-
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
-                <label style={{ color: '#f1f1f2' }} htmlFor="email">Email Address</label>
-                <input type="email" id="email-address" placeholder="Email address" style={{
-                  width: '100%',
-                  padding: '12px 20px',
-                  margin: '8px 0',
-                  display: 'inline-block',
-                  border: '1px solid #ccc',
-                  borderRadius: '4px',
-                  boxSizing: 'border-box',
-                  marginBottom: '45px'
-                }} required></input>
-              </div>
-
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
-                {/* <label style={{ color: '#f1f1f2' }} htmlFor="subscription">Subscription Type</label>
-                <select onChange={() => setAmount(amount)
-                }
-                  style={{
-                    width: '100%',
-                    padding: '12px 20px',
-                    margin: '8px 0',
-                    display: 'inline-block',
-                    border: '1px solid #ccc',
-                    borderRadius: '4px',
-                    boxSizing: 'border-box',
-                  }} required >
-                  <option value="none" selected disabled hidden>Select Subscription Option</option>
-                  <option onClick={() => setAmount(2)}>Annual-2</option>
-                  <option onClick={() => setAmount(1)}>Monthly-1</option>
-                </select> */}
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
-                <label style={{ color: '#f1f1f2' }} htmlFor="email">Subscription Type</label>
-              </div>
-              <div className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+         
+              <Box sx={{marginBottom:2}} className="space-x-4 flex justify-between items-center w-full  active-tv-font">
+                <label style={{ color: "yellow",fontWeight:'bolder', fontSize:12 ,letterSpacing:5, marginBottom:'20px' , textAlign:'center', padding:'0 110px' }}>Subscription Type</label>
+              </Box>
+              <Box className="space-x-4 flex justify-between items-center w-full  active-tv-font" style={{display:'flex', flexDirection:'column',gap:4}}>
                 {/* <label style={{ color: '#f1f1f2' }} htmlFor="amount">Amount</label>
                 <input type="tel" id="amount" value={amount} style={{
                   width: '100%',
-                  padding: '12px 20px',
+                  padding: '12px 10px',
                   margin: '8px 0',
                   display: 'inline-block',
                   border: '1px solid #ccc',
@@ -205,30 +206,29 @@ export default function Paypage() {
                   boxSizing: 'border-box',
                 }} required /> */}
 
-                <select style={{ height: '45px', width: '100%' }} onChange={subscriptionType}>
+                <select style={{ height: '45px', width: '100', padding:'10px'}} onChange={subscriptionType}>
+                  <option style={{height:'40px'}} value="annual">Annual</option>
                   <option value="monthly" >Monthly</option>
-                  <option value="annual">Annual</option>
 
                 </select>
-
-                {prices.map((p) => (
-                  <input key="" type="tel" id="amount" value={p.price} required />
-                ))}
-
-
-              </div>
-
-
-              <div >
+               <Box>
+                    {prices.map((p, index) => (
+                      <div key={index} style={{width:'50%', display:'inline-block'}}>
+                         <input style={{padding:5,margin:'0', backgroundColor:'yellow', width:'100%'}} type="text" id="amount" value={p.price} required />
+                      </div>
+                ))}   
+               </Box>
+                       
+                 </Box>             
+                  <Box>
                 <button className="active-tv-font" style={{
                   width: '50%',
-                  position: 'absolute',
-                  left: '26%',
-                  right: '24%',
+                  // position: 'absolute',
+                  // left: '26%',
+                  // right: '24%',
                   //   backgroundColor: '#4CAF50',
                   backgroundColor: '#fff203',
                   color: '#000',
-
                   padding: '14px 20px',
                   //   margin: '8px 0',
                   border: 'none',
@@ -238,29 +238,24 @@ export default function Paypage() {
                   opacity: '1',
                   zIndex: '1',
                   bottom: '25px',
-                  marginTop: '220px'
+                  margin: '18px 0',
+                  width:'100%'
 
                 }}> Pay </button>
-              </div>
+              </Box>            </form>
 
-
-            </form>
-
-          </div>
+          </Box>
         </Box>
 
-      </div >
-    </div >
-
-
-  )
+      </Box >
+    </Box >  )
 
 }
 
 
 const loginStyles = {
   container: {
-    minHeight: "125vh",
+    minHeight: "100vh",
     width: "100%",
     background: "url('active-tv-login-test1.png')",
     display: "flex",
@@ -280,7 +275,7 @@ const loginStyles = {
       xs: "900px",
     },
     width: "1140px",
-    background: "rgba(0,0,0,0.5)",
+    // background: "rgba(0,0,0,0.5)",
     display: "flex",
     justifyContent: "center",
     alignItems: "center",

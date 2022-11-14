@@ -32,7 +32,7 @@ function MerchSection() {
       <Typography variant='h3' fontSize={30} className='active-tv-font' align="center" data-aos="fade-up">ALL MERCH 15% OFF & FIRST DIBS</Typography>
       <Typography variant="p" fontSize={13} sx={{ mt: 2, mb: 2 }} className='active-tv-font' data-aos="fade-up">Site members get 15% off all product and the first</Typography>
       <Typography variant="p" fontSize={13} sx={{ mt: 2, mb: 2 }} className='active-tv-font' data-aos="fade-up">opportunity to buy new product before the general public.</Typography>
-      <Link href="/merch">
+      <Link href="/merch" passHref={true}>
         <button style={{
           border: "none",
           width: "250px",

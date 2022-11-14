@@ -2,6 +2,7 @@ import { useContext} from "react";
 import HomeBanner from "../components/home-banner";
 import { Box } from "@mui/system";
 import Homeshows from "../components/home-shows/Homeshows";
+import HslPlayer from "../components/streamPlayer"
 import latestVid from "../components/home-shows/Latest-video.json"
 import { ShowsContext } from "../context/ShowContext";
 
@@ -16,7 +17,7 @@ export default function Home() {
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(
-          <Homeshows index={index} latestVid={latestVid} height={item.height} width={item.width}  title={item.categoryName} />
+          <Homeshows key={index} latestVid={latestVid} height={item.height} width={item.width}  title={item.categoryName} />
         
         )):""
        

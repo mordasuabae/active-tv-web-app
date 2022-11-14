@@ -1,6 +1,6 @@
 import { Amplify, Auth } from 'aws-amplify';
 
-
+//please do not alter or edit any item within this file 
 
 //first userpool => active-tv-web
 // Amplify.configure({
@@ -51,7 +51,7 @@ Amplify.configure({
     Auth: {
         // REQUIRED only for Federated Authentication - Amazon Cognito Identity Pool ID
         identityPoolId: "us-east-2:939de7f6-03e1-4a73-bca6-c3c9b6cded14", //changed
-        //  indentityPoolId:'us-east-2:066ceeec-734d-4b62-bfa5-80b9019a96c',
+
         // REQUIRED - Amazon Cognito Region
         region: 'us-east-2',
 
@@ -64,12 +64,12 @@ Amplify.configure({
 
         // OPTIONAL - Amazon Cognito Web Client ID (26-char alphanumeric string)
         userPoolWebClientId: '2v0n86ar28d4cfi6h9kb8ac9h4', //changed
- 
+
         // OPTIONAL - Hosted UI configuration
         oauth: {
             domain: 'activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com', //changed
             // scope: [
-            //     // 'phone',
+            //     'phone',
             //     'email',
             //     'profile',
             //     'openid'
@@ -84,9 +84,5 @@ Amplify.configure({
 
 
 export const CurrentConfig = Auth.configure()
-
-// const AmplifyLoggertest = "logger test"
-console.log('current config')
-
-// Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
+ //Amplify.Logger.LOG_LEVEL = "DEBUG"; //for debugging purposes
 

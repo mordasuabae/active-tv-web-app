@@ -5,10 +5,33 @@ import Aos from "aos";
 import "aos/dist/aos.css";
 import Box from '@mui/material/Box';
 import TabsEpisode from "../../components/shows/TabsEpsiode";
+import axios from 'axios'
 
+export async function getStaticPaths(){
+  
+  const endpoint  = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+  const response = await axios.get(endpoint);
 
-const ShowsEpisodes = () => {
+  const paths = response.data.map(show =>({
+    params : {id : show.Title}  
+  }))
+  return {paths,fallback : false}
+}
 
+export async function getStaticProps({params}){
+  const endpoint  = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-show/${params.id}`
+
+  const response = await axios.get(endpoint);
+  console.log('response',response.data)
+  return {
+    props : {
+      show : response.data
+    }
+  }
+} 
+
+const ShowsEpisodes = ({show}) => {
+  console.log({show})
   useEffect(() => {
     Aos.init({ duration: 2000 });
   }, []);
@@ -22,7 +45,7 @@ const ShowsEpisodes = () => {
         sx={{
           width: "100%",
           height: "70vh",
-          backgroundImage: `url('${showsDetails.img}')`,
+          backgroundImage: `url('${show.showItem.Item.CoverArtLarge}')`,
           backgroundSize:'cover',
           backgroundPosition:'top-center',
           backgroundRepeat: "no-repeat",
@@ -31,7 +54,7 @@ const ShowsEpisodes = () => {
       >
       </Box>
       <div>
-      <TabsEpisode/>
+      <TabsEpisode show = {show.showItem} episodes = {show.showJson.episodes}/>
       </div>
     </Box>
   );
