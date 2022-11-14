@@ -14,6 +14,7 @@ import axios from 'axios'
 
 
 Amplify.configure(CurrentConfig);
+import {ShowsProvider} from '../context/ShowContext'
 
 
 function MyApp({ Component, pageProps }) {
@@ -135,7 +136,7 @@ function MyApp({ Component, pageProps }) {
         //update user attriubutes
       })
       .catch((error) => {
-        console.log("Error after succesfull login: ", error)
+        console.log("failed to get the existing user because ", error)
         setUser("Active-tv")
         setLoggedIn(false)
       })
@@ -147,7 +148,6 @@ function MyApp({ Component, pageProps }) {
     getUserInfo()
     fetchUserInfo('https://activetv38fde85b-38fde85b-dev.auth.us-east-2.amazoncognito.com')
     console.log('use effect ran after user changed to ', user)
-
   }, [])
 
   return (
@@ -173,7 +173,9 @@ function MyApp({ Component, pageProps }) {
       }}
     >
       <Navbar />
+      <ShowsProvider>
       <Component {...pageProps} />
+      </ShowsProvider>
     </USER_CONTEXT.Provider>
   );
 }

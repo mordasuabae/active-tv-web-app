@@ -232,9 +232,9 @@ const LoginComp = () => {
     setShow(!show);
   };
 
-  useEffect(() => {
-    console.log(signUp);
-  }, []);
+  // useEffect(() => {
+  //   console.log(signUp);
+  // }, []);
 
   //register user
   async function signUp(username, password, email) {
