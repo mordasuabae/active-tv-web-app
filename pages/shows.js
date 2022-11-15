@@ -33,12 +33,14 @@ const Shows = ({ shows }) => {
           <Box
             sx={{
               minHeight: '100vh',
-              // background:data.darkVibrant,
+              // background:data.darkVibr
+              ant,
               background: '#111',
               padding: '40px 40px'
             }}
           >
             <ShowsDisplay shows={shows} />
+            {/* hello world this is awesome */}
           </Box>
         );
       }}

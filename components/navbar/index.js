@@ -23,7 +23,7 @@ const Navbar = () => {
   const UserContext = React.useContext(USER_CONTEXT);
 
   // destructuring the authenticated user from context
-  const { AuthenticatedUser, authorisedJWT } = React.useContext(USER_CONTEXT);
+  const { AuthenticatedUser, authorisedJWT,loggedIn, setLoggedIn } = React.useContext(USER_CONTEXT);
   // //user initial
   const currentUser = AuthenticatedUser.name;
   const userIntial = currentUser.charAt(0);
@@ -254,7 +254,8 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
-
+          {
+            loggedIn ? 
             <Link href="/">
               <a>
                 <Button
@@ -275,6 +276,11 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
+            :
+            ""
+
+          }
+            
            
           </Box>
           {/* coin system below */}
