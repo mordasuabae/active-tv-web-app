@@ -30,8 +30,10 @@ const Shows = () => {
         "top_banner_full.jpg"
       }
     >
-      {({ data, loading, error }) => {
-        console.log('palette-data', data, loading, error);
+      {(
+        // { data, loading, error }
+        ) => {
+        // console.log('palette-data', data, loading, error);
         return (
           <Box
             sx={{
