@@ -44,7 +44,6 @@ const AccountLoggedIn = () => {
           <p>Account</p>
 
           <Box style={AvaterPack}>
-            <p style={{ fontSize:"12px"}}>Change Avater:</p>
                 { 
                 <Typography variant="h1" color="#fff" fontSize={30} style={{marginTop:"45px"}}>
                     <AvaterPicChanger/>

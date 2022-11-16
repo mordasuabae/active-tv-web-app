@@ -335,3 +335,6 @@
     .search_box::placeholder{
       color: rgb(170, 170, 170);
     }
+    image{
+      object-fit: cover;
+    }

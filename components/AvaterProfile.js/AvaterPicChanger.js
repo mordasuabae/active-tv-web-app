@@ -9,20 +9,20 @@ import Images from './Images';
 
 const style = {
   position: 'absolute',
-  top: '50%',
+  top: '55%',
   left: '50%',
   transform: 'translate(-50%, -50%)',
-  width: "690px",
-  height:"390px",
-  bgcolor: 'black',
+  width: "720px",
+  height:"453px",
+  bgcolor: '#1b1b1a',
   boxShadow: 24,
-  p: 4,
-  borderRadius:"15px",
-  border:"1px solid #121212"
+  padding:"10px",
+  borderRadius:"10px",
+  border:"1px solid #121212",
+  paddingLeft:"30px"
 };
 
 const cancelBtn = {
-  // background:"red",
   marginTop:"10px",
   color:"red",
   fontWeight:"bold",
@@ -31,7 +31,6 @@ const cancelBtn = {
 }
 
 const confirmBtn = {
-  // background:"green",
   marginTop:"10px",
   color:"green",
   fontWeight:"bold",
@@ -41,14 +40,15 @@ const confirmBtn = {
 }
 
 const images = {
-  width:"100%",
+  width:"610px",
   height:"320px",
   background:"#222",
   borderRadius:"15px",
   marginTop:"-10px",
   color:"white",
   fontWeight:"bold",
-  padding:"10px"
+  padding:"15px",
+  marginLeft:"22px",
 }
 
 const buttons = {
@@ -57,7 +57,14 @@ const buttons = {
   justifyContent:"center",
   justifyContent:"space-evenly",
   width:"200px",
-  marginLeft:"450px"
+  marginLeft:"448px"
+}
+
+const imgBackground = {
+  color:"white",
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"center",
 }
 
 export default function AvaterPicChanger({ grady }) {
@@ -83,7 +90,6 @@ export default function AvaterPicChanger({ grady }) {
         marginLeft: "30px",
         borderRadius:"25px",
         background:"#444",
-        // boxShadow:'2px 2px 2px 2px #444'
       }}
       >
        <CameraAltIcon/>
@@ -91,6 +97,9 @@ export default function AvaterPicChanger({ grady }) {
 
       <Modal open={open} onClose={handleClose} aria-labelledby="modal-modal-title" aria-describedby="modal-modal-description">
         <Box sx={style}>
+        <Box className={"active-tv-font"} sx={imgBackground}>
+          <h4>Select a profile Image</h4>
+        </Box>
         <Box style={images}>
         <Images/>
         </Box>

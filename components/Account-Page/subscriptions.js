@@ -2,9 +2,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import Link from 'next/link'
 import Box from "@mui/material/Box";
-
 import { useEffect } from 'react'
-import Link from 'next/link'
 
 const Subscriptions = () => {
   useEffect(() => {
