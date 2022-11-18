@@ -1,65 +1,27 @@
 import { Typography, Box } from "@mui/material";
 import React, { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
-
-<<<<<<< HEAD
-const ShowCard = ({
+import { ShowsContext } from "../../context/ShowContext";
+const ShowCard = (
+  {
   img,
   text,
   openModal,
-  color,
-  onFetchEpisode,
-  one,
-  two,
-  three,
-  four,
-  five,
-  six,
-  seven,
-  eight,
-  nine,
-}) => {
-=======
-const ShowCard = (
-//   {
-//   img,
-//   text,
-//   openModal,
-//   color,
-//   onFetchEpisode,
-//   one,
-//   two,
-//   three,
-//   four,
-//   five,
-//   six,
-//   seven,
-//   eight,
-//   nine,
-// }
+}
 ) => {
->>>>>>> b9da9204eedfd6e65b2c1f37595c3dd9317afe0e
   const { setShowsDetails } = useContext(USER_CONTEXT);
+  const {getShow} = useContext(ShowsContext)
 
   return (
     <>
       <Box
-<<<<<<< HEAD
         onClick={() => {
-          onFetchEpisode();
-          openModal();
+          
+          getShow(text)
           setShowsDetails({
             title: text,
             img: img,
-            episodeone: one,
-            episodetwo: two,
-            episodethree: three,
-            episodefour: four,
-            episodefive: five,
-            episodesix: six,
-            episodeseven: seven,
-            episodeeight: eight,
-            episodenine: nine,
+            
           });
         }}
         style={{
@@ -72,35 +34,6 @@ const ShowCard = (
       >
         <img
           src={img}
-=======
-        // onClick={() => {
-        //   onFetchEpisode();
-        //   openModal();
-        //   setShowsDetails({
-        //     title: text,
-        //     img: img,
-        //     episodeone: one,
-        //     episodetwo: two,
-        //     episodethree: three,
-        //     episodefour: four,
-        //     episodefive: five,
-        //     episodesix: six,
-        //     episodeseven: seven,
-        //     episodeeight: eight,
-        //     episodenine: nine,
-        //   });
-        // }}
-        // style={{
-        //   ...styles.container,
-        //   // background: `url(${img})`,
-        //   borderRadius: "10px 10px 0 0",
-        //   backgroundSize: "cover",
-        //   backgroundPosition: "",
-        // }}
-      >
-        <img
-          // src={img}
->>>>>>> b9da9204eedfd6e65b2c1f37595c3dd9317afe0e
           style={{
             objectFit: "cover",
             objectPosition: "top",
