@@ -101,9 +101,7 @@ const Navbar = () => {
               sx={{
                 height: "60px",
                 width: "70px",
-                backgroundImage: 'url("ATV_logo.png")'
-                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
-                ,
+                backgroundImage: 'url("ATV_logo.png")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -297,9 +295,7 @@ const Navbar = () => {
             />
 
             <Box sx={{marginTop:"55px"}}>
-            {loading ? (
-              <h4>Loading....</h4>
-            ) : (
+            {(
               posts
                 .filter((value) => {
                   if (searchTitle === "") {
