@@ -1,5 +1,4 @@
-import React from "react";
-import { useEffect, useState, useContext } from "react";
+import React,{ useEffect, useState, useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 // import Aos from "aos";
 // import "aos/dist/aos.css";
@@ -38,7 +37,7 @@ const ShowsEpisodes = () => {
         }}
       ></Box>
       <div>
-        {show.showJson.episodes.length === 0 ? (
+        {show?.showJson?.episodes.length === 0 ? (
           <Box sx={{ textAlign: "center", padding: "24px 0px" }}>
             <Typography className="active-tv-font" color="#eee" variant="h3">
               This Show has no episdoes yet
