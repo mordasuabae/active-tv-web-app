@@ -12,12 +12,12 @@ const background = {
   flexDirection: "column",
   // fontFamily:"AnjaliOldLipi",
   fontFamily: "Arcade Normal",
-  fontSize: "12px",
+  fontSize: "9px",
   lineHeight: "0px"
 }
 function AccountFooter() {
   return (
-    <div style={background}>
+    <div style={background} className='active-tv-font'>
       <h3>INSTAGRAM CONTACT</h3>
       <p>2022 © Corridor Digital</p>
     </div>

@@ -4,6 +4,7 @@ export const ShowsContext = createContext([])
 
 export const ShowsProvider = ({ children }) => {
     const [shows, setShows] = useState({})
+    // const [searchShows, setSearchShows] = useState()
 
     useEffect(() => {
         fetch('https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-config')
