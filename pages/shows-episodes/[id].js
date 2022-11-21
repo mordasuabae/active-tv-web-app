@@ -1,7 +1,4 @@
-import React,{ useEffect, useState, useContext } from "react";
-import { USER_CONTEXT } from "../../context/MainContext";
-// import Aos from "aos";
-// import "aos/dist/aos.css";
+import React, { useEffect, useState, useContext } from "react";
 import Box from "@mui/material/Box";
 import TabsEpisode from "../../components/shows/TabsEpsiode";
 import { ShowsContext } from "../../context/ShowContext";
@@ -9,7 +6,6 @@ import { useRouter } from "next/router";
 import { Typography } from "@mui/material";
 
 const ShowsEpisodes = () => {
-  // const {show} = useContext(ShowsContext)
   const router = useRouter();
   const title = router.query.id;
   console.log(router, { title });
@@ -17,7 +13,6 @@ const ShowsEpisodes = () => {
   console.log({ show });
 
   useEffect(() => {
-    // Aos.init({ duration: 2000 });
     getShow(title);
   }, []);
 
