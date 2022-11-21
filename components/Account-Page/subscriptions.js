@@ -2,6 +2,7 @@ import Aos from "aos"
 import "aos/dist/aos.css"
 import Link from 'next/link'
 import Box from "@mui/material/Box";
+
 import { useEffect } from 'react'
 
 const Subscriptions = () => {
@@ -12,21 +13,20 @@ const Subscriptions = () => {
     <Box className="active-tv-font" style={{ width: '100%', display: 'flex', justifyContent: 'center', minHeight: '100vh', alignItems: 'center' }}>
       <Box
         style={{
-          border: '3px solid white',
+          border: '4px solid black',
           height: '400px',
           width: '300px',
           textAlign: 'center',
           padding: '50px 30px',
           fontFamily: "Arcade Normal",
-          fontSize: "11px"
+          fontSize: "13px"
         }}
-        className="active-tv-font"
         data-aos="flip-left"
         data-aos-easing="linear"
         data-aos-duration="3000"
 
       >
-        <h3>MONTHLY MEMBERSHIP</h3>
+        <h1>MONTHLY MEMBERSHIP</h1>
         <hr />
         <p>Flexible. Earn 2 Producer Points per month by going monthly.</p>
         <p>
@@ -35,15 +35,14 @@ const Subscriptions = () => {
         <Link href="/signup" passHref={true}>
           <button className='card'
             style={{
-              border: '1px white solid',
+              border: '1px black solid',
               backgroundColor: 'white',
               width: '240px',
               borderRadius: '5px',
               height: '40px',
               textAlign: 'center',
               fontFamily: "Arcade Normal",
-              fontSize: "11px",
-              cursor:"pointer"
+              fontSize: "11px"
             }}
           >
             GO MONTHLY
@@ -53,18 +52,16 @@ const Subscriptions = () => {
 
       <Box
         style={{
-          border: '3px solid white',
+          border: '4px solid black',
           height: '530px',
           width: '420px',
           margin: '-30px 0 0 0',
           textAlign: 'center',
           padding: '150px 30px',
           fontFamily: "Arcade Normal",
-          fontSize: "11px"
+          fontSize: "13px"
         }}
-        className="active-tv-font"
-      >  
-      {/* <svg style={{ width: '100px', height: '100px', margin: '-100px 0 0 0' }} _ngcontent-ufe-c119="" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" ><path _ngcontent-ufe-c119="" d="M39.009 24L24 39.009V46L46 24H39.009Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M24 6.99244L39.009 22H46L24 0V6.99244Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M6.99244 22L22 6.99244V0L0 22H6.99244Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M28.3186 24L24 28.3186V35L35 24H28.3186Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M17.6814 22L22 17.6814V11L11 22H17.6814Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M22 28.3186L17.6814 24H11L22 35V28.3186Z" fill="black"></path></svg> */}
+      >  <svg style={{ width: '100px', height: '100px', margin: '-100px 0 0 0' }} _ngcontent-ufe-c119="" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg" ><path _ngcontent-ufe-c119="" d="M39.009 24L24 39.009V46L46 24H39.009Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M24 6.99244L39.009 22H46L24 0V6.99244Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M6.99244 22L22 6.99244V0L0 22H6.99244Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M28.3186 24L24 28.3186V35L35 24H28.3186Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M17.6814 22L22 17.6814V11L11 22H17.6814Z" fill="black"></path><path _ngcontent-ufe-c119="" d="M22 28.3186L17.6814 24H11L22 35V28.3186Z" fill="black"></path></svg>
         <h1>ANNUAL MEMBERSHIP</h1>
         <hr />
         <p>Flexible. Earn 2 Producer Points per month by going monthly.</p>
@@ -82,11 +79,9 @@ const Subscriptions = () => {
               margin: '0 0 0 0%',
               border: 'none',
               fontFamily: "Arcade Normal",
-              fontSize: "12px",
-              cursor:"pointer"
-
+              fontSize: "12px"
             }}
-            >
+          >
             SAVE WITH ANNUAL
           </button>
         </Link>
@@ -94,7 +89,7 @@ const Subscriptions = () => {
 
       <Box
         style={{
-          border: '3px solid white',
+          border: '4px solid black',
           height: '400px',
           width: '300px',
           textAlign: 'center',
@@ -102,12 +97,11 @@ const Subscriptions = () => {
           fontFamily: "Arcade Normal",
           fontSize: "10px"
         }}
-        className="active-tv-font"
         data-aos="flip-right"
         data-aos-easing="linear"
         data-aos-duration="3000"
       >
-        <h2>FREE 14-DAY TRIAL</h2>
+        <h1>FREE 14-DAY TRIAL</h1>
         <hr />
         <p>Every subscription gets a {"14-day"} free trial!</p>
       </Box>

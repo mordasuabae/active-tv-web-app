@@ -48,7 +48,16 @@ export default function TabsEpisode(props) {
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
-
+  const liked = () => {
+    toast.success("YOU HAVE LIKED THIS EPISODE", {
+      position: toast.POSITION.TOP_RIGHT,
+      autoClose: 1000, marginTop: "40px",
+    })
+  };
+  const disliked = () => toast.error("EPISODE HAS BEEN DISLIKED", {
+    position: toast.POSITION.TOP_RIGHT,
+    autoClose: 1000, marginTop: "40px"
+  });
   return (
     <Box sx={{ width: '100%', background: "#111", height: "100%" }}>
       <Box style={{ marginLeft: "130px", display: "flex", marginTop: "50px" }} className="active-tv-font">
