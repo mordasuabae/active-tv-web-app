@@ -99,7 +99,7 @@ export default function PositionedPopper({ user, userInitial }) {
               </Box>
 
 
-              <Box style={AvaterPack}>
+              <Box >
 
                 {loggedIn ? (
                   <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
