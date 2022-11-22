@@ -24,8 +24,7 @@ export default function PositionedPopper({ user, userInitial }) {
   const [open, setOpen] = React.useState(false);
   const [placement, setPlacement] = React.useState();
   // const [loggedIn , setLoggedIn]  = React.useState(true)
-  const { loggedIn, setLoggedIn, setUser, ForceReload } =
-    useContext(USER_CONTEXT);
+  const { loggedIn, setLoggedIn, setUser, ForceReload, setAvaters,  imgProfile,setImgProfile, isContained,setIsContained,} =useContext(USER_CONTEXT);
 
   const handleClick = (newPlacement) => (event) => {
     setAnchorEl(event.currentTarget);
@@ -76,7 +75,7 @@ export default function PositionedPopper({ user, userInitial }) {
                   justifyContent: "center",
                 }}
               >
-                <Box sx={styles.DropUser}>
+                <Box style={{background:`url(${imgProfile})`, backgroundSize:isContained ? "cover":"contain"}} sx={styles.DropUser}>
                   {loggedIn ? (
                     <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
                       {userInitial}
@@ -182,7 +181,7 @@ export default function PositionedPopper({ user, userInitial }) {
       <Grid container justifyContent="center">
         <Grid item>
           <Button className={'active-tv-font'} onClick={handleClick("bottom-end")}>
-            <Avatar className={'active-tv-font'} sx={{ bgcolor: "#333", fontSize: 20 }}>
+            <Avatar className={'active-tv-font'} style={{background:`url(${imgProfile})`, backgroundSize:isContained ? "cover":"contain"}} sx={{ bgcolor: "#333", fontSize: 20, border:"1px solid white" }}>
               {loggedIn ? userInitial : <Avatar sx={{ bgcolor: "#333" }} ></Avatar>}
             </Avatar>
           </Button>
@@ -197,11 +196,11 @@ const styles = {
     height: "100px",
     width: "100px",
     borderRadius: "100%",
-    background: "#111",
     fontSize: "20px",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+    border:"1px solid white",
   },
 };
 

@@ -12,13 +12,14 @@ const Banner = () => {
 
   return (
 
-    <Box className="active-tv-font" sx={{ width: '100%', minHeight: '100vh', backgroundImage: `url('hero-bg.jpg')`, backgroundSize: 'cover', }}>
+    <Box className="active-tv-font" sx={{ width: '100%', minHeight: '100vh', backgroundImage: `url('111.jpg')`, backgroundSize: 'cover'}}>
       <Box
         style={{
           // border: '1px solid white',
+          background:"rgba(0, 0, 0,0.7)",
           color: 'white',
-          margin: '-8px 0 0 0',
-          height: '600px',
+          // margin: '-8px 0 0 0',
+          height: '100%',
           padding: '180px 70px',
           fontFamily: "Arcade Normal",
           fontSize: "11px"
@@ -32,7 +33,7 @@ const Banner = () => {
         </Typography>
         <ul>
           <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-            <Typography style={{ color: 'white' }}>Watch exclusive content ad-free</Typography>
+            <Typography style={{color: 'white' }}>Watch exclusive content ad-free</Typography>
           </li>
           <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
             <Typography style={{ color: 'white' }}>YOU decide what shows get made</Typography>

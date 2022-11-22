@@ -14,6 +14,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Dropdown from "./dropdown";
 import Link from "next/link";
 import { USER_CONTEXT } from "../../context/MainContext";
+import { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import axios from "axios";
 import { isEmpty } from "@aws-amplify/core";
@@ -81,6 +82,7 @@ const Navbar = () => {
     console.log("RESPONSE=>", response);
   };
 
+  const { loggedIn } = useContext(USER_CONTEXT) 
   return (
     <AppBar
       position="sticky"
@@ -279,7 +281,10 @@ const Navbar = () => {
             </Link>
           </Box>
 
-          <Box
+          {/* Shows search input should only display once a user is signed up or logged in */}
+            <Box sx={{ display:"flex", alignItems:"center", justifyContent:"center",}}>
+            {loggedIn ? (
+              <Box
             className="outer"
             sx={{ display: { xs: "block", sm: "block", md: "block" } }}
           >
@@ -333,6 +338,15 @@ const Navbar = () => {
             )}
             </Box>
           </Box>
+            ) 
+            : 
+            (
+              <Box>
+              </Box>
+            )}
+            </Box>
+                
+          
 
           {/* coin system below */}
           <Box sx={{ display: { xs: "none", md: "block" } }}>

@@ -72,10 +72,6 @@ export default function AvaterPicChanger({ grady }) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  function handleClick() {
-    console.log("increment like count")
-  }
-
   return (
     <div>
       <Box
@@ -109,7 +105,7 @@ export default function AvaterPicChanger({ grady }) {
         </Box>
 
         <Box style={buttons}>
-          <Button style={confirmBtn} onClick={handleClick}>confirm</Button>
+          <Button style={confirmBtn} onClick={handleClose}>confirm</Button>
           <Button onClick={handleClose} style={cancelBtn}>close</Button>
         </Box>
 
