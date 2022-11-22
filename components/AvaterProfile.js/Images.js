@@ -50,8 +50,8 @@ useEffect(() => {
   return (
     <Box style={container}>
         {
-          avaters.map(profile => {
-           return <div>
+          avaters.map((profile,index) => {
+           return <div key={index}>
             <img src={profile} alt="avaterImage"  width={70} height={70} style={images} onClick={()=>handleImage(profile)}/>
             </div>
           })
