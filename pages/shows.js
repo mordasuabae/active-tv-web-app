@@ -10,16 +10,6 @@ import axios from 'axios'
 import { ShowsContext } from '../context/ShowContext';
 
 
-// export async function getStaticProps() {
-//   const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
-//   const response = await axios.get(endpoint)
-//   console.log('SHOWS', response.data)
-//   return {
-//     props: {
-//       shows: response.data
-//     }
-//   }
-// };
 
 const Shows = () => {
 
@@ -38,13 +28,11 @@ const Shows = () => {
           <Box
             sx={{
               minHeight: '100vh',
-              // background:data.darkVibr
               background: '#111',
               padding: '40px 40px'
             }}
           >
             <ShowsDisplay shows={shows} />
-            {/* hello world this is awesome */}
           </Box>
         );
       }}
