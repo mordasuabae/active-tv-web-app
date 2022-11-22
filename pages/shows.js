@@ -40,3 +40,6 @@ const Shows = () => {
     </Palette>
   )
 }
+
+
+export default Shows

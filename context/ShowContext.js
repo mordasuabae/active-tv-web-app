@@ -34,12 +34,14 @@ export const ShowsProvider = ({ children }) => {
         const response = await axios.get(`https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-show/${title}`)
         setShow(response.data)
     }
+
     const payload = {
         configData,
         setConfigData,
         shows,
         getShow,
-        show
+        
+        // show
     }
 
     return (

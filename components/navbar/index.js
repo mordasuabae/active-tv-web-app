@@ -16,7 +16,6 @@ import Link from "next/link";
 import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
 import SearchIcon from "@mui/icons-material/Search";
-import axios from "axios";
 import { isEmpty } from "@aws-amplify/core";
 
 const Navbar = () => {
