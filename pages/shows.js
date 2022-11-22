@@ -34,7 +34,6 @@ const Shows = ({ shows }) => {
             sx={{
               minHeight: '100vh',
               // background:data.darkVibr
-              ant,
               background: '#111',
               padding: '40px 40px'
             }}

@@ -66,7 +66,18 @@ const AccountLoggedIn = () => {
               </Typography>
             </Grid>
             <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
-              <Typography
+                <Typography
+                sx={{
+                  marginBottom: "4px",
+                  "&:hover": { textDecoration: "underline" },
+                }}
+                variant="h5"
+                fontSize={18}
+                color={"#4d4df7"}
+              >
+                <Link href="/ResetNamePassWord">Change user details</Link>
+              </Typography>
+                 <Typography
                 sx={{
                   marginBottom: "4px",
                   "&:hover": { textDecoration: "underline" },
@@ -77,28 +88,17 @@ const AccountLoggedIn = () => {
               >
                 <Link href="/changepassword">Change password</Link>
               </Typography>
-
               <Typography
+                onClick={()=>setOpen(true)}
                 sx={{
-                  marginBottom: "4px",
+                  marginBottom: "10px",
                   "&:hover": { textDecoration: "underline" },
-                }}
-                variant="h5"
-                fontSize={18}
-                color={"#4d4df7"}
-              >
-                
-              </Typography>
-              <Typography
-                sx={{
-                  marginBottom: "4px",
-                  // "&:hover": { textDecoration: "underline" },
                 }}
                 variant="h5"
                 fontSize={18}
                 color={"#df522b"}
               >
-                <Button variant="error" onClick={()=>setOpen(true) }>delete account</Button> {/*//check here*/}
+                <Link  href="#">Delete account</Link> {/*//check here*/}
               </Typography>
             </Grid>
           </Grid>

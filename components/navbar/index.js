@@ -23,7 +23,7 @@ const Navbar = () => {
   const UserContext = React.useContext(USER_CONTEXT);
 
   // destructuring the authenticated user from context
-  const { AuthenticatedUser, authorisedJWT,loggedIn, setLoggedIn } = React.useContext(USER_CONTEXT);
+  const { AuthenticatedUser, authorisedJWT, loggedIn, setLoggedIn } = React.useContext(USER_CONTEXT);
   // //user initial
   const currentUser = AuthenticatedUser.name;
   const userIntial = currentUser.charAt(0);
@@ -68,7 +68,7 @@ const Navbar = () => {
     console.log("Response => ", response);
   };
 
-  
+
   return (
     <AppBar
       position="sticky"
@@ -254,34 +254,33 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
-          {
-            loggedIn ? 
-            <Link href="/">
-              <a>
-                <Button
-                  className={"active-tv-font"}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    m: 2,
-                    color: "#eee",
-                    display: "block",
-                    fontSize: "12px",
-                    "&:hover": {
-                      color: "#7A9EA3",
-                      borderBottom: "1px solid #7A9EA3",
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
-              </a>
-            </Link>
-            :
-            ""
+            {
+              loggedIn ?
+                ""
+                :
+                <Link href="/account">
+                  <a>
+                    <Button
+                      className={"active-tv-font"}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        m: 2,
+                        color: "#eee",
+                        display: "block",
+                        fontSize: "12px",
+                        "&:hover": {
+                          color: "#7A9EA3",
+                          borderBottom: "1px solid #7A9EA3",
+                        },
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </a>
+                </Link>
+            }
 
-          }
-            
-           
+
           </Box>
           {/* coin system below */}
           <Box sx={{ ...coinContainer }}>
