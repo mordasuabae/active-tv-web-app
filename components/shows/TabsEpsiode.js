@@ -14,16 +14,12 @@ import PlayCircleOutlineIcon from '@mui/icons-material/PlayCircleOutline';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 function TabPanel(props) {
-  const { children, value, index, ...other } = props;
+  const { children,index, ...other } = props;
   return (
     <div>{children}</div>
   )
 }
-TabPanel.propTypes = {
-  children: PropTypes.node,
-  index: PropTypes.number.isRequired,
-  value: PropTypes.number.isRequired,
-};
+
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
@@ -39,16 +35,7 @@ export default function TabsEpisode(props) {
 
   let numOfSeasons = props.episodes.map(({seasonNum})=>seasonNum)
   let seasonNums = [...new Set(numOfSeasons)]
-  const liked = () => {
-    toast.success("YOU HAVE LIKED THIS EPISODE", {
-      position: toast.POSITION.TOP_RIGHT,
-      autoClose: 1000, marginTop: "40px",
-    })
-  };
-  const disliked = () => toast.error("EPISODE HAS BEEN DISLIKED", {
-    position: toast.POSITION.TOP_RIGHT,
-    autoClose: 1000, marginTop: "40px"
-  });
+  
   return (
     <Box sx={{ width: '100%', background: "#111", height: "100%" }}>
       <Box style={{ marginLeft: "130px", display: "flex", marginTop: "50px" }} className="active-tv-font">
@@ -95,9 +82,9 @@ export default function TabsEpisode(props) {
                       <div style={{ marginLeft: "45px", color: "white", marginTop: "25px" }}>
                         <h4 className="active-tv-font">{episode.Title}</h4>
                         <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description}</p>
-                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description2}</p>
-                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description3}</p>
-                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description4}</p>
+                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description}</p>
+                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description}</p>
+                        <p className="active-tv-font" style={{ fontSize: "10px" }}>{episode.description}</p>
                         <Box
                           style={{
                             color: "white",
