@@ -13,6 +13,7 @@ import { ShowsContext } from '../context/ShowContext';
 
 const Shows = () => {
 
+  //using context
   const {shows} = useContext(ShowsContext)
   console.log({ shows })
   
