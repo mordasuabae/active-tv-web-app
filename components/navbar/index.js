@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useState, useEffect } from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -15,13 +15,18 @@ import Dropdown from "./dropdown";
 import Link from "next/link";
 import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
+import SearchIcon from "@mui/icons-material/Search";
+import axios from "axios";
+import { isEmpty } from "@aws-amplify/core";
 
 const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const UserContext = React.useContext(USER_CONTEXT);
-
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [searchTitle, setSearchTitle] = useState("");
   // destructuring the authenticated user from context
   const { AuthenticatedUser, authorisedJWT, loggedIn, setLoggedIn } = React.useContext(USER_CONTEXT);
   // //user initial
@@ -49,7 +54,8 @@ const Navbar = () => {
 
 
 
-  const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
+  // const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
+
   const tokenHalndler = async () => {
     const response = await axios({
       method: "get",
@@ -68,6 +74,36 @@ const Navbar = () => {
     console.log("Response => ", response);
   };
 
+
+
+
+  useEffect(() => {
+    const loadingPosts = async () => {
+      setLoading(true);
+      const response = await axios.get(
+        "https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows"
+      );
+
+      setPosts(response.data);
+      setLoading(false);
+    };
+    loadingPosts();
+  }, []);
+
+  const endpoint = `http://127.0.0.1:3000/store-users`;
+  const tokenHandler = async () => {
+    // const response = await axios({
+    //   method: "POST",
+    //   url: endpoint,
+    //   data :AuthenticatedUser,
+    //   // BearerToken: authorisedJWT,
+    //   // mode: 'no-cors',
+    //   });
+    const response = await axios.get(endpoint, authorisedJWT, {
+      "Content-Type": "application/json",
+    });
+    console.log("RESPONSE=>", response);
+  };
 
   return (
     <AppBar
@@ -96,10 +132,8 @@ const Navbar = () => {
             <Box
               sx={{
                 height: "60px",
-                width: "70px",
-                backgroundImage: 'url("ATV_logo.png")'
-                // 'url("https://www.activetvonline.co.za/static/media/logo.718a6dab.png")'
-                ,
+                width: "70px",    
+                backgroundImage: 'url("ATV_logo.png")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
               }}
@@ -280,14 +314,77 @@ const Navbar = () => {
                 </Link>
             }
 
+        </Box>
+          <Box
+            className="outer"
+            sx={{ display: { xs: "block", sm: "block", md: "block" } }}
+          >
+            <a className="anchr">
+              <SearchIcon />
+            </a>
+            <input
+              type="text"
+              name=""
+              className="search_box"
+              placeholder="Search shows..."
+              onChange={(e) => setSearchTitle(e.target.value)}
+            />
 
+            <Box sx={{marginTop:"55px"}}>
+            {(
+              posts
+                .filter((value) => {
+                  if (searchTitle === "") {
+                    return null;
+                  } else if (
+                    value.Title.toLowerCase().includes(
+                      searchTitle.toLowerCase()
+                    )
+                  ) {
+                    return value;
+                  }
+                })
+                .map((item) => (
+                  <div
+                    key={item.id}
+                    style={{
+                      background: "#333333",
+                      width: "400px",
+                      height: "60px",
+                      display: "flex",
+                      marginRight: "500px",
+                      borderBottom:"1px solid #121212",
+                      padding: "5px",
+                      borderRadius:"5px",
+                      cursor:"pointer"
+                    }}
+                  >
+                    <img src={item.CoverArtLarge} width={50} height={50} />
+                    <Box sx={{ flexDirection:"column"}}>
+                    <p style={{paddingLeft:"10px", fontSize:"10px"}} className={"active-tv-font"}>{item.Title}</p>
+                    <p style={{paddingLeft:"10px", fontSize:"12px", color:"lightgrey"}}>{item.description}</p>
+                    </Box>
+                  </div>
+                ))
+            )}
+            </Box>
           </Box>
+
           {/* coin system below */}
-          <Box sx={{ ...coinContainer }}>
-            <Typography variant="h6" fontWeight={"bold"} fontSize={16}>
-              {"0"}
-            </Typography>
-            <img src="coin.gif" alt="coin" width={18} height={18} />
+          <Box sx={{ display: { xs: "none", md: "block" } }}>
+            <Box sx={{ ...coinContainer }}>
+              <Typography
+                variant="h6"
+                fontWeight={"bold"}
+                fontSize={16}
+                sx={{ width: "16px" }}
+              >
+                {"0"}
+              </Typography>
+              <Box sx={{ width: "20px" }}>
+                <img src="coin.gif" alt="coin" width={18} height={18} />
+              </Box>
+            </Box>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>

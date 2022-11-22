@@ -5,6 +5,7 @@ import { useState, useContext } from "react";
 import { Grid } from "@mui/material";
 import { USER_CONTEXT } from "../../context/MainContext";
 import DeleteModal from './deleteModal'
+import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
 import Link from 'next/link'
 
 
@@ -14,6 +15,13 @@ const AccountLoggedIn = () => {
   const [subscribed, setSubscribed] = useState(false);
 
  const [open, setOpen] = React.useState(false);
+
+ const AvaterPack = {
+  paddingRight:"395px",
+  display:"flex", 
+  alignItems:"center",
+  justifyContent:"center",
+}
 
   return (
     <Box className={"active-tv-font"} sx={styles.container}>
@@ -35,7 +43,18 @@ const AccountLoggedIn = () => {
           }}
         >
           <p>Account</p>
+
+          <Box style={AvaterPack}>
+                { 
+                <Typography variant="h1" color="#fff" fontSize={30} style={{marginTop:"45px"}}>
+                    <AvaterPicChanger/>
+                </Typography>
+              }
+          </Box>
+          
         </Box>
+
+
 
         <Box
           sx={{
@@ -43,6 +62,7 @@ const AccountLoggedIn = () => {
             borderTop: "1px solid #F2F2F2 ",
           }}
         >
+
           <Grid container>
             <Grid sx={styles.gridItem} item md={3.5}>
             {/*  <Typography className="active-tv-font" variant="h3" fontSize={13}>

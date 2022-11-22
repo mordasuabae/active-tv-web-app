@@ -32,13 +32,11 @@ const Shows = () => {
               background: '#111',
               padding: '40px 40px'
             }}
-          >
+          >  
             <ShowsDisplay shows={shows} />
           </Box>
-        );
-      }}
+        ); 
+      }} 
     </Palette>
   )
 }
-
-export default Shows
