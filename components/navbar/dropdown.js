@@ -46,7 +46,7 @@ export default function PositionedPopper({ user, userInitial }) {
       }
     } else {
       Router.push("/login");
-      console.log("logged out with no present user");
+      console.log("there is no user logged in at thr currentSeession");
     }
   }
 

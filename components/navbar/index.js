@@ -316,7 +316,7 @@ const Navbar = () => {
         </Box>
           <Box
             className="outer"
-            sx={{ display: { xs: "block", sm: "block", md: "block" } }}
+            sx={{ minWidth: { xs: "50px", sm: "100px", md: "300px" } }}
           >
             <a className="anchr">
               <SearchIcon />

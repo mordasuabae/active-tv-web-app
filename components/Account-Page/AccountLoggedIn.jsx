@@ -17,7 +17,7 @@ const AccountLoggedIn = () => {
  const [open, setOpen] = React.useState(false);
 
  const AvaterPack = {
-  paddingRight:"395px",
+  // paddingRight:"395px",
   display:"flex", 
   alignItems:"center",
   justifyContent:"center",
@@ -27,9 +27,13 @@ const AccountLoggedIn = () => {
     <Box className={"active-tv-font"} sx={styles.container}>
 
      <DeleteModal open={open} setOpen={setOpen} />
-
+      
       <Box sx={styles.contentBox}>
         {/* insert code here */}
+
+      
+
+
         <Box
           style={{
             color: "white",
@@ -43,15 +47,49 @@ const AccountLoggedIn = () => {
           }}
         >
           <p>Account</p>
+          
+        </Box>
+        
+           <Box
+          sx={{
+            minHeight: "80px",
+            borderTop: "1px solid #F2F2F2 ",
+          }}
+        >
+          <Grid container>
+            <Grid sx={styles.gridItem} item md={3.5}>
+              <Typography className="active-tv-font" variant="h3" fontSize={10}>
+                Profile photo
+              </Typography>
+               <Typography sx={{margin:'10px 0'}} color="#999"  className="active-tv-font" variant="h3" fontSize={9}>
+                 change image
+              </Typography>
 
-          <Box style={AvaterPack}>
+            </Grid>
+            <Grid sx={styles.gridItem} item md={5.5}></Grid>
+            <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
+               <Box style={AvaterPack}>
                 { 
                 <Typography variant="h1" color="#fff" fontSize={30} style={{marginTop:"45px"}}>
                     <AvaterPicChanger/>
                 </Typography>
               }
-          </Box>
-          
+              </Box>
+
+              <Typography
+                sx={{
+                  marginBottom: "4px",
+                  "&:hover": { textDecoration: "underline" },
+                }}
+                variant="h5"
+                fontSize={18}
+                color={"#4d4df7"}
+              >
+                {/*<Link href="/"> image profile</Link>*/}
+              </Typography>
+
+              </Grid>
+          </Grid>
         </Box>
 
 
@@ -68,13 +106,12 @@ const AccountLoggedIn = () => {
             {/*  <Typography className="active-tv-font" variant="h3" fontSize={13}>
                 profile
               </Typography>
-*/}               <Typography className="active-tv-font" variant="h3" fontSize={10}>
+*/}            <Typography className="active-tv-font" variant="h3" fontSize={10}>
                 display name
               </Typography>
                <Typography sx={{margin:'10px 0'}} className="active-tv-font" variant="h3" fontSize={10}>
                 email
               </Typography>
-
 
             </Grid>
             <Grid sx={styles.gridItem} item md={5.5}>
@@ -196,7 +233,7 @@ const AccountLoggedIn = () => {
                 }}
                 variant="h3"
                 fontSize={10}
-              >
+              >apo
                 You have 0 Producer Points
                 <img
                   style={{ margin: "0 5px" }}
@@ -243,40 +280,12 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <Link href="/produce">test</Link>
+                {/*<Link href="/produce">test</Link>*/}
               </Typography>
             </Grid>
           </Grid>
         </Box>
-        <Box
-          sx={{
-            minHeight: "80px",
-            borderTop: "1px solid #F2F2F2 ",
-          }}
-        >
-          <Grid container>
-            <Grid sx={styles.gridItem} item md={3.5}>
-              <Typography className="active-tv-font" variant="h3" fontSize={12}>
-                Settings
-              </Typography>
-            </Grid>
-            <Grid sx={styles.gridItem} item md={5.5}></Grid>
-            <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
-              <Typography
-                sx={{
-                  marginBottom: "4px",
-                  "&:hover": { textDecoration: "underline" },
-                }}
-                variant="h5"
-                fontSize={18}
-                color={"#4d4df7"}
-              >
-                <Link href="/">Video Quality</Link>
-              </Typography>
-            </Grid>
-          </Grid>
-        </Box>
-        <Box
+             <Box
           sx={{
             minHeight: "80px",
             borderTop: "1px solid #F2F2F2 ",
