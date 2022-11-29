@@ -15,10 +15,12 @@ import Dropdown from "./dropdown";
 import Link from "next/link";
 import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
+import { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
+// import axios from "axios";
 import { isEmpty } from "@aws-amplify/core";
 
-const Navbar = () => {
+  const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -51,6 +53,9 @@ const Navbar = () => {
     setAnchorElUser(null);
   };
 
+  // const [loading, setLoading] = useState(false);
+  // const [posts, setPosts] = useState([]);
+  // const [searchTitle, setSearchTitle] = useState("");
 
 
   // const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
@@ -104,6 +109,9 @@ const Navbar = () => {
     console.log("RESPONSE=>", response);
   };
 
+  const limit = 5
+
+  
   return (
     <AppBar
       position="sticky"
@@ -131,7 +139,7 @@ const Navbar = () => {
             <Box
               sx={{
                 height: "60px",
-                width: "70px",    
+                width: "70px",
                 backgroundImage: 'url("ATV_logo.png")',
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -288,9 +296,9 @@ const Navbar = () => {
               </a>
             </Link>
             {
-              !loggedIn &&
-                  
-                (<Link href="/account">
+              !loggedIn && (
+
+                <Link href="/account">
                   <a>
                     <Button
                       className={"active-tv-font"}
@@ -309,11 +317,38 @@ const Navbar = () => {
                       Learn More
                     </Button>
                   </a>
-                </Link>)
+                </Link>
+              )
+
             }
 
-        </Box>
-          <Box
+            <Link href="/">
+              <a>
+                <Button
+                  className={"active-tv-font"}
+                  onClick={handleCloseNavMenu}
+                  sx={{
+                    m: 2,
+                    color: "#eee",
+                    display: "block",
+                    fontSize: "12px",
+                    "&:hover": {
+                      color: "#7A9EA3",
+                      borderBottom: "1px solid #7A9EA3",
+                    },
+                  }}
+                >
+                  Learn More
+                </Button>
+              </a>
+            </Link>
+           
+          </Box>
+
+          {/* Shows search input should only display once a user is signed up or logged in */}
+            <Box sx={{ display:"flex", alignItems:"center", justifyContent:"center",}}>
+            {loggedIn && (
+              <Box
             className="outer"
             sx={{ minWidth: { xs: "50px", sm: "100px", md: "300px" } }}
           >
@@ -331,7 +366,7 @@ const Navbar = () => {
             <Box sx={{marginTop:"55px"}}>
             {(
               posts
-                .filter((value) => {
+              .slice(0, limit).filter((value) => {
                   if (searchTitle === "") {
                     return null;
                   } else if (
@@ -342,9 +377,10 @@ const Navbar = () => {
                     return value;
                   }
                 })
-                .map((item) => (
+                .slice(0, limit).map((item, index) => (
+                  <Link href={`/shows-episodes/${item.Title}`} key={index}>
+                    <a>
                   <div
-                    key={item.id}
                     style={{
                       background: "#333333",
                       width: "400px",
@@ -360,13 +396,20 @@ const Navbar = () => {
                     <img src={item.CoverArtLarge} width={50} height={50} />
                     <Box sx={{ flexDirection:"column"}}>
                     <p style={{paddingLeft:"10px", fontSize:"10px"}} className={"active-tv-font"}>{item.Title}</p>
-                    <p style={{paddingLeft:"10px", fontSize:"12px", color:"lightgrey"}}>{item.description}</p>
+                    <p style={{paddingLeft:"10px", fontSize:"8px", color:"lightgrey"}} className={"active-tv-font"}>{item.description}</p>
                     </Box>
                   </div>
+                    </a>
+                </Link>
                 ))
             )}
             </Box>
           </Box>
+            ) 
+            }
+            </Box>
+                
+          
 
           {/* coin system below */}
           <Box sx={{ display: { xs: "none", md: "block" } }}>

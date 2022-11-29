@@ -28,14 +28,14 @@ function MyApp({ Component, pageProps }) {
   const [displayName, setDisplayName] = useState("display name")
   const [loggedIn, setLoggedIn] = useState(false)
   const [authorisedJWT, setAuthorisedJWT] = useState("no token valid")
+  const [avaters, setAvaters] = useState([]);
+  const [imgProfile, setImgProfile] = useState("");
+  const [isContained, setIsContained] = useState(false)
   const [showsDetails, setShowsDetails] = useState({
     title: '',
     img: 'imortal.webp',
     episodes: []
   })
-
-
-
   const ForceReload = () => window.location.reload()
   const ForceRedirect = (direction)=>document.location.href=direction;
 
@@ -136,12 +136,17 @@ function MyApp({ Component, pageProps }) {
     checkUser()
   }, [])
 
+
   return (
     <USER_CONTEXT.Provider
 
       value={{
+        isContained,
+       setIsContained,
         updateAttributes,
         UserContext,
+        imgProfile,
+         setImgProfile,
         authorisedJWT,
         setAuthorisedJWT,
         displayName,
@@ -156,6 +161,8 @@ function MyApp({ Component, pageProps }) {
         setShowsDetails,
         subCode,
         setSubCode,
+        avaters,
+        setAvaters,
         AuthenticatedUser: {
           name: user,
           email: user

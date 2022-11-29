@@ -19,7 +19,6 @@ function TabPanel(props) {
     <div>{children}</div>
   )
 }
-
 function a11yProps(index) {
   return {
     id: `simple-tab-${index}`,
