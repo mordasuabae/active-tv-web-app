@@ -96,6 +96,21 @@ export default function PositionedPopper({ user, userInitial }) {
                 </Box>
               </Box>
               
+{/* 
+              <Box style={AvaterPack}>
+
+                {loggedIn ? (
+                  <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
+                    {/* {userInitial}  */}
+                    {/* <AvaterPicChanger />
+                  </Typography>
+                ) : (
+                  <Box
+                    sx={{}}
+                  />
+                )}
+
+              </Box> */} 
 
               <Button
                 sx={{
@@ -204,4 +219,6 @@ const styles = {
   },
 };
 
-
+// const AvaterPack = {
+//   marginLeft: "110px"
+// }

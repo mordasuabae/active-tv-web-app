@@ -124,8 +124,6 @@ function MyApp({ Component, pageProps }) {
   }, [])
 
 
-  
-
   return (
     <USER_CONTEXT.Provider
 
@@ -165,4 +163,3 @@ function MyApp({ Component, pageProps }) {
 }
 
 export default MyApp;
-

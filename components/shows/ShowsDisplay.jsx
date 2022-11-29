@@ -9,8 +9,10 @@ import { USER_CONTEXT } from "../../context/MainContext";
 import Link from "next/link";
 import axios from "axios";
 
-export default function ShowsDisplay({ shows }) {
-  console.log({ shows });
+export default function ShowsDisplay(
+  { shows }
+  ) {
+  // console.log({ shows });
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -25,7 +27,7 @@ export default function ShowsDisplay({ shows }) {
   const getEpisodes = () => {
     setTimeout(() => {
       setEmpty(false);
-    }, 3000);
+    }, 1500);
   };
 
   return (
@@ -40,23 +42,14 @@ export default function ShowsDisplay({ shows }) {
         }}
       >
         {shows.map((show, index) => (
-          <Link key={index} href={`/shows-episodes/${show.Title}`} passHref={true}>
+          <Link key={index} href={`/shows-episodes/${show.Title}`}>
             <a>
             <ShowCard
               color={show.color}
               openModal={handleOpen}
               img={show.CoverArtLarge}
               text={show.Title}
-              one={show.episodeone}
-              two={show.episodetwo}
-              three={show.episodethree}
-              four={show.episodefour}
-              five={show.episodefive}
-              six={show.episodesix}
-              seven={show.episodeseven}
-              eight={show.episodeeight}
-              nine={show.episodenine}
-              onFetchEpisode={getEpisodes}
+              
             />
             <Typography
               className="active-tv-font"
@@ -73,7 +66,7 @@ export default function ShowsDisplay({ shows }) {
             </Typography>
             </a>
           </Link>
-        ))}
+        ))} 
       </Box>
     </Box>
   );

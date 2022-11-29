@@ -90,6 +90,7 @@ export default function AvaterPicChanger({ grady }) {
         marginLeft: "30px",
         borderRadius:"25px",
         background:"#444",
+        // boxShadow:'2px 2px 2px 2px #444'
       }}
       >
        <CameraAltIcon/>

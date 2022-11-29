@@ -1,43 +1,27 @@
 import { Typography, Box } from "@mui/material";
 import React, { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
-
-const ShowCard = ({
+import { ShowsContext } from "../../context/ShowContext";
+const ShowCard = (
+  {
   img,
   text,
   openModal,
-  color,
-  onFetchEpisode,
-  one,
-  two,
-  three,
-  four,
-  five,
-  six,
-  seven,
-  eight,
-  nine,
-}) => {
+}
+) => {
   const { setShowsDetails } = useContext(USER_CONTEXT);
+  const {getShow} = useContext(ShowsContext)
 
   return (
     <>
       <Box
         onClick={() => {
-          onFetchEpisode();
-          openModal();
+          
+          getShow(text)
           setShowsDetails({
             title: text,
             img: img,
-            episodeone: one,
-            episodetwo: two,
-            episodethree: three,
-            episodefour: four,
-            episodefive: five,
-            episodesix: six,
-            episodeseven: seven,
-            episodeeight: eight,
-            episodenine: nine,
+            
           });
         }}
         style={{

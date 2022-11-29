@@ -9,12 +9,12 @@ import Navbar from "../components/navbar";
 
 export default function Home() {
 
-  const { shows } = useContext(ShowsContext);
-  const homeshow = shows.setCatergorySizeAndType
+  const { configData } = useContext(ShowsContext);
+  const homeshow = configData.setCatergorySizeAndType
   console.log("amazing shows that michee likes!!=>",homeshow)
  
   return (
-    <Box sx={{background:'#111'}}> 
+    <Box sx={{background:'#111', paddingBottom: '70px'}}>
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(

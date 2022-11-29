@@ -13,13 +13,14 @@ import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import Dropdown from "./dropdown";
 import Link from "next/link";
+import axios from "axios";
 import { USER_CONTEXT } from "../../context/MainContext";
 import { useContext } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-import axios from "axios";
+// import axios from "axios";
 import { isEmpty } from "@aws-amplify/core";
 
-const Navbar = () => {
+  const Navbar = () => {
   const pages = ["Home", "Shows", "Greenlight", "Merch", "Learn More"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
@@ -83,6 +84,9 @@ const Navbar = () => {
   };
 
   const { loggedIn } = useContext(USER_CONTEXT) 
+  const limit = 5
+
+  
   return (
     <AppBar
       position="sticky"
@@ -279,11 +283,12 @@ const Navbar = () => {
                 </Button>
               </a>
             </Link>
+           
           </Box>
 
           {/* Shows search input should only display once a user is signed up or logged in */}
             <Box sx={{ display:"flex", alignItems:"center", justifyContent:"center",}}>
-            {loggedIn ? (
+            {loggedIn && (
               <Box
             className="outer"
             sx={{ display: { xs: "block", sm: "block", md: "block" } }}
@@ -302,7 +307,7 @@ const Navbar = () => {
             <Box sx={{marginTop:"55px"}}>
             {(
               posts
-                .filter((value) => {
+              .slice(0, limit).filter((value) => {
                   if (searchTitle === "") {
                     return null;
                   } else if (
@@ -313,9 +318,10 @@ const Navbar = () => {
                     return value;
                   }
                 })
-                .map((item) => (
+                .slice(0, limit).map((item, index) => (
+                  <Link href={`/shows-episodes/${item.Title}`} key={index}>
+                    <a>
                   <div
-                    key={item.id}
                     style={{
                       background: "#333333",
                       width: "400px",
@@ -331,19 +337,17 @@ const Navbar = () => {
                     <img src={item.CoverArtLarge} width={50} height={50} />
                     <Box sx={{ flexDirection:"column"}}>
                     <p style={{paddingLeft:"10px", fontSize:"10px"}} className={"active-tv-font"}>{item.Title}</p>
-                    <p style={{paddingLeft:"10px", fontSize:"12px", color:"lightgrey"}}>{item.description}</p>
+                    <p style={{paddingLeft:"10px", fontSize:"8px", color:"lightgrey"}} className={"active-tv-font"}>{item.description}</p>
                     </Box>
                   </div>
+                    </a>
+                </Link>
                 ))
             )}
             </Box>
           </Box>
             ) 
-            : 
-            (
-              <Box>
-              </Box>
-            )}
+            }
             </Box>
                 
           

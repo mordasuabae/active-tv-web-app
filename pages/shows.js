@@ -4,23 +4,26 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import Button from "@mui/material/Button";
 import { Palette } from "@universemc/react-palette";
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext } from 'react';
 import ShowsDisplay from '../components/shows/ShowsDisplay';
 import axios from 'axios'
+import { ShowsContext } from '../context/ShowContext';
+// export async function getStaticProps() {
+//   const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
+//   const response = await axios.get(endpoint)
+//   console.log('SHOWS', response.data)
+//   return {
+//     props: {
+//       shows: response.data
+//     }
+//   }
+// };
 
-export async function getStaticProps() {
-  const endpoint = 'https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/Prod/get-shows'
-  const response = await axios.get(endpoint)
-  console.log('SHOWS', response.data)
-  return {
-    props: {
-      shows: response.data
-    }
-  }
-};
-const Shows = ({ shows }) => {
+const Shows = () => {
+
+  const {shows} = useContext(ShowsContext)
   console.log({ shows })
-
+  
   return (
     <Palette
       src={
@@ -45,3 +48,4 @@ const Shows = ({ shows }) => {
     </Palette>
   )
 }
+export default Shows
