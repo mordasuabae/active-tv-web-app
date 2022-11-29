@@ -36,17 +36,17 @@ const Banner = () => {
           JOIN THE CREW
         </Typography>
         <ul>
-          <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-            <Typography style={{color: 'white' }}>Watch exclusive content ad-free</Typography>
+          <li style={{ color: '#fff203', margin: '10px 0 0 0' }} className="active-tv-font">
+            <Typography style={{color: 'white' }} className="active-tv-font">Watch exclusive content ad-free</Typography>
+          </li>
+          <li style={{ color: '#fff203', margin: '10px 0 0 0' }} className="active-tv-font">
+            <Typography style={{ color: 'white' }} className="active-tv-font">YOU decide what shows get made</Typography>
           </li>
           <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-            <Typography style={{ color: 'white' }}>YOU decide what shows get made</Typography>
+            <Typography style={{ color: 'white' }} className="active-tv-font">15% off on ALL merch</Typography>
           </li>
           <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-            <Typography style={{ color: 'white' }}>15% off on ALL merch</Typography>
-          </li>
-          <li style={{ color: '#fff203', margin: '10px 0 0 0' }}>
-            <Typography style={{ color: 'white' }}>Watch on ANY device</Typography>
+            <Typography style={{ color: 'white' }} className="active-tv-font">Watch on ANY device</Typography>
           </li>
         </ul>
         <Link href="/signup">
