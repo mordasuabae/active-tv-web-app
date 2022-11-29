@@ -7,7 +7,7 @@ import { Typography } from "@mui/material";
 
 const Banner = () => {
   useEffect(() => {
-    Aos.init({ duration: 2000 });
+    Aos.init({ duration: 500 });
   }, [])
 
   return (
@@ -16,12 +16,16 @@ const Banner = () => {
       <Box
         style={{
           // border: '1px solid white',
-          background:"rgba(0, 0, 0,0.7)",
+          background:"rgba(0, 0, 0,0.5)",
           color: 'white',
           // margin: '-8px 0 0 0',
-          height: '100%',
-          padding: '180px 70px',
+          height: '100vh',
+          padding: '40px 100px',
           fontFamily: "Arcade Normal",
+          display:'flex',
+          alignItems:'flex-start',
+          justifyContent:'flex-end',
+          flexDirection:'column',
           fontSize: "11px"
         }}
         data-aos="fade-right"

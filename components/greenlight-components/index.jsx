@@ -41,7 +41,7 @@ const GreenlightBanner = () => {
       <Box sx={showImage ? styles.introImage : styles.none}>
       
         
-      <Box sx={{background:'rgba(0,0,0,.3)'}}>
+      <Box sx={{background:'rgba(0,0,0,.4)'}}>
         <Grid container>
           <Grid sx={styles.gridItem} item md={4} sm={4} xs={12}>
             <Box sx={{ ...styles.content }}>
@@ -90,7 +90,7 @@ const GreenlightBanner = () => {
                   letterSpacing:'0px',
                   fontSize: {
                     md: 16,
-                    sm: 18,
+                    sm: 14,
                     xs: 16,
                   },
                 }}
@@ -202,7 +202,7 @@ const styles = {
     },
     width: "100%",
     // background: "url('top_banner_full.jpg')",
-    background:"url('produce-banner.png')",
+    background:"url('banner-test.jpg')",
     backgroundSize: "cover",
     backgroundPosition: "center",
   },

@@ -222,8 +222,8 @@ import { isEmpty } from "@aws-amplify/core";
                     display: "block",
                     fontSize: "12px",
                     "&:hover": {
-                      color: "#12171f",
-                      borderBottom: "1px solid #12171F",
+                     color: "#32a453",
+                      borderBottom: "1px solid #32a453",
                     },
                   }}
                 >
@@ -264,8 +264,8 @@ import { isEmpty } from "@aws-amplify/core";
                     display: "block",
                     fontSize: "12px",
                     "&:hover": {
-                      color: "#7AB273",
-                      borderBottom: "1px solid #7AB273",
+                       color: "#32a453",
+                      borderBottom: "1px solid #32a453",
                     },
                   }}
                 >
@@ -286,8 +286,8 @@ import { isEmpty } from "@aws-amplify/core";
                     display: "block",
                     fontSize: "12px",
                     "&:hover": {
-                      color: "#CCC0BF",
-                      borderBottom: "1px solid #CCC0BF",
+                       color: "#32a453",
+                      borderBottom: "1px solid #32a453",
                     },
                   }}
                 >
@@ -309,8 +309,8 @@ import { isEmpty } from "@aws-amplify/core";
                         display: "block",
                         fontSize: "12px",
                         "&:hover": {
-                          color: "#7A9EA3",
-                          borderBottom: "1px solid #7A9EA3",
+                        color: "#32a453",
+                      borderBottom: "1px solid #32a453",
                         },
                       }}
                     >
@@ -322,27 +322,7 @@ import { isEmpty } from "@aws-amplify/core";
 
             }
 
-            <Link href="/">
-              <a>
-                <Button
-                  className={"active-tv-font"}
-                  onClick={handleCloseNavMenu}
-                  sx={{
-                    m: 2,
-                    color: "#eee",
-                    display: "block",
-                    fontSize: "12px",
-                    "&:hover": {
-                      color: "#7A9EA3",
-                      borderBottom: "1px solid #7A9EA3",
-                    },
-                  }}
-                >
-                  Learn More
-                </Button>
-              </a>
-            </Link>
-           
+                   
           </Box>
 
           {/* Shows search input should only display once a user is signed up or logged in */}
