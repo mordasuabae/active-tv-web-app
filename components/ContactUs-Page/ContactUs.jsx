@@ -70,7 +70,7 @@ const styles = {
     },
     contentBox: {
       width: "700px",
-      background: "rgba(0,0,0,0.5)",
+      background: "rgba(0,0,0,0.8)",
       opacity: 0.7,
       height: "500px",
       // padding: "95px 90px",

@@ -121,7 +121,7 @@ const Navbar = () => {
             variant="h6"
             noWrap
             component="div"
-            sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
+            sx={{ mr: 2, display: { xs: "none", md: "flex", sm:'' } }}
           >
             {/* <img
               src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
@@ -288,10 +288,9 @@ const Navbar = () => {
               </a>
             </Link>
             {
-              loggedIn ?
-                ""
-                :
-                <Link href="/account">
+              !loggedIn &&
+                  
+                (<Link href="/account">
                   <a>
                     <Button
                       className={"active-tv-font"}
@@ -310,7 +309,7 @@ const Navbar = () => {
                       Learn More
                     </Button>
                   </a>
-                </Link>
+                </Link>)
             }
 
         </Box>
