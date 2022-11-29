@@ -3,12 +3,13 @@ import Navbar from "../components/navbar";
 import { USER_CONTEXT } from "../context/MainContext";
 import { useContext, useState, useEffect } from "react";
 import { Palette } from "@universemc/react-palette";
+import Router from 'next/router'
 
 //amplify imports
 import { Amplify, Auth } from 'aws-amplify';
 import { Hub, Logger } from "aws-amplify";
 // import awsconfig from "./../components/utils/CognitoConfig";
-import {CurrentConfig} from './../components/utils/CognitoConfig' //added curly braces for import signinficance
+import { CurrentConfig } from './../components/utils/CognitoConfig' //added curly braces for import signinficance
 import { FlashlightOnRounded } from "@mui/icons-material";
 import axios from 'axios'
 
@@ -36,7 +37,7 @@ function MyApp({ Component, pageProps }) {
     episodes: []
   })
   const ForceReload = () => window.location.reload()
-  
+  const ForceRedirect = (direction)=>document.location.href=direction;
 
 
 
@@ -70,12 +71,24 @@ function MyApp({ Component, pageProps }) {
       .catch(err => console.log('failing to fetch user from axios bcz', err.message))
   }
 
+
+
+
+
   //updating attributes-or-change-the-values
-  const updateAttributes = async (user, nameAttibute,emailAttribute) => {
+  const updateAttributes = async (nameAttibute, emailAttribute) => {
+
+    let user = await Auth.currentAuthenticatedUser().then(user => user)
+
+    
     await Auth.updateUserAttributes(user, {
-      //'name': 'nameAttribute',
-      //'email':'emailAttributes'
-    });
+      'name': nameAttibute,
+      'email': emailAttribute
+
+    })
+    await  Router.push('/account')
+    ForceReload()
+
   }
 
 
@@ -130,6 +143,7 @@ function MyApp({ Component, pageProps }) {
       value={{
         isContained,
        setIsContained,
+        updateAttributes,
         UserContext,
         imgProfile,
          setImgProfile,
@@ -139,6 +153,7 @@ function MyApp({ Component, pageProps }) {
         selectedCategory,
         loggedIn,
         ForceReload,
+        ForceRedirect,
         setLoggedIn,
         setUser,
         setSelectedCategory,

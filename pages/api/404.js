@@ -1,6 +1,9 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 
+import NotFound from '../404.js'
+
+
 export default function handler(req, res) {
     
-  res.status(200).json({ name: 'schadrack => checking the server side!!!' })
-}
+    res.status(404).end(NotFound)
+  }

@@ -9,27 +9,27 @@ import { USER_CONTEXT } from "../../context/MainContext";
 import Link from "next/link";
 import axios from "axios";
 
-export default function ShowsDisplay(
-  { shows }
-  ) {
-  // console.log({ shows });
+export default function ShowsDisplay({ shows }) {
+
+  
+
+  //states
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   const [empty, setEmpty] = useState(true);
   const [spinner, setSpinner] = useState(null);
-
   const { showsDetails, setShowsDetails } = useContext(USER_CONTEXT);
-
   let [loading, setLoading] = useState(true);
-  let [color, setColor] = useState("#ffffff");
+  let [color, setColor] = useState("#FFFFFF");
+
+
 
   const getEpisodes = () => {
     setTimeout(() => {
       setEmpty(false);
-    }, 1500);
+    }, 3000);
   };
-
   return (
     <Box>
       <ShowHeader title="Shows" />
@@ -42,15 +42,15 @@ export default function ShowsDisplay(
         }}
       >
         {shows.map((show, index) => (
-          <Link key={index} href={`/shows-episodes/${show.Title}`}>
-            <a>
+          <Link passHref={true} key={index} href={`/shows-episodes/${show.Title}`}>
+             <a>
             <ShowCard
               color={show.color}
               openModal={handleOpen}
               img={show.CoverArtLarge}
               text={show.Title}
-              
             />
+            
             <Typography
               className="active-tv-font"
               fontSize={10}
@@ -66,12 +66,12 @@ export default function ShowsDisplay(
             </Typography>
             </a>
           </Link>
+
         ))} 
       </Box>
     </Box>
   );
 }
-
 const styles = {
   container: {
     position: "absolute",
@@ -114,14 +114,12 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
   },
-
   fadeContainer: {
     width: "100%",
     height: "100%",
     background: "rgba(0,0,0,0.8)",
     zIndex: 100,
   },
-
   cancelBtn: {
     borderRadius: "50px",
     background: "rgba(0,0,0,0.5)",

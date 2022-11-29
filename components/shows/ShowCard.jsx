@@ -47,7 +47,6 @@ const ShowCard = (
     </>
   );
 };
-
 const styles = {
   container: {
     height: "200px",
@@ -57,5 +56,4 @@ const styles = {
     cursor: "pointer",
   },
 };
-
 export default ShowCard;

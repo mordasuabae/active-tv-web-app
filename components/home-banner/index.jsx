@@ -35,7 +35,6 @@ const HomeBanner = () => {
     // console.log(results);
   }
   // console.log(banners)
-
   useEffect(()=>{
     getShows();
   },[])
@@ -96,6 +95,7 @@ const HomeBanner = () => {
                 transform: "translateY(-150px)",
                 zIndex: "1",
                 position: "relative",
+
               }}
             >
               {/* <LatestShows /> */}

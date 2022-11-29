@@ -5,7 +5,11 @@ import Homeshows from "../components/home-shows/Homeshows";
 import HslPlayer from "../components/streamPlayer"
 import latestVid from "../components/home-shows/Latest-video.json"
 import { ShowsContext } from "../context/ShowContext";
+import { USER_CONTEXT } from '../context/MainContext'
 import Navbar from "../components/navbar";
+
+
+
 
 export default function Home() {
 
@@ -23,6 +27,7 @@ export default function Home() {
         )):""
        
       }
+
 
     </Box>
   );

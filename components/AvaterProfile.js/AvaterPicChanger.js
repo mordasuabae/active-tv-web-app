@@ -23,6 +23,7 @@ const style = {
 };
 
 const cancelBtn = {
+  // background:"red",
   marginTop:"10px",
   color:"red",
   fontWeight:"bold",
@@ -31,6 +32,7 @@ const cancelBtn = {
 }
 
 const confirmBtn = {
+  // background:"green",
   marginTop:"10px",
   color:"green",
   fontWeight:"bold",
@@ -45,6 +47,9 @@ const images = {
   background:"#222",
   borderRadius:"15px",
   marginTop:"-10px",
+  display:"flex",
+  alignItems:"center",
+  justifyContent:"center",
   color:"white",
   fontWeight:"bold",
   padding:"15px",

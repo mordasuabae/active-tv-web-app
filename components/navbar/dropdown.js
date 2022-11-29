@@ -17,6 +17,7 @@ import { useContext } from "react";
 import { USER_CONTEXT } from "../../context/MainContext";
 import SettingsIcon from "@mui/icons-material/Settings";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import AvaterPicChanger from "../AvaterProfile.js/AvaterPicChanger";
 
 
 export default function PositionedPopper({ user, userInitial }) {
@@ -44,7 +45,7 @@ export default function PositionedPopper({ user, userInitial }) {
       }
     } else {
       Router.push("/login");
-      console.log("logged out with no present user");
+      console.log("there is no user logged in at thr currentSeession");
     }
   }
 
@@ -78,7 +79,7 @@ export default function PositionedPopper({ user, userInitial }) {
                 <Box style={{background:`url(${imgProfile})`, backgroundSize:isContained ? "cover":"contain"}} sx={styles.DropUser}>
                   {loggedIn ? (
                     <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
-                      {userInitial}
+                      {userInitial} 
                     </Typography>
                   ) : (
                     <Box
@@ -99,10 +100,14 @@ export default function PositionedPopper({ user, userInitial }) {
 {/* 
               <Box style={AvaterPack}>
 
+
+              <Box >
+
                 {loggedIn ? (
                   <Typography className={'active-tv-font'} variant="h1" color="#fff" fontSize={30}>
                     {/* {userInitial}  */}
                     {/* <AvaterPicChanger />
+
                   </Typography>
                 ) : (
                   <Box
@@ -111,6 +116,8 @@ export default function PositionedPopper({ user, userInitial }) {
                 )}
 
               </Box> */} 
+              {/* </Box> */}
+
 
               <Button
                 sx={{
@@ -218,7 +225,3 @@ const styles = {
     border:"1px solid white",
   },
 };
-
-// const AvaterPack = {
-//   marginLeft: "110px"
-// }

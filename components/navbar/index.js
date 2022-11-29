@@ -25,9 +25,11 @@ import { isEmpty } from "@aws-amplify/core";
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   const UserContext = React.useContext(USER_CONTEXT);
-
+  const [loading, setLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [searchTitle, setSearchTitle] = useState("");
   // destructuring the authenticated user from context
-  const { AuthenticatedUser, authorisedJWT } = React.useContext(USER_CONTEXT);
+  const { AuthenticatedUser, authorisedJWT, loggedIn, setLoggedIn } = React.useContext(USER_CONTEXT);
   // //user initial
   const currentUser = AuthenticatedUser.name;
   const userIntial = currentUser.charAt(0);
@@ -51,9 +53,33 @@ import { isEmpty } from "@aws-amplify/core";
     setAnchorElUser(null);
   };
 
-  const [loading, setLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
-  const [searchTitle, setSearchTitle] = useState("");
+  // const [loading, setLoading] = useState(false);
+  // const [posts, setPosts] = useState([]);
+  // const [searchTitle, setSearchTitle] = useState("");
+
+
+  // const endpoint = `https://p6x7b95wcd.execute-api.us-east-2.amazonaws.com/cognito_pool/get-config`;
+
+  const tokenHalndler = async () => {
+    const response = await axios({
+      method: "get",
+      url: endpoint,
+      Authorization: `Bearer ${authorisedJWT} `,
+      // headers: {
+      //   "Content-Type": "application/json",
+      //   "Access-Control-Allow-Origin": "*",
+      //   "Access-Control-Allow-Methods": "GET,HEAD,OPTIONS,POST,PUT,DELETE",
+      //   "Access-Control-Allow-Headers":
+      //   "Origin, X-Requested-With, Content-Type",
+      //   "Access-Control-Allow-Credentials": true,
+      //   // Authorization: `Bearer ${authorisedJWT} `,
+      // },
+    });
+    console.log("Response => ", response);
+  };
+
+
+
 
   useEffect(() => {
     const loadingPosts = async () => {
@@ -83,7 +109,6 @@ import { isEmpty } from "@aws-amplify/core";
     console.log("RESPONSE=>", response);
   };
 
-  const { loggedIn } = useContext(USER_CONTEXT) 
   const limit = 5
 
   
@@ -91,8 +116,11 @@ import { isEmpty } from "@aws-amplify/core";
     <AppBar
       position="sticky"
       sx={{
+        // background: "#111",
+        // background:'linear-gradient(to bottom, #131313, #111, #181818)',
         background: "black",
         height: "70px",
+        // padding:'10px 0'
       }}
     >
       <Container maxWidth="xl" sx={{ paddingTop: "0px" }}>
@@ -103,6 +131,11 @@ import { isEmpty } from "@aws-amplify/core";
             component="div"
             sx={{ mr: 2, display: { xs: "none", md: "flex" } }}
           >
+            {/* <img
+              src="https://www.activetvonline.co.za/static/media/logo.718a6dab.png"
+              alt=""
+              height="70px"
+            /> */}
             <Box
               sx={{
                 height: "60px",
@@ -262,6 +295,32 @@ import { isEmpty } from "@aws-amplify/core";
                 </Button>
               </a>
             </Link>
+            {
+              !loggedIn && (
+
+                <Link href="/account">
+                  <a>
+                    <Button
+                      className={"active-tv-font"}
+                      onClick={handleCloseNavMenu}
+                      sx={{
+                        m: 2,
+                        color: "#eee",
+                        display: "block",
+                        fontSize: "12px",
+                        "&:hover": {
+                          color: "#7A9EA3",
+                          borderBottom: "1px solid #7A9EA3",
+                        },
+                      }}
+                    >
+                      Learn More
+                    </Button>
+                  </a>
+                </Link>
+              )
+
+            }
 
             <Link href="/">
               <a>
@@ -291,7 +350,7 @@ import { isEmpty } from "@aws-amplify/core";
             {loggedIn && (
               <Box
             className="outer"
-            sx={{ display: { xs: "block", sm: "block", md: "block" } }}
+            sx={{ minWidth: { xs: "50px", sm: "100px", md: "300px" } }}
           >
             <a className="anchr">
               <SearchIcon />
@@ -381,6 +440,7 @@ import { isEmpty } from "@aws-amplify/core";
 export default Navbar;
 
 const coinContainer = {
+  // border: "1px solid red",
   width: "100px",
   minHeight: "50px",
   display: "flex",
