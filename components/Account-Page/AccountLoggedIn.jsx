@@ -285,6 +285,33 @@ const AccountLoggedIn = () => {
             </Grid>
           </Grid>
         </Box>
+        <Box sx={{
+            minHeight: "80px",
+            borderTop: "1px solid #F2F2F2 ",
+          }}>
+          <Grid container>
+            <Grid sx={styles.gridItem} item md={3.5}>
+              <Typography className="active-tv-font" variant="h3" fontSize={12}>
+                Redeem Voucher
+              </Typography>
+            </Grid>
+            <Grid sx={styles.gridItem} item md={5.5}></Grid>
+            <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
+              <Typography
+                sx={{
+                  marginBottom: "4px",
+                  "&:hover": { textDecoration: "underline" },
+                }}
+                variant="h5"
+                fontSize={18}
+                color={"#4d4df7"}
+              >
+                <Link href="/reedem">Redeem Code</Link>
+              </Typography>
+              
+            </Grid>
+          </Grid>
+          </Box>
              <Box
           sx={{
             minHeight: "80px",
@@ -323,6 +350,8 @@ const AccountLoggedIn = () => {
               </Typography>
             </Grid>
           </Grid>
+
+         
         </Box>
       </Box>
     </Box>
