@@ -233,7 +233,7 @@ const AccountLoggedIn = () => {
                 }}
                 variant="h3"
                 fontSize={10}
-              >apo
+              >
                 You have 0 Producer Points
                 <img
                   style={{ margin: "0 5px" }}
@@ -306,7 +306,7 @@ const AccountLoggedIn = () => {
                 fontSize={18}
                 color={"#4d4df7"}
               >
-                <Link href="/reedem">Redeem Code</Link>
+                <Link href="/RedeemVoucher">Redeem Code</Link>
               </Typography>
               
             </Grid>

@@ -11,6 +11,7 @@ import Navbar from "../components/navbar";
 
 
 
+
 export default function Home() {
 
   const { configData } = useContext(ShowsContext);
@@ -19,6 +20,7 @@ export default function Home() {
  
   return (
     <Box sx={{background:'#111', paddingBottom: '70px'}}>
+     
       <HomeBanner />
       {
         homeshow ? homeshow.map((item,index)=>(
