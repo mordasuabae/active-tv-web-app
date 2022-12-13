@@ -10,6 +10,17 @@ import Link from 'next/link'
 
 
 const AccountLoggedIn = () => {
+  const [popup, setPopup] = useState(false);
+  const handleClickOpen = () => {
+    setPopup(!popup);
+    setClose(false);
+  };
+  const closePopup = () => {
+    setPopup(false);
+    setClose(true);
+  };
+  const [close, setClose] = useState(true);
+
   const { AuthenticatedUser,displayName } = useContext(USER_CONTEXT); //pulling out the current authenticated user
 
   const [subscribed, setSubscribed] = useState(false);
@@ -297,7 +308,9 @@ const AccountLoggedIn = () => {
             </Grid>
             <Grid sx={styles.gridItem} item md={5.5}></Grid>
             <Grid sx={{ ...styles.gridItem, ...styles.lastGrid }} item md={3}>
-              <Typography
+            {
+                close? <Typography 
+                onClick={handleClickOpen}
                 sx={{
                   marginBottom: "4px",
                   "&:hover": { textDecoration: "underline" },
@@ -305,9 +318,110 @@ const AccountLoggedIn = () => {
                 variant="h5"
                 fontSize={18}
                 color={"#4d4df7"}
-              >
-                <Link href="/RedeemVoucher">Redeem Code</Link>
-              </Typography>
+              > 
+                Redeem Code
+              </Typography> : null
+              }
+              
+              {
+                popup ?    <Box position="absolute" width="861px" backgroundColor="rgba(0,0,0,0.9)" border="1px solid yellow" bottom="150px">
+                <Box className={styles.popup}>
+                  <Box >
+                    <Box>
+                    <Box  sx={{display:"flex",justifyContent:'space-between',padding:"20px 30px 20px 15px"}} className={styles.popupheader}>
+                    <Typography style={{height:"150px",width:"150px",padding:"0 10px",backgroundImage:`url("/ATV_logo.png")`,backgroundSIze:"contain",backgroundRepeat:"no-reapeat",margin:"-30px 0 0 0"}}></Typography>
+                    <Box>
+                    <Typography sx={{fontFamily:"ArcadeFont",margin:"0 0 0 -30px"}}>Redeem Code</Typography>
+                      <Typography sx={{ fontSize: "10px",fontFamily:"ArcadeFont",margin:"0 0 0 -30px"}}>
+                        alaricomanjate21@gmail.com
+                      </Typography>
+                    </Box>
+                    <Typography  className="popupbutton" onClick={closePopup}>
+                      x
+                    </Typography>
+                    </Box>
+                      
+                    
+                    </Box>
+                  </Box>
+                  <Box
+                  
+                    sx={{
+                      // display: "flex",
+                      // justifyContent: "space-between",
+                      padding: " 0 30px 20px 30px",
+                      // border: "1px solid red",
+                    }}
+                  >
+                    <>
+                      <input
+                        style={{
+                          width: "100%",
+                          border: "none",
+                          borderBottom: "2px solid #2c3e50",
+                          outline: "none",
+                          padding: "5px 5px",
+                          fontFamily:"ArcadeFont"
+                        }}
+                        type="placeholder"
+                        placeholder="Enter gift card or promo code"
+                      ></input>
+                    </>
+                    <Box sx={{ margin: "20px 0 0 0",}}>
+                      <Typography sx={{ fontSize: "10px" ,fontFamily:"ArcadeFont"}}>
+                        By clicking Redeem, you agree to the Gift Card & Promotional
+                        Code{" "}
+                        <Link href="/">
+                          <span style={{ color: "#FFFA00" }}>
+                            Terms and Conditions
+                          </span>
+                        </Link>
+                        , as applicable.
+                      </Typography>
+                    </Box>
+                    <Box
+                      className="popupbutton"
+                      style={{
+                        display:'flex',
+                        justifyContent: "flex-end",
+                        margin: "20px 0 0 0",
+                      }}
+                    >
+                      <button
+                        className="popupbutton"
+                        onClick={closePopup}
+                        style={{
+                          width: "100px",
+                          height: "40px",
+                          borderRadius: "8px",
+                          border: "none",
+                          marginRight: "10px",
+                          color: "gray",
+                          background: "white",
+                          border: "0.1em solid gray",
+                        }}
+                      >
+                        Cancel
+                      </button>
+                      <button
+                        onClick={() => alert("Your Voucher is Invalid!")}
+                        className="popupbutton"
+                        style={{
+                          width: "100px",
+                          height: "40px",
+                          borderRadius: "8px",
+                          border: "none",
+                          color: "grey",
+                          background: "#fff203",
+                        }}
+                      >
+                        Redeem
+                      </button>
+                    </Box>
+                  </Box>
+                </Box>
+              </Box> : null
+              }
               
             </Grid>
           </Grid>
